@@ -1,1332 +1,471 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Local Staten Island | Strengthen Our Community</title>
-<script src="https://js.stripe.com/v3/"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#0a1c4b;--red:#cc2222;--gold:#d4a843;--light:#f4f6fb;--white:#fff;--border:#dde2ee;--gray:#64748b}
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:#1a1a2e;line-height:1.5}
-a{color:inherit;text-decoration:none}
-
-/* NAV */
-nav{background:var(--navy);position:sticky;top:0;z-index:999;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:62px;box-shadow:0 2px 12px rgba(0,0,0,.4)}
-.logo{color:#fff;font-size:1.15rem;font-weight:900;letter-spacing:-.5px}.logo span{color:var(--gold)}
-.nav-links{display:flex;gap:1.25rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,.8);font-size:.88rem;font-weight:500;transition:color .15s}.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--red);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-weight:700!important}
-.nav-cta:hover{background:#aa1515!important}
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px}
-.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px}
-
-/* EMERGENCY STRIP */
-.emstrip{background:var(--red);color:#fff;padding:.55rem 2rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;font-weight:600}
-.emstrip a{color:#fff}
-.emstrip .sep{opacity:.5}
-
-/* HERO */
-.hero{background:var(--navy);color:#fff;text-align:center;padding:4.5rem 2rem 5rem;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,168,67,.18),transparent 65%);pointer-events:none}
-.hero h1{font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-1px;position:relative}
-.hero h1 em{color:var(--red);font-style:normal;display:block}
-.hero-sub{font-size:1.15rem;margin:.9rem auto 0;max-width:520px;color:rgba(255,255,255,.82);position:relative}
-.hero-btns{display:flex;gap:.9rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;position:relative}
-.btn-gold{background:var(--gold);color:#111;padding:.78rem 1.9rem;border-radius:8px;font-weight:800;font-size:.95rem;transition:background .2s,transform .2s}
-.btn-gold:hover{background:#b8922e;transform:translateY(-2px)}
-.btn-outline{border:2px solid rgba(255,255,255,.7);color:#fff;padding:.78rem 1.9rem;border-radius:8px;font-weight:700;font-size:.95rem;transition:all .2s}
-.btn-outline:hover{background:#fff;color:var(--navy)}
-
-/* STATS */
-.stats{background:var(--gold);padding:1.1rem 2rem;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-n{font-size:1.7rem;font-weight:900;color:var(--navy)}
-.stat-l{font-size:.72rem;font-weight:700;color:rgba(10,28,75,.65);text-transform:uppercase;letter-spacing:.5px}
-
-/* SECTIONS */
-section{padding:4rem 2rem}
-.sec-head{text-align:center;margin-bottom:2.5rem}
-.sec-head h2{font-size:1.85rem;font-weight:800;color:var(--navy)}
-.divider{width:55px;height:4px;background:var(--red);margin:.7rem auto;border-radius:2px}
-.sec-head p{color:var(--gray);max-width:580px;margin:0 auto;font-size:.93rem}
-
-/* DIRECTORY */
-#directory{background:#fff}
-.search-wrap{max-width:680px;margin:0 auto 2rem;display:flex;gap:.75rem;flex-wrap:wrap}
-.search-wrap input,.search-wrap select{flex:1;min-width:160px;padding:.75rem 1rem;border:2px solid var(--border);border-radius:8px;font-size:.93rem;outline:none;transition:border .2s}
-.search-wrap input:focus,.search-wrap select:focus{border-color:var(--navy)}
-.search-wrap button{background:var(--navy);color:#fff;border:none;padding:.75rem 1.3rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.93rem;white-space:nowrap}
-.cat-tabs{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin-bottom:2rem}
-.ctab{padding:.38rem .95rem;border:2px solid var(--navy);border-radius:20px;background:transparent;color:var(--navy);font-weight:600;font-size:.8rem;cursor:pointer;transition:all .2s}
-.ctab:hover,.ctab.active{background:var(--navy);color:#fff}
-.ctab.em:hover,.ctab.em.active{background:var(--red);border-color:var(--red);color:#fff}
-.cat-section{margin-bottom:2.5rem}
-.cat-title{font-size:.95rem;font-weight:800;color:var(--navy);background:#f0f3fa;padding:.6rem 1rem;border-left:4px solid var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.5px}
-.cat-title.em{background:#fff5f5;border-left-color:var(--red);color:var(--red)}
-.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
-.biz-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:.95rem 1.1rem;transition:all .2s}
-.biz-card:hover{border-color:var(--navy);box-shadow:0 4px 14px rgba(10,28,75,.12);transform:translateY(-2px)}
-.biz-card.em{background:#fff8f8;border-color:#ffcccc}
-.biz-card.hatz{background:#fff0f0;border:2px solid var(--red)}
-.biz-name{font-weight:700;font-size:.9rem;color:var(--navy);margin-bottom:.2rem}
-.biz-card.em .biz-name{color:var(--red)}
-.biz-desc{font-size:.78rem;color:var(--gray);margin-bottom:.4rem}
-.biz-addr{font-size:.75rem;color:var(--gray)}
-.biz-phone{font-size:.85rem;font-weight:700;color:var(--red);margin-top:.35rem}
-.biz-card.hatz .biz-phone{font-size:1.1rem;font-weight:900}
-
-/* SHABBOS */
-#shabbos{background:var(--navy);color:#fff}
-#shabbos .sec-head h2{color:var(--gold)}
-#shabbos .divider{background:var(--gold)}
-#shabbos .sec-head p{color:rgba(255,255,255,.75)}
-.shab-wrap{max-width:560px;margin:0 auto}
-.shab-card{background:rgba(255,255,255,.08);border:1px solid rgba(212,168,67,.35);border-radius:16px;padding:2rem}
-.shab-date{text-align:center;font-size:1.2rem;font-weight:700;color:var(--gold);margin-bottom:1.5rem}
-.shab-parsha{text-align:center;font-size:.85rem;color:rgba(255,255,255,.6);margin-bottom:1rem}
-.shab-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
-.shab-block{text-align:center;padding:1.1rem;background:rgba(255,255,255,.07);border-radius:10px}
-.shab-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.55);margin-bottom:.4rem}
-.shab-time{font-size:2rem;font-weight:800;color:var(--gold)}
-.shab-note{font-size:.7rem;color:rgba(255,255,255,.4);margin-top:.25rem}
-.shab-disclaimer{text-align:center;font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6}
-.shab-disclaimer a{color:var(--gold)}
-
-/* MARKETPLACE */
-#marketplace{background:var(--light)}
-.mkt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem;max-width:1150px;margin:0 auto}
-.mkt-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;transition:all .2s}
-.mkt-card:hover{box-shadow:0 8px 22px rgba(0,0,0,.1);transform:translateY(-3px)}
-.mkt-img{height:165px;background:linear-gradient(135deg,#e8ecf5,#d0d8ee);display:flex;align-items:center;justify-content:center;font-size:2.8rem}
-.mkt-body{padding:1rem}
-.mkt-tag{display:inline-block;background:#e8f0fd;color:var(--navy);font-size:.7rem;font-weight:700;padding:.18rem .6rem;border-radius:4px;margin-bottom:.45rem}
-.mkt-title{font-weight:700;font-size:.92rem;color:#1a1a2e;margin-bottom:.25rem}
-.mkt-desc{font-size:.8rem;color:var(--gray)}
-.mkt-price{color:var(--red);font-weight:800;font-size:1.05rem;margin-top:.45rem}
-.mkt-contact{font-size:.78rem;color:var(--gray)}
-.mkt-footer{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.mkt-cta{background:var(--navy);color:#fff;font-size:.78rem;font-weight:700;padding:.35rem .8rem;border-radius:6px}
-
-/* ADVERTISE */
-#advertise{background:#fff}
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;max-width:860px;margin:0 auto 2.5rem}
-.price-card{border:2px solid var(--border);border-radius:14px;padding:1.75rem;text-align:center;transition:all .2s}
-.price-card.feat{border-color:var(--navy);background:var(--navy);color:#fff}
-.price-tier{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:.5rem}
-.price-card.feat .price-tier{color:var(--gold)}
-.price-val{font-size:2.3rem;font-weight:900;color:var(--navy)}
-.price-card.feat .price-val{color:#fff}
-.price-per{font-size:.82rem;color:var(--gray)}
-.price-card.feat .price-per{color:rgba(255,255,255,.65)}
-.price-feats{list-style:none;margin:1.4rem 0;text-align:left}
-.price-feats li{padding:.38rem 0;font-size:.86rem;border-bottom:1px solid #eee}
-.price-card.feat .price-feats li{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.88)}
-.price-feats li::before{content:"✓ ";color:#2a9d5c;font-weight:700}
-.price-card.feat .price-feats li::before{color:var(--gold)}
-.price-btn{display:block;padding:.7rem;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;border:2px solid var(--navy);color:var(--navy);background:transparent}
-.price-btn:hover{background:var(--navy);color:#fff}
-.price-card.feat .price-btn{background:var(--gold);color:#111;border-color:var(--gold)}
-.price-card.feat .price-btn:hover{background:#b8922e}
-.adv-form{max-width:600px;margin:0 auto;background:var(--light);border-radius:12px;padding:2rem;border:1px solid var(--border)}
-.adv-form h3{font-weight:700;color:var(--navy);margin-bottom:1.25rem;text-align:center}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
-.form-row.full{grid-template-columns:1fr}
-.adv-form input,.adv-form select,.adv-form textarea{width:100%;padding:.7rem .9rem;border:2px solid var(--border);border-radius:8px;font-size:.9rem;outline:none;font-family:inherit;transition:border .2s}
-.adv-form input:focus,.adv-form select:focus,.adv-form textarea:focus{border-color:var(--navy)}
-.adv-form textarea{height:90px;resize:vertical}
-.form-submit{background:var(--navy);color:#fff;border:none;padding:.8rem 2rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;width:100%;margin-top:.5rem}
-
-/* BLOG */
-#blog{background:var(--light)}
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto 2rem}
-.blog-card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:all .2s}
-.blog-card:hover{box-shadow:0 8px 22px rgba(0,0,0,.1);transform:translateY(-3px)}
-.blog-hero{height:175px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
-.blog-body{padding:1.15rem}
-.blog-cat{font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
-.blog-title{font-weight:700;font-size:.97rem;color:var(--navy);margin-bottom:.4rem;line-height:1.35}
-.blog-exc{font-size:.82rem;color:var(--gray);line-height:1.55}
-.blog-meta{font-size:.75rem;color:var(--gray);margin-top:.7rem;display:flex;justify-content:space-between}
-.submit-post{background:var(--navy);color:#fff;padding:1rem 2.5rem;border-radius:8px;font-weight:700;display:inline-block;margin:0 auto;display:block;width:fit-content;margin:0 auto}
-.submit-post:hover{background:#182e6a}
-
-/* COMMUNITY */
-#community{background:var(--navy)}
-.comm-card{background:rgba(255,255,255,.07);border:1px solid rgba(212,168,67,.3);border-radius:14px;padding:2rem;max-width:900px;margin:0 auto;text-align:center;color:#fff}
-.comm-card h3{color:var(--gold);font-size:1.2rem;margin-bottom:.9rem}
-.comm-card p{color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.8;margin-bottom:.75rem}
-.comm-orgs{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
-.org-pill{background:rgba(255,255,255,.1);border:1px solid rgba(212,168,67,.4);border-radius:8px;padding:.75rem 1.25rem;color:var(--gold);font-weight:700;font-size:.85rem}
-
-/* FOOTER */
-footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
-.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2rem;max-width:1100px;margin:0 auto 2rem}
-.foot-col h4{color:var(--gold);font-size:.82rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.9rem}
-.foot-col ul{list-style:none}
-.foot-col li{margin-bottom:.45rem;font-size:.83rem}
-.foot-col a{color:rgba(255,255,255,.65);transition:color .2s}
-.foot-col a:hover{color:var(--gold)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;text-align:center;font-size:.78rem;color:rgba(255,255,255,.4);max-width:1100px;margin:0 auto}
-.foot-logo{font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:.5rem}
-.foot-logo span{color:var(--gold)}
-
-/* MOBILE NAV */
-@media(max-width:768px){
-  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:var(--navy);flex-direction:column;padding:1rem 2rem;gap:.75rem}
-  .nav-links.open{display:flex}
-  .hamburger{display:flex}
-  .stats{gap:1.2rem}
-  .shab-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .price-card.feat{transform:none}
-}
-
-/* UTILITY */
-.hidden{display:none!important}
-.container{max-width:1150px;margin:0 auto}
-</style>
-</head>
-<body>
-
-<!-- EMERGENCY STRIP -->
-<div class="emstrip">
-  <span>🚨 EMERGENCIES:</span>
-  <a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a>
-  <span class="sep">|</span>
-  <a href="tel:7187612428">Chaveirim: 718-761-2428</a>
-  <span class="sep">|</span>
-  <a href="tel:7187614444">Shmira: 718-761-4444</a>
-  <span class="sep">|</span>
-  <a href="tel:7183702121">Shomrim: 718-370-2121</a>
-</div>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="logo">Shop<span>Local</span> SI</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#directory">Directory</a></li>
-    <li><a href="#shabbos">Shabbos Times</a></li>
-    <li><a href="#marketplace">Marketplace</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#advertise">Advertise</a></li>
-    <li><a href="#advertise" class="nav-cta">List Your Business</a></li>
-  </ul>
-  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <h1>SHOP LOCAL.<em>STRENGTHEN OUR COMMUNITY.</em></h1>
-  <p class="hero-sub">Support the businesses that support you — right here on Staten Island</p>
-  <div class="hero-btns">
-    <a href="#directory" class="btn-gold">Browse Directory</a>
-    <a href="#marketplace" class="btn-outline">Community Marketplace</a>
-    <a href="#advertise" class="btn-outline">List Your Business</a>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-n">80+</div><div class="stat-l">Local Businesses</div></div>
-  <div class="stat"><div class="stat-n">14</div><div class="stat-l">Categories</div></div>
-  <div class="stat"><div class="stat-n">1</div><div class="stat-l">Community</div></div>
-  <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Impact</div></div>
-</div>
-
-<!-- DIRECTORY -->
-<section id="directory">
-  <div class="sec-head">
-    <h2>Community Business Directory</h2>
-    <div class="divider"></div>
-    <p>Every dollar spent locally strengthens our community. Search, find, and support your neighbours.</p>
-  </div>
-
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="Search businesses, services..." oninput="filterBiz()">
-    <select id="catFilter" onchange="filterBiz()">
-      <option value="">All Categories</option>
-      <option value="food">Restaurants &amp; Food</option>
-      <option value="home">Home Services</option>
-      <option value="photo">Photography</option>
-      <option value="auto">Auto Services</option>
-      <option value="medical">Medical</option>
-      <option value="specialty">Specialty Shops</option>
-      <option value="beauty">Beauty &amp; Self Care</option>
-      <option value="pool">Pool Rental</option>
-      <option value="services">Services</option>
-      <option value="transport">Transportation</option>
-      <option value="realty">Realtors</option>
-      <option value="insurance">Insurance</option>
-      <option value="emergency">Emergency Services</option>
-    </select>
-    <button onclick="filterBiz()">Search</button>
-  </div>
-
-  <div class="cat-tabs">
-    <button class="ctab active" onclick="setTab('all',this)">All</button>
-    <button class="ctab" onclick="setTab('food',this)">🍽 Food</button>
-    <button class="ctab" onclick="setTab('home',this)">🏠 Home</button>
-    <button class="ctab" onclick="setTab('photo',this)">📷 Photography</button>
-    <button class="ctab" onclick="setTab('auto',this)">🚗 Auto</button>
-    <button class="ctab" onclick="setTab('medical',this)">⚕ Medical</button>
-    <button class="ctab" onclick="setTab('specialty',this)">🛍 Specialty</button>
-    <button class="ctab" onclick="setTab('beauty',this)">💅 Beauty</button>
-    <button class="ctab" onclick="setTab('pool',this)">🏊 Pool</button>
-    <button class="ctab" onclick="setTab('services',this)">⚙ Services</button>
-    <button class="ctab" onclick="setTab('transport',this)">🚐 Transport</button>
-    <button class="ctab" onclick="setTab('realty',this)">🏡 Realty</button>
-    <button class="ctab" onclick="setTab('insurance',this)">📋 Insurance</button>
-    <button class="ctab em" onclick="setTab('emergency',this)">🆘 Emergency</button>
-  </div>
-
-  <div id="bizContainer" class="container">
-
-    <!-- FOOD -->
-    <div class="cat-section" data-cat="food">
-      <div class="cat-title">🍽 Restaurants &amp; Food</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="food" data-search="321 desserts food">
-          <div class="biz-name">321 Desserts</div>
-          <div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="dairy palace pizza caterers victory">
-          <div class="biz-name">Dairy Palace Pizza &amp; Caterers</div>
-          <div class="biz-addr">2216 Victory Blvd</div>
-          <div class="biz-phone"><a href="tel:7187615200">718-761-5200</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="fruitique shelley fruit">
-          <div class="biz-name">Fruitique by Shelley</div>
-          <div class="biz-phone"><a href="tel:7183741418">718-374-1418</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="island catering ny steven israel">
-          <div class="biz-name">Island Catering NY</div>
-          <div class="biz-desc">Steven Israel</div>
-          <div class="biz-phone"><a href="tel:6466456609">646-645-6609</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="island kosher supermarket grocery">
-          <div class="biz-name">Island Kosher Supermarket</div>
-          <div class="biz-addr">2200 Victory Blvd</div>
-          <div class="biz-phone"><a href="tel:7186502200">718-650-2200</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="milk honey bradley">
-          <div class="biz-name">Milk &amp; Honey</div>
-          <div class="biz-addr">330 Bradley Ave</div>
-          <div class="biz-phone"><a href="tel:7188714319">718-871-4319</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="sugar house ice cream dessert victory">
-          <div class="biz-name">Sugar House Ice Cream</div>
-          <div class="biz-addr">2003 Victory Blvd</div>
-          <div class="biz-phone"><a href="tel:7187016891">718-701-6891</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="tasters market bradley">
-          <div class="biz-name">Tasters Market</div>
-          <div class="biz-addr">330 Bradley Ave</div>
-          <div class="biz-phone"><a href="tel:7184772300">718-477-2300</a></div>
-        </div>
-        <div class="biz-card" data-cat="food" data-search="natures island health food store">
-          <div class="biz-name">The Natures Island</div>
-          <div class="biz-desc">Health Food Store</div>
-          <div class="biz-phone"><a href="tel:8455403233">845-540-3233</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HOME SERVICES -->
-    <div class="cat-section" data-cat="home">
-      <div class="cat-title">🏠 Home Services</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="home" data-search="appliance repair brian home">
-          <div class="biz-name">Appliance Repair</div>
-          <div class="biz-desc">Brian</div>
-          <div class="biz-phone"><a href="tel:9178860649">917-886-0649</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="dryer vent cleaning chanoch">
-          <div class="biz-name">Dryer Vent Cleaning</div>
-          <div class="biz-desc">Chanoch</div>
-          <div class="biz-phone"><a href="tel:3472449382">347-244-9382</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="electrican daniel shaool electric">
-          <div class="biz-name">Electrician</div>
-          <div class="biz-desc">Daniel Shaool</div>
-          <div class="biz-phone"><a href="tel:3479392767">347-939-2767</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="island door repair springs motors">
-          <div class="biz-name">Island Door Repair</div>
-          <div class="biz-desc">Springs · Motors · Doors</div>
-          <div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="j c power washing houses driveways deck">
-          <div class="biz-name">J &amp; C Power Washing Inc</div>
-          <div class="biz-desc">Houses · Driveways · Deck</div>
-          <div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="jaison guterman handyman construction">
-          <div class="biz-name">Jaison Guterman</div>
-          <div class="biz-desc">Handyman &amp; Construction</div>
-          <div class="biz-phone"><a href="tel:7188648164">718-864-8164</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="jake home repairs buildable">
-          <div class="biz-name">Jake — Home Repairs</div>
-          <div class="biz-desc">Buildable Home Repairs</div>
-          <div class="biz-phone"><a href="tel:7323476458">732-347-6458</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="next level improvements contractor">
-          <div class="biz-name">Next Level Improvements</div>
-          <div class="biz-desc">Contractor</div>
-          <div class="biz-phone"><a href="tel:9176855086">917-685-5086</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="roofing home alexsander furman">
-          <div class="biz-name">Roofing &amp; Home</div>
-          <div class="biz-desc">Alexsander Furman</div>
-          <div class="biz-phone"><a href="tel:9178625223">917-862-5223</a></div>
-        </div>
-        <div class="biz-card" data-cat="home" data-search="simplify solar electric bills">
-          <div class="biz-name">Simplify Solar</div>
-          <div class="biz-desc">Save BIG on electric bills</div>
-          <div class="biz-phone"><a href="tel:9175728547">917-572-8547</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PHOTOGRAPHY -->
-    <div class="cat-section" data-cat="photo">
-      <div class="cat-title">📷 Photography</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="photo" data-search="engaging pix photography newborn family events">
-          <div class="biz-name">Engaging Pix Photography</div>
-          <div class="biz-desc">Newborn · Family · Events</div>
-          <div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div>
-        </div>
-        <div class="biz-card" data-cat="photo" data-search="koby yedgar photography event">
-          <div class="biz-name">Koby Yedgar Photography</div>
-          <div class="biz-desc">Event Photography</div>
-          <div class="biz-phone"><a href="tel:9176821351">917-682-1351</a></div>
-        </div>
-        <div class="biz-card" data-cat="photo" data-search="nechami photography family portraits">
-          <div class="biz-name">Nechami Photography</div>
-          <div class="biz-desc">Family Portraits</div>
-          <div class="biz-phone"><a href="tel:3472486011">347-248-6011</a></div>
-        </div>
-        <div class="biz-card" data-cat="photo" data-search="rikkiz photography portraits events">
-          <div class="biz-name">Rikkiz Photography</div>
-          <div class="biz-desc">Portraits and Events</div>
-          <div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div>
-        </div>
-        <div class="biz-card" data-cat="photo" data-search="ulano photography portraits events">
-          <div class="biz-name">Ulano Photography</div>
-          <div class="biz-desc">Portrait and Events</div>
-          <div class="biz-phone"><a href="tel:9176157568">917-615-7568</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AUTO -->
-    <div class="cat-section" data-cat="auto">
-      <div class="cat-title">🚗 Auto Services</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="auto" data-search="buckle up leasing auto lease car">
-          <div class="biz-name">Buckle Up Leasing</div>
-          <div class="biz-desc">Auto Leasing</div>
-          <div class="biz-phone"><a href="tel:9172259663">917-225-9663</a></div>
-        </div>
-        <div class="biz-card" data-cat="auto" data-search="family auto sales collision mechanical">
-          <div class="biz-name">Family Auto</div>
-          <div class="biz-desc">Sales · Collision · Mechanical Services</div>
-          <div class="biz-phone"><a href="tel:7185569274">718-556-9274</a></div>
-        </div>
-        <div class="biz-card" data-cat="auto" data-search="perfect drive sales leasing financing car">
-          <div class="biz-name">Perfect Drive</div>
-          <div class="biz-desc">Sales · Leasing · Financing</div>
-          <div class="biz-phone"><a href="tel:7186077674">718-607-7674</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MEDICAL -->
-    <div class="cat-section" data-cat="medical">
-      <div class="cat-title">⚕ Medical</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="medical" data-search="dr kenneth horowitz eyes ophthalmology doctor">
-          <div class="biz-name">Dr Kenneth Horowitz MD</div>
-          <div class="biz-desc">Care &amp; Treatment of the Eyes</div>
-          <div class="biz-phone"><a href="tel:7182701794">718-270-1794</a></div>
-        </div>
-        <div class="biz-card" data-cat="medical" data-search="ehysha schwartz stitches aesthetics botox">
-          <div class="biz-name">Ehysha Schwartz</div>
-          <div class="biz-desc">Stitches · Aesthetics · Botox</div>
-          <div class="biz-phone"><a href="tel:9293224480">929-322-4480</a></div>
-        </div>
-        <div class="biz-card" data-cat="medical" data-search="miriam blau np after hours medical ismay">
-          <div class="biz-name">Miriam Blau NP</div>
-          <div class="biz-desc">After Hours Medical · 7 Ismay St</div>
-          <div class="biz-phone"><a href="tel:6465807333">646-580-7333</a></div>
-        </div>
-        <div class="biz-card" data-cat="medical" data-search="sincere medical bradley doctor">
-          <div class="biz-name">Sincere Medical</div>
-          <div class="biz-addr">314 Bradley Ave</div>
-          <div class="biz-phone"><a href="tel:7184941700">718-494-1700</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SPECIALTY SHOPS -->
-    <div class="cat-section" data-cat="specialty">
-      <div class="cat-title">🛍 Specialty Shops</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="specialty" data-search="camp labels">
-          <div class="biz-name">Camp Labels</div>
-          <div class="biz-phone"><a href="tel:7188530791">718-853-0791</a> · <a href="tel:3476289338">347-628-9338</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="hedys gifts all occasions ship">
-          <div class="biz-name">Hedy's Gifts</div>
-          <div class="biz-desc">Gifts for All Occasions — We Ship!</div>
-          <div class="biz-phone"><a href="tel:3477293538">347-729-3538</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="island gifting engraving photo printing">
-          <div class="biz-name">Island Gifting</div>
-          <div class="biz-desc">Gifts · Engraving · Photo Printing</div>
-          <div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="lab grown jewelry gold diamond">
-          <div class="biz-name">Lab Grown Jewelry</div>
-          <div class="biz-desc">14ct &amp; 18ct Gold Diamond Jewelry</div>
-          <div class="biz-phone"><a href="tel:9176407675">917-640-7675</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="little lilac baby layette gifting">
-          <div class="biz-name">Little Lilac</div>
-          <div class="biz-desc">Baby Layette and Gifting</div>
-          <div class="biz-phone"><a href="tel:3476751567">347-675-1567</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="make statement wholesale gold filled jewelry">
-          <div class="biz-name">Make a Statement</div>
-          <div class="biz-desc">Wholesale Gold Filled Jewlery</div>
-          <div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="mr basics mens boys dry goods clothing">
-          <div class="biz-name">Mr Basics</div>
-          <div class="biz-desc">Mens &amp; Boys Dry Goods</div>
-          <div class="biz-phone"><a href="tel:7188511799">718-851-1799</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="my sefer judaica books sheraden">
-          <div class="biz-name">My Sefer Judaica</div>
-          <div class="biz-addr">159 Sheraden Ave</div>
-          <div class="biz-phone"><a href="tel:8887333708">888-733-3708</a> · 888-SEFER-08</div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="present style gift wrap home decor">
-          <div class="biz-name">Present n' Style</div>
-          <div class="biz-desc">Gift Wrap &amp; Home Décor</div>
-          <div class="biz-phone"><a href="tel:9178098001">917-809-8001</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="sabine extraaoridnair balloon decor events gifting">
-          <div class="biz-name">Sabine ExtraaoridnAir</div>
-          <div class="biz-desc">Balloon Décor for Events &amp; Gifting</div>
-          <div class="biz-phone"><a href="tel:9178382707">917-838-2707</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="finishing touch gifts personalized">
-          <div class="biz-name">The Finishing Touch Gifts</div>
-          <div class="biz-desc">Personalized Gifts</div>
-          <div class="biz-phone"><a href="tel:9178034452">917-803-4452</a></div>
-        </div>
-        <div class="biz-card" data-cat="specialty" data-search="white petal lingerie fitting">
-          <div class="biz-name">White Petal Lingerie</div>
-          <div class="biz-desc">Your Perfect Fitting</div>
-          <div class="biz-phone"><a href="tel:3477074637">347-707-4637</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BEAUTY -->
-    <div class="cat-section" data-cat="beauty">
-      <div class="cat-title">💅 Beauty &amp; Self Care</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="beauty" data-search="atara fendrich massage craniosacral therapy lmt">
-          <div class="biz-name">Atara Fendrich LMT</div>
-          <div class="biz-desc">Massage &amp; Craniosacral Therapy</div>
-          <div class="biz-phone"><a href="tel:9177108370">917-710-8370</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="danielle besser wig hair makeup">
-          <div class="biz-name">Danielle Besser</div>
-          <div class="biz-desc">Wig · Hair · Makeup</div>
-          <div class="biz-phone"><a href="tel:7182322789">718-232-2789</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="friedas nails waxing home">
-          <div class="biz-name">Frieda's Nails &amp; Waxing</div>
-          <div class="biz-desc">We Come to Your Home!</div>
-          <div class="biz-phone"><a href="tel:9543305845">954-330-5845</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="glam go makeup chani">
-          <div class="biz-name">Glam n Go</div>
-          <div class="biz-desc">Makeup by Chani</div>
-          <div class="biz-phone"><a href="tel:9178438740">917-843-8740</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="glo laser suri jachimowitz electrolysis">
-          <div class="biz-name">Glo Laser — Suri Jachimowitz</div>
-          <div class="biz-desc">Laser and Electrolysis</div>
-          <div class="biz-phone"><a href="tel:3476990822">347-699-0822</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="hair gall wigs haircuts">
-          <div class="biz-name">Hair by Gall</div>
-          <div class="biz-desc">Wigs · Hair · Haircuts</div>
-          <div class="biz-phone"><a href="tel:3474247505">347-424-7505</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="makeup naomi">
-          <div class="biz-name">Makeup by Naomi</div>
-          <div class="biz-phone"><a href="tel:7185987865">718-598-7865</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="nancys salon mani pedi waxing lice">
-          <div class="biz-name">Nancy's Salon</div>
-          <div class="biz-desc">Mani · Pedi · Waxing · Lice Check</div>
-          <div class="biz-phone"><a href="tel:7189389337">718-938-9337</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="pessi wigs sales cut wash set">
-          <div class="biz-name">Pessi Wigs</div>
-          <div class="biz-desc">Wig Sales · Cut · Wash &amp; Set</div>
-          <div class="biz-phone"><a href="tel:9293098640">929-309-8640</a></div>
-        </div>
-        <div class="biz-card" data-cat="beauty" data-search="wigs laya sales cut wash set">
-          <div class="biz-name">Wigs by Laya</div>
-          <div class="biz-desc">Sales · Cut · Wash &amp; Set</div>
-          <div class="biz-phone"><a href="tel:7187918865">718-791-8865</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- POOL -->
-    <div class="cat-section" data-cat="pool">
-      <div class="cat-title">🏊 Pool Rental</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="pool" data-search="bryna sklars salt water pool swim lessons aqua aerobics">
-          <div class="biz-name">Bryna Sklars</div>
-          <div class="biz-desc">Salt Water Pool · Swim Lessons · Aqua Aerobics</div>
-          <div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div>
-        </div>
-        <div class="biz-card" data-cat="pool" data-search="chumi fried salt water pool winterized year round">
-          <div class="biz-name">Chumi Fried</div>
-          <div class="biz-desc">Salt Water Pool (Winterized, Year-Round)</div>
-          <div class="biz-phone"><a href="tel:7188121872">718-812-1872</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SERVICES -->
-    <div class="cat-section" data-cat="services">
-      <div class="cat-title">⚙ Services</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="services" data-search="club 21 domestic business employees">
-          <div class="biz-name">Club 21 Services</div>
-          <div class="biz-desc">Domestic &amp; Business Employees</div>
-          <div class="biz-phone"><a href="tel:3474238886">347-423-8886</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="lactation consultant raizy rubinson clc">
-          <div class="biz-name">Lactation Consultant</div>
-          <div class="biz-desc">Raizy Rubinson CLC</div>
-          <div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="mobile phone screen repair moshe kustin">
-          <div class="biz-name">Mobile Phone Screen Repair</div>
-          <div class="biz-desc">Moshe Kustin</div>
-          <div class="biz-phone"><a href="tel:3472656499">347-265-6499</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="physical therapist alexander yegorov">
-          <div class="biz-name">Physical Therapist</div>
-          <div class="biz-desc">Alexander Yegorov</div>
-          <div class="biz-phone"><a href="tel:7187014545">718-701-4545</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="sew chic alterations miri gabel tailoring">
-          <div class="biz-name">Sew Chic Alterations</div>
-          <div class="biz-desc">Miri Gabel</div>
-          <div class="biz-phone"><a href="tel:9295295214">929-529-5214</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="sparkle agency home office cleaning">
-          <div class="biz-name">Sparkle Agency</div>
-          <div class="biz-desc">Home &amp; Office Cleaning Service</div>
-          <div class="biz-phone"><a href="tel:3474073931">347-407-3931</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="we buy gold silver wayne greenberg">
-          <div class="biz-name">We Buy Gold &amp; Silver</div>
-          <div class="biz-desc">Wayne Greenberg</div>
-          <div class="biz-phone"><a href="tel:9173641511">917-364-1511</a></div>
-        </div>
-        <div class="biz-card" data-cat="services" data-search="wealth concierge group businesses grow">
-          <div class="biz-name">Wealth Concierge Group</div>
-          <div class="biz-desc">Helping businesses grow</div>
-          <div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TRANSPORT -->
-    <div class="cat-section" data-cat="transport">
-      <div class="cat-title">🚐 Transportation</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="transport" data-search="staten island shuttle bp transportation">
-          <div class="biz-name">Staten Island Shuttle</div>
-          <div class="biz-desc">Staten Island – Borough Park</div>
-          <div class="biz-phone"><a href="tel:7183423000">718-342-3000</a></div>
-        </div>
-        <div class="biz-card" data-cat="transport" data-search="yakov schmelczer vip long distance messenger">
-          <div class="biz-name">Yakov Schmelczer</div>
-          <div class="biz-desc">VIP Long Distance · Messenger</div>
-          <div class="biz-phone"><a href="tel:9172004594">917-200-4594</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- REALTY -->
-    <div class="cat-section" data-cat="realty">
-      <div class="cat-title">🏡 Realtors</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="realty" data-search="shaina barber katz realty nyc real estate">
-          <div class="biz-name">Shaina Barber</div>
-          <div class="biz-desc">Katz Realty NYC — Who you hire matters</div>
-          <div class="biz-phone"><a href="tel:9179729789">917-972-9789</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- INSURANCE -->
-    <div class="cat-section" data-cat="insurance">
-      <div class="cat-title">📋 Insurance Agents</div>
-      <div class="biz-grid">
-        <div class="biz-card" data-cat="insurance" data-search="aryeh pearlman life health insurance agent">
-          <div class="biz-name">Aryeh Pearlman</div>
-          <div class="biz-desc">Life &amp; Health Insurance Agent</div>
-          <div class="biz-phone"><a href="tel:7183741103">718-374-1103</a></div>
-        </div>
-        <div class="biz-card" data-cat="insurance" data-search="mr hirshenbaum estate planning life retirement">
-          <div class="biz-name">Mr Hirshenbaum</div>
-          <div class="biz-desc">Estate Planning · Life &amp; Retirement</div>
-          <div class="biz-phone"><a href="tel:3477250833">347-725-0833</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EMERGENCY -->
-    <div class="cat-section" data-cat="emergency">
-      <div class="cat-title em">🆘 Emergency Services</div>
-      <div class="biz-grid">
-        <div class="biz-card em hatz" data-cat="emergency" data-search="hatzolah emergency ambulance">
-          <div class="biz-name">🚑 Hatzolah</div>
-          <div class="biz-desc">Emergency Medical Services</div>
-          <div class="biz-phone"><a href="tel:7182301000">718-230-1000</a></div>
-        </div>
-        <div class="biz-card em" data-cat="emergency" data-search="chaveirim help flat tire lockout">
-          <div class="biz-name">Chaveirim</div>
-          <div class="biz-desc">Community Emergency Assistance</div>
-          <div class="biz-phone"><a href="tel:7187612428">718-761-2428</a></div>
-        </div>
-        <div class="biz-card em" data-cat="emergency" data-search="chavivim community help">
-          <div class="biz-name">Chavivim</div>
-          <div class="biz-phone"><a href="tel:7188717299">718-871-7299</a></div>
-        </div>
-        <div class="biz-card em" data-cat="emergency" data-search="misaskim funeral gemach">
-          <div class="biz-name">Misaskim</div>
-          <div class="biz-phone"><a href="tel:7188544548">(718) 854-4548</a></div>
-        </div>
-        <div class="biz-card em" data-cat="emergency" data-search="shmira security patrol">
-          <div class="biz-name">Shmira</div>
-          <div class="biz-phone"><a href="tel:7187614444">718-761-4444</a></div>
-        </div>
-        <div class="biz-card em" data-cat="emergency" data-search="shomrim security neighborhood watch">
-          <div class="biz-name">Shomrim</div>
-          <div class="biz-phone"><a href="tel:7183702121">718-370-2121</a></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:1rem">
-      <p id="noResults" class="hidden" style="color:var(--gray);font-size:1rem;padding:2rem">No businesses found. Try a different search or category.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- SHABBOS TIMES -->
-<section id="shabbos">
-  <div class="sec-head">
-    <h2>🕯 Shabbos Times</h2>
-    <div class="divider"></div>
-    <p>Weekly Shabbos times for Staten Island</p>
-  </div>
-  <div class="shab-wrap">
-    <div class="shab-card">
-      <div class="shab-date" id="shabDate">Loading…</div>
-      <div class="shab-parsha" id="shabParsha"></div>
-      <div class="shab-grid">
-        <div class="shab-block">
-          <div class="shab-lbl">🕯 Candle Lighting</div>
-          <div class="shab-time" id="candleLighting">—</div>
-          <div class="shab-note">18 min before sunset</div>
-        </div>
-        <div class="shab-block">
-          <div class="shab-lbl">✡ Shabbos Ends</div>
-          <div class="shab-time" id="shabbosEnds">—</div>
-          <div class="shab-note">50 min after sunset</div>
-        </div>
-      </div>
-      <div class="shab-disclaimer">
-        ⚠ Times are approximate for Staten Island (40.58°N). Always verify with your local Rav.<br>
-        Accurate times: <a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank">Chabad.org</a> · <a href="https://myzmanim.com" target="_blank">MyZmanim.com</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MARKETPLACE -->
-<section id="marketplace">
-  <div class="sec-head">
-    <h2>Community Marketplace</h2>
-    <div class="divider"></div>
-    <p>Buy, sell, and trade within our community — 100% free.</p>
-  </div>
-
-  <!-- POST A LISTING FORM -->
-  <div id="mkt-form-wrap" style="max-width:680px;margin:0 auto 2.5rem;background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(10,28,75,.10);padding:2rem">
-    <h3 style="color:var(--navy);font-size:1.15rem;margin-bottom:1.25rem">➕ Post a Free Listing</h3>
-    <div class="form-row">
-      <input id="mkt-title" type="text" placeholder="Item Title *" style="flex:2">
-      <input id="mkt-price" type="text" placeholder="Price (e.g. $50 OBO or Free)">
-    </div>
-    <div class="form-row">
-      <select id="mkt-cat">
-        <option value="">Category *</option>
-        <option>Furniture</option>
-        <option>Clothing</option>
-        <option>Seforim &amp; Judaica</option>
-        <option>Kitchen</option>
-        <option>Baby &amp; Kids</option>
-        <option>Electronics</option>
-        <option>Services</option>
-        <option>Free / Giveaway</option>
-        <option>Other</option>
-      </select>
-      <input id="mkt-contact" type="text" placeholder="Contact (phone or email) *">
-    </div>
-    <div class="form-row full">
-      <textarea id="mkt-desc" placeholder="Describe your item — condition, size, pickup details…" style="height:90px"></textarea>
-    </div>
-    <button id="mkt-submit" type="button" style="background:var(--navy);color:#fff;padding:.85rem 2rem;border:none;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;width:100%;margin-top:.25rem">Post Listing — Free</button>
-    <div id="mkt-success" style="display:none;margin-top:1rem;background:#e8f8ee;color:#1a6b35;padding:.85rem 1rem;border-radius:8px;font-weight:600;text-align:center">✅ Your listing has been submitted! It will appear after admin approval.</div>
-  </div>
-
-  <!-- LISTINGS GRID -->
-  <div class="mkt-grid" id="mkt-grid">
-    <!-- Static seed listings -->
-    <div class="mkt-card">
-      <div class="mkt-img">🪑</div>
-      <div class="mkt-body">
-        <div class="mkt-tag">Furniture</div>
-        <div class="mkt-title">Dining Table &amp; 6 Chairs — Excellent Condition</div>
-        <div class="mkt-desc">Beautiful solid wood table. Moving — must sell.</div>
-        <div class="mkt-price">$450 OBO</div>
-        <div class="mkt-contact">📍 Staten Island · Call/Text to arrange viewing</div>
-      </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 2 days ago</span></div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-img">👗</div>
-      <div class="mkt-body">
-        <div class="mkt-tag">Clothing</div>
-        <div class="mkt-title">Shabbos Dresses — Various Sizes</div>
-        <div class="mkt-desc">Collection of Shabbos and Yom Tov dresses, sizes 6–14. All like new.</div>
-        <div class="mkt-price">$25–$65 each</div>
-        <div class="mkt-contact">📍 Staten Island</div>
-      </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 5 days ago</span></div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-img">📚</div>
-      <div class="mkt-body">
-        <div class="mkt-tag">Seforim &amp; Judaica</div>
-        <div class="mkt-title">Large Seforim Collection — Various Titles</div>
-        <div class="mkt-desc">Downsizing. Gemara set, Mishnah Berurah, various other seforim available.</div>
-        <div class="mkt-price">Priced individually</div>
-        <div class="mkt-contact">📍 Staten Island</div>
-      </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 1 week ago</span></div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-img">🍳</div>
-      <div class="mkt-body">
-        <div class="mkt-tag">Kitchen</div>
-        <div class="mkt-title">KitchenAid Mixer — Like New</div>
-        <div class="mkt-desc">Tilt-head stand mixer, 5qt. Used only a few times. All attachments included.</div>
-        <div class="mkt-price">$200 Firm</div>
-        <div class="mkt-contact">📍 Staten Island</div>
-      </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 3 days ago</span></div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-img">🛏</div>
-      <div class="mkt-body">
-        <div class="mkt-tag">Baby &amp; Kids</div>
-        <div class="mkt-title">Baby Furniture Set — Crib, Dresser, Changing Table</div>
-        <div class="mkt-desc">Complete nursery set in excellent condition. Neutral white.</div>
-        <div class="mkt-price">$350 for set</div>
-        <div class="mkt-contact">📍 Staten Island</div>
-      </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 4 days ago</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ADVERTISE -->
-<section id="advertise" style="background:#fff">
-  <div class="sec-head">
-    <h2>Advertise With Us</h2>
-    <div class="divider"></div>
-    <p>Put your business in front of the entire Staten Island community. Choose the plan that works for you.</p>
-  </div>
-  <div class="price-grid">
-    <div class="price-card">
-      <div class="price-tier">Basic</div>
-      <div class="price-val">Free</div>
-      <div class="price-per">Directory listing</div>
-      <ul class="price-feats">
-        <li>Business name &amp; phone</li>
-        <li>Category listing</li>
-        <li>Searchable directory</li>
-      </ul>
-      <div class="price-btn" style="cursor:pointer;background:var(--light);color:var(--navy)" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'})">Get Listed — Free</div>
-      <div style="margin-top:.75rem;font-size:.78rem;text-align:center"><a href="#contact-form" style="color:var(--gray);text-decoration:underline">Already listed? Update your details →</a></div>
-    </div>
-    <div class="price-card feat">
-      <div class="price-tier">⭐ Featured</div>
-      <div class="price-val">$18<span style="font-size:1rem">/mo</span></div>
-      <div class="price-per">per month</div>
-      <ul class="price-feats">
-        <li>Everything in Basic</li>
-        <li>Featured card placement</li>
-        <li>Business description</li>
-        <li>Address &amp; website link</li>
-        <li>Priority in search results</li>
-      </ul>
-      <a href="#contact-form" class="price-btn">Get Started</a>
-    </div>
-    <div class="price-card">
-      <div class="price-tier">Premium</div>
-      <div class="price-val">$36<span style="font-size:1rem">/mo</span></div>
-      <div class="price-per">per month</div>
-      <ul class="price-feats">
-        <li>Everything in Featured</li>
-        <li>Banner ad on homepage</li>
-        <li>Blog post feature</li>
-        <li>Marketplace listings</li>
-        <li>Social media promotion</li>
-      </ul>
-      <a href="#contact-form" class="price-btn">Get Started</a>
-    </div>
-  </div>
-
-  <div class="adv-form" id="contact-form" style="margin-top:3rem">
-    <h3>📬 Submit Your Listing or Enquiry</h3>
-    <div class="form-row">
-      <input type="text" placeholder="Business Name *">
-      <input type="text" placeholder="Contact Name *">
-    </div>
-    <div class="form-row">
-      <input type="tel" placeholder="Phone Number *">
-      <input type="email" placeholder="Email Address">
-    </div>
-    <div class="form-row">
-      <select>
-        <option>Category</option>
-        <option>Restaurants &amp; Food</option>
-        <option>Home Services</option>
-        <option>Photography</option>
-        <option>Auto Services</option>
-        <option>Medical</option>
-        <option>Specialty Shops</option>
-        <option>Beauty &amp; Self Care</option>
-        <option>Services</option>
-        <option>Transportation</option>
-        <option>Other</option>
-      </select>
-      <select>
-        <option>Plan</option>
-        <option>Basic (Free)</option>
-        <option>Featured ($18/mo)</option>
-        <option>Premium ($36/mo)</option>
-        <option>Marketplace Listing</option>
-        <option>Blog Post</option>
-      </select>
-    </div>
-    <div class="form-row full">
-      <textarea placeholder="Business description, address, or message…"></textarea>
-    </div>
-    <button class="form-submit" onclick="alert('Thank you! We will be in touch shortly. ✡')">Submit Listing</button>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog">
-  <div class="sec-head">
-    <h2>Community Blog</h2>
-    <div class="divider"></div>
-    <p>News, stories, and updates from our Staten Island community</p>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-card">
-      <div class="blog-hero" style="background:#e8f0fd">📰</div>
-      <div class="blog-body">
-        <div class="blog-cat">Community News</div>
-        <div class="blog-title">Why Every Dollar You Spend Locally Makes a Difference</div>
-        <div class="blog-exc">When you choose a local business, you're not just making a purchase — you're strengthening families, creating jobs, and supporting the charitable organizations that keep our community strong.</div>
-        <div class="blog-meta"><span>Jun 2025</span><a href="#" style="color:var(--red);font-weight:600">Read more →</a></div>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-hero" style="background:#fff5f0">🏆</div>
-      <div class="blog-body">
-        <div class="blog-cat">Business Spotlight</div>
-        <div class="blog-title">Meet the Local Businesses Behind Our Community</div>
-        <div class="blog-exc">This month we're highlighting the incredible variety of services available right here on Staten Island — from kosher dining to medical care, beauty, and home services.</div>
-        <div class="blog-meta"><span>Jun 2025</span><a href="#" style="color:var(--red);font-weight:600">Read more →</a></div>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-hero" style="background:#f0f7ef">🤝</div>
-      <div class="blog-body">
-        <div class="blog-cat">Charity &amp; Giving</div>
-        <div class="blog-title">Supporting Bikur Cholim &amp; COJO — How Shop Local Helps</div>
-        <div class="blog-exc">Every dollar spent locally contributes to organisations that provide hospital visits, meals, transportation, and emergency aid to those who need it most on Staten Island.</div>
-        <div class="blog-meta"><span>May 2025</span><a href="#" style="color:var(--red);font-weight:600">Read more →</a></div>
-      </div>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:2rem">
-    <a href="#advertise" class="submit-post">✍ Submit a Blog Post</a>
-  </div>
-</section>
-
-<!-- COMMUNITY -->
-<section id="community" style="padding:3rem 2rem">
-  <div class="sec-head">
-    <h2 style="color:var(--gold)">Our Community Organisations</h2>
-    <div class="divider" style="background:var(--gold)"></div>
-  </div>
-  <div class="comm-card">
-    <h3>NEXT TIME YOU SHOP — Ask Yourself: WHY DOES IT MATTER?</h3>
-    <p>Because every dollar spent locally strengthens our community. It supports families, creates jobs, and lightens the burden on vital organisations like <strong style="color:var(--gold)">Staten Island Bikur Cholim</strong> and <strong style="color:var(--gold)">COJO</strong>, which provide discreet, life-changing support to those in crisis.</p>
-    <p>Bikur Cholim assists with medical equipment, hospital visits, meals, transportation, and emergency aid. COJO offers case management, benefits assistance, youth and senior programming, and has operated Staten Island's largest kosher food pantry since 1980.</p>
-    <p><strong style="color:var(--gold)">Have Maaser to give? Start at home.</strong> Your first stop should always be your own community.</p>
-    <div class="comm-orgs">
-      <div class="org-pill">🏥 Staten Island Bikur Cholim<br><small style="font-weight:400;color:rgba(255,255,255,.7)">Donate: Zelle 718-494-4343</small></div>
-      <div class="org-pill">🤝 COJO Staten Island<br><small style="font-weight:400;color:rgba(255,255,255,.7)">Community Support Since 1980</small></div>
-    </div>
-    <p style="margin-top:1.25rem;font-size:.85rem;color:rgba(255,255,255,.6)">
-      <strong style="color:var(--gold)">HIRING SOMEONE?</strong> Think local. Help someone in our community get back on their feet.
-    </p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot-grid">
-    <div class="foot-col">
-      <div class="foot-logo">Shop<span>Local</span> SI</div>
-      <p style="font-size:.83rem;line-height:1.7;color:rgba(255,255,255,.55)">Supporting the businesses that support our Staten Island community.</p>
-    </div>
-    <div class="foot-col">
-      <h4>Directory</h4>
-      <ul>
-        <li><a href="#directory">All Businesses</a></li>
-        <li><a href="#directory">Restaurants &amp; Food</a></li>
-        <li><a href="#directory">Home Services</a></li>
-        <li><a href="#directory">Medical</a></li>
-        <li><a href="#directory">Beauty &amp; Self Care</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h4>Community</h4>
-      <ul>
-        <li><a href="#shabbos">Shabbos Times</a></li>
-        <li><a href="#marketplace">Marketplace</a></li>
-        <li><a href="#blog">Community Blog</a></li>
-        <li><a href="#advertise">Advertise</a></li>
-        <li><a href="#advertise">List Your Business</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h4>🆘 Emergency Numbers</h4>
-      <ul>
-        <li><a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a></li>
-        <li><a href="tel:7187612428">Chaveirim: 718-761-2428</a></li>
-        <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
-        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
-        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
-        <li><a href="tel:7188544548">Misaskim: (718) 854-4548</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    &copy; 2025 Shop Local Staten Island · Strengthening our community one purchase at a time<br>
-    <span style="font-size:.72rem">To add or update your listing: <a href="#advertise" style="color:var(--gold)">click here</a></span>
-  </div>
-</footer>
-
-<script>
-// ─── SEARCH & FILTER ─────────────────────────────
-function filterBiz() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  const cat = document.getElementById('catFilter').value;
-  const cards = document.querySelectorAll('.biz-card');
-  const sections = document.querySelectorAll('.cat-section');
-  let found = 0;
-
-  cards.forEach(c => {
-    const matchCat = !cat || c.dataset.cat === cat;
-    const matchQ = !q || c.dataset.search.includes(q) || c.innerText.toLowerCase().includes(q);
-    c.classList.toggle('hidden', !(matchCat && matchQ));
-    if (matchCat && matchQ) found++;
-  });
-
-  sections.forEach(s => {
-    const vis = [...s.querySelectorAll('.biz-card')].some(c => !c.classList.contains('hidden'));
-    s.classList.toggle('hidden', !vis);
-  });
-
-  document.getElementById('noResults').classList.toggle('hidden', found > 0);
-}
-
-function setTab(cat, btn) {
-  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('catFilter').value = cat === 'all' ? '' : cat;
-  document.getElementById('searchInput').value = '';
-  filterBiz();
-}
-
-// ─── SHABBOS TIMES ───────────────────────────────
-(function() {
-  const LAT = 40.5795, LON = -74.1502;
-
-  function getNextFriday() {
-    const d = new Date();
-    const day = d.getDay();
-    const diff = day <= 5 ? 5 - day : 6;
-    const fri = new Date(d);
-    fri.setDate(d.getDate() + (diff === 0 ? 7 : diff));
-    fri.setHours(12, 0, 0, 0);
-    return fri;
-  }
-
-  function isDST(date) {
-    const yr = date.getFullYear();
-    const start = new Date(yr, 2, 1);
-    start.setDate(1 + (7 - start.getDay()) % 7 + 7);
-    const end = new Date(yr, 10, 1);
-    end.setDate(1 + (7 - end.getDay()) % 7);
-    return date >= start && date < end;
-  }
-
-  function calcSunset(date) {
-    const J = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-    const D = 23.45 * Math.sin((2 * Math.PI / 365) * (J - 81)) * Math.PI / 180;
-    const lat_r = LAT * Math.PI / 180;
-    const cosH = -Math.tan(lat_r) * Math.tan(D);
-    if (cosH > 1 || cosH < -1) return null;
-    const H = Math.acos(cosH) * 180 / Math.PI;
-    const utcSunset = 12 + H / 15 - LON / 15;
-    const offset = isDST(date) ? -4 : -5;
-    return utcSunset + offset;
-  }
-
-  function fmt(h) {
-    const hr = Math.floor(h);
-    const min = Math.round((h - hr) * 60);
-    const m = min < 10 ? '0' + min : min;
-    const period = hr >= 12 ? 'PM' : 'AM';
-    const h12 = hr > 12 ? hr - 12 : hr === 0 ? 12 : hr;
-    return h12 + ':' + m + ' ' + period;
-  }
-
-  const fri = getNextFriday();
-  const sun = calcSunset(fri);
-
-  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
-  const sat = new Date(fri); sat.setDate(fri.getDate() + 1);
-  document.getElementById('shabDate').textContent =
-    'Shabbos ' + days[fri.getDay()] + ', ' + months[fri.getMonth()] + ' ' + fri.getDate() +
-    ' — ' + months[sat.getMonth()] + ' ' + sat.getDate() + ', ' + sat.getFullYear();
-
-  if (sun) {
-    document.getElementById('candleLighting').textContent = fmt(sun - 18/60);
-    document.getElementById('shabbosEnds').textContent = fmt(sun + 50/60);
-  } else {
-    document.getElementById('candleLighting').textContent = 'N/A';
-    document.getElementById('shabbosEnds').textContent = 'N/A';
-  }
-})();
-
-// ─── MARKETPLACE ───────────────────────────────
-(function() {
-  const catEmoji = {
-    'Furniture':'🪑','Clothing':'👗','Seforim & Judaica':'📚','Kitchen':'🍳',
-    'Baby & Kids':'🛏','Electronics':'📱','Services':'🔧','Free / Giveaway':'🎁','Other':'📦'
-  };
-
-  async function loadApprovedListings() {
-    try {
-      const res = await fetch('/.netlify/functions/get-listings');
-      if (!res.ok) return;
-      const data = await res.json();
-      const grid = document.getElementById('mkt-grid');
-      if (!grid || !data.listings) return;
-
-      grid.querySelectorAll('.user-listing').forEach(el => el.remove());
-
-      data.listings.forEach(item => {
-        const emoji = catEmoji[item.category] || '📦';
-        const card = document.createElement('div');
-        card.className = 'mkt-card user-listing';
-        card.innerHTML = `
-          <div class="mkt-img">${emoji}</div>
-          <div class="mkt-body">
-            <div class="mkt-tag">${item.category}</div>
-            <div class="mkt-title">${item.title}</div>
-            <div class="mkt-desc">${item.description}</div>
-            <div class="mkt-price">${item.price}</div>
-            <div class="mkt-contact">📞 ${item.contact}</div>
-          </div>
-          <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">${item.submitted}</span></div>
-        `;
-        grid.insertBefore(card, grid.firstChild);
-      });
-    } catch(e) {
-      console.log('Could not load listings:', e);
-    }
-  }
-
-  async function submitListing(title, price, category, contact, description) {
-    const res = await fetch('/.netlify/functions/submit-listing', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, price, category, contact, description })
-    });
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.error || 'Submission failed');
-    }
-    return await res.json();
-  }
-
-  function initMarketplace() {
-    loadApprovedListings();
-
-    const btn = document.getElementById('mkt-submit');
-    if (!btn) return;
-
-    btn.addEventListener('click', async function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const title       = document.getElementById('mkt-title').value.trim();
-      const price       = document.getElementById('mkt-price').value.trim() || 'Contact for price';
-      const category    = document.getElementById('mkt-cat').value;
-      const contact     = document.getElementById('mkt-contact').value.trim();
-      const description = document.getElementById('mkt-desc').value.trim();
-
-      if (!title || !category || !contact) {
-        alert('Please fill in Title, Category, and Contact info.');
-        return;
-      }
-
-      btn.textContent = 'Submitting…';
-      btn.disabled = true;
-
-      try {
-        await submitListing(title, price, category, contact, description);
-
-        ['mkt-title','mkt-price','mkt-contact','mkt-desc'].forEach(id => document.getElementById(id).value = '');
-        document.getElementById('mkt-cat').selectedIndex = 0;
-
-        const suc = document.getElementById('mkt-success');
-        suc.style.display = 'block';
-        setTimeout(() => suc.style.display = 'none', 6000);
-
-      } catch(err) {
-        alert('Error submitting listing: ' + err.message);
-      } finally {
-        btn.textContent = 'Post Listing — Free';
-        btn.disabled = false;
-      }
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMarketplace);
-  } else {
-    initMarketplace();
-  }
-})();
-
-// ─── SMOOTH SCROLL ───────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    if (a.classList.contains('basic-btn')) return; // let basic-btn handle itself
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-
-// ─── STRIPE PAYMENT INTEGRATION ───────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  const stripe = Stripe('pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5');
-
-  async function startPayment(plan) {
-    try {
-      const btn = document.querySelector(`[data-plan="${plan}"]`);
-      if (btn) { btn.textContent = 'Loading…'; btn.disabled = true; }
-
-      const response = await fetch('/.netlify/functions/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan })
-      });
-
-      if (!response.ok) {
-        const err = await response.json();
-        throw new Error(err.error || 'Server error');
-      }
-
-      const data = await response.json();
-      // Basic plan returns a redirect instead of a sessionId
-      if (data.redirect) {
-        document.getElementById('contact-form').scrollIntoView({behavior:'smooth', block:'start'});
-        return;
-      }
-      const result = await stripe.redirectToCheckout({ sessionId: data.sessionId });
-      if (result.error) throw new Error(result.error.message);
-
-    } catch (error) {
-      console.error('Payment error:', error);
-      alert('Payment error: ' + error.message + '\n\nPlease try again or contact us directly.');
-      // Re-enable button
-      document.querySelectorAll('.price-btn').forEach(b => { b.disabled = false; b.textContent = 'Get Started'; });
-    }
-  }
-
-  document.querySelectorAll('a.price-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const priceCard = btn.closest('.price-card');
-      const planType = priceCard ? priceCard.querySelector('.price-tier').textContent.trim() : '';
-      // Basic is free — just scroll to the contact form
-      if (planType === 'Basic') {
-        document.getElementById('contact-form').scrollIntoView({behavior:'smooth', block:'start'});
-        return;
-      }
-      startPayment(planType);
-    });
-  });
-});
-</script>
-</body>
-</html>
+🚨 EMERGENCIES:
+🚑 Hatzolah: 718-230-1000
+|
+Chaveirim: 718-761-2428
+|
+Shmira: 718-761-4444
+|
+Shomrim: 718-370-2121
+ShopLocal SI
+	•	Directory
+	•	Shabbos Times
+	•	Marketplace
+	•	Blog
+	•	Advertise
+	•	List Your Business
+SHOP LOCAL.
+STRENGTHEN OUR COMMUNITY.
+Support the businesses that support you — right here on Staten Island
+Browse Directory
+Community Marketplace
+List Your Business
+80+
+LOCAL BUSINESSES
+14
+CATEGORIES
+1
+COMMUNITY
+∞
+IMPACT
+Community Business Directory
+
+Every dollar spent locally strengthens our community. Search, find, and support your neighbours.
+
+      All Categories
+      Restaurants & Food
+      Home Services
+      Photography
+      Auto Services
+      Medical
+      Specialty Shops
+      Beauty & Self Care
+      Pool Rental
+      Services
+      Transportation
+      Realtors
+      Insurance
+      Emergency Services
+    
+Search
+All
+🍽 Food
+🏠 Home
+📷 Photography
+🚗 Auto
+⚕ Medical
+🛍 Specialty
+💅 Beauty
+🏊 Pool
+⚙ Services
+🚐 Transport
+🏡 Realty
+📋 Insurance
+🆘 Emergency
+🍽 RESTAURANTS & FOOD
+321 Desserts
+718-290-7785
+Dairy Palace Pizza & Caterers
+2216 Victory Blvd
+718-761-5200
+Fruitique by Shelley
+718-374-1418
+Island Catering NY
+Steven Israel
+646-645-6609
+Island Kosher Supermarket
+2200 Victory Blvd
+718-650-2200
+Milk & Honey
+330 Bradley Ave
+718-871-4319
+Sugar House Ice Cream
+2003 Victory Blvd
+718-701-6891
+Tasters Market
+330 Bradley Ave
+718-477-2300
+The Natures Island
+Health Food Store
+845-540-3233
+🏠 HOME SERVICES
+Appliance Repair
+Brian
+917-886-0649
+Dryer Vent Cleaning
+Chanoch
+347-244-9382
+Electrician
+Daniel Shaool
+347-939-2767
+Island Door Repair
+Springs · Motors · Doors
+646-623-7253
+J & C Power Washing Inc
+Houses · Driveways · Deck
+646-623-7253
+Jaison Guterman
+Handyman & Construction
+718-864-8164
+Jake — Home Repairs
+Buildable Home Repairs
+732-347-6458
+Next Level Improvements
+Contractor
+917-685-5086
+Roofing & Home
+Alexsander Furman
+917-862-5223
+Simplify Solar
+Save BIG on electric bills
+917-572-8547
+📷 PHOTOGRAPHY
+Engaging Pix Photography
+Newborn · Family · Events
+347-393-6094
+Koby Yedgar Photography
+Event Photography
+917-682-1351
+Nechami Photography
+Family Portraits
+347-248-6011
+Rikkiz Photography
+Portraits and Events
+917-753-4444
+Ulano Photography
+Portrait and Events
+917-615-7568
+🚗 AUTO SERVICES
+Buckle Up Leasing
+Auto Leasing
+917-225-9663
+Family Auto
+Sales · Collision · Mechanical Services
+718-556-9274
+Perfect Drive
+Sales · Leasing · Financing
+718-607-7674
+⚕ MEDICAL
+Dr Kenneth Horowitz MD
+Care & Treatment of the Eyes
+718-270-1794
+Ehysha Schwartz
+Stitches · Aesthetics · Botox
+929-322-4480
+Miriam Blau NP
+After Hours Medical · 7 Ismay St
+646-580-7333
+Sincere Medical
+314 Bradley Ave
+718-494-1700
+🛍 SPECIALTY SHOPS
+Camp Labels
+718-853-0791 · 347-628-9338
+Hedy's Gifts
+Gifts for All Occasions — We Ship!
+347-729-3538
+Island Gifting
+Gifts · Engraving · Photo Printing
+917-753-4444
+Lab Grown Jewelry
+14ct & 18ct Gold Diamond Jewelry
+917-640-7675
+Little Lilac
+Baby Layette and Gifting
+347-675-1567
+Make a Statement
+Wholesale Gold Filled Jewlery
+347-393-6094
+Mr Basics
+Mens & Boys Dry Goods
+718-851-1799
+My Sefer Judaica
+159 Sheraden Ave
+888-733-3708 · 888-SEFER-08
+Present n' Style
+Gift Wrap & Home Décor
+917-809-8001
+Sabine ExtraaoridnAir
+Balloon Décor for Events & Gifting
+917-838-2707
+The Finishing Touch Gifts
+Personalized Gifts
+917-803-4452
+White Petal Lingerie
+Your Perfect Fitting
+347-707-4637
+💅 BEAUTY & SELF CARE
+Atara Fendrich LMT
+Massage & Craniosacral Therapy
+917-710-8370
+Danielle Besser
+Wig · Hair · Makeup
+718-232-2789
+Frieda's Nails & Waxing
+We Come to Your Home!
+954-330-5845
+Glam n Go
+Makeup by Chani
+917-843-8740
+Glo Laser — Suri Jachimowitz
+Laser and Electrolysis
+347-699-0822
+Hair by Gall
+Wigs · Hair · Haircuts
+347-424-7505
+Makeup by Naomi
+718-598-7865
+Nancy's Salon
+Mani · Pedi · Waxing · Lice Check
+718-938-9337
+Pessi Wigs
+Wig Sales · Cut · Wash & Set
+929-309-8640
+Wigs by Laya
+Sales · Cut · Wash & Set
+718-791-8865
+🏊 POOL RENTAL
+Bryna Sklars
+Salt Water Pool · Swim Lessons · Aqua Aerobics
+347-393-6094
+Chumi Fried
+Salt Water Pool (Winterized, Year-Round)
+718-812-1872
+⚙ SERVICES
+Club 21 Services
+Domestic & Business Employees
+347-423-8886
+Lactation Consultant
+Raizy Rubinson CLC
+718-290-7785
+Mobile Phone Screen Repair
+Moshe Kustin
+347-265-6499
+Physical Therapist
+Alexander Yegorov
+718-701-4545
+Sew Chic Alterations
+Miri Gabel
+929-529-5214
+Sparkle Agency
+Home & Office Cleaning Service
+347-407-3931
+We Buy Gold & Silver
+Wayne Greenberg
+917-364-1511
+Wealth Concierge Group
+Helping businesses grow
+646-623-7253
+🚐 TRANSPORTATION
+Staten Island Shuttle
+Staten Island – Borough Park
+718-342-3000
+Yakov Schmelczer
+VIP Long Distance · Messenger
+917-200-4594
+🏡 REALTORS
+Shaina Barber
+Katz Realty NYC — Who you hire matters
+917-972-9789
+📋 INSURANCE AGENTS
+Aryeh Pearlman
+Life & Health Insurance Agent
+718-374-1103
+Mr Hirshenbaum
+Estate Planning · Life & Retirement
+347-725-0833
+🆘 EMERGENCY SERVICES
+🚑 Hatzolah
+Emergency Medical Services
+718-230-1000
+Chaveirim
+Community Emergency Assistance
+718-761-2428
+Chavivim
+718-871-7299
+Misaskim
+(718) 854-4548
+Shmira
+718-761-4444
+Shomrim
+718-370-2121
+
+🕯 Shabbos Times
+
+Weekly Shabbos times for Staten Island
+Loading…
+
+🕯 CANDLE LIGHTING
+—
+18 min before sunset
+✡ SHABBOS ENDS
+—
+50 min after sunset
+⚠ Times are approximate for Staten Island (40.58°N). Always verify with your local Rav.
+Accurate times: Chabad.org · MyZmanim.com
+Community Marketplace
+
+Buy, sell, and trade within our community — 100% free.
+➕ Post a Free Listing
+
+
+        Category *
+        Furniture
+        Clothing
+        Seforim & Judaica
+        Kitchen
+        Baby & Kids
+        Electronics
+        Services
+        Free / Giveaway
+        Other
+      
+
+
+🔒 Hide my contact info
+Buyers will send you a message through the site. Your phone/email stays private and you'll see it in your listing dashboard.
+Post Listing — Free
+🪑
+Furniture
+Dining Table & 6 Chairs — Excellent Condition
+Beautiful solid wood table. Moving — must sell.
+$450 OBO
+📍 Staten Island · Call/Text to arrange viewing
+Posted 2 days ago
+👗
+Clothing
+Shabbos Dresses — Various Sizes
+Collection of Shabbos and Yom Tov dresses, sizes 6–14. All like new.
+$25–$65 each
+📍 Staten Island
+Posted 5 days ago
+📚
+Seforim & Judaica
+Large Seforim Collection — Various Titles
+Downsizing. Gemara set, Mishnah Berurah, various other seforim available.
+Priced individually
+📍 Staten Island
+Posted 1 week ago
+🍳
+Kitchen
+KitchenAid Mixer — Like New
+Tilt-head stand mixer, 5qt. Used only a few times. All attachments included.
+$200 Firm
+📍 Staten Island
+Posted 3 days ago
+🛏
+Baby & Kids
+Baby Furniture Set — Crib, Dresser, Changing Table
+Complete nursery set in excellent condition. Neutral white.
+$350 for set
+📍 Staten Island
+Posted 4 days ago
+Advertise With Us
+
+Put your business in front of the entire Staten Island community. Choose the plan that works for you.
+BASIC
+Free
+Directory listing
+	•	Business name & phone
+	•	Category listing
+	•	Searchable directory
+Get Listed — Free
+Already listed? Update your details →
+⭐ FEATURED
+$18/mo
+per month
+	•	Everything in Basic
+	•	Featured card placement
+	•	Business description
+	•	Address & website link
+	•	Priority in search results
+Get Started
+PREMIUM
+$36/mo
+per month
+	•	Everything in Featured
+	•	Banner ad on homepage
+	•	Blog post feature
+	•	Marketplace listings
+	•	Social media promotion
+Get Started
+📬 Submit Your Listing or Enquiry
+
+
+
+
+        Category
+        Restaurants & Food
+        Home Services
+        Photography
+        Auto Services
+        Medical
+        Specialty Shops
+        Beauty & Self Care
+        Services
+        Transportation
+        Other
+      
+        Plan
+        Basic (Free)
+        Featured ($18/mo)
+        Premium ($36/mo)
+        Marketplace Listing
+        Blog Post
+      
+Submit Listing
+Community Blog
+
+News, stories, and updates from our Staten Island community
+📰
+COMMUNITY NEWS
+Why Every Dollar You Spend Locally Makes a Difference
+When you choose a local business, you're not just making a purchase — you're strengthening families, creating jobs, and supporting the charitable organizations that keep our community strong.
+Jun 2025
+Read more →
+🏆
+BUSINESS SPOTLIGHT
+Meet the Local Businesses Behind Our Community
+This month we're highlighting the incredible variety of services available right here on Staten Island — from kosher dining to medical care, beauty, and home services.
+Jun 2025
+Read more →
+🤝
+CHARITY & GIVING
+Supporting Bikur Cholim & COJO — How Shop Local Helps
+Every dollar spent locally contributes to organisations that provide hospital visits, meals, transportation, and emergency aid to those who need it most on Staten Island.
+May 2025
+Read more →
+✍ Submit a Blog Post
+Our Community Organisations
+
+NEXT TIME YOU SHOP — Ask Yourself: WHY DOES IT MATTER?
+Because every dollar spent locally strengthens our community. It supports families, creates jobs, and lightens the burden on vital organisations like Staten Island Bikur Cholim and COJO, which provide discreet, life-changing support to those in crisis.
+Bikur Cholim assists with medical equipment, hospital visits, meals, transportation, and emergency aid. COJO offers case management, benefits assistance, youth and senior programming, and has operated Staten Island's largest kosher food pantry since 1980.
+Have Maaser to give? Start at home. Your first stop should always be your own community.
+🏥 Staten Island Bikur Cholim
+Donate: Zelle 718-494-4343
+🤝 COJO Staten Island
+Community Support Since 1980
+HIRING SOMEONE? Think local. Help someone in our community get back on their feet.
+ShopLocal SI
+Supporting the businesses that support our Staten Island community.
+DIRECTORY
+	•	All Businesses
+	•	Restaurants & Food
+	•	Home Services
+	•	Medical
+	•	Beauty & Self Care
+COMMUNITY
+	•	Shabbos Times
+	•	Marketplace
+	•	Community Blog
+	•	Advertise
+	•	List Your Business
+🆘 EMERGENCY NUMBERS
+	•	🚑 Hatzolah: 718-230-1000
+	•	Chaveirim: 718-761-2428
+	•	Chavivim: 718-871-7299
+	•	Shmira: 718-761-4444
+	•	Shomrim: 718-370-2121
+	•	Misaskim: (718) 854-4548
+© 2025 Shop Local Staten Island · Strengthening our community one purchase at a time
+To add or update your listing: click here
