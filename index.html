@@ -240,6 +240,13 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
 </head>
 <body>
 
+<!-- BANNER ADS -->
+<div id="bannerWrap" style="background:#fff;padding:.75rem 2rem;display:none">
+  <div id="bannerRotator" class="banner-rotator">
+    <!-- Populated by JS from Airtable -->
+  </div>
+</div>
+
 <!-- EMERGENCY STRIP -->
 <div class="emstrip">
   <span>🚨 EMERGENCIES:</span>
@@ -285,13 +292,6 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
   <div class="stat"><div class="stat-n">14</div><div class="stat-l">Categories</div></div>
   <div class="stat"><div class="stat-n">1</div><div class="stat-l">Community</div></div>
   <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Impact</div></div>
-</div>
-
-<!-- BANNER ADS -->
-<div style="background:#fff;padding:1.25rem 2rem 0">
-  <div id="bannerRotator" class="banner-rotator" style="display:none">
-    <!-- Populated by JS from Airtable -->
-  </div>
 </div>
 
 <!-- FEATURED BUSINESSES -->
@@ -1520,7 +1520,8 @@ async function startAdPayment(adType) {
       // Load banners
       if (data.banners && data.banners.length > 0) {
         const rotator = document.getElementById('bannerRotator');
-        rotator.style.display = 'block';
+        const wrap = document.getElementById('bannerWrap');
+        wrap.style.display = 'block';
         rotator.innerHTML = data.banners.map((b, i) => `
           <div class="banner-slide ${i === 0 ? 'active' : ''}" onclick="window.open('${b.link || '#'}','_blank')">
             ${b.image
