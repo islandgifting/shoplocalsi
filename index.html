@@ -724,7 +724,7 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         </div>
         <div class="biz-card em" data-cat="emergency" data-search="misaskim funeral gemach">
           <div class="biz-name">Misaskim</div>
-          <div class="biz-phone"><a href="tel:7188665809">718-866-5809</a></div>
+          <div class="biz-phone"><a href="tel:7188544548">(718) 854-4548</a></div>
         </div>
         <div class="biz-card em" data-cat="emergency" data-search="shmira security patrol">
           <div class="biz-name">Shmira</div>
@@ -780,9 +780,51 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
   <div class="sec-head">
     <h2>Community Marketplace</h2>
     <div class="divider"></div>
-    <p>Buy, sell, and trade within our community. <a href="#advertise" style="color:var(--red);font-weight:700">Post a listing →</a></p>
+    <p>Buy, sell, and trade within our community — 100% free.</p>
   </div>
-  <div class="mkt-grid">
+
+  <!-- POST A LISTING FORM -->
+  <div id="mkt-form-wrap" style="max-width:680px;margin:0 auto 2.5rem;background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(10,28,75,.10);padding:2rem">
+    <h3 style="color:var(--navy);font-size:1.15rem;margin-bottom:1.25rem">➕ Post a Free Listing</h3>
+    <div class="form-row">
+      <input id="mkt-title" type="text" placeholder="Item Title *" style="flex:2">
+      <input id="mkt-price" type="text" placeholder="Price (e.g. $50 OBO or Free)">
+    </div>
+    <div class="form-row">
+      <select id="mkt-cat">
+        <option value="">Category *</option>
+        <option>Furniture</option>
+        <option>Clothing</option>
+        <option>Seforim &amp; Judaica</option>
+        <option>Kitchen</option>
+        <option>Baby &amp; Kids</option>
+        <option>Electronics</option>
+        <option>Services</option>
+        <option>Free / Giveaway</option>
+        <option>Other</option>
+      </select>
+      <input id="mkt-contact" type="text" placeholder="Your phone or email *">
+    </div>
+    <div class="form-row full">
+      <textarea id="mkt-desc" placeholder="Describe your item — condition, size, pickup details…" style="height:90px"></textarea>
+    </div>
+    <!-- Hide contact option -->
+    <div style="margin:.75rem 0;padding:.85rem 1rem;background:#f8faff;border-radius:8px;border:1px solid var(--border)">
+      <label style="display:flex;align-items:flex-start;gap:.75rem;cursor:pointer">
+        <input type="checkbox" id="mkt-hide-contact" style="margin-top:3px;width:16px;height:16px;cursor:pointer">
+        <div>
+          <div style="font-weight:700;font-size:.88rem;color:var(--navy)">🔒 Hide my contact info</div>
+          <div style="font-size:.78rem;color:var(--gray);margin-top:.2rem">Buyers will send you a message through the site. Your phone/email stays private and you'll see it in your listing dashboard.</div>
+        </div>
+      </label>
+    </div>
+    <button id="mkt-submit" type="button" style="background:var(--navy);color:#fff;padding:.85rem 2rem;border:none;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;width:100%;margin-top:.25rem">Post Listing — Free</button>
+    <div id="mkt-success" style="display:none;margin-top:1rem"></div>
+  </div>
+
+  <!-- LISTINGS GRID -->
+  <div class="mkt-grid" id="mkt-grid">
+    <!-- Static seed listings -->
     <div class="mkt-card">
       <div class="mkt-img">🪑</div>
       <div class="mkt-body">
@@ -792,7 +834,7 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <div class="mkt-price">$450 OBO</div>
         <div class="mkt-contact">📍 Staten Island · Call/Text to arrange viewing</div>
       </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 2 days ago</span><a href="#advertise" class="mkt-cta">Contact</a></div>
+      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 2 days ago</span></div>
     </div>
     <div class="mkt-card">
       <div class="mkt-img">👗</div>
@@ -803,18 +845,18 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <div class="mkt-price">$25–$65 each</div>
         <div class="mkt-contact">📍 Staten Island</div>
       </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 5 days ago</span><a href="#advertise" class="mkt-cta">Contact</a></div>
+      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 5 days ago</span></div>
     </div>
     <div class="mkt-card">
       <div class="mkt-img">📚</div>
       <div class="mkt-body">
-        <div class="mkt-tag">Seforim</div>
+        <div class="mkt-tag">Seforim &amp; Judaica</div>
         <div class="mkt-title">Large Seforim Collection — Various Titles</div>
         <div class="mkt-desc">Downsizing. Gemara set, Mishnah Berurah, various other seforim available.</div>
         <div class="mkt-price">Priced individually</div>
         <div class="mkt-contact">📍 Staten Island</div>
       </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 1 week ago</span><a href="#advertise" class="mkt-cta">Contact</a></div>
+      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 1 week ago</span></div>
     </div>
     <div class="mkt-card">
       <div class="mkt-img">🍳</div>
@@ -825,7 +867,7 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <div class="mkt-price">$200 Firm</div>
         <div class="mkt-contact">📍 Staten Island</div>
       </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 3 days ago</span><a href="#advertise" class="mkt-cta">Contact</a></div>
+      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 3 days ago</span></div>
     </div>
     <div class="mkt-card">
       <div class="mkt-img">🛏</div>
@@ -836,13 +878,7 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <div class="mkt-price">$350 for set</div>
         <div class="mkt-contact">📍 Staten Island</div>
       </div>
-      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 4 days ago</span><a href="#advertise" class="mkt-cta">Contact</a></div>
-    </div>
-    <div class="mkt-card" style="background:#f8faff;border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem">
-      <div style="font-size:2.5rem;margin-bottom:.75rem">➕</div>
-      <div style="font-weight:700;color:var(--navy);margin-bottom:.35rem">Post Your Listing</div>
-      <div style="font-size:.82rem;color:var(--gray);margin-bottom:1rem">Reach the whole community</div>
-      <a href="#advertise" class="btn-gold" style="font-size:.85rem;padding:.55rem 1.25rem">List for Free</a>
+      <div class="mkt-footer"><span style="font-size:.75rem;color:var(--gray)">Posted 4 days ago</span></div>
     </div>
   </div>
 </section>
@@ -864,7 +900,8 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <li>Category listing</li>
         <li>Searchable directory</li>
       </ul>
-      <a href="#contact-form" class="price-btn">Get Listed</a>
+      <div class="price-btn" style="cursor:pointer;background:var(--light);color:var(--navy)" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'})">Get Listed — Free</div>
+      <div style="margin-top:.75rem;font-size:.78rem;text-align:center"><a href="#contact-form" style="color:var(--gray);text-decoration:underline">Already listed? Update your details →</a></div>
     </div>
     <div class="price-card feat">
       <div class="price-tier">⭐ Featured</div>
@@ -1031,7 +1068,7 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
         <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
         <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
-        <li><a href="tel:7188665809">Misaskim: 718-866-5809</a></li>
+        <li><a href="tel:7188544548">Misaskim: (718) 854-4548</a></li>
       </ul>
     </div>
   </div>
@@ -1137,9 +1174,245 @@ function setTab(cat, btn) {
   }
 })();
 
+// ─── MARKETPLACE ───────────────────────────────
+(function() {
+  const catEmoji = {
+    'Furniture':'🪑','Clothing':'👗','Seforim & Judaica':'📚','Kitchen':'🍳',
+    'Baby & Kids':'🛏','Electronics':'📱','Services':'🔧','Free / Giveaway':'🎁','Other':'📦'
+  };
+
+  async function loadApprovedListings() {
+    try {
+      const res = await fetch('/.netlify/functions/get-listings');
+      if (!res.ok) return;
+      const data = await res.json();
+      const grid = document.getElementById('mkt-grid');
+      if (!grid || !data.listings) return;
+
+      grid.querySelectorAll('.user-listing').forEach(el => el.remove());
+
+      data.listings.forEach(item => {
+        const emoji = catEmoji[item.category] || '📦';
+        const contactHidden = item.contactHidden;
+        const card = document.createElement('div');
+        card.className = 'mkt-card user-listing';
+        card.innerHTML = `
+          <div class="mkt-img">${emoji}</div>
+          <div class="mkt-body">
+            <div class="mkt-tag">${item.category}</div>
+            <div class="mkt-title">${item.title}</div>
+            <div class="mkt-desc">${item.description}</div>
+            <div class="mkt-price">${item.price}</div>
+            ${contactHidden
+              ? `<div class="mkt-contact" style="color:var(--gray);font-style:italic">🔒 Contact hidden — use message button</div>`
+              : `<div class="mkt-contact">📞 ${item.contact}</div>`
+            }
+          </div>
+          <div class="mkt-footer" style="flex-direction:column;gap:.5rem;align-items:stretch">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:.75rem;color:var(--gray)">${item.submitted}</span>
+            </div>
+            <button onclick="openContactModal('${item.id}','${item.title.replace(/'/g,"\\'")}',${contactHidden},\`${contactHidden ? '' : item.contact}\`)"
+              style="background:var(--navy);color:#fff;border:none;padding:.5rem;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer;width:100%">
+              💬 Contact Seller
+            </button>
+            <button onclick="openRemoveModal('${item.id}')"
+              style="background:#fff;color:var(--gray);border:1px solid var(--border);padding:.4rem;border-radius:6px;font-size:.72rem;cursor:pointer;width:100%">
+              ✅ Mark as Sold
+            </button>
+          </div>
+        `;
+        grid.insertBefore(card, grid.firstChild);
+      });
+    } catch(e) {
+      console.log('Could not load listings:', e);
+    }
+  }
+
+  // ── Contact Modal ──
+  window.openContactModal = function(id, title, contactHidden, directContact) {
+    if (!contactHidden && directContact) {
+      // Show contact directly
+      showModal(`
+        <h3 style="color:var(--navy);margin-bottom:1rem">Contact Seller</h3>
+        <p style="margin-bottom:.5rem">Listing: <strong>${title}</strong></p>
+        <div style="background:#f4f6fb;padding:1rem;border-radius:8px;font-size:1.1rem;font-weight:700;color:var(--navy);text-align:center;margin:1rem 0">
+          📞 ${directContact}
+        </div>
+        <button onclick="closeModal()" style="width:100%;background:var(--navy);color:#fff;border:none;padding:.8rem;border-radius:8px;font-weight:700;cursor:pointer;margin-top:.5rem">Close</button>
+      `);
+    } else {
+      // Anonymous message form
+      showModal(`
+        <h3 style="color:var(--navy);margin-bottom:.5rem">💬 Message Seller</h3>
+        <p style="font-size:.82rem;color:var(--gray);margin-bottom:1rem">Your message will be forwarded anonymously. The seller's contact stays private.</p>
+        <input id="modal-buyer-name" type="text" placeholder="Your name *" style="width:100%;padding:.7rem;border:2px solid #dde2ee;border-radius:8px;margin-bottom:.75rem;font-size:.9rem">
+        <textarea id="modal-buyer-msg" placeholder="Your message *" style="width:100%;padding:.7rem;border:2px solid #dde2ee;border-radius:8px;height:100px;font-size:.9rem;resize:vertical"></textarea>
+        <button onclick="sendMessage('${id}','${title.replace(/'/g,"\\'")}')"
+          style="width:100%;background:var(--navy);color:#fff;border:none;padding:.8rem;border-radius:8px;font-weight:700;cursor:pointer;margin-top:.75rem">Send Message</button>
+        <button onclick="closeModal()" style="width:100%;background:#fff;color:var(--gray);border:1px solid #dde2ee;padding:.7rem;border-radius:8px;font-weight:600;cursor:pointer;margin-top:.5rem">Cancel</button>
+        <div id="modal-msg-status" style="margin-top:.75rem;text-align:center;font-size:.85rem"></div>
+      `);
+    }
+  };
+
+  window.sendMessage = async function(id, title) {
+    const name = document.getElementById('modal-buyer-name').value.trim();
+    const msg  = document.getElementById('modal-buyer-msg').value.trim();
+    const status = document.getElementById('modal-msg-status');
+
+    if (!name || !msg) { status.style.color='#cc2222'; status.textContent='Please fill in all fields.'; return; }
+
+    status.style.color='var(--gray)'; status.textContent='Sending…';
+
+    try {
+      const res = await fetch('/.netlify/functions/contact-seller', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ listingId: id, buyerName: name, buyerMessage: msg })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      status.style.color='#1a6b35';
+      status.textContent='✅ Message sent! The seller will be in touch.';
+      setTimeout(closeModal, 2500);
+    } catch(e) {
+      status.style.color='#cc2222';
+      status.textContent='Failed to send. Please try again.';
+    }
+  };
+
+  // ── Remove/Sold Modal ──
+  window.openRemoveModal = function(id) {
+    showModal(`
+      <h3 style="color:var(--navy);margin-bottom:.5rem">✅ Mark as Sold</h3>
+      <p style="font-size:.82rem;color:var(--gray);margin-bottom:1rem">Enter the 6-digit code you received when you posted this listing.</p>
+      <input id="modal-delete-code" type="text" placeholder="6-digit code *" maxlength="6"
+        style="width:100%;padding:.7rem;border:2px solid #dde2ee;border-radius:8px;font-size:1.2rem;text-align:center;letter-spacing:.2rem;margin-bottom:.75rem">
+      <button onclick="removeListing('${id}')"
+        style="width:100%;background:#cc2222;color:#fff;border:none;padding:.8rem;border-radius:8px;font-weight:700;cursor:pointer">Remove My Listing</button>
+      <button onclick="closeModal()" style="width:100%;background:#fff;color:var(--gray);border:1px solid #dde2ee;padding:.7rem;border-radius:8px;font-weight:600;cursor:pointer;margin-top:.5rem">Cancel</button>
+      <div id="modal-remove-status" style="margin-top:.75rem;text-align:center;font-size:.85rem"></div>
+    `);
+  };
+
+  window.removeListing = async function(id) {
+    const code = document.getElementById('modal-delete-code').value.trim();
+    const status = document.getElementById('modal-remove-status');
+    if (!code) { status.style.color='#cc2222'; status.textContent='Please enter your code.'; return; }
+
+    status.style.color='var(--gray)'; status.textContent='Verifying…';
+
+    try {
+      const res = await fetch('/.netlify/functions/delete-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, deleteCode: code })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Wrong code');
+      status.style.color='#1a6b35';
+      status.textContent='✅ Listing removed!';
+      setTimeout(() => { closeModal(); loadApprovedListings(); }, 1500);
+    } catch(e) {
+      status.style.color='#cc2222';
+      status.textContent = e.message === 'Invalid code' ? '❌ Wrong code. Try again.' : 'Error. Please try again.';
+    }
+  };
+
+  // ── Modal helpers ──
+  function showModal(html) {
+    let overlay = document.getElementById('mkt-modal-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'mkt-modal-overlay';
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem';
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+      document.body.appendChild(overlay);
+    }
+    overlay.innerHTML = `<div style="background:#fff;border-radius:14px;padding:2rem;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)">${html}</div>`;
+    overlay.style.display = 'flex';
+  }
+
+  window.closeModal = function() {
+    const overlay = document.getElementById('mkt-modal-overlay');
+    if (overlay) overlay.style.display = 'none';
+  };
+
+  async function submitListing(title, price, category, contact, description, hideContact) {
+    const res = await fetch('/.netlify/functions/submit-listing', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, price, category, contact, description, hideContact })
+    });
+    if (!res.ok) { const err = await res.json(); throw new Error(err.error || 'Submission failed'); }
+    return await res.json();
+  }
+
+  function initMarketplace() {
+    loadApprovedListings();
+
+    const btn = document.getElementById('mkt-submit');
+    if (!btn) return;
+
+    btn.addEventListener('click', async function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const title       = document.getElementById('mkt-title').value.trim();
+      const price       = document.getElementById('mkt-price').value.trim() || 'Contact for price';
+      const category    = document.getElementById('mkt-cat').value;
+      const contact     = document.getElementById('mkt-contact').value.trim();
+      const description = document.getElementById('mkt-desc').value.trim();
+      const hideContact = document.getElementById('mkt-hide-contact').checked;
+
+      if (!title || !category || !contact) {
+        alert('Please fill in Title, Category, and Contact info.');
+        return;
+      }
+
+      btn.textContent = 'Submitting…';
+      btn.disabled = true;
+
+      try {
+        const result = await submitListing(title, price, category, contact, description, hideContact);
+
+        ['mkt-title','mkt-price','mkt-contact','mkt-desc'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('mkt-cat').selectedIndex = 0;
+        document.getElementById('mkt-hide-contact').checked = false;
+
+        const suc = document.getElementById('mkt-success');
+        suc.style.display = 'block';
+        suc.innerHTML = `
+          <div style="background:#e8f8ee;color:#1a6b35;padding:1.25rem;border-radius:8px;text-align:center">
+            <div style="font-weight:700;font-size:1rem;margin-bottom:.5rem">✅ Listing submitted — pending approval!</div>
+            <div style="font-size:.88rem;margin-bottom:.75rem">Save this code to remove your listing when sold:</div>
+            <div style="font-size:2rem;font-weight:900;letter-spacing:.3rem;color:var(--navy);background:#fff;padding:.75rem 1.5rem;border-radius:8px;display:inline-block">${result.deleteCode}</div>
+            <div style="font-size:.75rem;margin-top:.5rem;color:#64748b">Screenshot or write this down — it cannot be recovered</div>
+          </div>
+        `;
+        setTimeout(() => suc.style.display = 'none', 15000);
+
+      } catch(err) {
+        alert('Error submitting listing: ' + err.message);
+      } finally {
+        btn.textContent = 'Post Listing — Free';
+        btn.disabled = false;
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMarketplace);
+  } else {
+    initMarketplace();
+  }
+})();
+
 // ─── SMOOTH SCROLL ───────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
+    if (a.classList.contains('basic-btn')) return; // let basic-btn handle itself
     const target = document.querySelector(a.getAttribute('href'));
     if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
     document.getElementById('navLinks').classList.remove('open');
@@ -1166,8 +1439,13 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error(err.error || 'Server error');
       }
 
-      const { sessionId } = await response.json();
-      const result = await stripe.redirectToCheckout({ sessionId });
+      const data = await response.json();
+      // Basic plan returns a redirect instead of a sessionId
+      if (data.redirect) {
+        document.getElementById('contact-form').scrollIntoView({behavior:'smooth', block:'start'});
+        return;
+      }
+      const result = await stripe.redirectToCheckout({ sessionId: data.sessionId });
       if (result.error) throw new Error(result.error.message);
 
     } catch (error) {
@@ -1178,11 +1456,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  document.querySelectorAll('.price-btn').forEach(btn => {
+  document.querySelectorAll('a.price-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const priceCard = btn.closest('.price-card');
-      const planType = priceCard ? priceCard.querySelector('.price-tier').textContent.trim() : 'Selected Plan';
+      const planType = priceCard ? priceCard.querySelector('.price-tier').textContent.trim() : '';
+      // Basic is free — just scroll to the contact form
+      if (planType === 'Basic') {
+        document.getElementById('contact-form').scrollIntoView({behavior:'smooth', block:'start'});
+        return;
+      }
       startPayment(planType);
     });
   });
