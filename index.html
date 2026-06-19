@@ -108,7 +108,58 @@ section{padding:4rem 2rem}
 .mkt-footer{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .mkt-cta{background:var(--navy);color:#fff;font-size:.78rem;font-weight:700;padding:.35rem .8rem;border-radius:6px}
 
-/* ADVERTISE */
+/* BANNER ADS */
+.banner-rotator{position:relative;max-width:1150px;margin:0 auto 0;overflow:hidden;border-radius:12px}
+.banner-slide{display:none;position:relative;cursor:pointer}
+.banner-slide.active{display:block}
+.banner-slide img{width:100%;height:180px;object-fit:cover;border-radius:12px}
+.banner-slide-fallback{width:100%;height:180px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;text-decoration:none}
+.banner-dots{display:flex;justify-content:center;gap:.5rem;margin-top:.65rem}
+.banner-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s}
+.banner-dot.active{background:var(--navy)}
+.banner-ad-label{position:absolute;top:.5rem;right:.75rem;background:rgba(0,0,0,.45);color:#fff;font-size:.65rem;padding:.15rem .45rem;border-radius:4px;font-weight:600;letter-spacing:.5px}
+
+/* FEATURED BUSINESSES */
+#featured-businesses{background:#fff;padding:2.5rem 2rem}
+.feat-biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;max-width:1150px;margin:0 auto}
+.feat-biz-card{background:linear-gradient(135deg,#0a1c4b,#182e6a);border-radius:14px;padding:1.5rem;color:#fff;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.feat-biz-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(10,28,75,.3)}
+.feat-biz-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(212,168,67,.2),transparent 65%);pointer-events:none}
+.feat-biz-badge{background:var(--gold);color:#111;font-size:.65rem;font-weight:800;padding:.2rem .6rem;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;display:inline-block;margin-bottom:.75rem}
+.feat-biz-name{font-size:1.1rem;font-weight:800;margin-bottom:.25rem}
+.feat-biz-desc{font-size:.82rem;color:rgba(255,255,255,.75);margin-bottom:.75rem}
+.feat-biz-phone{font-size:.95rem;font-weight:700;color:var(--gold)}
+
+/* SPONSORED CARDS in directory */
+.biz-card.sponsored{background:linear-gradient(135deg,#fffbf0,#fff8e1);border:2px solid var(--gold);position:relative}
+.biz-card.sponsored::before{content:'⭐ Sponsored';position:absolute;top:-.1rem;right:.75rem;background:var(--gold);color:#111;font-size:.62rem;font-weight:800;padding:.15rem .5rem;border-radius:0 0 5px 5px;letter-spacing:.3px}
+
+/* AD PRICING SECTION */
+.ad-pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;max-width:900px;margin:0 auto 2rem}
+.ad-price-card{border:2px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;transition:all .2s;background:#fff}
+.ad-price-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(212,168,67,.2)}
+.ad-price-card.popular{border-color:var(--navy);background:var(--navy);color:#fff}
+.ad-price-icon{font-size:2rem;margin-bottom:.5rem}
+.ad-price-name{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:.35rem}
+.ad-price-card.popular .ad-price-name{color:var(--gold)}
+.ad-price-val{font-size:2rem;font-weight:900;color:var(--navy);margin-bottom:.2rem}
+.ad-price-card.popular .ad-price-val{color:#fff}
+.ad-price-per{font-size:.78rem;color:var(--gray);margin-bottom:1rem}
+.ad-price-card.popular .ad-price-per{color:rgba(255,255,255,.6)}
+.ad-price-feats{list-style:none;text-align:left;margin-bottom:1.25rem}
+.ad-price-feats li{font-size:.82rem;padding:.3rem 0;border-bottom:1px solid #eee}
+.ad-price-card.popular .ad-price-feats li{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.85)}
+.ad-price-feats li::before{content:"✓ ";color:#2a9d5c;font-weight:700}
+.ad-price-card.popular .ad-price-feats li::before{color:var(--gold)}
+.ad-btn{display:block;padding:.7rem;border-radius:8px;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .2s;border:2px solid var(--navy);color:var(--navy);background:transparent;text-align:center}
+.ad-btn:hover{background:var(--navy);color:#fff}
+.ad-price-card.popular .ad-btn{background:var(--gold);color:#111;border-color:var(--gold)}
+.ad-price-card.popular .ad-btn:hover{background:#b8922e}
+.bundle-banner{max-width:900px;margin:0 auto 2rem;background:linear-gradient(135deg,var(--navy),#182e6a);border-radius:14px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.bundle-banner h3{color:var(--gold);font-size:1.1rem;font-weight:800}
+.bundle-banner p{color:rgba(255,255,255,.8);font-size:.85rem;margin-top:.25rem}
+.bundle-btn{background:var(--gold);color:#111;border:none;padding:.75rem 1.75rem;border-radius:8px;font-weight:800;cursor:pointer;font-size:.9rem;white-space:nowrap}
+.bundle-btn:hover{background:#b8922e}
 #advertise{background:#fff}
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;max-width:860px;margin:0 auto 2.5rem}
 .price-card{border:2px solid var(--border);border-radius:14px;padding:1.75rem;text-align:center;transition:all .2s}
@@ -235,6 +286,25 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
   <div class="stat"><div class="stat-n">1</div><div class="stat-l">Community</div></div>
   <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Impact</div></div>
 </div>
+
+<!-- BANNER ADS -->
+<div style="background:#fff;padding:1.25rem 2rem 0">
+  <div id="bannerRotator" class="banner-rotator" style="display:none">
+    <!-- Populated by JS from Airtable -->
+  </div>
+</div>
+
+<!-- FEATURED BUSINESSES -->
+<section id="featured-businesses" style="display:none">
+  <div class="sec-head">
+    <h2>⭐ Featured Businesses</h2>
+    <div class="divider"></div>
+    <p>Our community's top sponsors — supporting Staten Island together</p>
+  </div>
+  <div class="feat-biz-grid" id="featBizGrid">
+    <!-- Populated by JS from Airtable -->
+  </div>
+</section>
 
 <!-- DIRECTORY -->
 <section id="directory">
@@ -890,44 +960,94 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
     <div class="divider"></div>
     <p>Put your business in front of the entire Staten Island community. Choose the plan that works for you.</p>
   </div>
-  <div class="price-grid">
-    <div class="price-card">
-      <div class="price-tier">Basic</div>
-      <div class="price-val">Free</div>
-      <div class="price-per">Directory listing</div>
-      <ul class="price-feats">
+
+  <!-- BUNDLE DEAL -->
+  <div class="bundle-banner">
+    <div>
+      <h3>🔥 Bundle Deal — Banner + Sponsored Card</h3>
+      <p>Get maximum visibility with our most popular combo — save $19/mo</p>
+    </div>
+    <button class="bundle-btn" onclick="startAdPayment('Bundle')">Get Bundle — $129/mo</button>
+  </div>
+
+  <!-- AD PRICING -->
+  <div class="ad-pricing-grid">
+    <div class="ad-price-card">
+      <div class="ad-price-icon">📋</div>
+      <div class="ad-price-name">Basic Directory</div>
+      <div class="ad-price-val">Free</div>
+      <div class="ad-price-per">Forever free</div>
+      <ul class="ad-price-feats">
         <li>Business name &amp; phone</li>
         <li>Category listing</li>
         <li>Searchable directory</li>
       </ul>
-      <div class="price-btn" style="cursor:pointer;background:var(--light);color:var(--navy)" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'})">Get Listed — Free</div>
-      <div style="margin-top:.75rem;font-size:.78rem;text-align:center"><a href="#contact-form" style="color:var(--gray);text-decoration:underline">Already listed? Update your details →</a></div>
+      <div class="ad-btn" style="cursor:pointer" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'})">Get Listed Free</div>
     </div>
-    <div class="price-card feat">
-      <div class="price-tier">⭐ Featured</div>
-      <div class="price-val">$18<span style="font-size:1rem">/mo</span></div>
-      <div class="price-per">per month</div>
-      <ul class="price-feats">
+    <div class="ad-price-card">
+      <div class="ad-price-icon">⭐</div>
+      <div class="ad-price-name">Featured Listing</div>
+      <div class="ad-price-val">$18<span style="font-size:.9rem">/mo</span></div>
+      <div class="ad-price-per">per month</div>
+      <ul class="ad-price-feats">
         <li>Everything in Basic</li>
         <li>Featured card placement</li>
         <li>Business description</li>
         <li>Address &amp; website link</li>
-        <li>Priority in search results</li>
       </ul>
-      <a href="#contact-form" class="price-btn">Get Started</a>
+      <a href="#contact-form" class="ad-btn price-btn">Get Started</a>
     </div>
-    <div class="price-card">
-      <div class="price-tier">Premium</div>
-      <div class="price-val">$36<span style="font-size:1rem">/mo</span></div>
-      <div class="price-per">per month</div>
-      <ul class="price-feats">
+    <div class="ad-price-card popular">
+      <div class="ad-price-icon">🏠</div>
+      <div class="ad-price-name">Homepage Banner</div>
+      <div class="ad-price-val">$99<span style="font-size:.9rem">/mo</span></div>
+      <div class="ad-price-per">per month</div>
+      <ul class="ad-price-feats">
+        <li>Full-width rotating banner</li>
+        <li>Seen by every visitor</li>
+        <li>Your logo, image &amp; tagline</li>
+        <li>Direct link to your business</li>
+      </ul>
+      <button class="ad-btn" onclick="startAdPayment('Banner')">Advertise Now</button>
+    </div>
+    <div class="ad-price-card">
+      <div class="ad-price-icon">📌</div>
+      <div class="ad-price-name">Sponsored Card</div>
+      <div class="ad-price-val">$49<span style="font-size:.9rem">/mo</span></div>
+      <div class="ad-price-per">per month</div>
+      <ul class="ad-price-feats">
+        <li>Pinned top of directory</li>
+        <li>Gold "Sponsored" badge</li>
+        <li>Featured in your category</li>
+        <li>Priority search placement</li>
+      </ul>
+      <button class="ad-btn" onclick="startAdPayment('Sponsored')">Get Sponsored</button>
+    </div>
+    <div class="ad-price-card">
+      <div class="ad-price-icon">🔥</div>
+      <div class="ad-price-name">Featured Business</div>
+      <div class="ad-price-val">$79<span style="font-size:.9rem">/mo</span></div>
+      <div class="ad-price-per">per month</div>
+      <ul class="ad-price-feats">
+        <li>Spotlight section on homepage</li>
+        <li>Premium navy card design</li>
+        <li>Logo, description &amp; phone</li>
+        <li>Above the directory</li>
+      </ul>
+      <button class="ad-btn" onclick="startAdPayment('FeaturedBusiness')">Get Featured</button>
+    </div>
+    <div class="ad-price-card">
+      <div class="ad-price-icon">💎</div>
+      <div class="ad-price-name">Premium</div>
+      <div class="ad-price-val">$36<span style="font-size:.9rem">/mo</span></div>
+      <div class="ad-price-per">per month</div>
+      <ul class="ad-price-feats">
         <li>Everything in Featured</li>
         <li>Banner ad on homepage</li>
         <li>Blog post feature</li>
-        <li>Marketplace listings</li>
         <li>Social media promotion</li>
       </ul>
-      <a href="#contact-form" class="price-btn">Get Started</a>
+      <a href="#contact-form" class="ad-btn price-btn">Get Started</a>
     </div>
   </div>
 
@@ -956,18 +1076,20 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
         <option>Other</option>
       </select>
       <select>
-        <option>Plan</option>
+        <option>Ad Type</option>
         <option>Basic (Free)</option>
-        <option>Featured ($18/mo)</option>
+        <option>Featured Listing ($18/mo)</option>
+        <option>Homepage Banner ($99/mo)</option>
+        <option>Sponsored Card ($49/mo)</option>
+        <option>Featured Business ($79/mo)</option>
         <option>Premium ($36/mo)</option>
-        <option>Marketplace Listing</option>
-        <option>Blog Post</option>
+        <option>Bundle Deal ($129/mo)</option>
       </select>
     </div>
     <div class="form-row full">
       <textarea placeholder="Business description, address, or message…"></textarea>
     </div>
-    <button class="form-submit" onclick="alert('Thank you! We will be in touch shortly. ✡')">Submit Listing</button>
+    <button class="form-submit" onclick="alert('Thank you! We will be in touch shortly. ✡')">Submit Enquiry</button>
   </div>
 </section>
 
@@ -1406,6 +1528,119 @@ function setTab(cat, btn) {
     document.addEventListener('DOMContentLoaded', initMarketplace);
   } else {
     initMarketplace();
+  }
+})();
+
+// ─── AD PAYMENTS ───────────────────────────────
+async function startAdPayment(adType) {
+  try {
+    const response = await fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: adType })
+    });
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error || 'Server error');
+    }
+    const data = await response.json();
+    if (data.redirect) {
+      document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+    const stripe = Stripe('pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5');
+    const result = await stripe.redirectToCheckout({ sessionId: data.sessionId });
+    if (result.error) throw new Error(result.error.message);
+  } catch (error) {
+    // Fall back to contact form
+    document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'});
+    alert('Please fill in the enquiry form below and we\'ll set up your ad!');
+  }
+}
+
+// ─── BANNER & FEATURED BUSINESSES ───────────────────────────────
+(function() {
+  async function loadAds() {
+    try {
+      const res = await fetch('/.netlify/functions/get-ads');
+      if (!res.ok) return;
+      const data = await res.json();
+
+      // Load banners
+      if (data.banners && data.banners.length > 0) {
+        const rotator = document.getElementById('bannerRotator');
+        rotator.style.display = 'block';
+        rotator.innerHTML = data.banners.map((b, i) => `
+          <div class="banner-slide ${i === 0 ? 'active' : ''}" onclick="window.open('${b.link || '#'}','_blank')">
+            ${b.image
+              ? `<img src="${b.image}" alt="${b.businessName}">`
+              : `<div class="banner-slide-fallback" style="background:linear-gradient(135deg,${b.color || '#0a1c4b'},#182e6a)">
+                  <div style="font-size:1.4rem;font-weight:900;color:#fff">${b.businessName}</div>
+                  <div style="font-size:.9rem;color:rgba(255,255,255,.8)">${b.tagline || ''}</div>
+                  <div style="font-size:.82rem;color:var(--gold);font-weight:700;margin-top:.25rem">${b.phone || ''}</div>
+                </div>`
+            }
+            <div class="banner-ad-label">AD</div>
+          </div>
+        `).join('') + (data.banners.length > 1 ? `
+          <div class="banner-dots">
+            ${data.banners.map((_,i) => `<div class="banner-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`).join('')}
+          </div>` : '');
+
+        if (data.banners.length > 1) {
+          let current = 0;
+          window.goToSlide = function(n) {
+            document.querySelectorAll('.banner-slide').forEach((s,i) => s.classList.toggle('active', i===n));
+            document.querySelectorAll('.banner-dot').forEach((d,i) => d.classList.toggle('active', i===n));
+            current = n;
+          };
+          setInterval(() => goToSlide((current + 1) % data.banners.length), 4000);
+        }
+      }
+
+      // Load featured businesses
+      if (data.featured && data.featured.length > 0) {
+        const section = document.getElementById('featured-businesses');
+        const grid = document.getElementById('featBizGrid');
+        section.style.display = 'block';
+        grid.innerHTML = data.featured.map(b => `
+          <div class="feat-biz-card" onclick="${b.link ? `window.open('${b.link}','_blank')` : ''}">
+            <div class="feat-biz-badge">⭐ Featured Partner</div>
+            <div class="feat-biz-name">${b.businessName}</div>
+            <div class="feat-biz-desc">${b.description || ''}</div>
+            <div class="feat-biz-phone">${b.phone || ''}</div>
+          </div>
+        `).join('');
+      }
+
+      // Load sponsored directory cards
+      if (data.sponsored && data.sponsored.length > 0) {
+        const firstGrid = document.querySelector('.biz-grid');
+        if (firstGrid) {
+          data.sponsored.forEach(b => {
+            const card = document.createElement('div');
+            card.className = 'biz-card sponsored';
+            card.dataset.cat = b.category || 'specialty';
+            card.dataset.search = (b.businessName + ' ' + (b.description || '')).toLowerCase();
+            card.innerHTML = `
+              <div class="biz-name">${b.businessName}</div>
+              ${b.description ? `<div class="biz-desc">${b.description}</div>` : ''}
+              ${b.phone ? `<div class="biz-phone"><a href="tel:${b.phone.replace(/\D/g,'')}">${b.phone}</a></div>` : ''}
+            `;
+            firstGrid.insertBefore(card, firstGrid.firstChild);
+          });
+        }
+      }
+
+    } catch(e) {
+      console.log('Could not load ads:', e);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadAds);
+  } else {
+    loadAds();
   }
 })();
 
