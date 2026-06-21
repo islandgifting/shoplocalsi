@@ -245,7 +245,48 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
   .price-card.feat{transform:none}
 }
 
-/* UTILITY */
+/* BUSINESS PROFILE MODAL */
+.biz-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.biz-modal-overlay.open{opacity:1;pointer-events:all}
+.biz-modal{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.biz-modal-overlay.open .biz-modal{transform:translateY(0)}
+.biz-modal-handle{width:40px;height:4px;background:#dde2ee;border-radius:2px;margin:1rem auto .5rem}
+.biz-modal-banner{width:100%;height:160px;overflow:hidden}
+.biz-modal-banner iframe{width:100%;height:160px;border:none;display:block}
+.biz-modal-banner-fallback{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff}
+.biz-modal-body{padding:1.5rem}
+.biz-modal-badge{background:var(--gold);color:#111;font-size:.65rem;font-weight:800;padding:.2rem .6rem;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;display:inline-block;margin-bottom:.75rem}
+.biz-modal-name{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:.25rem}
+.biz-modal-cat{font-size:.8rem;color:var(--gray);margin-bottom:.75rem}
+.biz-modal-desc{font-size:.9rem;color:#1a1a2e;line-height:1.65;margin-bottom:1.25rem}
+.biz-modal-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.biz-modal-btn-call{background:var(--red);color:#fff;padding:.7rem 1.25rem;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;border:none;cursor:pointer}
+.biz-modal-btn-web{background:var(--navy);color:#fff;padding:.7rem 1.25rem;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.biz-modal-btn-web:hover{background:#182e6a}
+.biz-modal-btn-email{background:#fff;color:var(--navy);border:2px solid var(--navy);padding:.65rem 1.25rem;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.biz-modal-coupons{border-top:1px solid var(--border);padding-top:1rem;margin-top:.5rem}
+.biz-modal-coupons h4{font-size:.82rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
+.biz-modal-coupon{background:var(--light);border-radius:10px;padding:.85rem 1rem;margin-bottom:.65rem;display:flex;justify-content:space-between;align-items:center}
+.biz-modal-coupon-info{flex:1}
+.biz-modal-coupon-discount{font-size:1.1rem;font-weight:900;color:var(--navy)}
+.biz-modal-coupon-desc{font-size:.78rem;color:var(--gray);margin-top:.15rem}
+.biz-modal-coupon-code{background:var(--gold);color:#111;font-size:.75rem;font-weight:800;padding:.3rem .7rem;border-radius:6px;cursor:pointer;white-space:nowrap}
+.biz-modal-close{width:100%;background:var(--light);color:var(--navy);border:none;padding:.9rem;border-radius:10px;font-weight:700;font-size:.92rem;cursor:pointer;margin-top:.5rem}
+.biz-more-btn{display:block;margin-top:.6rem;background:var(--gold);color:#111;border:none;padding:.45rem .9rem;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;width:100%;text-align:center}
+.biz-more-btn:hover{background:#b8922e;color:#fff}
+/* FEATURED & PREMIUM DIRECTORY CARDS */
+.biz-card.featured-card{background:linear-gradient(135deg,#fffbf0,#fff8e1);border:2px solid var(--gold);position:relative}
+.biz-card.featured-card .biz-name{color:#7a5c00}
+.biz-card.featured-card::before{content:'⭐ Featured';position:absolute;top:-.1rem;right:.75rem;background:var(--gold);color:#111;font-size:.62rem;font-weight:800;padding:.15rem .5rem;border-radius:0 0 5px 5px}
+.biz-card.premium-card{background:linear-gradient(135deg,#0a1c4b,#182e6a);border:2px solid var(--gold);position:relative;color:#fff}
+.biz-card.premium-card .biz-name{color:var(--gold)}
+.biz-card.premium-card .biz-desc,.biz-card.premium-card .biz-addr{color:rgba(255,255,255,.7)}
+.biz-card.premium-card .biz-phone a{color:#fff}
+.biz-card.premium-card::before{content:'💎 Premium';position:absolute;top:-.1rem;right:.75rem;background:var(--gold);color:#111;font-size:.62rem;font-weight:800;padding:.15rem .5rem;border-radius:0 0 5px 5px}
+.biz-card.premium-card:hover{box-shadow:0 4px 20px rgba(212,168,67,.4)}
+.biz-more-btn{display:block;margin-top:.6rem;background:var(--gold);color:#111;border:none;padding:.45rem .9rem;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;width:100%;text-align:center}
+.biz-more-btn:hover{background:#b8922e;color:#fff}
+
 .hidden{display:none!important}
 .container{max-width:1150px;margin:0 auto}
 </style>
@@ -1178,7 +1219,145 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
   </div>
 </footer>
 
+<!-- BUSINESS PROFILE MODAL -->
+<div class="biz-modal-overlay" id="bizModalOverlay" onclick="if(event.target===this)closeBizModal()">
+  <div class="biz-modal" id="bizModal">
+    <div class="biz-modal-handle"></div>
+    <div class="biz-modal-banner" id="bizModalBanner"></div>
+    <div class="biz-modal-body">
+      <div class="biz-modal-badge" id="bizModalBadge">⭐ Featured Partner</div>
+      <div class="biz-modal-name" id="bizModalName"></div>
+      <div class="biz-modal-cat" id="bizModalCat"></div>
+      <div class="biz-modal-desc" id="bizModalDesc"></div>
+      <div class="biz-modal-actions" id="bizModalActions"></div>
+      <div class="biz-modal-coupons" id="bizModalCoupons" style="display:none">
+        <h4>🎟️ Active Coupons</h4>
+        <div id="bizModalCouponsList"></div>
+      </div>
+      <button class="biz-modal-close" onclick="closeBizModal()">✕ Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
+// ─── BUSINESS PROFILE MODAL ───────────────────────────────
+(function() {
+  let featuredAds = [];
+  let allCoupons = [];
+
+  async function loadFeaturedProfiles() {
+    try {
+      // Load ads
+      const adsRes = await fetch('/.netlify/functions/get-ads');
+      if (adsRes.ok) {
+        const data = await adsRes.json();
+        featuredAds = [...(data.banners||[]), ...(data.featured||[]), ...(data.sponsored||[])];
+      }
+
+      // Load coupons
+      const coupRes = await fetch(`https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ`, {
+        headers: { 'Authorization': `Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87` }
+      });
+      if (coupRes.ok) {
+        const coupData = await coupRes.json();
+        allCoupons = (coupData.records||[])
+          .filter(r => (r.fields.Status||'').toLowerCase() === 'active')
+          .map(r => ({ biz: r.fields.BusinessName||'', discount: r.fields.Discount||'', desc: r.fields.Description||'', code: r.fields.Code||'' }));
+      }
+
+      // Inject "More Info" buttons and styling into matching directory cards
+      if (featuredAds.length) {
+        document.querySelectorAll('.biz-card').forEach(card => {
+          const nameEl = card.querySelector('.biz-name');
+          if (!nameEl) return;
+          const cardName = nameEl.textContent.trim().toLowerCase();
+          const match = featuredAds.find(a =>
+            a.businessName.toLowerCase() === cardName ||
+            cardName.includes(a.businessName.toLowerCase()) ||
+            a.businessName.toLowerCase().includes(cardName)
+          );
+          if (match) {
+            // Apply card styling based on plan
+            if (match.planType === 'premium') {
+              card.classList.add('premium-card');
+            } else {
+              card.classList.add('featured-card');
+            }
+            // Add More Info button
+            const btn = document.createElement('button');
+            btn.className = 'biz-more-btn';
+            btn.textContent = match.planType === 'premium' ? '💎 More Info' : '⭐ More Info';
+            btn.onclick = (e) => { e.stopPropagation(); openBizModal(match); };
+            card.appendChild(btn);
+          }
+        });
+      }
+    } catch(e) { console.log('Profile load error:', e); }
+  }
+
+  window.openBizModal = function(ad) {
+    // Banner
+    const banner = document.getElementById('bizModalBanner');
+    if (ad.bannerHTML) {
+      banner.innerHTML = `<iframe srcdoc="${ad.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:160px;border:none"></iframe>`;
+      banner.style.display = 'block';
+    } else if (ad.businessName) {
+      banner.innerHTML = `<div class="biz-modal-banner-fallback" style="background:linear-gradient(135deg,${ad.color||'#0a1c4b'},#182e6a)">${ad.businessName}</div>`;
+      banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none';
+    }
+
+    // Badge
+    const type = (ad.adType||'').toLowerCase();
+    document.getElementById('bizModalBadge').textContent = type.includes('banner') || type.includes('bundle') ? '💎 Premium Partner' : '⭐ Featured Partner';
+
+    // Info
+    document.getElementById('bizModalName').textContent = ad.businessName || '';
+    document.getElementById('bizModalCat').textContent = ad.category || '';
+    document.getElementById('bizModalDesc').textContent = ad.description || ad.tagline || '';
+
+    // Actions
+    let actions = '';
+    if (ad.phone) actions += `<a href="tel:${ad.phone.replace(/\D/g,'')}" class="biz-modal-btn-call">📞 Call Now</a>`;
+    if (ad.link) actions += `<a href="${ad.link}" target="_blank" class="biz-modal-btn-web">🌐 Visit Website</a>`;
+    if (ad.email) actions += `<a href="mailto:${ad.email}" class="biz-modal-btn-email">✉️ Email Us</a>`;
+    document.getElementById('bizModalActions').innerHTML = actions;
+
+    // Coupons
+    const bizCoupons = allCoupons.filter(c => c.biz.toLowerCase() === ad.businessName.toLowerCase());
+    const coupSection = document.getElementById('bizModalCoupons');
+    if (bizCoupons.length) {
+      coupSection.style.display = 'block';
+      document.getElementById('bizModalCouponsList').innerHTML = bizCoupons.map(c => `
+        <div class="biz-modal-coupon">
+          <div class="biz-modal-coupon-info">
+            <div class="biz-modal-coupon-discount">${c.discount}</div>
+            <div class="biz-modal-coupon-desc">${c.desc}</div>
+          </div>
+          ${c.code ? `<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText('${c.code}');this.textContent='✅ Copied!';setTimeout(()=>this.textContent='${c.code}',2000)">${c.code}</div>` : ''}
+        </div>`).join('');
+    } else {
+      coupSection.style.display = 'none';
+    }
+
+    // Open modal
+    document.getElementById('bizModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeBizModal = function() {
+    document.getElementById('bizModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadFeaturedProfiles);
+  } else {
+    loadFeaturedProfiles();
+  }
+})();
+
 // ─── SEARCH & FILTER ─────────────────────────────
 function filterBiz() {
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
