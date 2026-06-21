@@ -26,13 +26,15 @@ exports.handler = async (event) => {
     } else if (planLower.includes('premium')) {
       priceId = 'price_1TioIZIDdMLYVh4oq1PwgFFg'; // $36/mo Premium
     } else if (planLower.includes('banner')) {
-      priceId = process.env.PRICE_BANNER || ''; // $99/mo Banner
+      priceId = 'price_1TjqGzIDdMLYVh4olYMxSAun'; // $99/mo Banner
     } else if (planLower.includes('sponsored')) {
-      priceId = process.env.PRICE_SPONSORED || ''; // $49/mo Sponsored
+      priceId = 'price_1TjqHWIDdMLYVh4o5SU8U9rG'; // $49/mo Sponsored
     } else if (planLower.includes('featuredbusiness')) {
-      priceId = process.env.PRICE_FEATURED_BIZ || ''; // $79/mo Featured Business
+      priceId = 'price_1TjqHpIDdMLYVh4ozAzwrUzX'; // $79/mo Featured Business
     } else if (planLower.includes('bundle')) {
-      priceId = process.env.PRICE_BUNDLE || ''; // $129/mo Bundle
+      priceId = 'price_1TjqJTIDdMLYVh4oey44O6Il'; // $129/mo Bundle
+    } else if (planLower.includes('coupon')) {
+      priceId = 'price_1TksPjCeft5tD5H2nzn2Ssng'; // $29/mo Coupon
     }
 
     if (!priceId) {
@@ -44,11 +46,15 @@ exports.handler = async (event) => {
       };
     }
 
+    const successUrl = planLower.includes('coupon')
+      ? 'https://shoplocalsi.com/coupon-success.html'
+      : 'https://shoplocalsi.com/success.html?payment=success&plan=' + encodeURIComponent(plan);
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
       mode,
-      success_url: 'https://shoplocalsi.com/?payment=success',
+      success_url: successUrl,
       cancel_url: 'https://shoplocalsi.com/#advertise',
     });
 
