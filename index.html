@@ -27,12 +27,24 @@ nav{background:var(--navy);position:sticky;top:0;z-index:999;padding:0 2rem;disp
 .emstrip .sep{opacity:.5}
 
 /* HERO */
-.hero{background:var(--navy);color:#fff;text-align:center;padding:4.5rem 2rem 5rem;position:relative;overflow:hidden}
+.hero{background:var(--navy);color:#fff;text-align:center;padding:3rem 2rem 3.5rem;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,168,67,.18),transparent 65%);pointer-events:none}
-.hero h1{font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-1px;position:relative}
+.hero h1{font-size:clamp(1.8rem,4.5vw,3.5rem);font-weight:900;line-height:1.05;letter-spacing:-1px;position:relative}
 .hero h1 em{color:var(--red);font-style:normal;display:block}
-.hero-sub{font-size:1.15rem;margin:.9rem auto 0;max-width:520px;color:rgba(255,255,255,.82);position:relative}
-.hero-btns{display:flex;gap:.9rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;position:relative}
+.hero-sub{font-size:1rem;margin:.75rem auto 0;max-width:520px;color:rgba(255,255,255,.82);position:relative}
+.hero-btns{display:flex;gap:.9rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;position:relative}
+
+/* TV SCREEN */
+.tv-wrap{max-width:1150px;margin:0 auto;padding:1.5rem 2rem;background:var(--navy)}
+.tv-screen{background:#111;border-radius:16px;border:6px solid #2a2a2a;box-shadow:0 0 0 2px #444,0 20px 40px rgba(0,0,0,.5);overflow:hidden;position:relative;cursor:pointer}
+.tv-screen::before{content:'📺 LIVE ADS';position:absolute;top:.5rem;left:.75rem;background:var(--red);color:#fff;font-size:.6rem;font-weight:800;padding:.15rem .45rem;border-radius:3px;z-index:10;letter-spacing:.5px}
+.tv-screen::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.03) 0%,transparent 50%);pointer-events:none;z-index:5}
+.tv-content{height:160px;display:flex;align-items:center;justify-content:center}
+.tv-stand{width:60px;height:12px;background:#2a2a2a;margin:0 auto;border-radius:0 0 4px 4px}
+.tv-base{width:120px;height:8px;background:#222;margin:0 auto;border-radius:4px}
+.tv-label{text-align:center;color:rgba(255,255,255,.5);font-size:.72rem;margin-top:.5rem;letter-spacing:.5px}
+.tv-view-all{display:block;text-align:center;margin-top:.75rem;color:var(--gold);font-weight:700;font-size:.85rem;text-decoration:none}
+.tv-view-all:hover{color:#fff}
 .btn-gold{background:var(--gold);color:#111;padding:.78rem 1.9rem;border-radius:8px;font-weight:800;font-size:.95rem;transition:background .2s,transform .2s}
 .btn-gold:hover{background:#b8922e;transform:translateY(-2px)}
 .btn-outline{border:2px solid rgba(255,255,255,.7);color:#fff;padding:.78rem 1.9rem;border-radius:8px;font-weight:700;font-size:.95rem;transition:all .2s}
@@ -266,6 +278,8 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
     <li><a href="#directory">Directory</a></li>
     <li><a href="#shabbos">Shabbos Times</a></li>
     <li><a href="#marketplace">Marketplace</a></li>
+    <li><a href="/ads.html">📢 Ads</a></li>
+    <li><a href="/coupons.html">🎟️ Coupons</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="#advertise">Advertise</a></li>
     <li><a href="#advertise" class="nav-cta">List Your Business</a></li>
@@ -284,6 +298,19 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:3rem 2rem 2rem}
     <a href="#marketplace" class="btn-outline">Community Marketplace</a>
     <a href="#advertise" class="btn-outline">List Your Business</a>
   </div>
+</div>
+
+<!-- TV SCREEN ADS WIDGET -->
+<div class="tv-wrap" id="tvWrap" style="display:none">
+  <div class="tv-screen" onclick="window.location.href='/ads.html'">
+    <div class="tv-content" id="tvContent">
+      <div style="color:rgba(255,255,255,.4);font-size:.85rem">Loading ads…</div>
+    </div>
+  </div>
+  <div class="tv-stand"></div>
+  <div class="tv-base"></div>
+  <div class="tv-label">CLICK TO VIEW ALL ADS & PROMOTIONS</div>
+  <a href="/ads.html" class="tv-view-all">📢 View All Ads & Promotions →</a>
 </div>
 
 <!-- STATS -->
@@ -1479,6 +1506,57 @@ function setTab(cat, btn) {
     document.addEventListener('DOMContentLoaded', initMarketplace);
   } else {
     initMarketplace();
+  }
+})();
+
+// ─── TV SCREEN ADS ───────────────────────────────
+(function() {
+  async function loadTVAds() {
+    try {
+      const res = await fetch('/.netlify/functions/get-ads');
+      if (!res.ok) return;
+      const data = await res.json();
+      const all = [...(data.banners||[]), ...(data.featured||[]), ...(data.sponsored||[])];
+      if (!all.length) return;
+
+      const tvWrap = document.getElementById('tvWrap');
+      const tvContent = document.getElementById('tvContent');
+      tvWrap.style.display = 'block';
+
+      let current = 0;
+      function showAd(i) {
+        const ad = all[i];
+        if (ad.bannerHTML) {
+          tvContent.innerHTML = `<iframe srcdoc="${ad.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:160px;border:none;display:block"></iframe>`;
+        } else {
+          tvContent.innerHTML = `
+            <div style="width:100%;height:160px;background:linear-gradient(135deg,${ad.color||'#0a1c4b'},#182e6a);display:flex;align-items:center;justify-content:space-between;padding:0 2rem">
+              <div>
+                <div style="color:var(--gold);font-size:1.3rem;font-weight:900">${ad.businessName}</div>
+                <div style="color:rgba(255,255,255,.8);font-size:.85rem;margin-top:.3rem">${ad.tagline||ad.description||''}</div>
+                <div style="color:var(--gold);font-weight:700;margin-top:.5rem">${ad.phone||''}</div>
+              </div>
+              <div style="background:var(--gold);color:#111;padding:.65rem 1.25rem;border-radius:8px;font-weight:800;font-size:.85rem">View Ad →</div>
+            </div>`;
+        }
+      }
+
+      showAd(0);
+      if (all.length > 1) {
+        setInterval(() => {
+          current = (current + 1) % all.length;
+          tvContent.style.opacity = '0';
+          setTimeout(() => { showAd(current); tvContent.style.opacity = '1'; }, 300);
+        }, 4000);
+        tvContent.style.transition = 'opacity .3s';
+      }
+    } catch(e) { console.log('TV ads error:', e); }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadTVAds);
+  } else {
+    loadTVAds();
   }
 })();
 
