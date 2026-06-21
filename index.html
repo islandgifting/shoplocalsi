@@ -90,7 +90,7 @@ section{padding:3rem 2rem}
 .shab-wrap{max-width:560px;margin:0 auto}
 .shab-card{background:rgba(255,255,255,.08);border:1px solid rgba(212,168,67,.35);border-radius:16px;padding:2rem}
 .shab-date{text-align:center;font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:1.25rem}
-.shab-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+.shab-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
 .shab-block{text-align:center;padding:1rem;background:rgba(255,255,255,.07);border-radius:10px}
 .shab-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.55);margin-bottom:.35rem}
 .shab-time{font-size:1.8rem;font-weight:800;color:var(--gold)}
@@ -158,7 +158,7 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:2.5rem 2rem 1.5rem
   .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:var(--navy);flex-direction:column;padding:1rem 2rem;gap:.75rem}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
-  .stats{gap:1.2rem}
+  .shab-grid{grid-template-columns:1fr}
   .shab-grid{grid-template-columns:1fr}
   .ql-grid{grid-template-columns:repeat(3,1fr)}
 }
@@ -286,12 +286,77 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:2.5rem 2rem 1.5rem
   <div class="sec-head">
     <h2>🕯 Shabbos Times</h2>
     <div class="divider"></div>
-    <p>Weekly Shabbos times for Staten Island</p>
+    <p>Select your city for accurate candle lighting times</p>
   </div>
   <div class="shab-wrap">
+    <!-- CITY SELECTOR -->
+    <div style="margin-bottom:1.25rem">
+      <select id="citySelect" onchange="updateShabbos()" style="width:100%;padding:.75rem 1rem;border:2px solid rgba(212,168,67,.5);border-radius:10px;font-size:.95rem;font-weight:600;background:rgba(255,255,255,.1);color:#fff;outline:none;cursor:pointer">
+        <optgroup label="🇺🇸 United States">
+          <option value="40.5795,-74.1502,-5,-4">📍 Staten Island, NY</option>
+          <option value="40.6782,-73.9442,-5,-4">Brooklyn, NY</option>
+          <option value="40.0975,-74.2148,-5,-4">Lakewood, NJ</option>
+          <option value="40.7282,-74.0776,-5,-4">Passaic/Clifton, NJ</option>
+          <option value="40.9176,-74.1719,-5,-4">Monsey, NY</option>
+          <option value="41.3107,-74.1254,-5,-4">Monroe/Kiryas Joel, NY</option>
+          <option value="41.0534,-74.1301,-5,-4">Spring Valley, NY</option>
+          <option value="41.6588,-74.6940,-5,-4">South Fallsburg, NY</option>
+          <option value="41.5623,-74.0030,-5,-4">Newburgh, NY</option>
+          <option value="41.4165,-75.6541,-5,-4">Scranton, PA</option>
+          <option value="39.9526,-75.1652,-5,-4">Philadelphia, PA</option>
+          <option value="42.3601,-71.0589,-5,-4">Boston, MA</option>
+          <option value="41.3083,-72.9279,-5,-4">New Haven, CT</option>
+          <option value="41.4993,-81.6944,-5,-4">Cleveland, OH</option>
+          <option value="42.3314,-83.0458,-5,-4">Detroit, MI</option>
+          <option value="41.8781,-87.6298,-6,-5">Chicago, IL</option>
+          <option value="43.0481,-76.1474,-5,-4">Syracuse, NY</option>
+          <option value="34.0522,-118.2437,-8,-7">Los Angeles, CA</option>
+          <option value="37.7749,-122.4194,-8,-7">San Francisco, CA</option>
+          <option value="25.7617,-80.1918,-5,-4">Miami, FL</option>
+          <option value="33.7490,-84.3880,-5,-4">Atlanta, GA</option>
+          <option value="29.7604,-95.3698,-6,-5">Houston, TX</option>
+          <option value="32.7767,-96.7970,-6,-5">Dallas, TX</option>
+          <option value="36.1699,-115.1398,-8,-7">Las Vegas, NV</option>
+          <option value="47.6062,-122.3321,-8,-7">Seattle, WA</option>
+          <option value="25.9382,-80.2451,-5,-4">Aventura/Bal Harbour, FL</option>
+          <option value="38.9072,-77.0369,-5,-4">Washington DC</option>
+          <option value="39.7684,-86.1581,-5,-4">Indianapolis, IN</option>
+          <option value="36.1627,-86.7816,-6,-5">Nashville, TN</option>
+          <option value="19.4326,-99.1332,-6,-6">Mexico City, Mexico</option>
+        </optgroup>
+        <optgroup label="🇬🇧 United Kingdom">
+          <option value="51.5074,-0.1278,0,1">London, UK</option>
+          <option value="53.4808,-2.2426,0,1">Manchester, UK</option>
+          <option value="51.4545,-2.5879,0,1">Bristol, UK</option>
+          <option value="53.8008,-1.5491,0,1">Leeds/Harrogate, UK</option>
+          <option value="52.4862,-1.8904,0,1">Birmingham, UK</option>
+          <option value="55.8642,-4.2518,0,1">Glasgow, UK</option>
+        </optgroup>
+        <optgroup label="🇮🇱 Israel">
+          <option value="31.7683,35.2137,2,3">Jerusalem</option>
+          <option value="32.0853,34.7818,2,3">Tel Aviv / Bnei Brak</option>
+          <option value="32.7940,34.9896,2,3">Haifa</option>
+          <option value="31.2589,34.7986,2,3">Be'er Sheva</option>
+          <option value="32.3215,34.8532,2,3">Netanya</option>
+          <option value="31.8928,35.0054,2,3">Beit Shemesh</option>
+          <option value="31.5213,35.1179,2,3">Beitar Illit</option>
+        </optgroup>
+        <optgroup label="🌍 Other">
+          <option value="48.8566,2.3522,1,2">Paris, France</option>
+          <option value="52.5200,13.4050,1,2">Berlin, Germany</option>
+          <option value="52.3676,4.9041,1,2">Amsterdam, Netherlands</option>
+          <option value="-33.8688,151.2093,10,11">Sydney, Australia</option>
+          <option value="-37.8136,144.9631,10,11">Melbourne, Australia</option>
+          <option value="43.6532,-79.3832,-5,-4">Toronto, Canada</option>
+          <option value="45.5017,-73.5673,-5,-4">Montreal, Canada</option>
+          <option value="49.2827,-123.1207,-8,-7">Vancouver, Canada</option>
+        </optgroup>
+      </select>
+    </div>
+
     <div class="shab-card">
       <div class="shab-date" id="shabDate">Loading…</div>
-      <div class="shab-grid">
+      <div class="shab-grid" style="grid-template-columns:1fr 1fr 1fr">
         <div class="shab-block">
           <div class="shab-lbl">🕯 Candle Lighting</div>
           <div class="shab-time" id="candleLighting">—</div>
@@ -302,9 +367,14 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:2.5rem 2rem 1.5rem
           <div class="shab-time" id="shabbosEnds">—</div>
           <div class="shab-note">50 min after sunset</div>
         </div>
+        <div class="shab-block" style="border:1px solid rgba(212,168,67,.4)">
+          <div class="shab-lbl" style="color:var(--gold)">⭐ Rabbeinu Tam</div>
+          <div class="shab-time" id="rabbeinuTam">—</div>
+          <div class="shab-note">72 min after sunset</div>
+        </div>
       </div>
       <div class="shab-disclaimer">
-        ⚠ Times are approximate for Staten Island. Always verify with your local Rav.<br>
+        ⚠ Times are approximate. Always verify with your local Rav.<br>
         Accurate times: <a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank">Chabad.org</a> · <a href="https://myzmanim.com" target="_blank">MyZmanim.com</a>
       </div>
     </div>
@@ -431,42 +501,66 @@ footer{background:#070e29;color:rgba(255,255,255,.75);padding:2.5rem 2rem 1.5rem
 <script>
 // ─── SHABBOS TIMES ──────────────────────────────
 (function() {
-  const LAT = 40.5795, LON = -74.1502;
   function getNextFriday() {
     const d = new Date(); const day = d.getDay();
     const diff = day <= 5 ? 5 - day : 6;
     const fri = new Date(d); fri.setDate(d.getDate() + (diff === 0 ? 7 : diff));
     fri.setHours(12,0,0,0); return fri;
   }
-  function isDST(date) {
+
+  function calcSunset(date, lat, lon, stdOffset, dstOffset) {
+    // Determine if DST applies (simplified for Northern Hemisphere)
     const yr = date.getFullYear();
-    const start = new Date(yr,2,1); start.setDate(1+(7-start.getDay())%7+7);
-    const end = new Date(yr,10,1); end.setDate(1+(7-end.getDay())%7);
-    return date >= start && date < end;
-  }
-  function calcSunset(date) {
-    const J = Math.floor((date - new Date(date.getFullYear(),0,0))/86400000);
+    const dstStart = new Date(yr, 2, 8); // approx March 8
+    const dstEnd = new Date(yr, 10, 1);  // approx Nov 1
+    const isDST = date >= dstStart && date < dstEnd;
+    const offset = isDST ? dstOffset : stdOffset;
+
+    const J = Math.floor((date - new Date(yr,0,0))/86400000);
     const D = 23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180;
-    const lat_r = LAT*Math.PI/180;
+    const lat_r = lat*Math.PI/180;
     const cosH = -Math.tan(lat_r)*Math.tan(D);
     if (cosH>1||cosH<-1) return null;
     const H = Math.acos(cosH)*180/Math.PI;
-    return 12+H/15-LON/15+(isDST(date)?-4:-5);
+    return 12 + H/15 - lon/15 + offset;
   }
+
   function fmt(h) {
-    const hr=Math.floor(h),min=Math.round((h-hr)*60);
-    const m=min<10?'0'+min:min,period=hr>=12?'PM':'AM',h12=hr>12?hr-12:hr===0?12:hr;
+    if (h === null) return 'N/A';
+    h = ((h % 24) + 24) % 24; // handle wraparound
+    const hr=Math.floor(h), min=Math.round((h-hr)*60);
+    const m=min<10?'0'+min:min, period=hr>=12?'PM':'AM', h12=hr>12?hr-12:hr===0?12:hr;
     return h12+':'+m+' '+period;
   }
-  const fri=getNextFriday(),sun=calcSunset(fri);
-  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const sat=new Date(fri); sat.setDate(fri.getDate()+1);
-  document.getElementById('shabDate').textContent='Shabbos '+days[fri.getDay()]+', '+months[fri.getMonth()]+' '+fri.getDate()+' — '+months[sat.getMonth()]+' '+sat.getDate()+', '+sat.getFullYear();
-  if (sun) {
-    document.getElementById('candleLighting').textContent=fmt(sun-18/60);
-    document.getElementById('shabbosEnds').textContent=fmt(sun+50/60);
-  }
+
+  window.updateShabbos = function() {
+    const sel = document.getElementById('citySelect');
+    if (!sel) return;
+    const parts = sel.value.split(',');
+    const lat = parseFloat(parts[0]);
+    const lon = parseFloat(parts[1]);
+    const stdOffset = parseFloat(parts[2]);
+    const dstOffset = parseFloat(parts[3]);
+
+    const fri = getNextFriday();
+    const sun = calcSunset(fri, lat, lon, stdOffset, dstOffset);
+
+    const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const sat = new Date(fri); sat.setDate(fri.getDate()+1);
+
+    const cityName = sel.options[sel.selectedIndex].text;
+    document.getElementById('shabDate').textContent =
+      cityName + ' · Shabbos ' + days[fri.getDay()] + ', ' + months[fri.getMonth()] + ' ' + fri.getDate() +
+      ' — ' + months[sat.getMonth()] + ' ' + sat.getDate() + ', ' + sat.getFullYear();
+
+    document.getElementById('candleLighting').textContent = fmt(sun !== null ? sun - 18/60 : null);
+    document.getElementById('shabbosEnds').textContent = fmt(sun !== null ? sun + 50/60 : null);
+    document.getElementById('rabbeinuTam').textContent = fmt(sun !== null ? sun + 72/60 : null);
+  };
+
+  // Run on load
+  updateShabbos();
 })();
 
 // ─── BANNER FLASH ANIMATION ──────────────────────────────
