@@ -9,6 +9,8 @@
 :root{--navy:#0a1c4b;--red:#cc2222;--gold:#d4a843;--light:#f4f6fb;--white:#fff;--border:#dde2ee;--gray:#64748b}
 body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:#1a1a2e}
 a{color:inherit;text-decoration:none}
+.emstrip{background:var(--red);color:#fff;padding:.45rem 2rem;display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;font-size:.78rem;font-weight:600}
+.emstrip a{color:#fff}.emstrip .sep{opacity:.5}
 nav{background:var(--navy);position:sticky;top:0;z-index:999;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:62px;box-shadow:0 2px 12px rgba(0,0,0,.4)}
 .logo{color:#fff;font-size:1.15rem;font-weight:900}.logo span{color:var(--gold)}
 .nav-links{display:flex;gap:1.25rem;list-style:none}
@@ -16,22 +18,22 @@ nav{background:var(--navy);position:sticky;top:0;z-index:999;padding:0 2rem;disp
 .nav-cta{background:var(--red);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-weight:700!important}
 .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px}
 .hamburger span{width:22px;height:2px;background:#fff;border-radius:2px}
-.page-hero{background:var(--navy);color:#fff;text-align:center;padding:2rem;position:relative}
+.page-hero{background:var(--navy);color:#fff;text-align:center;padding:1.75rem 2rem;position:relative;overflow:hidden}
 .page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,168,67,.2),transparent 65%);pointer-events:none}
-.page-hero h1{font-size:1.8rem;font-weight:900;position:relative}.page-hero h1 span{color:var(--gold)}
-.page-hero p{color:rgba(255,255,255,.8);font-size:.88rem;margin-top:.4rem;position:relative}
-.search-bar{background:#fff;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.page-hero h1{font-size:1.6rem;font-weight:900;position:relative}.page-hero h1 span{color:var(--gold)}
+.page-hero p{color:rgba(255,255,255,.8);font-size:.85rem;margin-top:.35rem;position:relative}
+.search-bar{background:#fff;padding:1rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
 .search-inner{max-width:760px;margin:0 auto;display:flex;gap:.75rem;flex-wrap:wrap}
-.search-inner input,.search-inner select{flex:1;min-width:150px;padding:.7rem 1rem;border:2px solid var(--border);border-radius:8px;font-size:.9rem;outline:none;transition:border .2s}
+.search-inner input,.search-inner select{flex:1;min-width:150px;padding:.65rem 1rem;border:2px solid var(--border);border-radius:8px;font-size:.9rem;outline:none;transition:border .2s}
 .search-inner input:focus,.search-inner select:focus{border-color:var(--navy)}
-.search-inner button{background:var(--navy);color:#fff;border:none;padding:.7rem 1.2rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem}
-.container{max-width:1150px;margin:0 auto;padding:2rem 1.5rem}
-.cat-tabs{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-bottom:2rem}
-.ctab{padding:.35rem .9rem;border:2px solid var(--navy);border-radius:20px;background:transparent;color:var(--navy);font-weight:600;font-size:.78rem;cursor:pointer;transition:all .2s}
+.search-inner button{background:var(--navy);color:#fff;border:none;padding:.65rem 1.2rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem}
+.container{max-width:1150px;margin:0 auto;padding:1.5rem}
+.cat-tabs{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-bottom:1.75rem}
+.ctab{padding:.32rem .85rem;border:2px solid var(--navy);border-radius:20px;background:transparent;color:var(--navy);font-weight:600;font-size:.77rem;cursor:pointer;transition:all .2s}
 .ctab:hover,.ctab.active{background:var(--navy);color:#fff}
 .ctab.em:hover,.ctab.em.active{background:var(--red);border-color:var(--red);color:#fff}
-.cat-section{margin-bottom:2.5rem}
-.cat-title{font-size:.92rem;font-weight:800;color:var(--navy);background:#f0f3fa;padding:.55rem 1rem;border-left:4px solid var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.cat-section{margin-bottom:2.25rem}
+.cat-title{font-size:.9rem;font-weight:800;color:var(--navy);background:#f0f3fa;padding:.5rem 1rem;border-left:4px solid var(--navy);margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.5px}
 .cat-title.em{background:#fff5f5;border-left-color:var(--red);color:var(--red)}
 .biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
 .biz-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:.95rem 1.1rem;transition:all .2s;position:relative}
@@ -53,7 +55,7 @@ nav{background:var(--navy);position:sticky;top:0;z-index:999;padding:0 2rem;disp
 .biz-card.premium-card .biz-phone a{color:#fff}
 .biz-card.premium-card::before{content:'💎 Premium';position:absolute;top:-.1rem;right:.75rem;background:var(--gold);color:#111;font-size:.62rem;font-weight:800;padding:.15rem .5rem;border-radius:0 0 5px 5px}
 .biz-card.premium-card:hover{box-shadow:0 4px 20px rgba(212,168,67,.4)}
-.biz-more-btn{display:block;margin-top:.6rem;background:var(--gold);color:#111;border:none;padding:.42rem .85rem;border-radius:6px;font-size:.73rem;font-weight:700;cursor:pointer;width:100%;text-align:center}
+.biz-more-btn{display:block;margin-top:.55rem;background:var(--gold);color:#111;border:none;padding:.4rem .85rem;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;width:100%;text-align:center}
 .biz-more-btn:hover{background:#b8922e;color:#fff}
 .hidden{display:none!important}
 .biz-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
@@ -79,12 +81,25 @@ nav{background:var(--navy);position:sticky;top:0;z-index:999;padding:0 2rem;disp
 .biz-modal-coupon-desc{font-size:.76rem;color:var(--gray);margin-top:.1rem}
 .biz-modal-coupon-code{background:var(--gold);color:#111;font-size:.73rem;font-weight:800;padding:.28rem .65rem;border-radius:6px;cursor:pointer;white-space:nowrap}
 .biz-modal-close{width:100%;background:var(--light);color:var(--navy);border:none;padding:.85rem;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;margin-top:.4rem}
-footer{background:#070e29;color:rgba(255,255,255,.6);text-align:center;padding:1.5rem;font-size:.82rem}
+footer{background:#070e29;color:rgba(255,255,255,.6);text-align:center;padding:1.25rem;font-size:.8rem}
 footer a{color:var(--gold)}
-@media(max-width:768px){.nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:var(--navy);flex-direction:column;padding:1rem 2rem;gap:.75rem}.nav-links.open{display:flex}.hamburger{display:flex}}
+@media(max-width:768px){.nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:var(--navy);flex-direction:column;padding:1rem 2rem;gap:.75rem}.nav-links.open{display:flex}.hamburger{display:flex}.emstrip{gap:.65rem;font-size:.72rem}}
 </style>
 </head>
 <body>
+
+<div class="emstrip">
+  <span>🚨 EMERGENCIES:</span>
+  <a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a>
+  <span class="sep">|</span>
+  <a href="tel:7187612428">Chaveirim: 718-761-2428</a>
+  <span class="sep">|</span>
+  <a href="tel:7187614444">Shmira: 718-761-4444</a>
+  <span class="sep">|</span>
+  <a href="tel:7183702121">Shomrim: 718-370-2121</a>
+  <span class="sep">|</span>
+  <a href="tel:7188544548">Misaskim: (718) 854-4548</a>
+</div>
 
 <nav>
   <a href="/" class="logo">Shop<span>Local</span> SI</a>
@@ -94,7 +109,6 @@ footer a{color:var(--gold)}
     <li><a href="/ads.html">📢 Ads</a></li>
     <li><a href="/coupons.html">🎟️ Coupons</a></li>
     <li><a href="/#shabbos">Shabbos</a></li>
-    <li><a href="/#blog">Blog</a></li>
     <li><a href="/advertise.html" class="nav-cta">Advertise</a></li>
   </ul>
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
@@ -102,7 +116,7 @@ footer a{color:var(--gold)}
 
 <div class="page-hero">
   <h1>Community <span>Business Directory</span></h1>
-  <p>Every dollar spent locally strengthens our community — search, find, support</p>
+  <p>Every dollar spent locally strengthens our community</p>
 </div>
 
 <div class="search-bar">
@@ -110,13 +124,13 @@ footer a{color:var(--gold)}
     <input type="text" id="searchInput" placeholder="Search businesses, services..." oninput="filterBiz()">
     <select id="catFilter" onchange="filterBiz()">
       <option value="">All Categories</option>
-      <option value="food">Restaurants & Food</option>
+      <option value="food">Restaurants &amp; Food</option>
       <option value="home">Home Services</option>
       <option value="photo">Photography</option>
       <option value="auto">Auto Services</option>
       <option value="medical">Medical</option>
       <option value="specialty">Specialty Shops</option>
-      <option value="beauty">Beauty & Self Care</option>
+      <option value="beauty">Beauty &amp; Self Care</option>
       <option value="pool">Pool Rental</option>
       <option value="services">Services</option>
       <option value="transport">Transportation</option>
@@ -147,251 +161,173 @@ footer a{color:var(--gold)}
   </div>
 
   <div id="bizContainer">
-        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
-        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
-        <li><a href="tel:7188544548">Misaskim: (718) 854-4548</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    &copy; 2025 Shop Local Staten Island · Strengthening our community one purchase at a time<br>
-    <span style="font-size:.72rem">To add or update your listing: <a href="/advertise.html" style="color:var(--gold)">click here</a></span>
-  </div>
-</footer>
 
-<!-- BUSINESS PROFILE MODAL -->
-<div class="biz-modal-overlay" id="bizModalOverlay" onclick="if(event.target===this)closeBizModal()">
-  <div class="biz-modal" id="bizModal">
-    <div class="biz-modal-handle"></div>
-    <div class="biz-modal-banner" id="bizModalBanner"></div>
-    <div class="biz-modal-body">
-      <div class="biz-modal-badge" id="bizModalBadge">⭐ Featured Partner</div>
-      <div class="biz-modal-name" id="bizModalName"></div>
-      <div class="biz-modal-cat" id="bizModalCat"></div>
-      <div class="biz-modal-desc" id="bizModalDesc"></div>
-      <div class="biz-modal-actions" id="bizModalActions"></div>
-      <div class="biz-modal-coupons" id="bizModalCoupons" style="display:none">
-        <h4>🎟️ Active Coupons</h4>
-        <div id="bizModalCouponsList"></div>
+    <!-- FOOD -->
+    <div class="cat-section" data-cat="food">
+      <div class="cat-title">🍽 Restaurants &amp; Food</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="food" data-search="321 desserts food"><div class="biz-name">321 Desserts</div><div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="dairy palace pizza caterers victory"><div class="biz-name">Dairy Palace Pizza &amp; Caterers</div><div class="biz-addr">2216 Victory Blvd</div><div class="biz-phone"><a href="tel:7187615200">718-761-5200</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="fruitique shelley fruit"><div class="biz-name">Fruitique by Shelley</div><div class="biz-phone"><a href="tel:7183741418">718-374-1418</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="island catering ny steven israel"><div class="biz-name">Island Catering NY</div><div class="biz-desc">Steven Israel</div><div class="biz-phone"><a href="tel:6466456609">646-645-6609</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="island kosher supermarket grocery"><div class="biz-name">Island Kosher Supermarket</div><div class="biz-addr">2200 Victory Blvd</div><div class="biz-phone"><a href="tel:7186502200">718-650-2200</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="milk honey bradley"><div class="biz-name">Milk &amp; Honey</div><div class="biz-addr">330 Bradley Ave</div><div class="biz-phone"><a href="tel:7188714319">718-871-4319</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="sugar house ice cream dessert victory"><div class="biz-name">Sugar House Ice Cream</div><div class="biz-addr">2003 Victory Blvd</div><div class="biz-phone"><a href="tel:7187016891">718-701-6891</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="tasters market bradley"><div class="biz-name">Tasters Market</div><div class="biz-addr">330 Bradley Ave</div><div class="biz-phone"><a href="tel:7184772300">718-477-2300</a></div></div>
+        <div class="biz-card" data-cat="food" data-search="natures island health food store"><div class="biz-name">The Natures Island</div><div class="biz-desc">Health Food Store</div><div class="biz-phone"><a href="tel:8455403233">845-540-3233</a></div></div>
       </div>
-      <button class="biz-modal-close" onclick="closeBizModal()">✕ Close</button>
     </div>
-  </div>
-</div>
 
-<script>
-// ─── SHABBOS TIMES ──────────────────────────────
-(function() {
-  const LAT = 40.5795, LON = -74.1502;
-  function getNextFriday() {
-    const d = new Date(); const day = d.getDay();
-    const diff = day <= 5 ? 5 - day : 6;
-    const fri = new Date(d); fri.setDate(d.getDate() + (diff === 0 ? 7 : diff));
-    fri.setHours(12,0,0,0); return fri;
-  }
-  function isDST(date) {
-    const yr = date.getFullYear();
-    const start = new Date(yr,2,1); start.setDate(1+(7-start.getDay())%7+7);
-    const end = new Date(yr,10,1); end.setDate(1+(7-end.getDay())%7);
-    return date >= start && date < end;
-  }
-  function calcSunset(date) {
-    const J = Math.floor((date - new Date(date.getFullYear(),0,0))/86400000);
-    const D = 23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180;
-    const lat_r = LAT*Math.PI/180;
-    const cosH = -Math.tan(lat_r)*Math.tan(D);
-    if (cosH>1||cosH<-1) return null;
-    const H = Math.acos(cosH)*180/Math.PI;
-    return 12+H/15-LON/15+(isDST(date)?-4:-5);
-  }
-  function fmt(h) {
-    const hr=Math.floor(h),min=Math.round((h-hr)*60);
-    const m=min<10?'0'+min:min,period=hr>=12?'PM':'AM',h12=hr>12?hr-12:hr===0?12:hr;
-    return h12+':'+m+' '+period;
-  }
-  const fri=getNextFriday(),sun=calcSunset(fri);
-  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const sat=new Date(fri); sat.setDate(fri.getDate()+1);
-  document.getElementById('shabDate').textContent='Shabbos '+days[fri.getDay()]+', '+months[fri.getMonth()]+' '+fri.getDate()+' — '+months[sat.getMonth()]+' '+sat.getDate()+', '+sat.getFullYear();
-  if (sun) {
-    document.getElementById('candleLighting').textContent=fmt(sun-18/60);
-    document.getElementById('shabbosEnds').textContent=fmt(sun+50/60);
-  }
-})();
-
-// ─── BANNER FLASH ANIMATION ──────────────────────────────
-(function() {
-  const texts = ['📢 YOUR AD HERE', '🏆 PREMIUM BANNER', '✨ BE SEEN BY ALL', '🚀 ADVERTISE NOW'];
-  let i = 0;
-  const el = document.getElementById('bannerFlashText');
-  if (el) setInterval(() => {
-    el.style.opacity = '0';
-    setTimeout(() => {
-      const t = texts[i % texts.length];
-      el.querySelector('div').textContent = t;
-      el.style.opacity = '1';
-      i++;
-    }, 400);
-    el.style.transition = 'opacity .4s';
-  }, 3000);
-})();
-
-// ─── LOAD ADS & FEATURED BUSINESSES ──────────────────────────────
-(function() {
-  let allAds = [], allCoupons = [];
-
-  async function loadAll() {
-    try {
-      const [adsRes, coupRes] = await Promise.all([
-        fetch('/.netlify/functions/get-ads'),
-        fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ', {
-          headers: { 'Authorization': `Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87` }
-        })
-      ]);
-
-      if (adsRes.ok) {
-        const data = await adsRes.json();
-        allAds = data.all || [...(data.banners||[]), ...(data.featured||[]), ...(data.sponsored||[])];
-
-        // BANNER
-        if (data.banners && data.banners.length) {
-          document.getElementById('bannerPromo').style.display = 'none';
-          const wrap = document.getElementById('bannerWrap');
-          const rotator = document.getElementById('bannerRotator');
-          wrap.style.display = 'block';
-          rotator.innerHTML = data.banners.map((b,i) => `
-            <div class="banner-slide ${i===0?'active':''}" style="display:${i===0?'block':'none'}" onclick="${b.link?`window.open('${b.link}','_blank')`:''}">
-              ${b.bannerHTML
-                ? `<iframe srcdoc="${b.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:180px;border:none"></iframe>`
-                : `<div style="width:100%;height:180px;background:linear-gradient(135deg,${b.color||'#0a1c4b'},#182e6a);display:flex;align-items:center;justify-content:space-between;padding:0 2rem">
-                    <div><div style="color:var(--gold);font-size:1.3rem;font-weight:900">${b.businessName}</div><div style="color:rgba(255,255,255,.8);font-size:.85rem">${b.tagline||''}</div><div style="color:var(--gold);font-weight:700">${b.phone||''}</div></div>
-                    <div style="background:var(--gold);color:#111;padding:.7rem 1.4rem;border-radius:8px;font-weight:800">Call Now →</div>
-                  </div>`
-              }
-            </div>`).join('');
-          if (data.banners.length > 1) {
-            let cur = 0;
-            setInterval(() => {
-              const slides = rotator.querySelectorAll('.banner-slide');
-              slides[cur].style.display = 'none';
-              cur = (cur+1) % slides.length;
-              slides[cur].style.display = 'block';
-            }, 4000);
-          }
-        }
-
-        // FEATURED BUSINESSES SECTION
-        const featGrid = document.getElementById('featBizGrid');
-        const featItems = data.all || [...(data.featured||[]), ...(data.banners||[])];
-        if (featItems.length) {
-          featGrid.innerHTML = featItems.map(a => `
-            <div class="feat-biz-card" onclick="openBizModal(${JSON.stringify(a).replace(/"/g,'&quot;')})">
-              <div class="feat-biz-badge">${a.planType === 'premium' ? '💎 Premium' : '⭐ Featured'}</div>
-              <div class="feat-biz-name">${a.businessName}</div>
-              <div class="feat-biz-desc">${a.tagline || a.description || ''}</div>
-              <div class="feat-biz-phone">${a.phone || ''}</div>
-            </div>`).join('');
-        } else {
-          document.getElementById('featSection').style.display = 'none';
-        }
-
-        // TV SCREEN
-        if (allAds.length) {
-          const tvInner = document.getElementById('tvInner');
-          let cur = 0;
-          function showTVAd(i) {
-            const ad = allAds[i];
-            if (ad.bannerHTML) {
-              tvInner.innerHTML = `<iframe srcdoc="${ad.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:100%;border:none"></iframe>`;
-            } else {
-              tvInner.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg,${ad.color||'#0a1c4b'},#182e6a);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center">
-                <div style="color:var(--gold);font-size:1.2rem;font-weight:900">${ad.businessName}</div>
-                <div style="color:rgba(255,255,255,.8);font-size:.8rem;margin-top:.3rem">${ad.tagline||''}</div>
-                <div style="color:var(--gold);font-weight:700;margin-top:.5rem">${ad.phone||''}</div>
-              </div>`;
-            }
-          }
-          showTVAd(0);
-          if (allAds.length > 1) {
-            setInterval(() => {
-              const tvInner = document.getElementById('tvInner');
-              tvInner.style.opacity = '0';
-              tvInner.style.transition = 'opacity .3s';
-              setTimeout(() => { cur = (cur+1)%allAds.length; showTVAd(cur); tvInner.style.opacity='1'; }, 300);
-            }, 4000);
-          }
-        }
-      }
-
-      if (coupRes.ok) {
-        const cd = await coupRes.json();
-        allCoupons = (cd.records||[]).filter(r=>(r.fields.Status||'').toLowerCase()==='active').map(r=>({
-          biz: r.fields.BusinessName||'', discount: r.fields.Discount||'',
-          desc: r.fields.Description||'', code: r.fields.Code||''
-        }));
-      }
-    } catch(e) {
-      console.log('Load error:', e);
-      document.getElementById('featSection').style.display = 'none';
-    }
-  }
-
-  window.openBizModal = function(ad) {
-    if (typeof ad === 'string') ad = JSON.parse(ad);
-    const banner = document.getElementById('bizModalBanner');
-    if (ad.bannerHTML) {
-      banner.innerHTML = `<iframe srcdoc="${ad.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:160px;border:none"></iframe>`;
-      banner.style.display = 'block';
-    } else {
-      banner.innerHTML = `<div style="width:100%;height:120px;background:linear-gradient(135deg,${ad.color||'#0a1c4b'},#182e6a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-weight:900">${ad.businessName}</div>`;
-      banner.style.display = 'block';
-    }
-    document.getElementById('bizModalBadge').textContent = ad.planType==='premium' ? '💎 Premium Partner' : '⭐ Featured Partner';
-    document.getElementById('bizModalName').textContent = ad.businessName||'';
-    document.getElementById('bizModalCat').textContent = (ad.category||'') + (ad.address ? ' · '+ad.address : '');
-    document.getElementById('bizModalDesc').textContent = ad.description||ad.tagline||'';
-    let actions = '';
-    if (ad.phone) actions += `<a href="tel:${ad.phone.replace(/\D/g,'')}" class="biz-modal-btn-call">📞 Call Now</a>`;
-    if (ad.link) actions += `<a href="${ad.link}" target="_blank" class="biz-modal-btn-web">🌐 Visit Website</a>`;
-    if (ad.email) actions += `<a href="mailto:${ad.email}" class="biz-modal-btn-email">✉️ Email Us</a>`;
-    document.getElementById('bizModalActions').innerHTML = actions;
-    const bizCoupons = allCoupons.filter(c=>c.biz.toLowerCase()===(ad.businessName||'').toLowerCase());
-    const coupSection = document.getElementById('bizModalCoupons');
-    if (bizCoupons.length) {
-      coupSection.style.display = 'block';
-      document.getElementById('bizModalCouponsList').innerHTML = bizCoupons.map(c=>`
-        <div class="biz-modal-coupon">
-          <div><div class="biz-modal-coupon-discount">${c.discount}</div><div class="biz-modal-coupon-desc">${c.desc}</div></div>
-          ${c.code?`<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText('${c.code}');this.textContent='✅';setTimeout(()=>this.textContent='${c.code}',2000)">${c.code}</div>`:''}
-        </div>`).join('');
-    } else { coupSection.style.display = 'none'; }
-    document.getElementById('bizModalOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  window.closeBizModal = function() {
-    document.getElementById('bizModalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  document.addEventListener('DOMContentLoaded', loadAll);
-})();
-
-// ─── SMOOTH SCROLL ──────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-</script>
-</body>
-</html>
-    <div style="text-align:center;margin-top:1rem">
-      <p id="noResults" class="hidden" style="color:var(--gray);padding:2rem">No businesses found. Try a different search.</p>
+    <!-- HOME SERVICES -->
+    <div class="cat-section" data-cat="home">
+      <div class="cat-title">🏠 Home Services</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="home" data-search="appliance repair brian home"><div class="biz-name">Appliance Repair</div><div class="biz-desc">Brian</div><div class="biz-phone"><a href="tel:9178860649">917-886-0649</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="dryer vent cleaning chanoch"><div class="biz-name">Dryer Vent Cleaning</div><div class="biz-desc">Chanoch</div><div class="biz-phone"><a href="tel:3472449382">347-244-9382</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="electrician daniel shaool electric"><div class="biz-name">Electrician</div><div class="biz-desc">Daniel Shaool</div><div class="biz-phone"><a href="tel:3479392767">347-939-2767</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="island door repair springs motors"><div class="biz-name">Island Door Repair</div><div class="biz-desc">Springs · Motors · Doors</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="j c power washing houses driveways deck"><div class="biz-name">J &amp; C Power Washing Inc</div><div class="biz-desc">Houses · Driveways · Deck</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="jaison guterman handyman construction"><div class="biz-name">Jaison Guterman</div><div class="biz-desc">Handyman &amp; Construction</div><div class="biz-phone"><a href="tel:7188648164">718-864-8164</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="jake home repairs buildable"><div class="biz-name">Jake — Home Repairs</div><div class="biz-desc">Buildable Home Repairs</div><div class="biz-phone"><a href="tel:7323476458">732-347-6458</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="next level improvements contractor"><div class="biz-name">Next Level Improvements</div><div class="biz-desc">Contractor</div><div class="biz-phone"><a href="tel:9176855086">917-685-5086</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="roofing home alexsander furman"><div class="biz-name">Roofing &amp; Home</div><div class="biz-desc">Alexsander Furman</div><div class="biz-phone"><a href="tel:9178625223">917-862-5223</a></div></div>
+        <div class="biz-card" data-cat="home" data-search="simplify solar electric bills"><div class="biz-name">Simplify Solar</div><div class="biz-desc">Save BIG on electric bills</div><div class="biz-phone"><a href="tel:9175728547">917-572-8547</a></div></div>
+      </div>
     </div>
+
+    <!-- PHOTOGRAPHY -->
+    <div class="cat-section" data-cat="photo">
+      <div class="cat-title">📷 Photography</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="photo" data-search="engaging pix photography newborn family events"><div class="biz-name">Engaging Pix Photography</div><div class="biz-desc">Newborn · Family · Events</div><div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div></div>
+        <div class="biz-card" data-cat="photo" data-search="koby yedgar photography event"><div class="biz-name">Koby Yedgar Photography</div><div class="biz-desc">Event Photography</div><div class="biz-phone"><a href="tel:9176821351">917-682-1351</a></div></div>
+        <div class="biz-card" data-cat="photo" data-search="nechami photography family portraits"><div class="biz-name">Nechami Photography</div><div class="biz-desc">Family Portraits</div><div class="biz-phone"><a href="tel:3472486011">347-248-6011</a></div></div>
+        <div class="biz-card" data-cat="photo" data-search="rikkiz photography portraits events"><div class="biz-name">Rikkiz Photography</div><div class="biz-desc">Portraits and Events</div><div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div></div>
+        <div class="biz-card" data-cat="photo" data-search="ulano photography portraits events"><div class="biz-name">Ulano Photography</div><div class="biz-desc">Portrait and Events</div><div class="biz-phone"><a href="tel:9176157568">917-615-7568</a></div></div>
+      </div>
+    </div>
+
+    <!-- AUTO -->
+    <div class="cat-section" data-cat="auto">
+      <div class="cat-title">🚗 Auto Services</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="auto" data-search="buckle up leasing auto lease car"><div class="biz-name">Buckle Up Leasing</div><div class="biz-desc">Auto Leasing</div><div class="biz-phone"><a href="tel:9172259663">917-225-9663</a></div></div>
+        <div class="biz-card" data-cat="auto" data-search="family auto sales collision mechanical"><div class="biz-name">Family Auto</div><div class="biz-desc">Sales · Collision · Mechanical Services</div><div class="biz-phone"><a href="tel:7185569274">718-556-9274</a></div></div>
+        <div class="biz-card" data-cat="auto" data-search="perfect drive sales leasing financing car"><div class="biz-name">Perfect Drive</div><div class="biz-desc">Sales · Leasing · Financing</div><div class="biz-phone"><a href="tel:7186077674">718-607-7674</a></div></div>
+      </div>
+    </div>
+
+    <!-- MEDICAL -->
+    <div class="cat-section" data-cat="medical">
+      <div class="cat-title">⚕ Medical</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="medical" data-search="dr kenneth horowitz eyes ophthalmology doctor"><div class="biz-name">Dr Kenneth Horowitz MD</div><div class="biz-desc">Care &amp; Treatment of the Eyes</div><div class="biz-phone"><a href="tel:7182701794">718-270-1794</a></div></div>
+        <div class="biz-card" data-cat="medical" data-search="ehysha schwartz stitches aesthetics botox"><div class="biz-name">Ehysha Schwartz</div><div class="biz-desc">Stitches · Aesthetics · Botox</div><div class="biz-phone"><a href="tel:9293224480">929-322-4480</a></div></div>
+        <div class="biz-card" data-cat="medical" data-search="miriam blau np after hours medical ismay"><div class="biz-name">Miriam Blau NP</div><div class="biz-desc">After Hours Medical · 7 Ismay St</div><div class="biz-phone"><a href="tel:6465807333">646-580-7333</a></div></div>
+        <div class="biz-card" data-cat="medical" data-search="sincere medical bradley doctor"><div class="biz-name">Sincere Medical</div><div class="biz-addr">314 Bradley Ave</div><div class="biz-phone"><a href="tel:7184941700">718-494-1700</a></div></div>
+      </div>
+    </div>
+
+    <!-- SPECIALTY SHOPS -->
+    <div class="cat-section" data-cat="specialty">
+      <div class="cat-title">🛍 Specialty Shops</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="specialty" data-search="camp labels"><div class="biz-name">Camp Labels</div><div class="biz-phone"><a href="tel:7188530791">718-853-0791</a> · <a href="tel:3476289338">347-628-9338</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="hedys gifts all occasions ship"><div class="biz-name">Hedy's Gifts</div><div class="biz-desc">Gifts for All Occasions — We Ship!</div><div class="biz-phone"><a href="tel:3477293538">347-729-3538</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="island gifting engraving photo printing"><div class="biz-name">Island Gifting</div><div class="biz-desc">Gifts · Engraving · Photo Printing</div><div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="lab grown jewelry gold diamond"><div class="biz-name">Lab Grown Jewelry</div><div class="biz-desc">14ct &amp; 18ct Gold Diamond Jewelry</div><div class="biz-phone"><a href="tel:9176407675">917-640-7675</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="little lilac baby layette gifting"><div class="biz-name">Little Lilac</div><div class="biz-desc">Baby Layette and Gifting</div><div class="biz-phone"><a href="tel:3476751567">347-675-1567</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="make statement wholesale gold filled jewelry"><div class="biz-name">Make a Statement</div><div class="biz-desc">Wholesale Gold Filled Jewlery</div><div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="mr basics mens boys dry goods clothing"><div class="biz-name">Mr Basics</div><div class="biz-desc">Mens &amp; Boys Dry Goods</div><div class="biz-phone"><a href="tel:7188511799">718-851-1799</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="my sefer judaica books sheraden"><div class="biz-name">My Sefer Judaica</div><div class="biz-addr">159 Sheraden Ave</div><div class="biz-phone"><a href="tel:8887333708">888-733-3708</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="present style gift wrap home decor"><div class="biz-name">Present n' Style</div><div class="biz-desc">Gift Wrap &amp; Home Décor</div><div class="biz-phone"><a href="tel:9178098001">917-809-8001</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="sabine extraaoridnair balloon decor events gifting"><div class="biz-name">Sabine ExtraaoridnAir</div><div class="biz-desc">Balloon Décor for Events &amp; Gifting</div><div class="biz-phone"><a href="tel:9178382707">917-838-2707</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="finishing touch gifts personalized"><div class="biz-name">The Finishing Touch Gifts</div><div class="biz-desc">Personalized Gifts</div><div class="biz-phone"><a href="tel:9178034452">917-803-4452</a></div></div>
+        <div class="biz-card" data-cat="specialty" data-search="white petal lingerie fitting"><div class="biz-name">White Petal Lingerie</div><div class="biz-desc">Your Perfect Fitting</div><div class="biz-phone"><a href="tel:3477074637">347-707-4637</a></div></div>
+      </div>
+    </div>
+
+    <!-- BEAUTY -->
+    <div class="cat-section" data-cat="beauty">
+      <div class="cat-title">💅 Beauty &amp; Self Care</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="beauty" data-search="atara fendrich massage craniosacral therapy lmt"><div class="biz-name">Atara Fendrich LMT</div><div class="biz-desc">Massage &amp; Craniosacral Therapy</div><div class="biz-phone"><a href="tel:9177108370">917-710-8370</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="danielle besser wig hair makeup"><div class="biz-name">Danielle Besser</div><div class="biz-desc">Wig · Hair · Makeup</div><div class="biz-phone"><a href="tel:7182322789">718-232-2789</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="friedas nails waxing home"><div class="biz-name">Frieda's Nails &amp; Waxing</div><div class="biz-desc">We Come to Your Home!</div><div class="biz-phone"><a href="tel:9543305845">954-330-5845</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="glam go makeup chani"><div class="biz-name">Glam n Go</div><div class="biz-desc">Makeup by Chani</div><div class="biz-phone"><a href="tel:9178438740">917-843-8740</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="glo laser suri jachimowitz electrolysis"><div class="biz-name">Glo Laser — Suri Jachimowitz</div><div class="biz-desc">Laser and Electrolysis</div><div class="biz-phone"><a href="tel:3476990822">347-699-0822</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="hair gall wigs haircuts"><div class="biz-name">Hair by Gall</div><div class="biz-desc">Wigs · Hair · Haircuts</div><div class="biz-phone"><a href="tel:3474247505">347-424-7505</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="makeup naomi"><div class="biz-name">Makeup by Naomi</div><div class="biz-phone"><a href="tel:7185987865">718-598-7865</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="nancys salon mani pedi waxing lice"><div class="biz-name">Nancy's Salon</div><div class="biz-desc">Mani · Pedi · Waxing · Lice Check</div><div class="biz-phone"><a href="tel:7189389337">718-938-9337</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="pessi wigs sales cut wash set"><div class="biz-name">Pessi Wigs</div><div class="biz-desc">Wig Sales · Cut · Wash &amp; Set</div><div class="biz-phone"><a href="tel:9293098640">929-309-8640</a></div></div>
+        <div class="biz-card" data-cat="beauty" data-search="wigs laya sales cut wash set"><div class="biz-name">Wigs by Laya</div><div class="biz-desc">Sales · Cut · Wash &amp; Set</div><div class="biz-phone"><a href="tel:7187918865">718-791-8865</a></div></div>
+      </div>
+    </div>
+
+    <!-- POOL -->
+    <div class="cat-section" data-cat="pool">
+      <div class="cat-title">🏊 Pool Rental</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="pool" data-search="bryna sklars salt water pool swim lessons aqua aerobics"><div class="biz-name">Bryna Sklars</div><div class="biz-desc">Salt Water Pool · Swim Lessons · Aqua Aerobics</div><div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div></div>
+        <div class="biz-card" data-cat="pool" data-search="chumi fried salt water pool winterized year round"><div class="biz-name">Chumi Fried</div><div class="biz-desc">Salt Water Pool (Winterized, Year-Round)</div><div class="biz-phone"><a href="tel:7188121872">718-812-1872</a></div></div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="cat-section" data-cat="services">
+      <div class="cat-title">⚙ Services</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="services" data-search="club 21 domestic business employees"><div class="biz-name">Club 21 Services</div><div class="biz-desc">Domestic &amp; Business Employees</div><div class="biz-phone"><a href="tel:3474238886">347-423-8886</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="lactation consultant raizy rubinson clc"><div class="biz-name">Lactation Consultant</div><div class="biz-desc">Raizy Rubinson CLC</div><div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="mobile phone screen repair moshe kustin"><div class="biz-name">Mobile Phone Screen Repair</div><div class="biz-desc">Moshe Kustin</div><div class="biz-phone"><a href="tel:3472656499">347-265-6499</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="physical therapist alexander yegorov"><div class="biz-name">Physical Therapist</div><div class="biz-desc">Alexander Yegorov</div><div class="biz-phone"><a href="tel:7187014545">718-701-4545</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="sew chic alterations miri gabel tailoring"><div class="biz-name">Sew Chic Alterations</div><div class="biz-desc">Miri Gabel</div><div class="biz-phone"><a href="tel:9295295214">929-529-5214</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="sparkle agency home office cleaning"><div class="biz-name">Sparkle Agency</div><div class="biz-desc">Home &amp; Office Cleaning Service</div><div class="biz-phone"><a href="tel:3474073931">347-407-3931</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="we buy gold silver wayne greenberg"><div class="biz-name">We Buy Gold &amp; Silver</div><div class="biz-desc">Wayne Greenberg</div><div class="biz-phone"><a href="tel:9173641511">917-364-1511</a></div></div>
+        <div class="biz-card" data-cat="services" data-search="wealth concierge group businesses grow"><div class="biz-name">Wealth Concierge Group</div><div class="biz-desc">Helping businesses grow</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div></div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT -->
+    <div class="cat-section" data-cat="transport">
+      <div class="cat-title">🚐 Transportation</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="transport" data-search="staten island shuttle bp transportation"><div class="biz-name">Staten Island Shuttle</div><div class="biz-desc">Staten Island – Borough Park</div><div class="biz-phone"><a href="tel:7183423000">718-342-3000</a></div></div>
+        <div class="biz-card" data-cat="transport" data-search="yakov schmelczer vip long distance messenger"><div class="biz-name">Yakov Schmelczer</div><div class="biz-desc">VIP Long Distance · Messenger</div><div class="biz-phone"><a href="tel:9172004594">917-200-4594</a></div></div>
+      </div>
+    </div>
+
+    <!-- REALTY -->
+    <div class="cat-section" data-cat="realty">
+      <div class="cat-title">🏡 Realtors</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="realty" data-search="shaina barber katz realty nyc real estate"><div class="biz-name">Shaina Barber</div><div class="biz-desc">Katz Realty NYC — Who you hire matters</div><div class="biz-phone"><a href="tel:9179729789">917-972-9789</a></div></div>
+      </div>
+    </div>
+
+    <!-- INSURANCE -->
+    <div class="cat-section" data-cat="insurance">
+      <div class="cat-title">📋 Insurance Agents</div>
+      <div class="biz-grid">
+        <div class="biz-card" data-cat="insurance" data-search="aryeh pearlman life health insurance agent"><div class="biz-name">Aryeh Pearlman</div><div class="biz-desc">Life &amp; Health Insurance Agent</div><div class="biz-phone"><a href="tel:7183741103">718-374-1103</a></div></div>
+        <div class="biz-card" data-cat="insurance" data-search="mr hirshenbaum estate planning life retirement"><div class="biz-name">Mr Hirshenbaum</div><div class="biz-desc">Estate Planning · Life &amp; Retirement</div><div class="biz-phone"><a href="tel:3477250833">347-725-0833</a></div></div>
+      </div>
+    </div>
+
+    <!-- EMERGENCY -->
+    <div class="cat-section" data-cat="emergency">
+      <div class="cat-title em">🆘 Emergency Services</div>
+      <div class="biz-grid">
+        <div class="biz-card em hatz" data-cat="emergency" data-search="hatzolah emergency ambulance"><div class="biz-name">🚑 Hatzolah</div><div class="biz-desc">Emergency Medical Services</div><div class="biz-phone"><a href="tel:7182301000">718-230-1000</a></div></div>
+        <div class="biz-card em" data-cat="emergency" data-search="chaveirim help flat tire lockout"><div class="biz-name">Chaveirim</div><div class="biz-desc">Community Emergency Assistance</div><div class="biz-phone"><a href="tel:7187612428">718-761-2428</a></div></div>
+        <div class="biz-card em" data-cat="emergency" data-search="chavivim community help"><div class="biz-name">Chavivim</div><div class="biz-phone"><a href="tel:7188717299">718-871-7299</a></div></div>
+        <div class="biz-card em" data-cat="emergency" data-search="misaskim funeral gemach"><div class="biz-name">Misaskim</div><div class="biz-phone"><a href="tel:7188544548">(718) 854-4548</a></div></div>
+        <div class="biz-card em" data-cat="emergency" data-search="shmira security patrol"><div class="biz-name">Shmira</div><div class="biz-phone"><a href="tel:7187614444">718-761-4444</a></div></div>
+        <div class="biz-card em" data-cat="emergency" data-search="shomrim security neighborhood watch"><div class="biz-name">Shomrim</div><div class="biz-phone"><a href="tel:7183702121">718-370-2121</a></div></div>
+      </div>
+    </div>
+
+    <p id="noResults" class="hidden" style="color:var(--gray);padding:2rem;text-align:center">No businesses found. Try a different search.</p>
   </div>
 </div>
 
@@ -415,7 +351,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   </div>
 </div>
 
-<footer><a href="/">← ShopLocal SI</a> · <a href="/advertise.html">Advertise</a> · <a href="/coupons.html">Coupons</a></footer>
+<footer><a href="/">← ShopLocal SI</a> · <a href="/marketplace.html">Marketplace</a> · <a href="/advertise.html">Advertise</a> · <a href="/coupons.html">Coupons</a></footer>
 
 <script>
 function filterBiz() {
@@ -426,104 +362,79 @@ function filterBiz() {
   let found = 0;
   cards.forEach(c => {
     const matchCat = !cat || c.dataset.cat === cat;
-    const matchQ = !q || c.dataset.search.includes(q) || c.innerText.toLowerCase().includes(q);
+    const matchQ = !q || (c.dataset.search||'').includes(q) || c.innerText.toLowerCase().includes(q);
     c.classList.toggle('hidden', !(matchCat && matchQ));
     if (matchCat && matchQ) found++;
   });
   sections.forEach(s => {
-    const vis = [...s.querySelectorAll('.biz-card')].some(c => !c.classList.contains('hidden'));
-    s.classList.toggle('hidden', !vis);
+    s.classList.toggle('hidden', ![...s.querySelectorAll('.biz-card')].some(c=>!c.classList.contains('hidden')));
   });
-  const nr = document.getElementById('noResults');
-  if (nr) nr.classList.toggle('hidden', found > 0);
+  document.getElementById('noResults').classList.toggle('hidden', found > 0);
 }
 
 function setTab(cat, btn) {
-  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('catFilter').value = cat === 'all' ? '' : cat;
+  document.getElementById('catFilter').value = cat==='all'?'':cat;
   document.getElementById('searchInput').value = '';
   filterBiz();
 }
 
-// Load featured profiles
 let allCoupons = [];
 (async function() {
   try {
     const [adsRes, coupRes] = await Promise.all([
       fetch('/.netlify/functions/get-ads'),
-      fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ', {
-        headers: { 'Authorization': `Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87` }
-      })
+      fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ',{headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}})
     ]);
     if (adsRes.ok) {
       const data = await adsRes.json();
-      const featuredAds = data.all || [...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];
-      if (featuredAds.length) {
+      const ads = data.all || [...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];
+      ads.forEach(ad => {
         document.querySelectorAll('.biz-card').forEach(card => {
-          const nameEl = card.querySelector('.biz-name');
-          if (!nameEl) return;
-          const cardName = nameEl.textContent.trim().toLowerCase();
-          const match = featuredAds.find(a =>
-            a.businessName.toLowerCase() === cardName ||
-            cardName.includes(a.businessName.toLowerCase()) ||
-            a.businessName.toLowerCase().includes(cardName)
-          );
-          if (match) {
-            card.classList.add(match.planType === 'premium' ? 'premium-card' : 'featured-card');
+          const n = card.querySelector('.biz-name');
+          if (!n) return;
+          const cn = n.textContent.trim().toLowerCase();
+          const an = ad.businessName.toLowerCase();
+          if (cn===an||cn.includes(an)||an.includes(cn)) {
+            card.classList.add(ad.planType==='premium'?'premium-card':'featured-card');
             const btn = document.createElement('button');
-            btn.className = 'biz-more-btn';
-            btn.textContent = match.planType === 'premium' ? '💎 More Info' : '⭐ More Info';
-            btn.onclick = (e) => { e.stopPropagation(); openBizModal(match); };
+            btn.className='biz-more-btn';
+            btn.textContent=ad.planType==='premium'?'💎 More Info':'⭐ More Info';
+            btn.onclick=(e)=>{e.stopPropagation();openBizModal(ad);};
             card.appendChild(btn);
           }
         });
-      }
+      });
     }
     if (coupRes.ok) {
       const cd = await coupRes.json();
-      allCoupons = (cd.records||[]).filter(r=>(r.fields.Status||'').toLowerCase()==='active').map(r=>({
-        biz:r.fields.BusinessName||'',discount:r.fields.Discount||'',desc:r.fields.Description||'',code:r.fields.Code||''
-      }));
+      allCoupons=(cd.records||[]).filter(r=>(r.fields.Status||'').toLowerCase()==='active').map(r=>({biz:r.fields.BusinessName||'',discount:r.fields.Discount||'',desc:r.fields.Description||'',code:r.fields.Code||''}));
     }
-  } catch(e) { console.log(e); }
+  } catch(e){console.log(e);}
 })();
 
 function openBizModal(ad) {
-  const banner = document.getElementById('bizModalBanner');
-  if (ad.bannerHTML) {
-    banner.innerHTML = `<iframe srcdoc="${ad.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:160px;border:none"></iframe>`;
-  } else {
-    banner.innerHTML = `<div style="height:120px;background:linear-gradient(135deg,${ad.color||'#0a1c4b'},#182e6a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-weight:900">${ad.businessName}</div>`;
-  }
-  banner.style.display = 'block';
-  document.getElementById('bizModalBadge').textContent = ad.planType==='premium'?'💎 Premium Partner':'⭐ Featured Partner';
-  document.getElementById('bizModalName').textContent = ad.businessName||'';
-  document.getElementById('bizModalCat').textContent = (ad.category||'')+(ad.address?' · '+ad.address:'');
-  document.getElementById('bizModalDesc').textContent = ad.description||ad.tagline||'';
-  let actions = '';
-  if (ad.phone) actions += `<a href="tel:${ad.phone.replace(/\D/g,'')}" class="biz-modal-btn-call">📞 Call Now</a>`;
-  if (ad.link) actions += `<a href="${ad.link}" target="_blank" class="biz-modal-btn-web">🌐 Website</a>`;
-  if (ad.email) actions += `<a href="mailto:${ad.email}" class="biz-modal-btn-email">✉️ Email</a>`;
-  document.getElementById('bizModalActions').innerHTML = actions;
-  const bizCoupons = allCoupons.filter(c=>c.biz.toLowerCase()===(ad.businessName||'').toLowerCase());
-  const cs = document.getElementById('bizModalCoupons');
-  if (bizCoupons.length) {
-    cs.style.display='block';
-    document.getElementById('bizModalCouponsList').innerHTML = bizCoupons.map(c=>`
-      <div class="biz-modal-coupon">
-        <div><div class="biz-modal-coupon-discount">${c.discount}</div><div class="biz-modal-coupon-desc">${c.desc}</div></div>
-        ${c.code?`<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText('${c.code}');this.textContent='✅';setTimeout(()=>this.textContent='${c.code}',2000)">${c.code}</div>`:''}
-      </div>`).join('');
-  } else cs.style.display='none';
+  const b=document.getElementById('bizModalBanner');
+  b.innerHTML=ad.bannerHTML?`<iframe srcdoc="${ad.bannerHTML.replace(/"/g,'&quot;')}" style="width:100%;height:160px;border:none"></iframe>`:`<div style="height:120px;background:linear-gradient(135deg,${ad.color||'#0a1c4b'},#182e6a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-weight:900">${ad.businessName}</div>`;
+  b.style.display='block';
+  document.getElementById('bizModalBadge').textContent=ad.planType==='premium'?'💎 Premium Partner':'⭐ Featured Partner';
+  document.getElementById('bizModalName').textContent=ad.businessName||'';
+  document.getElementById('bizModalCat').textContent=(ad.category||'')+(ad.address?' · '+ad.address:'');
+  document.getElementById('bizModalDesc').textContent=ad.description||ad.tagline||'';
+  let a='';
+  if(ad.phone)a+=`<a href="tel:${ad.phone.replace(/\D/g,'')}" class="biz-modal-btn-call">📞 Call Now</a>`;
+  if(ad.link)a+=`<a href="${ad.link}" target="_blank" class="biz-modal-btn-web">🌐 Website</a>`;
+  if(ad.email)a+=`<a href="mailto:${ad.email}" class="biz-modal-btn-email">✉️ Email</a>`;
+  document.getElementById('bizModalActions').innerHTML=a;
+  const bc=allCoupons.filter(c=>c.biz.toLowerCase()===(ad.businessName||'').toLowerCase());
+  const cs=document.getElementById('bizModalCoupons');
+  if(bc.length){cs.style.display='block';document.getElementById('bizModalCouponsList').innerHTML=bc.map(c=>`<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">${c.discount}</div><div class="biz-modal-coupon-desc">${c.desc}</div></div>${c.code?`<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText('${c.code}');this.textContent='✅';setTimeout(()=>this.textContent='${c.code}',2000)">${c.code}</div>`:''}</div>`).join('');}
+  else cs.style.display='none';
   document.getElementById('bizModalOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
-
-function closeBizModal() {
-  document.getElementById('bizModalOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
+function closeBizModal(){document.getElementById('bizModalOverlay').classList.remove('open');document.body.style.overflow='';}
 </script>
 </body>
 </html>
