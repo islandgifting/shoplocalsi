@@ -256,11 +256,19 @@ footer{background:#020810;color:rgba(255,255,255,.6);padding:4rem 2rem 2rem;bord
   <div id="bannerRotator"></div>
 </div>
 <div id="bannerPromo">
-  <div id="bannerPromoInner" onclick="window.location.href='/advertise.html'">
-    <div id="bannerFlashText" style="text-align:center;z-index:2;position:relative">
-      <div style="color:var(--gold);font-size:1rem;font-weight:800;letter-spacing:.1em">📢 YOUR AD HERE</div>
-      <div style="color:rgba(255,255,255,.6);font-size:.75rem;margin-top:.2rem">Premium homepage banner · $129/mo · <strong style="color:var(--gold)">Click to advertise →</strong></div>
+  <div id="bannerPromoInner" onclick="window.location.href='/island-kosher-deals.html'" style="cursor:pointer;background:linear-gradient(135deg,#0a3300,#1a5c00,#2d8c00);border:none;border-radius:12px;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;gap:1rem;overflow:hidden;position:relative">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(245,216,0,.12),transparent 60%);pointer-events:none"></div>
+    <div style="display:flex;align-items:center;gap:1rem;position:relative">
+      <div style="background:rgba(245,216,0,.2);border:2px solid #f5d800;border-radius:10px;padding:.4rem .85rem;white-space:nowrap;flex-shrink:0">
+        <div style="color:#f5d800;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px">🔥 This Week</div>
+        <div style="color:#f5d800;font-size:.72rem;font-weight:800">Super Deals</div>
+      </div>
+      <div>
+        <div style="color:#fff;font-size:1.05rem;font-weight:900;letter-spacing:-.3px">🛒 Island Kosher Super Deals</div>
+        <div style="color:rgba(255,255,255,.75);font-size:.75rem;margin-top:.1rem">Valid June 24 — July 7 · 30+ items on sale · 2200 Victory Blvd</div>
+      </div>
     </div>
+    <div style="background:#f5d800;color:#1a5c00;padding:.55rem 1.25rem;border-radius:50px;font-weight:800;font-size:.82rem;white-space:nowrap;box-shadow:0 4px 15px rgba(245,216,0,.4);position:relative;flex-shrink:0">View Deals →</div>
   </div>
 </div>
 
@@ -692,19 +700,6 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
   },{threshold:.3});
   const statsSection=document.querySelector('.stats-section');
   if(statsSection) counterObserver.observe(statsSection);
-})();
-
-// ── BANNER FLASH ────────────────────────────────
-(function(){
-  const texts=['📢 YOUR AD HERE','🏆 PREMIUM BANNER','✨ BE SEEN BY ALL','🚀 ADVERTISE NOW'];
-  let i=0;
-  const el=document.getElementById('bannerFlashText');
-  if(!el) return;
-  setInterval(()=>{
-    el.style.opacity='0';
-    el.style.transition='opacity .4s';
-    setTimeout(()=>{ i=(i+1)%texts.length; el.querySelector('div').textContent=texts[i]; el.style.opacity='1'; },400);
-  },3000);
 })();
 
 // ── SHABBOS TIMES ────────────────────────────────
