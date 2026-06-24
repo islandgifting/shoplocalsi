@@ -54,6 +54,7 @@ exports.handler = async (event) => {
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
       mode,
+      discounts: [{ coupon: 'GRANDOPENING' }],
       success_url: `https://shoplocalsi.com/${successPage}`,
       cancel_url: 'https://shoplocalsi.com/#advertise',
     });
