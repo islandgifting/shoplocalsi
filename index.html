@@ -26,9 +26,10 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
 /* ── EMERGENCY STRIP ── */
-.emstrip{background:var(--red);color:#fff;padding:.5rem 2rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;font-weight:600;letter-spacing:.2px}
+.emstrip{background:var(--navy);color:#fff;padding:.5rem 2rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;font-weight:600;letter-spacing:.2px}
 .emstrip a{color:#fff;transition:opacity .2s}.emstrip a:hover{opacity:.8}
-.emstrip .sep{opacity:.4}
+.emstrip .sep{opacity:.3}
+.emstrip .em-label{color:rgba(255,255,255,.4);font-size:.68rem;letter-spacing:.5px;text-transform:uppercase}
 
 /* ── NAV ── */
 nav{background:rgba(7,14,41,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:999;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:66px}
@@ -251,58 +252,14 @@ footer{background:#020810;color:rgba(255,255,255,.6);padding:4rem 2rem 2rem;bord
 </head>
 <body>
 
-<!-- BANNER ADS -->
-<div id="bannerWrap">
+<!-- BANNER ADS (loaded dynamically) -->
+<div id="bannerWrap" style="display:none">
   <div id="bannerRotator"></div>
-</div>
-<div id="bannerPromo">
-  <div id="bannerPromoInner" onclick="window.location.href='/island-kosher-deals.html'" style="cursor:pointer;background:linear-gradient(135deg,#0a3300,#1a5c00,#2d8c00);border:none;border-radius:12px;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;gap:1rem;overflow:hidden;position:relative">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(245,216,0,.12),transparent 60%);pointer-events:none"></div>
-    <div style="display:flex;align-items:center;gap:1rem;position:relative">
-      <div style="background:rgba(245,216,0,.2);border:2px solid #f5d800;border-radius:10px;padding:.4rem .85rem;white-space:nowrap;flex-shrink:0">
-        <div style="color:#f5d800;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px">🔥 This Week</div>
-        <div style="color:#f5d800;font-size:.72rem;font-weight:800">Super Deals</div>
-      </div>
-      <div>
-        <div style="color:#fff;font-size:1.05rem;font-weight:900;letter-spacing:-.3px">🛒 Island Kosher Super Deals</div>
-        <div style="color:rgba(255,255,255,.75);font-size:.75rem;margin-top:.1rem">Valid June 24 — July 7 · 30+ items on sale · 2200 Victory Blvd</div>
-      </div>
-    </div>
-    <div style="background:#f5d800;color:#1a5c00;padding:.55rem 1.25rem;border-radius:50px;font-weight:800;font-size:.82rem;white-space:nowrap;box-shadow:0 4px 15px rgba(245,216,0,.4);position:relative;flex-shrink:0">View Deals →</div>
-  </div>
 </div>
 
 <!-- EMERGENCY STRIP -->
-<!-- GRAND OPENING PROMO BANNER -->
-<div id="promoBanner" onclick="window.location.href='/advertise.html'" style="background:linear-gradient(135deg,#4a0080,#7c1fa8,#cc44ff);padding:1rem 2rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;position:relative;overflow:hidden;cursor:pointer;border-bottom:2px solid rgba(255,229,102,.3)">
-  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0px,rgba(255,255,255,.04) 1px,transparent 1px,transparent 12px);pointer-events:none"></div>
-  <div id="promoGlow" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,229,102,.15),transparent 70%);pointer-events:none;animation:glow-sweep 2s ease-in-out infinite"></div>
-  <div style="display:flex;align-items:center;gap:.85rem;position:relative;flex-wrap:wrap;justify-content:center">
-    <div id="promoFlash" style="background:rgba(255,229,102,.25);border:2px solid #ffe566;color:#ffe566;font-size:.78rem;font-weight:900;padding:.35rem .9rem;border-radius:50px;text-transform:uppercase;letter-spacing:1.5px;animation:flash-badge 1s infinite;white-space:nowrap">🎉 GRAND OPENING</div>
-    <div style="text-align:center">
-      <div style="color:#fff;font-size:1.1rem;font-weight:900;letter-spacing:-.3px;animation:text-pulse 2s ease-in-out infinite">First Month <span style="color:#ffe566;text-shadow:0 0 20px rgba(255,229,102,.8)">COMPLETELY FREE</span> on all listings!</div>
-      <div style="color:rgba(255,255,255,.75);font-size:.78rem;margin-top:.15rem">No charge until month 2 · Code <strong style="color:#ffe566;letter-spacing:1px">GRANDOPENING</strong> applied automatically</div>
-    </div>
-    <a href="/advertise.html" style="background:#ffe566;color:#4a0080;padding:.55rem 1.4rem;border-radius:50px;font-weight:900;font-size:.85rem;text-decoration:none;white-space:nowrap;flex-shrink:0;box-shadow:0 0 20px rgba(255,229,102,.5);animation:btn-glow 1.5s ease-in-out infinite">Claim Free Month →</a>
-  </div>
-  <style>
-    @keyframes flash-badge{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.97)}}
-    @keyframes glow-sweep{0%,100%{opacity:.6}50%{opacity:1}}
-    @keyframes text-pulse{0%,100%{text-shadow:none}50%{text-shadow:0 0 30px rgba(255,229,102,.4)}}
-    @keyframes btn-glow{0%,100%{box-shadow:0 0 20px rgba(255,229,102,.5)}50%{box-shadow:0 0 40px rgba(255,229,102,.9),0 0 60px rgba(255,229,102,.4)}}
-    #promoBanner:hover{filter:brightness(1.08)}
-  </style>
-</div>
-  <div style="display:flex;align-items:center;gap:.6rem;position:relative">
-    <span style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.65rem;font-weight:800;padding:.2rem .6rem;border-radius:50px;text-transform:uppercase;letter-spacing:1px;animation:promo-pulse 2s infinite">🎉 Grand Opening</span>
-    <span style="color:#fff;font-size:.88rem;font-weight:700">First Month <strong style="color:#ffe566">FREE</strong> on all listings!</span>
-    <span style="color:rgba(255,255,255,.6);font-size:.78rem">No charge until month 2 · Use code <strong style="color:#ffe566">GRANDOPENING</strong></span>
-  </div>
-  <a href="/advertise.html" style="background:#ffe566;color:#4a0080;padding:.4rem 1.1rem;border-radius:50px;font-weight:800;font-size:.78rem;text-decoration:none;white-space:nowrap;flex-shrink:0">Claim Free Month →</a>
-  <style>@keyframes promo-pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.3)}70%{box-shadow:0 0 0 6px rgba(255,255,255,0)}}</style>
-</div>
 <div class="emstrip">
-  <span>🚨 EMERGENCIES:</span>
+  <span class="em-label">Emergency Numbers</span>
   <a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a>
   <span class="sep">|</span>
   <a href="tel:7187612428">Chaveirim: 718-761-2428</a>
@@ -314,6 +271,25 @@ footer{background:#020810;color:rgba(255,255,255,.6);padding:4rem 2rem 2rem;bord
   <a href="tel:7188544548">Misaskim: (718) 854-4548</a>
 </div>
 
+<!-- ISLAND KOSHER DEALS BANNER (kept, it's useful not garish) -->
+<div id="bannerPromo">
+  <div id="bannerPromoInner" onclick="window.location.href='/island-kosher-deals.html'" style="cursor:pointer;background:linear-gradient(135deg,#0a3300,#1a5c00,#2d8c00);border:none;border-radius:10px;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;gap:1rem;overflow:hidden;position:relative">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(245,216,0,.1),transparent 60%);pointer-events:none"></div>
+    <div style="display:flex;align-items:center;gap:1rem;position:relative">
+      <div style="background:rgba(245,216,0,.18);border:1.5px solid #f5d800;border-radius:8px;padding:.35rem .8rem;white-space:nowrap;flex-shrink:0">
+        <div style="color:#f5d800;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1px">🔥 This Week</div>
+        <div style="color:#f5d800;font-size:.7rem;font-weight:800">Super Deals</div>
+      </div>
+      <div>
+        <div style="color:#fff;font-size:1rem;font-weight:800;letter-spacing:-.2px">🛒 Island Kosher Super Deals</div>
+        <div style="color:rgba(255,255,255,.7);font-size:.72rem;margin-top:.1rem">Valid June 24 — July 7 · 30+ items on sale · 2200 Victory Blvd</div>
+      </div>
+    </div>
+    <div style="background:#f5d800;color:#1a5c00;padding:.5rem 1.1rem;border-radius:4px;font-weight:800;font-size:.78rem;white-space:nowrap;flex-shrink:0">View Deals →</div>
+  </div>
+</div>
+
+<!-- NAV -->
 <!-- NAV -->
 <nav>
   <a href="/" class="logo">
@@ -327,6 +303,7 @@ footer{background:#020810;color:rgba(255,255,255,.6);padding:4rem 2rem 2rem;bord
     <li><a href="/ads.html">📢 Ads</a></li>
     <li><a href="/coupons.html">🎟️ Coupons</a></li>
     <li><a href="#shabbos">Shabbos</a></li>
+    <li><a href="/community.html">💬 Community</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="/advertise.html" class="nav-cta">✨ Advertise</a></li>
   </ul>
