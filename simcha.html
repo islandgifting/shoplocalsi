@@ -112,7 +112,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
 .foot-links-row a{color:rgba(255,255,255,.35);transition:color .2s}.foot-links-row a:hover{color:var(--gold)}
 .fade-up{opacity:0;transform:translateY(25px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
-.success-msg{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.3);border-radius:10px;padding:1rem;text-align:center;color:var(--gold);font-weight:600;font-size:.88rem;display:none;margin-top:1rem}
+.success-msg{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.3);border-radius:10px;padding:1rem;color:var(--gold);font-weight:600;font-size:.85rem;display:none;margin-top:1rem;line-height:1.6}
 @media(max-width:900px){.announce-grid{grid-template-columns:1fr}}
 @media(max-width:768px){nav{padding:0 1.5rem}.nav-links{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(7,14,41,.97);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)}.nav-links.open{display:flex}.hamburger{display:flex}.emstrip{gap:.65rem;font-size:.7rem}.types-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
@@ -516,24 +516,50 @@ document.querySelectorAll('#typeTagsForm .type-tag').forEach(tag=>{
 const typeEmojis={wedding:'💒',barmitzvah:'📜',batmitzvah:'✡',vort:'💍',bris:'👶',sheva:'🕯',kiddush:'🍷',aufruf:'📖',graduation:'🎓',event:'🎊'};
 const typeNames={wedding:'Wedding',barmitzvah:'Bar Mitzvah',batmitzvah:'Bat Mitzvah',vort:'Vort',bris:'Bris',sheva:'Sheva Brachos',kiddush:'Kiddush',aufruf:'Aufruf',graduation:'Graduation',event:'Event'};
 
-function postAnnouncement(){
+async function postAnnouncement(){
   const families=document.getElementById('annFamilies').value.trim();
   const message=document.getElementById('annMessage').value.trim();
   const name=document.getElementById('annName').value.trim();
+  const date=document.getElementById('annDate').value;
   if(!families||!message){alert('Please fill in family names and your announcement.');return;}
-  const emoji=typeEmojis[selectedType]||'🎉';
-  const typeName=typeNames[selectedType]||'Simcha';
-  const item=document.createElement('div');
-  item.className='announce-item';
-  item.innerHTML=`<div class="ai-simcha-badge">${emoji} ${typeName}</div><div class="ai-title">${families}</div><div class="ai-details">${message}</div><div class="ai-date">Posted by ${name||'Anonymous'} · Just now</div>`;
-  const feed=document.getElementById('announceFeed');
-  feed.insertBefore(item,feed.firstChild);
-  document.getElementById('annFamilies').value='';
-  document.getElementById('annMessage').value='';
-  document.getElementById('annName').value='';
-  const suc=document.getElementById('annSuccess');
-  suc.style.display='block';
-  setTimeout(()=>suc.style.display='none',4000);
+
+  const btn=document.querySelector('.announce-form .btn-primary');
+  btn.textContent='Submitting…';
+  btn.disabled=true;
+
+  try {
+    const res = await fetch('/.netlify/functions/submit-simcha', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: typeNames[selectedType] || 'Event',
+        families,
+        message,
+        date,
+        postedBy: name || 'Anonymous'
+      })
+    });
+
+    if (!res.ok) throw new Error('Submission failed');
+
+    // Clear form
+    document.getElementById('annFamilies').value='';
+    document.getElementById('annMessage').value='';
+    document.getElementById('annName').value='';
+    document.getElementById('annDate').value='';
+
+    // Show pending message
+    const suc=document.getElementById('annSuccess');
+    suc.innerHTML='🎉 Mazel Tov! Your simcha has been submitted and is <strong>pending approval</strong>. It will appear on the board once reviewed — usually within a few hours!';
+    suc.style.display='block';
+    setTimeout(()=>suc.style.display='none',8000);
+
+  } catch(e) {
+    alert('Sorry, there was an error. Please try again.');
+  }
+
+  btn.textContent='📣 Share the Joy!';
+  btn.disabled=false;
 }
 
 // PLANNING CHECKLIST
