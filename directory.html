@@ -24,9 +24,9 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
   --pale:#e8edf2;
   --pale2:#d4dce5;
   --red:#cc2222;
-  --charcoal:#1c2b35;
-  --mid:#4a5e6a;
-  --muted:#7a8f9a;
+  --charcoal:#0f1c25;
+  --mid:#253545;
+  --muted:#445d6e;
   --border:#d0d8df;
   --border2:#e4e8ec;
   --rule:rgba(201,168,76,.25);
@@ -36,7 +36,7 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{
   font-family:'Inter',sans-serif;
   background:var(--ivory);
-  color:var(--charcoal);
+  color:#0f1c25;
   font-size:15px;
   line-height:1.65;
   font-weight:400;
@@ -50,10 +50,10 @@ a{color:inherit;text-decoration:none}
 .section-eyebrow{font-size:.65rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold3);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.6rem}
 .section-eyebrow::before,.section-eyebrow::after{content:'';width:24px;height:1px;background:var(--gold);opacity:.55}
 .section-title{font-size:1.8rem;text-align:center;color:var(--navy)}
-.section-sub{font-size:.88rem;color:var(--muted);text-align:center;max-width:520px;margin:.5rem auto 0;line-height:1.75;font-weight:300;letter-spacing:.1px}
+.section-sub{font-size:.88rem;color:#445d6e;text-align:center;max-width:520px;margin:.5rem auto 0;line-height:1.75;font-weight:400;letter-spacing:.1px}
 
 /* ─── EMERGENCY STRIP ─── */
-.emstrip{
+.emstrip{background:var(--red);
   background:var(--red);
   padding:.4rem 2rem;
   display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;
@@ -61,8 +61,8 @@ a{color:inherit;text-decoration:none}
 }
 .emstrip a{color:rgba(255,255,255,.9);transition:color .15s}
 .emstrip a:hover{color:#fff}
-.emstrip .sep{color:rgba(255,255,255,.3);font-size:.5rem}
-.emstrip .em-label{color:rgba(255,255,255,.55);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+.emstrip .sep{color:rgba(255,255,255,.75);font-size:.5rem}
+.emstrip .em-label{color:rgba(255,255,255,.88);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
 
 /* ─── PROMO BAR ─── */
 .promo-bar{
@@ -77,11 +77,11 @@ a{color:inherit;text-decoration:none}
   color:var(--gold2);font-size:.6rem;font-weight:600;
   padding:.15rem .65rem;letter-spacing:1.5px;text-transform:uppercase;
 }
-.promo-text{color:rgba(255,255,255,.65);font-weight:300}
+.promo-text{color:rgba(255,255,255,.65);font-weight:400}
 .promo-text strong{color:var(--gold2);font-weight:500}
 .promo-cta{color:var(--gold2);font-size:.7rem;font-weight:500;letter-spacing:.5px;
   border-bottom:1px solid rgba(201,168,76,.35);padding-bottom:1px;transition:all .2s}
-.promo-cta:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.promo-cta:hover{color:#fff;border-color:rgba(255,255,255,.8)}
 
 /* ─── NAV ─── */
 nav{
@@ -119,9 +119,9 @@ nav{
   padding:.85rem 2.5rem;
   display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
 }
-.bs-label{font-size:.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.bs-label{font-size:.62rem;color:#445d6e;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
 .bs-label::before{content:'';width:18px;height:1px;background:var(--gold);opacity:.5}
-.bs-text{font-size:.82rem;color:var(--mid);font-style:italic;font-weight:300;flex:1;text-align:center}
+.bs-text{font-size:.82rem;color:#253545;font-style:italic;font-weight:400;flex:1;text-align:center}
 .bs-cta{font-size:.7rem;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;flex-shrink:0;
   border-bottom:1px solid var(--pale2);padding-bottom:1px;transition:all .2s;font-weight:500}
 .bs-cta:hover{color:var(--gold3);border-color:var(--gold)}
@@ -138,7 +138,7 @@ nav{
 .page-hero-eyebrow::before,.page-hero-eyebrow::after{content:'';width:20px;height:1px;background:var(--gold);opacity:.5}
 .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;color:var(--white);letter-spacing:-.5px;position:relative}
 .page-hero h1 span{color:var(--gold2);font-style:italic}
-.page-hero p{color:rgba(255,255,255,.55);font-size:.88rem;margin:.5rem auto 0;max-width:500px;font-weight:300;letter-spacing:.1px}
+.page-hero p{color:rgba(255,255,255,.75);font-size:.88rem;margin:.5rem auto 0;max-width:500px;font-weight:400;letter-spacing:.1px}
 
 /* ─── SEARCH BAR ─── */
 .search-wrap{background:var(--white);border-bottom:1px solid var(--border2);padding:1rem 2.5rem;position:sticky;top:64px;z-index:99}
@@ -153,7 +153,7 @@ nav{
   transition:border .2s;
 }
 .search-inner input:focus,.search-inner select:focus{border-color:var(--navy);background:var(--white)}
-.search-inner input::placeholder{color:var(--muted)}
+.search-inner input::placeholder{color:#445d6e}
 .search-inner select option{background:var(--white)}
 .search-btn{
   background:var(--navy);color:var(--white);
@@ -171,7 +171,7 @@ nav{
   padding:.32rem .85rem;
   border:1px solid var(--border);
   font-size:.73rem;font-weight:500;letter-spacing:.2px;
-  color:var(--mid);cursor:pointer;
+  color:#253545;cursor:pointer;
   margin-right:.4rem;
   font-family:'Inter',sans-serif;
   background:var(--white);
@@ -186,7 +186,7 @@ nav{
 .cat-section{margin-bottom:2.75rem}
 .cat-title{
   font-size:.65rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  color:var(--muted);
+  color:#445d6e;
   display:flex;align-items:center;gap:.75rem;
   margin-bottom:1.1rem;padding-bottom:.6rem;
   border-bottom:1px solid var(--border2);
@@ -207,15 +207,15 @@ nav{
 .biz-card.hatz{border-top:2px solid var(--red)}
 .biz-name{font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:.2rem;line-height:1.35}
 .biz-card.em .biz-name{color:var(--red)}
-.biz-desc{font-size:.76rem;color:var(--muted);margin-bottom:.25rem}
-.biz-addr{font-size:.73rem;color:var(--muted)}
+.biz-desc{font-size:.76rem;color:#445d6e;margin-bottom:.25rem}
+.biz-addr{font-size:.73rem;color:#445d6e}
 .biz-phone{margin-top:.5rem}
 .biz-phone a{font-size:.85rem;font-weight:600;color:var(--navy);transition:color .2s}
 .biz-phone a:hover{color:var(--gold3)}
 .biz-card.hatz .biz-phone a{color:var(--red);font-size:.95rem;font-weight:700}
 .biz-tag{
   display:inline-block;margin-top:.45rem;
-  font-size:.68rem;color:var(--muted);
+  font-size:.68rem;color:#445d6e;
   letter-spacing:.2px;font-weight:400;
   padding:.18rem .55rem;
   background:var(--ivory2);
@@ -228,7 +228,7 @@ nav{
 .biz-card.featured-card::after{content:'Featured';position:absolute;top:0;right:1rem;font-size:.58rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold3);background:var(--gold2);padding:.15rem .5rem;opacity:.8}
 .biz-card.premium-card{background:var(--navy);border:1px solid var(--navy2);border-top:2px solid var(--gold)}
 .biz-card.premium-card .biz-name{color:var(--gold2)}
-.biz-card.premium-card .biz-desc,.biz-card.premium-card .biz-addr,.biz-card.premium-card .biz-tag{color:rgba(255,255,255,.45)}
+.biz-card.premium-card .biz-desc,.biz-card.premium-card .biz-addr,.biz-card.premium-card .biz-tag{color:rgba(255,255,255,.82)}
 .biz-card.premium-card .biz-phone a{color:var(--gold2)}
 .biz-card.premium-card::after{content:'Premium';position:absolute;top:0;right:1rem;font-size:.58rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:.15rem .5rem}
 .biz-card.premium-card:hover{box-shadow:0 4px 18px rgba(201,168,76,.15)}
@@ -257,8 +257,8 @@ nav{
 .biz-modal-badge{font-size:.6rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold3);display:flex;align-items:center;gap:.4rem;margin-bottom:.75rem}
 .biz-modal-badge::before{content:'';width:16px;height:1px;background:var(--gold)}
 .biz-modal-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
-.biz-modal-cat{font-size:.78rem;color:var(--muted);margin-bottom:.85rem;font-weight:300;letter-spacing:.2px}
-.biz-modal-desc{font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1.25rem;font-weight:300}
+.biz-modal-cat{font-size:.78rem;color:#445d6e;margin-bottom:.85rem;font-weight:400;letter-spacing:.2px}
+.biz-modal-desc{font-size:.88rem;color:#253545;line-height:1.7;margin-bottom:1.25rem;font-weight:400}
 .biz-modal-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:1.25rem}
 .biz-modal-btn-call{background:var(--red);color:#fff;padding:.6rem 1.25rem;font-weight:600;font-size:.82rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:.2px;transition:opacity .2s}
 .biz-modal-btn-call:hover{opacity:.9}
@@ -267,27 +267,27 @@ nav{
 .biz-modal-btn-email{background:transparent;color:var(--navy);border:1px solid var(--border);padding:.58rem 1.25rem;font-weight:500;font-size:.82rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:all .2s}
 .biz-modal-btn-email:hover{border-color:var(--navy);background:var(--ivory)}
 .biz-modal-coupons{border-top:1px solid var(--border2);padding-top:1rem;margin-top:.5rem}
-.biz-modal-coupons h4{font-size:.62rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.75rem}
+.biz-modal-coupons h4{font-size:.62rem;font-weight:600;color:#445d6e;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.75rem}
 .biz-modal-coupon{background:var(--ivory);border:1px solid var(--border2);padding:.8rem 1rem;margin-bottom:.6rem;display:flex;justify-content:space-between;align-items:center}
 .biz-modal-coupon-discount{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--navy)}
-.biz-modal-coupon-desc{font-size:.74rem;color:var(--muted);margin-top:.12rem;font-weight:300}
+.biz-modal-coupon-desc{font-size:.74rem;color:#445d6e;margin-top:.12rem;font-weight:400}
 .biz-modal-coupon-code{background:var(--navy);color:var(--gold2);font-size:.72rem;font-weight:600;padding:.28rem .7rem;cursor:pointer;white-space:nowrap;letter-spacing:.5px;transition:opacity .2s}
 .biz-modal-coupon-code:hover{opacity:.85}
-.biz-modal-close{width:100%;background:var(--ivory);color:var(--mid);border:1px solid var(--border2);padding:.85rem;font-weight:500;font-size:.82rem;cursor:pointer;margin-top:.5rem;font-family:'Inter',sans-serif;letter-spacing:.3px;transition:all .2s}
+.biz-modal-close{width:100%;background:var(--ivory);color:#253545;border:1px solid var(--border2);padding:.85rem;font-weight:500;font-size:.82rem;cursor:pointer;margin-top:.5rem;font-family:'Inter',sans-serif;letter-spacing:.3px;transition:all .2s}
 .biz-modal-close:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
 
 /* ─── FOOTER ─── */
-footer{background:var(--navy3);color:rgba(255,255,255,.5);padding:3.5rem 2.5rem 1.75rem}
+footer{background:var(--navy3);color:rgba(255,255,255,.85);padding:3.5rem 2.5rem 1.75rem}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto 2.5rem}
 .foot-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1rem;font-weight:600;margin-bottom:.25rem}
 .foot-logo em{color:var(--gold2);font-style:italic}
 .foot-rule{width:28px;height:1px;background:var(--gold);opacity:.4;margin:.65rem 0}
-.foot-tagline{font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.75;font-weight:300}
+.foot-tagline{font-size:.78rem;color:rgba(255,255,255,.75);line-height:1.75;font-weight:400}
 .foot-heading{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.85rem}
 .foot-links{list-style:none;display:flex;flex-direction:column;gap:.45rem}
-.foot-links a{font-size:.78rem;color:rgba(255,255,255,.45);transition:color .2s}
+.foot-links a{font-size:.78rem;color:rgba(255,255,255,.82);transition:color .2s}
 .foot-links a:hover{color:var(--gold2)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.7rem;color:rgba(255,255,255,.2);max-width:1100px;margin:0 auto;letter-spacing:.3px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.7rem;color:rgba(255,255,255,.7);max-width:1100px;margin:0 auto;letter-spacing:.3px}
 .foot-bottom a{color:var(--gold);opacity:.7;transition:opacity .2s}.foot-bottom a:hover{opacity:1}
 
 /* ─── ANIMATIONS ─── */
@@ -301,7 +301,7 @@ footer{background:var(--navy3);color:rgba(255,255,255,.5);padding:3.5rem 2.5rem 
   .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
-  .emstrip{gap:.85rem;font-size:.65rem}
+  .emstrip{background:var(--red);gap:.85rem;font-size:.65rem}
   .foot-grid{grid-template-columns:1fr}
   .foot-grid>div:first-child{grid-column:auto}
   .foot-bottom{flex-direction:column;text-align:center}
@@ -382,6 +382,10 @@ footer{background:var(--navy3);color:rgba(255,255,255,.5);padding:3.5rem 2.5rem 
   </div>
 </div>
 
+<div style="background:var(--pale);border-bottom:1px solid var(--border2);padding:.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+  <p style="font-size:.8rem;color:var(--mid);font-weight:400">Showing 80+ local businesses across 14 categories</p>
+  <a href="/marketplace.html" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--navy);color:var(--white);padding:.5rem 1.25rem;font-size:.75rem;font-weight:500;letter-spacing:.4px;text-transform:uppercase;text-decoration:none;transition:background .2s">+ Post a Free Listing</a>
+</div>
 <div class="cat-strip">
   <button class="ctab active" onclick="setTab('all',this)">All</button>
   <button class="ctab" onclick="setTab('food',this)">Food</button>
@@ -515,11 +519,11 @@ footer{background:var(--navy3);color:rgba(255,255,255,.5);padding:3.5rem 2.5rem 
       <div class="biz-card em" data-cat="emergency" data-search="shomrim neighborhood watch security patrol"><div class="biz-name">Shomrim</div><div class="biz-phone"><a href="tel:7183702121">718-370-2121</a></div><div class="biz-tag">Neighborhood Watch</div></div>
     </div></div>
 
-    <p id="noResults" class="hidden" style="color:var(--muted);padding:3rem;text-align:center;font-size:.9rem;font-weight:300">No businesses found. Try a different search term.</p>
+    <p id="noResults" class="hidden" style="color:#445d6e;padding:3rem;text-align:center;font-size:.9rem;font-weight:400">No businesses found. Try a different search term.</p>
   </div>
 
   <div style="text-align:center;padding:3rem 0 1rem;border-top:1px solid var(--border2);margin-top:1rem">
-    <p style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.25rem">Don't see your business? Get listed today — first month free.</p>
+    <p style="font-size:.82rem;color:#445d6e;font-weight:400;margin-bottom:1.25rem">Don't see your business? Get listed today — first month free.</p>
     <a href="/advertise.html" style="display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--navy);color:var(--navy);padding:.6rem 1.5rem;font-size:.76rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:all .25s">List Your Business →</a>
   </div>
 </div>

@@ -41,7 +41,7 @@ nav{background:rgba(7,14,41,.9);backdrop-filter:blur(20px);border-bottom:1px sol
 .sec-label::before{content:'';width:24px;height:2px;background:var(--gold);display:inline-block}
 .sec-heading{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.6rem}
 .sec-heading span{color:transparent;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sec-sub{color:rgba(255,255,255,.5);font-size:.9rem;margin-bottom:2.5rem;line-height:1.7}
+.sec-sub{color:rgba(255,255,255,.85);font-size:.9rem;margin-bottom:2.5rem;line-height:1.7}
 .types-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;max-width:1100px;margin:0 auto}
 .type-chip{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all .3s;position:relative}
 .type-chip:hover,.type-chip.active{background:rgba(212,168,67,.1);border-color:rgba(212,168,67,.4);transform:translateY(-3px)}
@@ -58,26 +58,26 @@ nav{background:rgba(7,14,41,.9);backdrop-filter:blur(20px);border-bottom:1px sol
 .vendor-header{padding:1.5rem 1.5rem 1rem;position:relative}
 .vendor-cat-badge{display:inline-block;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);color:var(--gold);font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
 .vendor-name{font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:.3rem}
-.vendor-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.55}
+.vendor-desc{font-size:.8rem;color:rgba(255,255,255,.88);line-height:1.55}
 .vendor-footer{padding:.85rem 1.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
 .vcall{background:linear-gradient(135deg,var(--red),#aa1515);color:#fff;padding:.45rem .9rem;border-radius:50px;font-size:.78rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
 .vcall:hover{transform:translateY(-1px)}
 .vweb{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;padding:.45rem .9rem;border-radius:50px;font-size:.78rem;font-weight:700;text-decoration:none;font-family:'Inter',sans-serif}
-.vphone{font-size:.82rem;font-weight:700;color:var(--gold);margin-left:auto}
+.vphone{font-size:.75rem;color:var(--muted);font-style:italic;font-weight:400}
 /* ANNOUNCEMENTS */
 .announce-section{background:linear-gradient(180deg,#050d20,#0a1c4b);padding:4rem 2rem}
 .announce-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1100px;margin:2rem auto 0}
 .announce-form{background:rgba(255,255,255,.04);border:1px solid rgba(212,168,67,.15);border-radius:20px;padding:2rem}
 .announce-form h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.35rem}
-.announce-form p{font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
+.announce-form p{font-size:.82rem;color:rgba(255,255,255,.85);margin-bottom:1.5rem}
 .field{margin-bottom:1rem}
-.field label{display:block;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.field label{display:block;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
 .gold-input{width:100%;padding:.8rem 1rem;background:rgba(255,255,255,.06);border:1px solid rgba(212,168,67,.2);border-radius:10px;font-size:.88rem;color:#fff;outline:none;font-family:'Inter',sans-serif;transition:border .2s}
 .gold-input:focus{border-color:rgba(212,168,67,.5);background:rgba(255,255,255,.08)}
 .gold-input::placeholder{color:rgba(255,255,255,.25)}
 .gold-input option{background:#0a1c4b;color:#fff}
 .type-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
-.type-tag{padding:.32rem .75rem;border:1px solid rgba(212,168,67,.25);border-radius:50px;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s}
+.type-tag{padding:.32rem .75rem;border:1px solid rgba(212,168,67,.25);border-radius:50px;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.85);cursor:pointer;transition:all .2s}
 .type-tag.selected{background:rgba(212,168,67,.2);border-color:rgba(212,168,67,.6);color:var(--gold)}
 .announce-board{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:1.5rem;max-height:500px;overflow-y:auto}
 .announce-board h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:1.25rem}
@@ -86,8 +86,8 @@ nav{background:rgba(7,14,41,.9);backdrop-filter:blur(20px);border-bottom:1px sol
 .ai-simcha-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);color:var(--gold);font-size:.65rem;font-weight:700;padding:.18rem .55rem;border-radius:50px;margin-bottom:.6rem}
 .ai-type{font-size:.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.35rem}
 .ai-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.3rem}
-.ai-details{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.55}
-.ai-date{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.5rem}
+.ai-details{font-size:.8rem;color:rgba(255,255,255,.88);line-height:1.55}
+.ai-date{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:.5rem}
 /* CHECKLIST */
 .checklist-section{background:linear-gradient(180deg,#0a1c4b,#050d20);padding:4rem 2rem}
 .checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:2rem auto 0}
@@ -97,19 +97,19 @@ nav{background:rgba(7,14,41,.9);backdrop-filter:blur(20px);border-bottom:1px sol
 .check-box{width:18px;height:18px;border:1.5px solid rgba(212,168,67,.4);border-radius:4px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:.7rem}
 .checklist-item.done .check-box{background:var(--gold);border-color:var(--gold);color:#111}
 .check-text{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.5;transition:all .2s}
-.checklist-item.done .check-text{color:rgba(255,255,255,.3);text-decoration:line-through}
+.checklist-item.done .check-text{color:rgba(255,255,255,.75);text-decoration:line-through}
 .progress-bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin-bottom:1.25rem;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:2px;transition:width .4s ease}
-.progress-label{font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:.75rem;display:flex;justify-content:space-between}
+.progress-label{font-size:.7rem;color:rgba(255,255,255,.8);margin-bottom:.75rem;display:flex;justify-content:space-between}
 /* ADVERTISE CTA */
 .vendor-cta{background:linear-gradient(135deg,#0d1f55,#0a1c4b);border:1px solid rgba(212,168,67,.2);border-radius:20px;padding:2.5rem;text-align:center;max-width:700px;margin:3rem auto 0}
 .vendor-cta h3{font-size:1.3rem;font-weight:900;color:var(--gold);margin-bottom:.5rem}
 .vendor-cta p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem}
-footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,.06);margin-top:4rem}
+footer{background:#020810;color:rgba(255,255,255,.8);padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,.06);margin-top:4rem}
 .foot-row{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem}
 .foot-row a{color:var(--gold)}
 .foot-links-row{display:flex;gap:1.5rem}
-.foot-links-row a{color:rgba(255,255,255,.35);transition:color .2s}.foot-links-row a:hover{color:var(--gold)}
+.foot-links-row a{color:rgba(255,255,255,.75);transition:color .2s}.foot-links-row a:hover{color:var(--gold)}
 .fade-up{opacity:0;transform:translateY(25px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 .success-msg{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.3);border-radius:10px;padding:1rem;color:var(--gold);font-weight:600;font-size:.85rem;display:none;margin-top:1rem;line-height:1.6}
@@ -139,15 +139,15 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
 <!-- EMERGENCY -->
 <div class="emstrip">
   <span class="em-label">Emergency</span>
-  <a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a>
+  <span style="display:none" data-phone="7182301000">🚑 Hatzolah: 718-230-1000</a>
   <span class="sep">·</span>
-  <a href="tel:7187612428">Chaveirim: 718-761-2428</a>
+  <span style="display:none" data-phone="7187612428">Chaveirim: 718-761-2428</a>
   <span class="sep">·</span>
-  <a href="tel:7187614444">Shmira: 718-761-4444</a>
+  <span style="display:none" data-phone="7187614444">Shmira: 718-761-4444</a>
   <span class="sep">·</span>
-  <a href="tel:7183702121">Shomrim: 718-370-2121</a>
+  <span style="display:none" data-phone="7183702121">Shomrim: 718-370-2121</a>
   <span class="sep">·</span>
-  <a href="tel:7188544548">Misaskim: 718-854-4548</a>
+  <span style="display:none" data-phone="7188544548">Misaskim: 718-854-4548</a>
 </div>
 
 <!-- PROMO -->
@@ -169,6 +169,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
     <li><a href="/simcha.html">Simcha</a></li>
     <li><a href="/ads.html">Ads</a></li>
     <li><a href="/coupons.html">Coupons</a></li>
+    <li><a href="/#shabbos">Shabbos</a></li>
     <li><a href="/advertise.html" class="nav-cta">Advertise</a></li>
   </ul>
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
@@ -201,7 +202,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
       <div class="type-chip active" onclick="selectType('all',this)"><span class="type-emoji">🎉</span><span class="type-name">All Events</span></div>
       <div class="type-chip" onclick="selectType('wedding',this)"><span class="type-emoji">💒</span><span class="type-name">Wedding</span></div>
       <div class="type-chip" onclick="selectType('barmitzvah',this)"><span class="type-emoji">📜</span><span class="type-name">Bar Mitzvah</span></div>
-      <div class="type-chip" onclick="selectType('batmitzvah',this)"><span class="type-emoji">✡</span><span class="type-name">Bat Mitzvah</span></div>
+      <div class="type-chip" onclick="selectType('basmitzvah',this)"><span class="type-emoji">✡</span><span class="type-name">Bas Mitzvah</span></div>
       <div class="type-chip" onclick="selectType('vort',this)"><span class="type-emoji">💍</span><span class="type-name">Vort / L'Chaim</span></div>
       <div class="type-chip" onclick="selectType('bris',this)"><span class="type-emoji">👶</span><span class="type-name">Bris</span></div>
       <div class="type-chip" onclick="selectType('sheva',this)"><span class="type-emoji">🕯</span><span class="type-name">Sheva Brachos</span></div>
@@ -239,7 +240,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Island Catering NY</div>
           <div class="vendor-desc">Full-service kosher catering for all simchos. Steven Israel brings decades of experience to every event.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:6466456609" class="vcall">📞 Call</a><span class="vphone">646-645-6609</span></div>
+        <div class="vendor-footer" style="flex-direction:column;gap:.5rem"><span style="display:none" data-phone="6466456609"></span><span class="vphone">646-645-6609</span></div>
       </div>
       <div class="vendor-card" data-vendor="catering">
         <div class="vendor-header">
@@ -247,7 +248,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Dairy Palace Pizza & Caterers</div>
           <div class="vendor-desc">Catering for kiddushim, sheva brachos, and all dairy events. Located on Victory Blvd.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:7187615200" class="vcall">📞 Call</a><span class="vphone">718-761-5200</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="7187615200"></span><span class="vphone">718-761-5200</span></div>
       </div>
       <div class="vendor-card" data-vendor="catering">
         <div class="vendor-header">
@@ -255,7 +256,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">321 Desserts</div>
           <div class="vendor-desc">Beautiful dessert tables, cakes, and sweet displays for your simcha. Perfect for any occasion.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:7182907785" class="vcall">📞 Call</a><span class="vphone">718-290-7785</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="7182907785"></span><span class="vphone">718-290-7785</span></div>
       </div>
       <div class="vendor-card" data-vendor="catering">
         <div class="vendor-header">
@@ -263,7 +264,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Sugar House Ice Cream</div>
           <div class="vendor-desc">Ice cream station and dessert catering — a crowd favorite at any simcha!</div>
         </div>
-        <div class="vendor-footer"><a href="tel:7187016891" class="vcall">📞 Call</a><span class="vphone">718-701-6891</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="7187016891"></span><span class="vphone">718-701-6891</span></div>
       </div>
       <!-- PHOTOGRAPHY -->
       <div class="vendor-card" data-vendor="photo">
@@ -272,7 +273,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Engaging Pix Photography</div>
           <div class="vendor-desc">Specializing in smachot — weddings, bar/bat mitzvahs, vorts, and family portraits.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:3473936094" class="vcall">📞 Call</a><span class="vphone">347-393-6094</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="3473936094"></span><span class="vphone">347-393-6094</span></div>
       </div>
       <div class="vendor-card" data-vendor="photo">
         <div class="vendor-header">
@@ -280,7 +281,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Koby Yedgar Photography</div>
           <div class="vendor-desc">Professional event photography capturing every precious moment of your simcha.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9176821351" class="vcall">📞 Call</a><span class="vphone">917-682-1351</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9176821351"></span><span class="vphone">917-682-1351</span></div>
       </div>
       <div class="vendor-card" data-vendor="photo">
         <div class="vendor-header">
@@ -288,7 +289,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Nechami Photography</div>
           <div class="vendor-desc">Family portraits and simcha photography with a warm, personal touch.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:3472486011" class="vcall">📞 Call</a><span class="vphone">347-248-6011</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="3472486011"></span><span class="vphone">347-248-6011</span></div>
       </div>
       <div class="vendor-card" data-vendor="photo">
         <div class="vendor-header">
@@ -296,7 +297,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Rikkiz Photography</div>
           <div class="vendor-desc">Portraits and events — capturing the joy of your simcha beautifully.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9177534444" class="vcall">📞 Call</a><span class="vphone">917-753-4444</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9177534444"></span><span class="vphone">917-753-4444</span></div>
       </div>
       <!-- FLOWERS & DECOR -->
       <div class="vendor-card" data-vendor="flowers">
@@ -305,7 +306,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Sabine ExtraaoridnAir</div>
           <div class="vendor-desc">Stunning balloon décor for weddings, bar mitzvahs, vorts, and all smachot. Custom designs.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9178382707" class="vcall">📞 Call</a><span class="vphone">917-838-2707</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9178382707"></span><span class="vphone">917-838-2707</span></div>
       </div>
       <!-- GIFTS & FAVORS -->
       <div class="vendor-card" data-vendor="gifts">
@@ -314,7 +315,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Island Gifting</div>
           <div class="vendor-desc">Custom engraved gifts, photo printing, and personalized favors for your simcha guests.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9177534444" class="vcall">📞 Call</a><span class="vphone">917-753-4444</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9177534444"></span><span class="vphone">917-753-4444</span></div>
       </div>
       <div class="vendor-card" data-vendor="gifts">
         <div class="vendor-header">
@@ -322,7 +323,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Hedy's Gifts</div>
           <div class="vendor-desc">Beautiful gifts for all occasions — simcha gifts, thank you gifts, and more. We ship!</div>
         </div>
-        <div class="vendor-footer"><a href="tel:3477293538" class="vcall">📞 Call</a><span class="vphone">347-729-3538</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="3477293538"></span><span class="vphone">347-729-3538</span></div>
       </div>
       <div class="vendor-card" data-vendor="gifts">
         <div class="vendor-header">
@@ -330,7 +331,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Present n' Style</div>
           <div class="vendor-desc">Gorgeous gift wrapping and home décor — perfect for simcha gifts and table décor.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9178098001" class="vcall">📞 Call</a><span class="vphone">917-809-8001</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9178098001"></span><span class="vphone">917-809-8001</span></div>
       </div>
       <div class="vendor-card" data-vendor="gifts">
         <div class="vendor-header">
@@ -338,7 +339,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Little Lilac</div>
           <div class="vendor-desc">Beautiful baby layette and gifting — perfect for bris, baby naming, and shower gifts.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:3476751567" class="vcall">📞 Call</a><span class="vphone">347-675-1567</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="3476751567"></span><span class="vphone">347-675-1567</span></div>
       </div>
       <div class="vendor-card" data-vendor="gifts">
         <div class="vendor-header">
@@ -346,7 +347,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">The Finishing Touch Gifts</div>
           <div class="vendor-desc">Personalized gifts for every simcha — engraved, custom, and memorable.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9178034452" class="vcall">📞 Call</a><span class="vphone">917-803-4452</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9178034452"></span><span class="vphone">917-803-4452</span></div>
       </div>
       <div class="vendor-card" data-vendor="gifts">
         <div class="vendor-header">
@@ -354,7 +355,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Lab Grown Jewelry</div>
           <div class="vendor-desc">14ct & 18ct gold diamond jewelry — perfect for engagement rings, simcha gifts, and more.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9176407675" class="vcall">📞 Call</a><span class="vphone">917-640-7675</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9176407675"></span><span class="vphone">917-640-7675</span></div>
       </div>
       <!-- BEAUTY -->
       <div class="vendor-card" data-vendor="beauty">
@@ -363,7 +364,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Danielle Besser</div>
           <div class="vendor-desc">Wig, hair, and makeup services for brides and simcha guests. Professional and stunning results.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:7182322789" class="vcall">📞 Call</a><span class="vphone">718-232-2789</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="7182322789"></span><span class="vphone">718-232-2789</span></div>
       </div>
       <div class="vendor-card" data-vendor="beauty">
         <div class="vendor-header">
@@ -371,7 +372,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Glam n Go</div>
           <div class="vendor-desc">Makeup by Chani — bridal and simcha makeup that lasts all night.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9178438740" class="vcall">📞 Call</a><span class="vphone">917-843-8740</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9178438740"></span><span class="vphone">917-843-8740</span></div>
       </div>
       <div class="vendor-card" data-vendor="beauty">
         <div class="vendor-header">
@@ -379,7 +380,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Makeup by Naomi</div>
           <div class="vendor-desc">Professional makeup for brides, kallot, and simcha occasions.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:7185987865" class="vcall">📞 Call</a><span class="vphone">718-598-7865</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="7185987865"></span><span class="vphone">718-598-7865</span></div>
       </div>
       <div class="vendor-card" data-vendor="beauty">
         <div class="vendor-header">
@@ -387,7 +388,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Hair by Gall</div>
           <div class="vendor-desc">Wigs, hair styling, and haircuts for the kallah and all simcha guests.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:3474247505" class="vcall">📞 Call</a><span class="vphone">347-424-7505</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="3474247505"></span><span class="vphone">347-424-7505</span></div>
       </div>
       <!-- CLOTHING -->
       <div class="vendor-card" data-vendor="clothing">
@@ -396,7 +397,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">White Petal Lingerie</div>
           <div class="vendor-desc">Your perfect fitting for the kallah and all simcha occasions. Discreet and professional.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:3477074637" class="vcall">📞 Call</a><span class="vphone">347-707-4637</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="3477074637"></span><span class="vphone">347-707-4637</span></div>
       </div>
       <div class="vendor-card" data-vendor="clothing">
         <div class="vendor-header">
@@ -404,7 +405,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Mr Basics</div>
           <div class="vendor-desc">Mens and boys dry goods — suits, shirts, and everything for the simcha.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:7188511799" class="vcall">📞 Call</a><span class="vphone">718-851-1799</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="7188511799"></span><span class="vphone">718-851-1799</span></div>
       </div>
       <!-- TRANSPORT -->
       <div class="vendor-card" data-vendor="transport">
@@ -413,7 +414,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="vendor-name">Yakov Schmelczer</div>
           <div class="vendor-desc">VIP long distance transportation and messenger services — perfect for simcha guests.</div>
         </div>
-        <div class="vendor-footer"><a href="tel:9172004594" class="vcall">📞 Call</a><span class="vphone">917-200-4594</span></div>
+        <div class="vendor-footer"><span style="display:none" data-phone="9172004594"></span><span class="vphone">917-200-4594</span></div>
       </div>
     </div>
 
@@ -440,7 +441,7 @@ footer{background:#020810;color:rgba(255,255,255,.4);padding:1.5rem 2rem;border-
           <div class="type-tags" id="typeTagsForm">
             <div class="type-tag selected" data-type="wedding">💒 Wedding</div>
             <div class="type-tag" data-type="barmitzvah">📜 Bar Mitzvah</div>
-            <div class="type-tag" data-type="batmitzvah">✡ Bat Mitzvah</div>
+            <div class="type-tag" data-type="basmitzvah">✡ Bas Mitzvah</div>
             <div class="type-tag" data-type="vort">💍 Vort</div>
             <div class="type-tag" data-type="bris">👶 Bris</div>
             <div class="type-tag" data-type="sheva">🕯 Sheva Brachos</div>
@@ -549,8 +550,8 @@ document.querySelectorAll('#typeTagsForm .type-tag').forEach(tag=>{
 });
 
 // POST ANNOUNCEMENT
-const typeEmojis={wedding:'💒',barmitzvah:'📜',batmitzvah:'✡',vort:'💍',bris:'👶',sheva:'🕯',kiddush:'🍷',aufruf:'📖',graduation:'🎓',event:'🎊'};
-const typeNames={wedding:'Wedding',barmitzvah:'Bar Mitzvah',batmitzvah:'Bat Mitzvah',vort:'Vort',bris:'Bris',sheva:'Sheva Brachos',kiddush:'Kiddush',aufruf:'Aufruf',graduation:'Graduation',event:'Event'};
+const typeEmojis={wedding:'💒',barmitzvah:'📜',basmitzvah:'✡',vort:'💍',bris:'👶',sheva:'🕯',kiddush:'🍷',aufruf:'📖',graduation:'🎓',event:'🎊'};
+const typeNames={wedding:'Wedding',barmitzvah:'Bar Mitzvah',basmitzvah:'Bas Mitzvah',vort:'Vort',bris:'Bris',sheva:'Sheva Brachos',kiddush:'Kiddush',aufruf:'Aufruf',graduation:'Graduation',event:'Event'};
 
 async function postAnnouncement(){
   const families=document.getElementById('annFamilies').value.trim();
