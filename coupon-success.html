@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0B1F3A">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Post Your Coupon — ShopLocal SI</title>
@@ -65,6 +67,7 @@ header{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;
 .billing-box{background:#f0f7ff;border:1px solid #b3d4f5;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:.82rem;color:#1a3a6b;line-height:1.6}
 .billing-box strong{color:var(--navy)}
 </style>
+<link rel="stylesheet" href="/assets/css/shoplocal-refresh.css">
 </head>
 <body>
 
@@ -333,5 +336,6 @@ async function submitCoupon() {
   }
 }
 </script>
+<script src="/assets/js/shoplocal-pwa.js"></script>
 </body>
 </html>

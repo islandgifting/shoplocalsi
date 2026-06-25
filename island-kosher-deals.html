@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0B1F3A">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Island Kosher Super Deals — ShopLocal SI</title>
@@ -91,6 +93,7 @@ footer a{color:var(--gold)}
 
 @media(max-width:600px){.store-info{grid-template-columns:1fr}.hours-bar{gap:1rem;font-size:.7rem}}
 </style>
+<link rel="stylesheet" href="/assets/css/shoplocal-refresh.css">
 </head>
 <body>
 
@@ -230,5 +233,6 @@ document.addEventListener('keydown', e => {
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:.1});
 document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
+<script src="/assets/js/shoplocal-pwa.js"></script>
 </body>
 </html>

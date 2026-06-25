@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0B1F3A">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simcha Planning — ShopLocal SI</title>
@@ -116,6 +118,7 @@ footer{background:#020810;color:rgba(255,255,255,.8);padding:1.5rem 2rem;border-
 @media(max-width:900px){.announce-grid{grid-template-columns:1fr}}
 @media(max-width:768px){nav{padding:0 1.5rem}.nav-links{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(7,14,41,.97);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)}.nav-links.open{display:flex}.hamburger{display:flex}.emstrip{gap:.65rem;font-size:.7rem}.types-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
+<link rel="stylesheet" href="/assets/css/shoplocal-refresh.css">
 </head>
 <body>
 
@@ -642,5 +645,6 @@ function toggleCheck(li,ii,el){
 
 buildChecklist();
 </script>
+<script src="/assets/js/shoplocal-pwa.js"></script>
 </body>
 </html>

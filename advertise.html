@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0B1F3A">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Advertise — ShopLocal SI</title>
@@ -351,6 +353,7 @@ footer{background:var(--navy3);color:rgba(255,255,255,.85);padding:3.5rem 2.5rem
 .form-submit:hover{background:var(--navy2)}
 @media(max-width:600px){.form-row{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="/assets/css/shoplocal-refresh.css">
 </head>
 <body>
 <!-- EMERGENCY -->
@@ -574,5 +577,6 @@ async function startAdPayment(plan){
   }catch(e){alert('Please fill in the enquiry form below or call 917-753-4444.');}
 }
 </script>
+<script src="/assets/js/shoplocal-pwa.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0B1F3A">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business Directory — ShopLocal SI</title>
@@ -310,6 +312,7 @@ footer{background:var(--navy3);color:rgba(255,255,255,.85);padding:3.5rem 2.5rem
 }
 .hidden{display:none!important}
 </style>
+<link rel="stylesheet" href="/assets/css/shoplocal-refresh.css">
 </head>
 <body>
 
@@ -665,5 +668,6 @@ function openBizModal(ad){
 }
 function closeBizModal(){document.getElementById('bizModalOverlay').classList.remove('open');document.body.style.overflow='';}
 </script>
+<script src="/assets/js/shoplocal-pwa.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0B1F3A">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Set Up Your Ad — ShopLocal SI</title>
@@ -89,6 +91,7 @@ header{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;
 .color-swatch{width:40px;height:40px;border-radius:8px;cursor:pointer;border:3px solid transparent;transition:all .2s}
 .color-swatch.selected{border-color:#fff;box-shadow:0 0 0 3px var(--navy)}
 </style>
+<link rel="stylesheet" href="/assets/css/shoplocal-refresh.css">
 </head>
 <body>
 
@@ -641,5 +644,6 @@ async function submitAd() {
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 </script>
+<script src="/assets/js/shoplocal-pwa.js"></script>
 </body>
 </html>
