@@ -505,6 +505,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <li><a href="/marketplace.html" data-page="marketplace">Marketplace</a></li>
     <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
     <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
+    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
     <li><a href="/advertise.html" class="nav-cta" data-page="advertise">List Your Business</a></li>
@@ -615,7 +616,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <div class="green-divider fade-up"></div>
   </div>
   <div class="city-select-wrap">
-    <select id="citySelect" class="city-select" onchange="updateShabbos()">
+    <select id="citySelect" class="city-select">
       <optgroup label="United States">
         <option value="40.5795,-74.1502,-5,-4">Staten Island, NY</option>
         <option value="40.6782,-73.9442,-5,-4">Brooklyn, NY</option>
@@ -714,30 +715,60 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-(function(){
-  function nextFri(){const d=new Date(),day=d.getDay();var diff;if(day===5)diff=0;else if(day===6)diff=6;else diff=5-day;const fri=new Date(d);fri.setDate(d.getDate()+diff);fri.setHours(12,0,0,0);return fri;}
-  function sunset(d,lat,lon,std,dst){const yr=d.getFullYear(),dt=d>=new Date(yr,2,8)&&d<new Date(yr,10,1),off=dt?dst:std,J=Math.floor((d-new Date(yr,0,0))/86400000),D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180,cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);if(cosH>1||cosH<-1)return null;return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+off;}
-  function fmt(h){if(h===null)return"N/A";h=((h%24)+24)%24;const hr=Math.floor(h),mn=Math.round((h-hr)*60),m=mn<10?"0"+mn:mn,p=hr>=12?"PM":"AM",h12=hr>12?hr-12:hr===0?12:hr;return h12+":"+m+" "+p;}
-  const Mo=["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const Da=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  window.updateShabbos=function(){
-    const sel=document.getElementById("citySelect");if(!sel)return;
-    const[lat,lon,std,dst]=sel.value.split(",").map(Number);
-    const fri=nextFri(),sun=sunset(fri,lat,lon,std,dst),sat=new Date(fri);sat.setDate(fri.getDate()+1);
-    const city=sel.options[sel.selectedIndex].text;
-    document.getElementById("shabDate").textContent=city.toUpperCase()+" · "+Da[fri.getDay()].toUpperCase()+", "+Mo[fri.getMonth()].toUpperCase()+" "+fri.getDate()+" — "+Mo[sat.getMonth()].toUpperCase()+" "+sat.getDate()+", "+sat.getFullYear();
-    document.getElementById("candleLighting").textContent=fmt(sun!==null?sun-18/60:null);
-    document.getElementById("shabbosEnds").textContent=fmt(sun!==null?sun+50/60:null);
-    document.getElementById("rabbeinuTam").textContent=fmt(sun!==null?sun+72/60:null);
-  };
-  updateShabbos();
-  document.getElementById("citySelect").addEventListener("change", updateShabbos);
-  // Counter
-  const co=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting&&!en.target.dataset.done){en.target.dataset.done="1";en.target.querySelectorAll(".stat-n[data-target]").forEach(el=>{const t=parseInt(el.dataset.target);let c=0;const i=setInterval(()=>{c=Math.min(c+Math.ceil(t/40),t);el.textContent=c+(t===80?"+":"");if(c>=t)clearInterval(i);},40);});}});},{threshold:.5});
-  const s=document.querySelector(".stats-bar");if(s)co.observe(s);
-})();
-}); // end DOMContentLoaded
+// ── SHABBOS TIMES ──
+function shabNextFri(){
+  var d=new Date(), day=d.getDay(), diff;
+  if(day===6) diff=6;       // Saturday -> next Friday
+  else diff=5-day;           // Sun=4, Mon=4, Tue=3, Wed=2, Thu=1, Fri=0
+  var fri=new Date(d);
+  fri.setDate(d.getDate()+diff);
+  fri.setHours(12,0,0,0);
+  return fri;
+}
+function shabSunset(d,lat,lon,std,dst){
+  var yr=d.getFullYear();
+  var isDST=d>=new Date(yr,2,8)&&d<new Date(yr,10,1);
+  var off=isDST?dst:std;
+  var J=Math.floor((d-new Date(yr,0,0))/86400000);
+  var D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180;
+  var cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);
+  if(cosH>1||cosH<-1) return null;
+  return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+off;
+}
+function shabFmt(h){
+  if(h===null) return 'N/A';
+  h=((h%24)+24)%24;
+  var hr=Math.floor(h), mn=Math.round((h-hr)*60);
+  if(mn===60){hr++;mn=0;}
+  var p=hr>=12?'PM':'AM';
+  var h12=hr>12?hr-12:(hr===0?12:hr);
+  return h12+':'+(mn<10?'0':'')+mn+' '+p;
+}
+var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function updateShabbos(){
+  var sel=document.getElementById('citySelect');
+  if(!sel) return;
+  var parts=sel.value.split(',');
+  var lat=parseFloat(parts[0]),lon=parseFloat(parts[1]),std=parseFloat(parts[2]),dst=parseFloat(parts[3]);
+  var fri=shabNextFri();
+  var sun=shabSunset(fri,lat,lon,std,dst);
+  var sat=new Date(fri); sat.setDate(fri.getDate()+1);
+  var city=sel.options[sel.selectedIndex].text;
+  document.getElementById('shabDate').textContent=
+    city.toUpperCase()+' · '+DAYS[fri.getDay()].toUpperCase()+', '+
+    MONTHS[fri.getMonth()].toUpperCase()+' '+fri.getDate()+
+    ' — '+MONTHS[sat.getMonth()].toUpperCase()+' '+sat.getDate()+', '+sat.getFullYear();
+  document.getElementById('candleLighting').textContent=shabFmt(sun!==null?sun-18/60:null);
+  document.getElementById('shabbosEnds').textContent=shabFmt(sun!==null?sun+50/60:null);
+  document.getElementById('rabbeinuTam').textContent=shabFmt(sun!==null?sun+72/60:null);
+}
+// Run immediately - script is at bottom so DOM elements exist
+updateShabbos();
+document.getElementById('citySelect').addEventListener('change', updateShabbos);
+// ── COUNTER ──
+var statObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting&&!en.target.dataset.done){en.target.dataset.done='1';en.target.querySelectorAll('.stat-n[data-target]').forEach(function(el){var t=parseInt(el.dataset.target);var c=0;var iv=setInterval(function(){c=Math.min(c+Math.ceil(t/40),t);el.textContent=c+(t===80?'+':'');if(c>=t)clearInterval(iv);},40);});}});},{threshold:.5});
+var sb=document.querySelector('.stats-bar');if(sb)statObs.observe(sb);
 // Ads
 (function(){
   let allCoupons=[];
@@ -802,7 +833,7 @@ document.addEventListener("DOMContentLoaded", function(){
       <ul class="foot-links">
         <li><a href="/#shabbos">Shabbos Times</a></li>
         <li><a href="/island-kosher-deals.html">Island Kosher Deals</a></li>
-        <li><a href="/advertise.html">List Your Business</a></li>
+        <li><a href="/advertise.html">Advertise / List Your Business</a></li>
       </ul>
     </div>
     <div>
