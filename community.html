@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Local Staten Island | Support Local · Strengthen Community — Shop Local Staten Island</title>
+<title>Community Hub &mdash; Shop Local Staten Island</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -40,7 +40,7 @@ nav{
 .logo-url{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:600;color:#2c6e9e;letter-spacing:.5px}
 
 /* NAV LINKS - small, spaced, uppercase, green underline on active */
-.nav-links{display:flex;align-items:center;gap:0;list-style:none;margin:0 .5rem}
+.nav-links{display:flex;align-items:center;gap:.1rem;list-style:none;margin:0 1.5rem}
 .nav-links a{
   font-family:'Montserrat',sans-serif;
   font-size:.72rem;font-weight:600;color:#1a2a3a;
@@ -116,8 +116,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy
 .logo-si{font-size:.55rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-top:.2rem}
 .logo-si::before,.logo-si::after{content:'';width:12px;height:1px;background:var(--navy);opacity:.4}
 .logo-url{font-size:.58rem;color:var(--blue);font-weight:600;letter-spacing:.5px;margin-top:.1rem;display:block}
-.nav-links{display:flex;align-items:center;gap:0;list-style:none}
-.nav-links a{font-size:.72rem;font-weight:600;color:var(--text);letter-spacing:.4px;text-transform:uppercase;padding:.5rem .7rem;position:relative;transition:color .2s}
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none}
+.nav-links a{font-size:.75rem;font-weight:600;color:var(--text);letter-spacing:.5px;text-transform:uppercase;padding:.5rem .85rem;position:relative;transition:color .2s}
 .nav-links a:hover{color:var(--green)}
 .nav-links a.active{color:var(--green)}
 .nav-links a.active::after{content:'';position:absolute;bottom:-1px;left:.85rem;right:.85rem;height:3px;background:var(--green);border-radius:2px 2px 0 0}
@@ -375,81 +375,58 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   .section{padding:3.5rem 1.5rem}
 }
 
+.page-hero{background:var(--navy);padding:3.5rem 2.5rem 3rem;text-align:center;position:relative;overflow:hidden;border-bottom:4px solid var(--green)}
+.page-hero-eyebrow{font-size:.62rem;font-weight:700;color:#7ee8a2;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+.page-hero-eyebrow::before,.page-hero-eyebrow::after{content:"";width:20px;height:2px;background:#7ee8a2}
+.page-hero h1{font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:.5px;text-transform:uppercase}
+.page-hero h1 span{color:#7ee8a2}
+.page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
 
-.hero{background:linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.12)),url('/hero-bridge.jpg') center/cover no-repeat;min-height:500px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2.5rem 5rem}
-.hero-content{max-width:820px}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:#0b1f3a;text-transform:uppercase;letter-spacing:2px;line-height:1.05;text-shadow:0 1px 4px rgba(255,255,255,.5);margin-bottom:.35rem}
-.hero-script{font-family:"Caveat",cursive;font-size:clamp(1.5rem,3.5vw,2.4rem);color:#3e7c59;display:block;font-weight:700;margin-bottom:2rem;text-shadow:0 1px 3px rgba(255,255,255,.4)}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.stats-bar{background:#fff;border-bottom:1px solid var(--border2)}
-.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:1.5rem;text-align:center;border-right:1px solid var(--border2);border-bottom:3px solid transparent;transition:border-color .3s}
-.stat:last-child{border-right:none}
-.stat:hover{border-bottom-color:var(--green)}
-.stat-n{font-size:2rem;font-weight:800;color:var(--navy);display:block;line-height:1}
-.stat-l{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
-.ql-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:1100px;margin:2.5rem auto 0;border:1px solid var(--border);border-radius:6px;overflow:hidden}
-.ql-card{background:#fff;padding:1.85rem 1rem;text-align:center;text-decoration:none;transition:all .25s;display:block;border-right:1px solid var(--border);border-bottom:3px solid transparent}
-.ql-card:last-child{border-right:none}
-.ql-card:hover{background:var(--light);border-bottom-color:var(--green)}
-.ql-icon{font-size:1.4rem;display:block;margin-bottom:.65rem}
-.ql-label{font-size:.75rem;font-weight:700;color:var(--navy);letter-spacing:.3px;text-transform:uppercase;display:block}
-.ql-sub{font-size:.68rem;color:var(--muted);margin-top:.2rem;display:block}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.5rem;max-width:1100px;margin:2.75rem auto 0}
-.feat-card{border:1px solid var(--border2);border-radius:6px;padding:1.75rem;transition:all .3s;cursor:pointer;border-top:3px solid var(--green);background:#fff}
-.feat-card:hover{box-shadow:0 8px 28px rgba(62,124,89,.12);transform:translateY(-3px);border-color:var(--green)}
-.feat-badge{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.35rem;margin-bottom:.85rem}
-.feat-badge::before{content:"";width:14px;height:2px;background:var(--green)}
-.feat-name{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.2px}
-.feat-desc{font-size:.8rem;color:var(--mid);line-height:1.6}
-.feat-phone{font-size:.82rem;font-weight:700;color:var(--blue);margin-top:.75rem}
-.ad-screen-frame{border:2px solid var(--border2);border-radius:6px;background:#fff;padding:1.25rem;max-width:380px;margin:2.5rem auto 0;position:relative}
-.ad-screen-label{position:absolute;top:-10px;left:1.25rem;background:var(--light);padding:0 .6rem;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border2);font-weight:700}
-.ad-screen-inner{border:1px solid var(--border2);min-height:170px;background:var(--light);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:4px;transition:border-color .25s}
-.ad-screen-inner:hover{border-color:var(--green)}
-.ad-slot-text{text-align:center;padding:1.75rem}
-.ad-slot-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.ad-slot-main{font-size:1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
-.ad-slot-sub{font-size:.75rem;color:var(--mid)}
-.ad-slot-link{display:inline-block;margin-top:.85rem;font-size:.7rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px}
-.ad-screen-legs{display:flex;justify-content:center;gap:55px;margin-top:0}
-.ad-screen-leg{width:8px;height:14px;background:var(--border2)}
-.ad-screen-base{width:100px;height:5px;background:var(--border2);margin:0 auto;border-radius:3px}
-.city-select-wrap{position:relative;max-width:580px;margin:2.5rem auto 0}
-.city-select{width:100%;padding:.75rem 1rem;background:#fff;border:2px solid var(--green);border-radius:6px;font-size:.9rem;font-weight:600;color:var(--navy);outline:none;font-family:"Montserrat",sans-serif;cursor:pointer;appearance:none;-webkit-appearance:none;margin-bottom:1rem}
-.city-select option{background:#fff;color:var(--navy)}
-.city-select-arrow{position:absolute;right:1rem;top:1rem;color:var(--green);pointer-events:none;font-weight:700}
-.shab-card{background:#fff;border:2px solid var(--border2);border-radius:8px;padding:2rem;max-width:580px;margin:0 auto;border-top:4px solid var(--green)}
-.shab-date{text-align:center;font-size:.82rem;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:1.5rem;text-transform:uppercase}
-.shab-times{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border2);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
-.shab-block{background:var(--light);padding:1.35rem .75rem;text-align:center}
-.shab-block.rt{background:#f0faf5;border-top:3px solid var(--green)}
-.shab-lbl{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
-.shab-time{font-size:1.3rem;font-weight:800;color:var(--navy);display:block}
-.shab-block.rt .shab-time{color:var(--green)}
-.shab-note{font-size:.62rem;color:var(--muted);margin-top:.3rem;display:block}
-.shab-disclaimer{font-size:.72rem;color:var(--mid);text-align:center;line-height:1.75}
-.shab-disclaimer a{color:var(--blue);border-bottom:1px solid rgba(44,110,158,.3)}
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.5rem;max-width:1100px;margin:2.75rem auto 0}
-.blog-card{background:#fff;border:1px solid var(--border2);border-radius:6px;padding:1.75rem;transition:all .3s;border-top:3px solid transparent;cursor:pointer}
-.blog-card:nth-child(1){border-top-color:var(--green)}
-.blog-card:nth-child(2){border-top-color:var(--navy)}
-.blog-card:nth-child(3){border-top-color:var(--blue)}
-.blog-card:hover{box-shadow:0 6px 22px rgba(11,31,58,.08);transform:translateY(-2px)}
+.comm-tabs{display:flex;gap:0;max-width:1100px;margin:2rem auto 0;border:2px solid var(--green);border-radius:8px;overflow:hidden;flex-wrap:wrap}
+.comm-tab{flex:1;min-width:120px;padding:.75rem;text-align:center;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;cursor:pointer;font-family:"Montserrat",sans-serif;border:none;background:#fff;color:var(--navy);transition:all .2s;border-right:1px solid var(--border2)}
+.comm-tab:last-child{border-right:none}
+.comm-tab.active{background:var(--green);color:#fff}
+.disclaimer{background:rgba(44,110,158,.06);border:1px solid rgba(44,110,158,.2);border-radius:6px;padding:.65rem 1rem;font-size:.72rem;color:var(--blue);font-weight:600;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+.disclaimer::before{content:"ℹ";font-size:1rem;flex-shrink:0}
+/* Tehillim */
+.tehillim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;max-width:1100px;margin:1.5rem auto 0}
+.tehillim-name{background:#fff;border:1px solid var(--border2);border-radius:6px;padding:.75rem 1rem;font-size:.85rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.65rem;transition:border .2s}
+.tehillim-name:hover{border-color:var(--green)}
+.tehillim-name::before{content:"🕯";font-size:.9rem;flex-shrink:0}
+.add-name-form{max-width:560px;margin:2rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.75rem;border-top:3px solid var(--green)}
+.add-name-form h3{font-size:.82rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
+.add-name-form p{font-size:.78rem;color:var(--mid);margin-bottom:1rem}
+.field{margin-bottom:.75rem}
+.field label{display:block;font-size:.63rem;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.28rem}
+.field input,.field select{width:100%;padding:.58rem .85rem;border:2px solid var(--border2);border-radius:4px;font-size:.85rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:var(--light);transition:border .2s}
+.field input:focus{border-color:var(--green);background:#fff}
+/* Blog */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:1.5rem auto 0}
+.blog-card{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.75rem;border-top:3px solid var(--green);transition:all .3s;cursor:pointer}
+.blog-card:hover{box-shadow:0 6px 20px rgba(62,124,89,.1);transform:translateY(-2px)}
 .blog-cat{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
-.blog-title{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.35;text-transform:uppercase;letter-spacing:.2px}
-.blog-exc{font-size:.8rem;color:var(--mid);line-height:1.65}
-.blog-meta{font-size:.68rem;color:var(--muted);margin-top:1rem;display:flex;justify-content:space-between;align-items:center}
+.blog-title{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:.45rem;line-height:1.35;text-transform:uppercase;letter-spacing:.2px}
+.blog-exc{font-size:.8rem;color:var(--mid);line-height:1.65;margin-bottom:.85rem}
+.blog-meta{font-size:.68rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border2);padding-top:.65rem}
 .blog-read{color:var(--green);font-weight:700;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px}
-.comm-box{max-width:820px;margin:2.75rem auto 0;border:1px solid rgba(255,255,255,.12);border-top:4px solid var(--green);padding:3rem;border-radius:6px;text-align:center;background:rgba(255,255,255,.05)}
-.comm-quote{font-family:"Caveat",cursive;font-size:1.3rem;color:#fff;line-height:1.7;margin-bottom:1.25rem;font-weight:700}
-.comm-text{font-size:.9rem;color:rgba(255,255,255,.9);line-height:1.85;margin-bottom:.6rem}
-.comm-bold{color:#7ee8a2;font-weight:700}
-.comm-orgs{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;border-top:1px solid rgba(255,255,255,.1);padding-top:2rem}
-.org-item{text-align:center;padding:.85rem 1.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;border-top:2px solid var(--green)}
-.org-name{font-size:.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px}
-.org-detail{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:.2rem}
-@media(max-width:768px){.stats-inner{grid-template-columns:repeat(2,1fr)}.ql-grid{grid-template-columns:repeat(3,1fr)}.shab-times{grid-template-columns:1fr}}
+.submit-blog-form{max-width:640px;margin:2.5rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2rem;border-top:3px solid var(--navy)}
+.submit-blog-form h3{font-size:.85rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
+.submit-blog-form p{font-size:.78rem;color:var(--mid);margin-bottom:1.25rem}
+.field textarea{width:100%;padding:.58rem .85rem;border:2px solid var(--border2);border-radius:4px;font-size:.85rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:var(--light);height:110px;resize:vertical;transition:border .2s}
+.field textarea:focus{border-color:var(--navy);background:#fff}
+/* Gemach */
+.gemach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem;max-width:1100px;margin:1.5rem auto 0}
+.gemach-card{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.35rem;border-left:4px solid var(--blue);transition:all .3s}
+.gemach-card:hover{box-shadow:0 4px 16px rgba(44,110,158,.1)}
+.gemach-name{font-size:.92rem;font-weight:800;color:var(--navy);margin-bottom:.3rem}
+.gemach-desc{font-size:.8rem;color:var(--mid);line-height:1.6;margin-bottom:.6rem}
+.gemach-contact{font-size:.78rem;font-weight:700;color:var(--blue)}
+/* Chesed */
+.chesed-card{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.35rem;border-left:4px solid var(--green);margin-bottom:1rem;transition:all .3s}
+.chesed-card:hover{box-shadow:0 4px 16px rgba(62,124,89,.1)}
+.chesed-org{font-size:.92rem;font-weight:800;color:var(--navy);margin-bottom:.3rem}
+.chesed-desc{font-size:.8rem;color:var(--mid);line-height:1.65;margin-bottom:.5rem}
+.chesed-contact{font-size:.78rem;font-weight:700;color:var(--green)}
 
 </style>
 </head>
@@ -459,13 +436,11 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <span class="em-label">Emergency</span>
   <a href="tel:7182301000">Hatzolah 718-230-1000</a>
   <span class="sep">·</span>
-  <a href="tel:7183702121">Shomrim 718-370-2121</a>
+  <a href="tel:7187612428">Chaveirim 718-761-2428</a>
   <span class="sep">·</span>
   <a href="tel:7187614444">Shmira 718-761-4444</a>
   <span class="sep">·</span>
-  <a href="tel:7187612428">Chaveirim 718-761-2428</a>
-  <span class="sep">·</span>
-  <a href="tel:7188717299">Chavivim 718-871-7299</a>
+  <a href="tel:7183702121">Shomrim 718-370-2121</a>
   <span class="sep">·</span>
   <a href="tel:7188544548">Misaskim 718-854-4548</a>
 </div>
@@ -504,17 +479,15 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <ul class="nav-links" id="navLinks">
     <li><a href="/" data-page="home">Home</a></li>
     <li><a href="/directory.html" data-page="directory">Directory</a></li>
-    <li><a href="/marketplace.html" data-page="marketplace">Market</a></li>
-    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
+    <li><a href="/marketplace.html" data-page="marketplace">Marketplace</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simcha</a></li>
     <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
-    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
-    <li><a href="/realty.html" data-page="realty">Realty</a></li>
     <li><a href="/community.html" data-page="community">Community</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
+    <li><a href="/advertise.html" class="nav-cta" data-page="advertise">List Your Business</a></li>
   </ul>
-  </div><!-- end nav-row -->
-  <a href="/advertise.html" class="nav-cta" data-page="advertise" style="margin-left:.75rem;white-space:nowrap">List Your Business</a>
+
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
@@ -530,242 +503,298 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 })();
 </script>
 
-
-<!-- BANNER SLOT -->
-<div class="banner-slot" id="bannerSlot" style="background:var(--light);border-bottom:1px solid var(--border);padding:.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
-  <div style="font-size:.6rem;font-weight:700;color:var(--muted);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;flex-shrink:0"><span style="width:16px;height:2px;background:var(--green);display:inline-block"></span>Premium Spot</div>
-  <div id="bannerSlotText" style="font-size:.82rem;color:var(--mid);font-style:italic;flex:1;text-align:center">Your business banner featured here — seen by every visitor to ShopLocal SI</div>
-  <a href="/advertise.html" style="font-size:.72rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px;flex-shrink:0">Reserve this space →</a>
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Staten Island Jewish Community</div>
+  <h1>Community <span>Hub</span></h1>
+  <p>Tehillim, stories, chesed, gemachs &mdash; all in one place</p>
 </div>
-<div id="bannerWrap" style="display:none;background:var(--light);border-bottom:1px solid var(--border);padding:.85rem 2.5rem"><div id="bannerRotator"></div></div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Shop Local. Love Local.</h1>
-    <span class="hero-script">Right here on Staten Island.</span>
-    <div class="hero-btns">
-      <a href="/directory.html" class="btn-green">Browse Directory</a>
-      <a href="/marketplace.html" class="btn-green">Marketplace</a>
-      <a href="/advertise.html" class="btn-green">List Your Business</a>
-    </div>
+<div style="max-width:1100px;margin:2rem auto 0;padding:0 1.5rem">
+  <div class="comm-tabs">
+    <button class="comm-tab active" onclick="showSection('tehillim',this)">&#x1F4D6; Tehillim List</button>
+    <button class="comm-tab" onclick="showSection('blog',this)">&#x270F; Community Blog</button>
+    <button class="comm-tab" onclick="showSection('gemach',this)">&#x1F91D; Gemach List</button>
+    <button class="comm-tab" onclick="showSection('chesed',this)">&#x2764; Chesed Opportunities</button>
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat"><span class="stat-n" data-target="80">0</span><span class="stat-l">Local Businesses</span></div>
-    <div class="stat"><span class="stat-n" data-target="14">0</span><span class="stat-l">Categories</span></div>
-    <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Community Impact</span></div>
-    <div class="stat"><span class="stat-n" data-target="1">0</span><span class="stat-l">Community</span></div>
-  </div>
-</div>
-
-<!-- QUICK LINKS -->
-<div class="section bg-light">
+<!-- TEHILLIM -->
+<div class="section bg-light" id="tehillimSection">
   <div class="section-inner" style="text-align:center">
-    <div class="section-eyebrow fade-up">Explore</div>
-    <h2 class="section-title fade-up">Everything Your Community Needs</h2>
+    <div class="section-eyebrow fade-up">Please Daven</div>
+    <h2 class="section-title fade-up">Tehillim List</h2>
     <div class="green-divider fade-up"></div>
+    <p class="section-sub fade-up">Please continue to say Tehillim for those seeking a refuah shleimah</p>
   </div>
-  <div class="ql-grid fade-up">
-    <a href="/directory.html" class="ql-card"><span class="ql-icon">🏪</span><span class="ql-label">Directory</span><span class="ql-sub">80+ businesses</span></a>
-    <a href="/marketplace.html" class="ql-card"><span class="ql-icon">🛍</span><span class="ql-label">Marketplace</span><span class="ql-sub">Buy &amp; sell locally</span></a>
-    <a href="/simcha.html" class="ql-card"><span class="ql-icon">💒</span><span class="ql-label">Simcha</span><span class="ql-sub">Event planning</span></a>
-    <a href="/coupons.html" class="ql-card"><span class="ql-icon">🎟</span><span class="ql-label">Coupons</span><span class="ql-sub">Exclusive deals</span></a>
-    <a href="/jobs.html" class="ql-card"><span class="ql-icon">💼</span><span class="ql-label">Jobs</span><span class="ql-sub">Hire &amp; find work</span></a>
+  <div class="tehillim-grid fade-up">
+    <div class="tehillim-name">Refael Moshe Ben Sara</div>
+    <div class="tehillim-name">Reb Yosef ben Rebbetzin Tilla Roiza</div>
+    <div class="tehillim-name">Reuven Zev ben Rivkah</div>
+    <div class="tehillim-name">Yisroel Alter ben Chava Chana</div>
+    <div class="tehillim-name">Boruch Tzvi ben Chana Gittel</div>
+    <div class="tehillim-name">Menachem Mordechai ben Zeesel</div>
+    <div class="tehillim-name">Raphael Pesachya Yaakov Halevi ben Aviva Sarah</div>
+    <div class="tehillim-name">Yisroel Gedalia HaKohen ben Chana</div>
+    <div class="tehillim-name">Nachum Moshe ben Hensha</div>
+    <div class="tehillim-name">Pesach Yehuda ben Chava Rochel</div>
+    <div class="tehillim-name">Leah bat Golda</div>
+    <div class="tehillim-name">Sorah Shoshana bat Dreiza Leah</div>
+    <div class="tehillim-name">Pessel bat Rochel</div>
+    <div class="tehillim-name">Chaya Esther bat Rochel Leba</div>
+    <div class="tehillim-name">Tehilla Basya bat Chaya Tova</div>
+    <div class="tehillim-name">Shayna Golda bat Chaya Gitel</div>
+    <div class="tehillim-name">Devorah Aliza bat Chana Liba</div>
+    <div class="tehillim-name">Bracha Devorah bat Sarah Henna</div>
+    <div class="tehillim-name">Bracha Rivka bat Miriam Leba</div>
+    <div class="tehillim-name">Etel Feiga bas Henya Ruchel</div>
+    <div class="tehillim-name">Esther bat Golda Perel</div>
+    <div class="tehillim-name">Zeesel Perel bat Leah Gittel</div>
+    <div class="tehillim-name">Breindel bat Chana Raizel</div>
+    <div class="tehillim-name">Esther Simcha bat Tziporah Leiba</div>
+  </div>
+  <div class="disclaimer" style="max-width:1100px;margin:1.5rem auto 0">Tehillim list sourced from the Young Israel of Staten Island weekly newsletter. To add a name contact Yehudis Loewenstein at 917-868-5417 or yudisl@aol.com. Names should be community members or their relatives.</div>
+  <div class="add-name-form fade-up">
+    <h3>Submit a Name for Tehillim</h3>
+    <p>Submit a name and we will add it to the list. Please include the Hebrew name with the mother&rsquo;s name.</p>
+    <div class="field"><label>Hebrew Name *</label><input type="text" id="t-name" placeholder="e.g. Chana Rivka bat Sarah"></div>
+    <div class="field"><label>Your Name (for contact)</label><input type="text" id="t-submitter" placeholder="Your name"></div>
+    <div class="field"><label>Your Phone or Email</label><input type="text" id="t-contact" placeholder="718-000-0000 or email@example.com"></div>
+    <button class="btn-green" style="width:100%;justify-content:center" onclick="submitTehillim()">Submit Name</button>
+    <div id="tehillimSuccess" style="display:none;margin-top:.75rem;background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:.85rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600">&#x2705; Name submitted. It will be reviewed and added to the list. May there be a refuah shleimah.</div>
   </div>
 </div>
 
-<!-- FEATURED -->
-<div class="section bg-white" id="featSection">
-  <div class="section-inner" style="text-align:center">
-    <div class="section-eyebrow fade-up">Our Sponsors</div>
-    <h2 class="section-title fade-up">Featured &amp; Premium Businesses</h2>
-    <div class="green-divider fade-up"></div>
-  </div>
-  <div class="feat-grid" id="featGrid"><div class="feat-card" style="border-left:4px solid var(--green);cursor:default">
-      <div class="feat-badge">Featured Partner</div>
-      <div class="feat-name">Island Kosher Supermarket</div>
-      <div class="feat-desc">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
-      <div class="feat-phone">📞 718-650-2200 &nbsp;·&nbsp; <a href="/island-kosher-deals.html" style="color:var(--green);font-weight:700;border-bottom:1px solid var(--green)">🛒 This week's deals →</a></div>
-    </div></div>
-  <div style="text-align:center;margin-top:2.5rem" class="fade-up"><a href="/advertise.html" class="btn-green">Get Featured — First Month Free</a></div>
-</div>
-
-<!-- AD SCREEN -->
-<div class="section bg-navy">
-  <div class="section-inner" style="text-align:center">
-    <div class="section-eyebrow fade-up" style="color:#7ee8a2">Live Advertising</div>
-    <h2 class="section-title fade-up" style="color:#fff">Community Ad Screen</h2>
-    <div class="green-divider fade-up"></div>
-  </div>
-  <div class="ad-screen-frame">
-    <div class="ad-screen-label">Live Display</div>
-    <div class="ad-screen-inner" id="adScreenInner" onclick="window.location.href='/advertise.html'">
-      <div class="ad-slot-text" id="adSlotContent">
-        <div class="ad-slot-eyebrow">Premium Advertising</div>
-        <div class="ad-slot-main">Your Business Here</div>
-        <div class="ad-slot-sub">Reach the entire Staten Island community</div>
-        <a href="/advertise.html" class="ad-slot-link" onclick="event.stopPropagation()">Reserve this spot →</a>
-      </div>
-    </div>
-  </div>
-  <div class="ad-screen-legs"><div class="ad-screen-leg"></div><div class="ad-screen-leg"></div></div>
-  <div class="ad-screen-base"></div>
-  <div style="text-align:center;margin-top:1.25rem"><a href="/advertise.html" style="font-size:.7rem;color:rgba(255,255,255,.75);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px">View all ads &amp; promotions</a></div>
-</div>
-
-<!-- SHABBOS -->
-<section id="shabbos" class="section bg-light">
-  <div class="section-inner" style="text-align:center">
-    <div class="section-eyebrow fade-up">Weekly Times</div>
-    <h2 class="section-title fade-up">Shabbos Times</h2>
-    <div class="green-divider fade-up"></div>
-  </div>
-  <div class="city-select-wrap">
-    <select id="citySelect" class="city-select" onchange="updateShabbos()">
-      <optgroup label="United States">
-        <option value="40.5795,-74.1502,-5,-4">Staten Island, NY</option>
-        <option value="40.6782,-73.9442,-5,-4">Brooklyn, NY</option>
-        <option value="40.0975,-74.2148,-5,-4">Lakewood, NJ</option>
-        <option value="40.7282,-74.0776,-5,-4">Passaic / Clifton, NJ</option>
-        <option value="40.9176,-74.1719,-5,-4">Monsey, NY</option>
-        <option value="41.3107,-74.1254,-5,-4">Monroe / Kiryas Joel, NY</option>
-        <option value="41.0534,-74.1301,-5,-4">Spring Valley, NY</option>
-        <option value="39.9526,-75.1652,-5,-4">Philadelphia, PA</option>
-        <option value="42.3601,-71.0589,-5,-4">Boston, MA</option>
-        <option value="41.4993,-81.6944,-5,-4">Cleveland, OH</option>
-        <option value="42.3314,-83.0458,-5,-4">Detroit, MI</option>
-        <option value="41.8781,-87.6298,-6,-5">Chicago, IL</option>
-        <option value="34.0522,-118.2437,-8,-7">Los Angeles, CA</option>
-        <option value="25.7617,-80.1918,-5,-4">Miami, FL</option>
-        <option value="38.9072,-77.0369,-5,-4">Washington DC</option>
-        <option value="19.4326,-99.1332,-6,-6">Mexico City</option>
-      </optgroup>
-      <optgroup label="United Kingdom">
-        <option value="51.5074,-0.1278,0,1">London</option>
-        <option value="53.4808,-2.2426,0,1">Manchester</option>
-        <option value="52.4862,-1.8904,0,1">Birmingham</option>
-      </optgroup>
-      <optgroup label="Israel">
-        <option value="31.7683,35.2137,2,3">Jerusalem</option>
-        <option value="32.0853,34.7818,2,3">Tel Aviv / Bnei Brak</option>
-        <option value="32.7940,34.9896,2,3">Haifa</option>
-        <option value="31.7442,34.9885,2,3">Beit Shemesh</option>
-        <option value="31.5213,35.1179,2,3">Beitar Illit</option>
-      </optgroup>
-      <optgroup label="Other">
-        <option value="48.8566,2.3522,1,2">Paris, France</option>
-        <option value="52.3676,4.9041,1,2">Amsterdam</option>
-        <option value="-33.8688,151.2093,10,11">Sydney, Australia</option>
-        <option value="43.6532,-79.3832,-5,-4">Toronto, Canada</option>
-        <option value="45.5017,-73.5673,-5,-4">Montreal, Canada</option>
-      </optgroup>
-    </select>
-    <span class="city-select-arrow">▾</span>
-    <div class="shab-card">
-      <div class="shab-date" id="shabDate">Loading…</div>
-      <div class="shab-times">
-        <div class="shab-block"><span class="shab-lbl">Candle Lighting</span><span class="shab-time" id="candleLighting">—</span><span class="shab-note">18 min before sunset</span></div>
-        <div class="shab-block"><span class="shab-lbl">Shabbos Ends</span><span class="shab-time" id="shabbosEnds">—</span><span class="shab-note">50 min after sunset</span></div>
-        <div class="shab-block rt"><span class="shab-lbl">Rabbeinu Tam</span><span class="shab-time" id="rabbeinuTam">—</span><span class="shab-note">72 min after sunset</span></div>
-      </div>
-      <p class="shab-disclaimer">Times are approximate. Always verify with your local Rav. &nbsp;<a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank">Chabad.org</a> · <a href="https://myzmanim.com" target="_blank">MyZmanim.com</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<div class="section bg-white">
+<!-- COMMUNITY BLOG -->
+<div class="section bg-white" id="blogSection" style="display:none">
   <div class="section-inner" style="text-align:center">
     <div class="section-eyebrow fade-up">Community Stories</div>
     <h2 class="section-title fade-up">Community Blog</h2>
     <div class="green-divider fade-up"></div>
+    <p class="section-sub fade-up">Articles, insights, and stories from our Staten Island Jewish community</p>
   </div>
-  <div class="blog-grid fade-up">
-    <div class="blog-card"><div class="blog-cat">Community News</div><div class="blog-title">Why Every Dollar You Spend Locally Makes a Difference</div><div class="blog-exc">When you choose a local business, you strengthen families and support our community infrastructure.</div><div class="blog-meta"><span>June 2025</span><a href="#" class="blog-read">Read more →</a></div></div>
-    <div class="blog-card"><div class="blog-cat">Business Spotlight</div><div class="blog-title">Meet the Local Businesses Behind Our Community</div><div class="blog-exc">The incredible variety of services available right here on Staten Island — from gifting to medical care.</div><div class="blog-meta"><span>June 2025</span><a href="#" class="blog-read">Read more →</a></div></div>
-    <div class="blog-card"><div class="blog-cat">Charity &amp; Giving</div><div class="blog-title">Supporting Bikur Cholim &amp; COJO — How Shopping Local Helps</div><div class="blog-exc">Every dollar spent locally contributes to organisations providing aid to those who need it most.</div><div class="blog-meta"><span>May 2025</span><a href="#" class="blog-read">Read more →</a></div></div>
+  <div class="blog-grid fade-up" id="blogGrid">
+    <div class="blog-card">
+      <div class="blog-cat">Community</div>
+      <div class="blog-title">Why Every Dollar You Spend Locally Makes a Difference</div>
+      <div class="blog-exc">When you choose a local business, you strengthen families and support our community infrastructure in ways that ripple far beyond a single purchase.</div>
+      <div class="blog-meta"><span>June 2026</span><a href="#" class="blog-read">Read more &#x2192;</a></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cat">Business Spotlight</div>
+      <div class="blog-title">Meet the Local Businesses Behind Our Community</div>
+      <div class="blog-exc">The incredible variety of services available right here on Staten Island &mdash; from gifting and photography to medical care and home services.</div>
+      <div class="blog-meta"><span>June 2026</span><a href="#" class="blog-read">Read more &#x2192;</a></div>
+    </div>
+    <div class="blog-card" style="border-top-color:var(--navy)">
+      <div class="blog-cat" style="color:var(--navy)">Charity &amp; Giving</div>
+      <div class="blog-title">Supporting Bikur Cholim &amp; COJO &mdash; How Shopping Local Helps</div>
+      <div class="blog-exc">Every dollar spent locally contributes to organisations providing aid to those who need it most right here in our community.</div>
+      <div class="blog-meta"><span>May 2026</span><a href="#" class="blog-read">Read more &#x2192;</a></div>
+    </div>
   </div>
-  <div style="text-align:center;margin-top:2.5rem" class="fade-up"><a href="/advertise.html" class="btn-outline-green">Submit a Blog Post</a></div>
+  <div class="submit-blog-form fade-up">
+    <h3>Submit a Blog Post</h3>
+    <p>Share a story, article, community update, or insight with the Staten Island Jewish community. Submitted posts are reviewed before publishing.</p>
+    <div class="field"><label>Your Name *</label><input type="text" id="b-name" placeholder="Your name or pen name"></div>
+    <div class="field"><label>Article Title *</label><input type="text" id="b-title" placeholder="Title of your article"></div>
+    <div class="field"><label>Category</label>
+      <select id="b-cat">
+        <option>Community</option>
+        <option>Business Spotlight</option>
+        <option>Charity &amp; Giving</option>
+        <option>Parenting</option>
+        <option>Health &amp; Wellness</option>
+        <option>Torah Thought</option>
+        <option>Event Recap</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label>Your Article *</label><textarea id="b-body" placeholder="Write your article here..."></textarea></div>
+    <div class="field"><label>Email (for follow-up)</label><input type="email" id="b-email" placeholder="email@example.com"></div>
+    <button class="btn-green" style="width:100%;justify-content:center" onclick="submitBlog()">Submit Article</button>
+    <div id="blogSuccess" style="display:none;margin-top:.75rem;background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:.85rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600">&#x2705; Article submitted! We will review it and be in touch. Thank you for contributing to our community.</div>
+  </div>
 </div>
 
-<!-- COMMUNITY -->
-<div class="section bg-navy">
+<!-- GEMACH -->
+<div class="section bg-light" id="gemachSection" style="display:none">
   <div class="section-inner" style="text-align:center">
-    <div class="section-eyebrow fade-up" style="color:#7ee8a2">Our Why</div>
-    <h2 class="section-title fade-up" style="color:#fff">Why It Matters</h2>
+    <div class="section-eyebrow fade-up">Free Community Services</div>
+    <h2 class="section-title fade-up">Gemach List</h2>
     <div class="green-divider fade-up"></div>
+    <p class="section-sub fade-up">Community gemachs offering free items and services to those in need</p>
   </div>
-  <div class="comm-box fade-up">
-    <div class="comm-quote">"When you shop local, you support a dream, a family, and our community."</div>
-    <p class="comm-text">Every dollar spent locally strengthens our community. It supports families and lightens the burden on vital organisations like <span class="comm-bold">Staten Island Bikur Cholim</span> and <span class="comm-bold">COJO</span>.</p>
-    <p class="comm-text" style="margin-top:.5rem"><span class="comm-bold">Have Maaser to give? Start at home.</span></p>
-    <div class="comm-orgs">
-      <div class="org-item"><div class="org-name">Staten Island Bikur Cholim</div><div class="org-detail">Zelle: 718-494-4343</div></div>
-      <div class="org-item"><div class="org-name">COJO Staten Island</div><div class="org-detail">Community Support Since 1980</div></div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div class="disclaimer fade-up">Gemach listings sourced from the Young Israel of Staten Island weekly newsletter. Please contact each gemach directly. ShopLocalSI.com is not affiliated with YISI.</div>
+  </div>
+  <div class="gemach-grid fade-up">
+    <div class="gemach-card">
+      <div class="gemach-name">Free Weekend Apartment</div>
+      <div class="gemach-desc">Free apartment available for weekends or if someone has a simcha. Located on Joseph Avenue.</div>
+      <div class="gemach-contact">&#x1F4F1; Text 347-488-1536 to reserve</div>
     </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Mezuzot Inspection Gemach</div>
+      <div class="gemach-desc">Have your Mezuzot picked up, inspected, repaired, replaced, and returned. No charge for transporting the Mezuzot!</div>
+      <div class="gemach-contact">&#x1F4DE; Scott Diamond: 917-674-3317 &middot; slzdiamond@hotmail.com</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Phone Battery Charger Gemach</div>
+      <div class="gemach-desc">Precharged phone battery chargers with AC connection to recharge. Comes with built-in connector for iPhone and USB. Leave a $5 deposit check (returned).</div>
+      <div class="gemach-contact">&#x1F4F1; Text 917-710-5611 or 718-570-5920</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Chuppah Tefillah Cards</div>
+      <div class="gemach-desc">Chuppah Tefillah cards available free of charge.</div>
+      <div class="gemach-contact">&#x1F4DE; Rivka Gold: 917-836-1408</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Simcha Gowns Gemach</div>
+      <div class="gemach-desc">Beautiful simcha gowns available to borrow for special occasions.</div>
+      <div class="gemach-contact">&#x1F4DE; Sarah Chasky: 917-575-0749</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Chair Gemach</div>
+      <div class="gemach-desc">Borrow chairs for company or a simcha.</div>
+      <div class="gemach-contact">&#x1F4DE; Chana Reichman: 718-404-6708</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Be&rsquo;er Miriam v&rsquo;Rachel Centerpiece Gemach</div>
+      <div class="gemach-desc">Centerpieces available for loan for simchos and events.</div>
+      <div class="gemach-contact">&#x1F4DE; Rachelit: 718-983-9664 or 718-673-7174</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">School Uniforms Gemach</div>
+      <div class="gemach-desc">School uniforms available. All sizes needed and available.</div>
+      <div class="gemach-contact">&#x1F4DE; Rachelit: 718-983-9664 or 718-673-7174</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Baby on the Go Gemach</div>
+      <div class="gemach-desc">Liluy Nishmat Rafi Toback &mdash; items available for loan for newborn needs and baby travel.</div>
+      <div class="gemach-contact">&#x1F4DE; Emunah Toback: 718-813-1977</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Bris Pillow &amp; Outfit Gemach</div>
+      <div class="gemach-desc">Bris pillow and outfit available to borrow.</div>
+      <div class="gemach-contact">&#x1F4DE; David: 347-661-4760 &middot; Emunah: 718-813-1977</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Mom to Mom</div>
+      <div class="gemach-desc">Fresh, hot, kosher lunches for a week delivered to new moms on Staten Island &mdash; absolutely free.</div>
+      <div class="gemach-contact">&#x1F4DE; Call or text: 347-254-8112</div>
+    </div>
+    <div class="gemach-card">
+      <div class="gemach-name">Ketubot Gemach</div>
+      <div class="gemach-desc">Beautiful ketubot available at no charge. Medium and small sizes. Also available: Hebrew writing for a matzeva or simcha &mdash; no charge.</div>
+      <div class="gemach-contact">&#x1F4DE; Rachelit: 718-983-9664 or 718-673-7174</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem" class="fade-up">
+    <p style="font-size:.82rem;color:var(--mid);margin-bottom:1rem">Have a gemach to add? Let us know!</p>
+    <a href="mailto:info@shoplocalsi.com?subject=Gemach Listing" class="btn-green">Submit a Gemach</a>
   </div>
 </div>
 
-<!-- MODAL -->
-<div class="biz-modal-overlay" id="bizModalOverlay" onclick="if(event.target===this)closeBizModal()">
-  <div class="biz-modal">
-    <div class="biz-modal-handle"></div>
-    <div id="bizModalBanner"></div>
-    <div class="biz-modal-body">
-      <div class="biz-modal-badge" id="bizModalBadge">Featured Partner</div>
-      <div class="biz-modal-name" id="bizModalName"></div>
-      <div class="biz-modal-cat" id="bizModalCat"></div>
-      <div class="biz-modal-desc" id="bizModalDesc"></div>
-      <div class="biz-modal-actions" id="bizModalActions"></div>
-      <div class="biz-modal-coupons" id="bizModalCoupons" style="display:none"><h4>Active Coupons</h4><div id="bizModalCouponsList"></div></div>
-      <button class="biz-modal-close" onclick="closeBizModal()">Close</button>
+<!-- CHESED OPPORTUNITIES -->
+<div class="section bg-white" id="chesedSection" style="display:none">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Give Back</div>
+    <h2 class="section-title fade-up">Chesed Opportunities</h2>
+    <div class="green-divider fade-up"></div>
+    <p class="section-sub fade-up">Ways to help your community &mdash; every act of chesed makes a difference</p>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:0 1.5rem">
+    <div class="disclaimer fade-up">Chesed opportunities sourced from the Young Israel of Staten Island weekly newsletter. Please contact each organisation directly. ShopLocalSI.com is not affiliated with YISI.</div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">Staten Island Bikur Cholim</div>
+      <div class="chesed-desc">Any member of the congregation in need of assistance due to infirmity or age, please reach out. Help is a phone call away no matter how big or small the need is!</div>
+      <div class="chesed-contact">&#x1F4DE; 718-494-4343</div>
     </div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">Bikur Cholim &mdash; Volunteer Opportunities</div>
+      <div class="chesed-desc">Looking for volunteers to visit Jewish residents in Staten Island nursing homes. Also seeking volunteers to straighten out the Bikur Cholim room at Staten Island University Hospital once a week.</div>
+      <div class="chesed-contact">Nursing home visits: Brenda Kellerman 718-761-6521 &middot; Hospital room: Sheryl Jacobowitz 917-445-8887</div>
+    </div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">Hebrew Free Burial Association</div>
+      <div class="chesed-desc">Constant need for men, Bar Mitzvah age and up, to help in the performance of &ldquo;Chesed Shel Emet&rdquo; by serving as Levaya Minyan Volunteers at the Mt. Richmond Cemetery, 420 Clarke Ave.</div>
+      <div class="chesed-contact">&#x1F4DE; Scott Diamond: 917-674-3317 &middot; slzdiamond@hotmail.com</div>
+    </div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">Clothing Donation</div>
+      <div class="chesed-desc">By appointment only &mdash; no drop-offs. Clothing in good condition (nothing torn, soiled, or outdated) goes directly to people in our neighborhood. All sizes needed. Teachers: call if you have a student in need!</div>
+      <div class="chesed-contact">&#x1F4DE; Rachelit: 718-983-9664 or 718-673-7174</div>
+    </div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">The Willowbrook Pantry</div>
+      <div class="chesed-desc">Open by appointment only. Cleaning items and toiletries can be dropped off at 511 Buchanan Ave. anytime.</div>
+      <div class="chesed-contact">&#x1F4DE; Beverly Israel: 646-530-1495</div>
+    </div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">YISI Adopt-A-Family</div>
+      <div class="chesed-desc">Over 26 years of giving assistance to hundreds of families. Urgently needs help this year. Families are in dire circumstances due to devastating personal loss. Mail checks to YISI Adopt-A-Family, c/o Allan Gomberg, 4 Fillmore Ave, Staten Island, NY 10314. Or donate online.</div>
+      <div class="chesed-contact">&#x1F310; <a href="https://www.all4israel.org/donate.cfm" target="_blank" style="color:var(--green);font-weight:700">all4israel.org/donate.cfm</a></div>
+    </div>
+    <div class="chesed-card fade-up">
+      <div class="chesed-org">Israel Connect &mdash; English Tutoring</div>
+      <div class="chesed-desc">In Israel, English proficiency is the biggest barrier to university entry for underprivileged students. Using Zoom, you can tutor a student in Israel from the comfort of your home. Simple, enjoyable, and makes all the difference.</div>
+      <div class="chesed-contact">&#x2709; israelconnectscheduling@gmail.com</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem" class="fade-up">
+    <p style="font-size:.82rem;color:var(--mid);margin-bottom:1rem">Know of a chesed opportunity to add?</p>
+    <a href="mailto:info@shoplocalsi.com?subject=Chesed Opportunity" class="btn-green">Submit a Chesed Opportunity</a>
   </div>
 </div>
 
 <script>
-// ── SHABBOS ──
-(function(){
-  function nextFriday(){const d=new Date(),day=d.getDay(),diff=day<=5?5-day:6,fri=new Date(d);fri.setDate(d.getDate()+(diff===0?7:diff));fri.setHours(12,0,0,0);return fri;}
-  function sunset(date,lat,lon,std,dst){const yr=date.getFullYear(),isDST=date>=new Date(yr,2,8)&&date<new Date(yr,10,1),offset=isDST?dst:std,J=Math.floor((date-new Date(yr,0,0))/86400000),D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180,cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);if(cosH>1||cosH<-1)return null;return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+offset;}
-  function fmt(h){if(h===null)return'N/A';h=((h%24)+24)%24;const hr=Math.floor(h),min=Math.round((h-hr)*60),m=min<10?'0'+min:min,p=hr>=12?'PM':'AM',h12=hr>12?hr-12:hr===0?12:hr;return h12+':'+m+' '+p;}
-  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  window.updateShabbos=function(){
-    const sel=document.getElementById('citySelect');if(!sel)return;
-    const[lat,lon,std,dst]=sel.value.split(',').map(Number);
-    const fri=nextFriday(),sun=sunset(fri,lat,lon,std,dst),sat=new Date(fri);sat.setDate(fri.getDate()+1);
-    const city=sel.options[sel.selectedIndex].text;
-    document.getElementById('shabDate').textContent=city+' · '+days[fri.getDay()]+', '+months[fri.getMonth()]+' '+fri.getDate()+' — '+months[sat.getMonth()]+' '+sat.getDate()+', '+sat.getFullYear();
-    document.getElementById('candleLighting').textContent=fmt(sun!==null?sun-18/60:null);
-    document.getElementById('shabbosEnds').textContent=fmt(sun!==null?sun+50/60:null);
-    document.getElementById('rabbeinuTam').textContent=fmt(sun!==null?sun+72/60:null);
-    // Fetch parsha from Hebcal
-    var parshaEl=document.getElementById('shabParsha');
-    if(parshaEl){
-      fetch('https://www.hebcal.com/shabbat?cfg=json&city=Staten+Island,+NY&m=50&b=18')
-        .then(function(r){return r.json();})
-        .then(function(data){
-          var parsha=(data.items||[]).find(function(i){return i.category==='parashat';});
-          if(parsha){parshaEl.textContent='פרשת השבוע — '+parsha.title;parshaEl.style.display='block';}
-        })
-        .catch(function(){});
-    }
-  };
-  updateShabbos();
-})();
+function showSection(section, btn){
+  document.querySelectorAll('.comm-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  ['tehillimSection','blogSection','gemachSection','chesedSection'].forEach(function(id){
+    document.getElementById(id).style.display='none';
+  });
+  var map={tehillim:'tehillimSection',blog:'blogSection',gemach:'gemachSection',chesed:'chesedSection'};
+  document.getElementById(map[section]).style.display='block';
+}
 
-// ── COUNTER ANIMATION ──
-(function(){
-  const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.counted){e.target.dataset.counted='1';e.target.querySelectorAll('.stat-n[data-target]').forEach(el=>{const t=parseInt(el.dataset.target),suffix=el.textContent.includes('+')?'+':'';let c=0;const i=setInterval(()=>{c=Math.min(c+Math.ceil(t/40),t);el.textContent=c+suffix;if(c>=t)clearInterval(i);},40);});}});},{threshold:.5});
-  const s=document.querySelector('.stats-bar');if(s)co.observe(s);
-})();
+var AT='Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
+var BASE='appyNDNuwGFgR44sg';
+
+async function submitTehillim(){
+  var name=document.getElementById('t-name').value.trim();
+  if(!name){alert('Please enter a Hebrew name.');return;}
+  try{
+    await fetch('https://api.airtable.com/v0/'+BASE+'/Listings',{
+      method:'POST',
+      headers:{'Authorization':AT,'Content-Type':'application/json'},
+      body:JSON.stringify({fields:{Title:name,Category:'Tehillim',ContactName:document.getElementById('t-submitter').value,Phone:document.getElementById('t-contact').value,Status:'Pending'}})
+    });
+  }catch(e){}
+  document.getElementById('tehillimSuccess').style.display='block';
+  // Add to grid immediately
+  var grid=document.getElementById('tehillimSection').querySelector('.tehillim-grid');
+  var el=document.createElement('div');el.className='tehillim-name';el.innerHTML='&#x1F56F; '+name;
+  grid.appendChild(el);
+  document.getElementById('t-name').value='';
+}
+
+async function submitBlog(){
+  var name=document.getElementById('b-name').value.trim();
+  var title=document.getElementById('b-title').value.trim();
+  var body=document.getElementById('b-body').value.trim();
+  if(!name||!title||!body){alert('Please fill in name, title and article.');return;}
+  try{
+    await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
+      method:'POST',
+      headers:{'Authorization':AT,'Content-Type':'application/json'},
+      body:JSON.stringify({fields:{BusinessName:name,Tagline:title,Description:body,Category:'Blog-'+document.getElementById('b-cat').value,Email:document.getElementById('b-email').value,Status:'Pending',PlanType:'blog'}})
+    });
+  }catch(e){}
+  document.getElementById('blogSuccess').style.display='block';
+  document.getElementById('b-title').value='';document.getElementById('b-body').value='';
+}
 </script>
-
 <footer>
   <div class="foot-grid">
     <div>
@@ -782,7 +811,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="foot-heading">Pages</div>
       <ul class="foot-links">
         <li><a href="/directory.html">Business Directory</a></li>
-        <li><a href="/marketplace.html">Market</a></li>
+        <li><a href="/marketplace.html">Marketplace</a></li>
         <li><a href="/simcha.html">Simcha Planning</a></li>
         <li><a href="/coupons.html">Coupons & Deals</a></li>
         <li><a href="/advertise.html">Advertise With Us</a></li>
@@ -793,7 +822,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <ul class="foot-links">
         <li><a href="/#shabbos">Shabbos Times</a></li>
         <li><a href="/island-kosher-deals.html">Island Kosher Deals</a></li>
-        <li><a href="/advertise.html">Advertise / List Your Business</a></li>
+        <li><a href="/advertise.html">List Your Business</a></li>
       </ul>
     </div>
     <div>
@@ -813,15 +842,13 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <span><a href="/advertise.html">Advertise with us</a></span>
   </div>
 </footer>
-
 <script>
 (function(){
-  const path=window.location.pathname;
-  const page=path==='/'?'home':path.replace('/','').replace('.html','');
-  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{if(a.dataset.page===page)a.classList.add('active');});
-  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
-  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}document.getElementById('navLinks').classList.remove('open')});});
+  var path=window.location.pathname;
+  var pg=path==="/"?"home":path.replace("/","").replace(".html","");
+  document.querySelectorAll(".nav-links a[data-page]").forEach(function(a){if(a.dataset.page===pg)a.classList.add("active");});
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("visible");});},{threshold:.1});
+  document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
 })();
 </script>
 </body>
