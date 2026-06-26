@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Profile &mdash; Shop Local Staten Island</title>
+<title>Jobs Board &mdash; Shop Local Staten Island</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -383,37 +383,40 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .page-hero h1 span{color:#7ee8a2}
 .page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
 
-.biz-hero{background:var(--navy);min-height:260px;display:flex;align-items:flex-end;position:relative;overflow:hidden;border-bottom:4px solid var(--green)}
-.biz-hero-img{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.35}
-.biz-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,31,58,.95) 30%,rgba(11,31,58,.4))}
-.biz-hero-content{position:relative;z-index:2;padding:2.5rem;width:100%;max-width:1100px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.biz-logo-wrap{width:80px;height:80px;border-radius:8px;background:#fff;border:3px solid var(--green);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;font-size:2rem;font-weight:800;color:var(--navy)}
-.biz-logo-wrap img{width:100%;height:100%;object-fit:cover}
-.biz-plan-badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--green);color:#fff;font-size:.62rem;font-weight:700;padding:.22rem .65rem;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem}
-.biz-hero-name{font-size:clamp(1.3rem,3vw,2.2rem);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.3px;line-height:1.1;margin-bottom:.3rem}
-.biz-hero-tagline{font-size:.88rem;color:rgba(255,255,255,.85)}
-.biz-body{max-width:1100px;margin:0 auto;padding:3rem 2.5rem;display:grid;grid-template-columns:1fr 320px;gap:3rem;align-items:start}
-.biz-section{margin-bottom:2rem}
-.biz-section-title{font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--green)}
-.biz-desc-text{font-size:.9rem;color:var(--mid);line-height:1.8}
-.biz-contact-card{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.5rem;border-top:3px solid var(--green);margin-bottom:1.25rem}
-.biz-contact-card h3{font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:1rem}
-.c-item{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.85rem;font-size:.84rem;color:var(--mid)}
-.c-icon{width:30px;height:30px;background:rgba(62,124,89,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
-.c-label{font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:.1rem}
-.c-val{font-weight:600;color:var(--navy)}
-.c-val a{color:var(--navy);transition:color .2s}.c-val a:hover{color:var(--green)}
-.biz-action-btns{display:flex;flex-direction:column;gap:.65rem;margin-top:1.25rem}
-.btn-call{background:#cc2222;color:#fff;padding:.75rem 1.25rem;font-weight:700;font-size:.82rem;text-align:center;border-radius:50px;display:block;text-decoration:none;transition:opacity .2s}
-.btn-call:hover{opacity:.9}
-.coupon-card{background:#fff;border:2px solid var(--green);border-radius:8px;padding:1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.75rem}
-.coupon-discount{font-size:1.3rem;font-weight:800;color:var(--navy)}
-.coupon-desc{font-size:.78rem;color:var(--mid);margin-top:.15rem}
-.coupon-code-btn{background:var(--green);color:#fff;border:none;padding:.42rem .9rem;border-radius:50px;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:"Montserrat",sans-serif}
-.not-found{text-align:center;padding:5rem 2rem}
-.not-found h2{font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:.5rem}
-.not-found p{color:var(--mid);margin-bottom:1.5rem}
-@media(max-width:900px){.biz-body{grid-template-columns:1fr}}
+.field{margin-bottom:.85rem}
+.field label{display:block;font-size:.65rem;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.32rem}
+.field input,.field select,.field textarea{width:100%;padding:.62rem .9rem;border:2px solid var(--border2);border-radius:4px;font-size:.86rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:var(--light);transition:border .2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);background:#fff}
+.field textarea{height:90px;resize:vertical}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}}
+
+.jobs-tabs{display:flex;gap:0;max-width:900px;margin:2.5rem auto 0;border:2px solid var(--green);border-radius:6px;overflow:hidden}
+.jobs-tab{flex:1;padding:.85rem;text-align:center;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;font-family:"Montserrat",sans-serif;border:none;transition:all .2s}
+.jobs-tab.available{background:#fff;color:var(--navy)}
+.jobs-tab.available.active{background:var(--green);color:#fff}
+.jobs-tab.wanted{background:#fff;color:var(--navy)}
+.jobs-tab.wanted.active{background:var(--navy);color:#fff}
+.jobs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem;max-width:900px;margin:2rem auto 0}
+.job-card{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.5rem;border-top:3px solid var(--green);transition:all .3s}
+.job-card:hover{box-shadow:0 6px 20px rgba(62,124,89,.1);transform:translateY(-2px)}
+.job-card.wanted{border-top-color:var(--navy)}
+.job-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:.65rem}
+.job-card.wanted .job-badge{color:var(--navy)}
+.job-badge::before{content:"";width:12px;height:2px;background:currentColor}
+.job-title{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.2px}
+.job-desc{font-size:.82rem;color:var(--mid);line-height:1.65}
+.job-footer{margin-top:.85rem;padding-top:.85rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.job-contact{font-size:.8rem;font-weight:700;color:var(--navy)}
+.job-pay{font-size:.75rem;font-weight:700;color:var(--green);background:rgba(62,124,89,.1);padding:.2rem .6rem;border-radius:50px}
+.job-card.wanted .job-pay{color:var(--navy);background:rgba(11,31,58,.08)}
+.post-job-form{max-width:640px;margin:3rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2.5rem;border-top:4px solid var(--green)}
+.post-job-form h3{font-size:.9rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
+.post-job-form p{font-size:.8rem;color:var(--mid);margin-bottom:1.5rem}
+.type-toggle{display:flex;gap:0;margin-bottom:1rem;border:2px solid var(--border2);border-radius:4px;overflow:hidden}
+.type-toggle button{flex:1;padding:.55rem;font-size:.75rem;font-weight:700;border:none;cursor:pointer;font-family:"Montserrat",sans-serif;background:#fff;color:var(--mid);transition:all .2s}
+.type-toggle button.active{background:var(--green);color:#fff}
+.success-msg{background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:.85rem;color:var(--navy);font-weight:600;font-size:.85rem;display:none;margin-top:.75rem;line-height:1.6}
 
 </style>
 </head>
@@ -489,25 +492,59 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 })();
 </script>
 
-<div id="profileContent" style="text-align:center;padding:5rem;color:var(--muted)">Loading business profile&hellip;</div>
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Staten Island Community</div>
+  <h1>Jobs <span>Board</span></h1>
+  <p>Find local jobs or post your skills &mdash; free for the community</p>
+</div>
+<div class="section bg-light">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Browse Listings</div>
+    <h2 class="section-title fade-up">Jobs Available &amp; Wanted</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="jobs-tabs fade-up">
+    <button class="jobs-tab available active" onclick="showTab('available',this)">&#x1F4BC; Jobs Available</button>
+    <button class="jobs-tab wanted" onclick="showTab('wanted',this)">&#x1F64B; Jobs Wanted</button>
+  </div>
+  <div class="jobs-grid" id="availableJobs">
+    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Bookkeeper / Accountant</div><div class="job-desc">Local business seeks experienced bookkeeper. QuickBooks knowledge required. Part-time, flexible hours.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 718-555-0141</span><span class="job-pay">$25&ndash;$35/hr</span></div></div>
+    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Babysitter / Nanny</div><div class="job-desc">Frum family in Westerleigh seeks reliable babysitter. 3 children ages 2&ndash;8. References required.</div><div class="job-footer"><span class="job-contact">&#x2709; nanny@email.com</span><span class="job-pay">$18&ndash;$22/hr</span></div></div>
+    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Office Assistant</div><div class="job-desc">Medical office seeks part-time office assistant. Experience with scheduling software a plus.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 718-555-0192</span><span class="job-pay">Part-time</span></div></div>
+    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Delivery Driver</div><div class="job-desc">Local kosher catering company needs reliable delivery driver. Must have clean license.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 347-555-0218</span><span class="job-pay">$18/hr + tips</span></div></div>
+  </div>
+  <div class="jobs-grid" id="wantedJobs" style="display:none">
+    <div class="job-card wanted"><div class="job-badge">Job Wanted</div><div class="job-title">Experienced Secretary / Admin</div><div class="job-desc">Organized and detail-oriented. 10+ years experience. Seeking part-time or full-time office position in SI.</div><div class="job-footer"><span class="job-contact">&#x2709; secretary@email.com</span><span class="job-pay">Flexible</span></div></div>
+    <div class="job-card wanted"><div class="job-badge">Job Wanted</div><div class="job-title">Graphic Designer</div><div class="job-desc">Creative professional seeking freelance or part-time graphic design work. Portfolio available.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 917-555-0163</span><span class="job-pay">Freelance</span></div></div>
+    <div class="job-card wanted"><div class="job-badge">Job Wanted</div><div class="job-title">Home Health Aide</div><div class="job-desc">Certified HHA with 5 years experience. Available days and evenings, Staten Island area.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 718-555-0277</span><span class="job-pay">Negotiable</span></div></div>
+  </div>
+
+  <div class="post-job-form fade-up">
+    <h3>Post a Job &mdash; Free</h3>
+    <p>Post a job opening or advertise your skills. All listings are free and reviewed before posting.</p>
+    <div class="type-toggle">
+      <button id="typeAvail" class="active" onclick="setJobType('available')">I am Hiring (Job Available)</button>
+      <button id="typeWant" onclick="setJobType('wanted')">I am Looking (Job Wanted)</button>
+    </div>
+    <div class="field"><label>Job Title *</label><input type="text" id="job-title" placeholder="e.g. Bookkeeper, Babysitter, Driver"></div>
+    <div class="field"><label>Description *</label><textarea id="job-desc" placeholder="Describe the position, requirements, hours&hellip;"></textarea></div>
+    <div class="field-row">
+      <div class="field"><label>Pay / Rate</label><input type="text" id="job-pay" placeholder="e.g. $20/hr or Negotiable"></div>
+      <div class="field"><label>Category</label><select id="job-cat"><option>Select&hellip;</option><option>Childcare</option><option>Admin / Office</option><option>Bookkeeping</option><option>Cleaning</option><option>Delivery</option><option>Healthcare</option><option>Teaching / Tutoring</option><option>Tech</option><option>Other</option></select></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Phone *</label><input type="tel" id="job-phone" placeholder="718-000-0000"></div>
+      <div class="field"><label>Email</label><input type="email" id="job-email" placeholder="optional"></div>
+    </div>
+    <button class="btn-green" style="width:100%;justify-content:center" onclick="submitJob()">Post for Free</button>
+    <div class="success-msg" id="jobSuccess">&#x2705; Your job listing has been submitted and is pending review. It will appear on the board once approved &mdash; usually within a few hours. Thank you!</div>
+  </div>
+</div>
 <script>
-(async function(){
-  var params=new URLSearchParams(window.location.search);
-  var slug=params.get("b")||params.get("slug"),id=params.get("id");
-  if(!slug&&!id){document.getElementById("profileContent").innerHTML="<div class='not-found'><h2>Business Not Found</h2><p>We couldn't find this business listing.</p><a href='/directory.html' class='btn-green'>Back to Directory</a></div>";return;}
-  try{
-    var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});
-    var biz=null,coupons=[];
-    if(ar.ok){var data=await ar.json();var all=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];biz=all.find(function(a){var s=a.businessName.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");return s===slug||a.id===id;});}
-    if(cr.ok){var cd=await cr.json();coupons=(cd.records||[]).filter(function(r){return (r.fields.Status||"").toLowerCase()==="active";}).map(function(r){return {biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""};});}
-    if(!biz){document.getElementById("profileContent").innerHTML="<div class='not-found'><h2>Profile Not Available</h2><p>This business has not upgraded to a Featured or Premium listing yet.</p><a href='/directory.html' class='btn-green'>Back to Directory</a></div>";return;}
-    document.title=biz.businessName+" &mdash; Shop Local Staten Island";
-    var bc=coupons.filter(function(c){return c.biz.toLowerCase()===biz.businessName.toLowerCase();});
-    var isPrem=biz.planType==="premium";
-    var couponHtml=bc.length?"<div class='biz-section'><div class='biz-section-title'>Active Coupons</div>"+bc.map(function(c){return "<div class='coupon-card'><div><div class='coupon-discount'>"+c.discount+"</div><div class='coupon-desc'>"+c.desc+"</div></div>"+(c.code?"<button class='coupon-code-btn' onclick='navigator.clipboard.writeText(""+c.code+"");this.textContent="Copied!";setTimeout(function(){this.textContent=""+c.code+""},2000)'>"+c.code+"</button>":"")+"</div>";}).join("")+"</div>":"";
-    document.getElementById("profileContent").innerHTML="<div class='biz-hero'>"+(biz.image?"<img src='"+biz.image+"' class='biz-hero-img' alt='"+biz.businessName+"'>":"")+"<div class='biz-hero-overlay'></div><div class='biz-hero-content'><div style='display:flex;align-items:flex-end;gap:1.25rem;flex:1'><div class='biz-logo-wrap'>"+(biz.logo?"<img src='"+biz.logo+"' alt='logo'>":(biz.businessName.charAt(0)))+"</div><div><div class='biz-plan-badge'>"+(isPrem?"&#x1F48E; Premium Partner":"&#x2B50; Featured Partner")+"</div><div class='biz-hero-name'>"+biz.businessName+"</div><div class='biz-hero-tagline'>"+(biz.tagline||biz.category||"")+"</div></div></div><div style='display:flex;gap:.75rem;flex-wrap:wrap'>"+(biz.phone?"<a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"' class='btn-green'>Call Now</a>":"")+(biz.link?"<a href='"+biz.link+"' target='_blank' class='btn-white'>Website</a>":"")+"</div></div></div><div class='biz-body'><div>"+(biz.description?"<div class='biz-section'><div class='biz-section-title'>About</div><p class='biz-desc-text'>"+biz.description+"</p></div>":"")+couponHtml+"</div><div><div class='biz-contact-card'><h3>Contact &amp; Info</h3>"+(biz.phone?"<div class='c-item'><div class='c-icon'>&#x1F4DE;</div><div><span class='c-label'>Phone</span><span class='c-val'><a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"'>"+biz.phone+"</a></span></div></div>":"")+(biz.email?"<div class='c-item'><div class='c-icon'>&#x2709;</div><div><span class='c-label'>Email</span><span class='c-val'><a href='mailto:"+biz.email+"'>"+biz.email+"</a></span></div></div>":"")+(biz.address?"<div class='c-item'><div class='c-icon'>&#x1F4CD;</div><div><span class='c-label'>Address</span><span class='c-val'>"+biz.address+"</span></div></div>":"")+"<div class='biz-action-btns'>"+(biz.phone?"<a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"' class='btn-call'>&#x1F4DE; Call Now</a>":"")+(biz.link?"<a href='"+biz.link+"' target='_blank' class='btn-navy' style='border-radius:50px;text-align:center;justify-content:center'>&#x1F310; Visit Website</a>":"")+(biz.email?"<a href='mailto:"+biz.email+"' class='btn-outline-navy' style='border-radius:50px;justify-content:center'>&#x2709; Email Us</a>":"")+"</div></div><div class='biz-contact-card' style='background:rgba(62,124,89,.05);border-color:var(--green)'><h3>Want a profile like this?</h3><p style='font-size:.78rem;color:var(--mid);line-height:1.65;margin-bottom:.85rem'>Upgrade to Featured or Premium and get your own full business profile page. First month free.</p><a href='/advertise.html' class='btn-green' style='display:block;text-align:center;justify-content:center'>Learn More &#x2192;</a></div></div></div>";
-  }catch(e){document.getElementById("profileContent").innerHTML="<div class='not-found'><h2>Error Loading Profile</h2><p>Please try again or <a href='/directory.html'>browse the directory</a>.</p></div>";}
-})();
+var jobType="available";
+function showTab(tab,btn){document.querySelectorAll(".jobs-tab").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");document.getElementById("availableJobs").style.display=tab==="available"?"grid":"none";document.getElementById("wantedJobs").style.display=tab==="wanted"?"grid":"none";}
+function setJobType(type){jobType=type;document.getElementById("typeAvail").className=type==="available"?"active":"";document.getElementById("typeWant").className=type==="wanted"?"active":"";}
+async function submitJob(){var title=document.getElementById("job-title").value.trim(),desc=document.getElementById("job-desc").value.trim(),phone=document.getElementById("job-phone").value.trim();if(!title||!desc||!phone){alert("Please fill in title, description and phone.");return;}try{await fetch("/.netlify/functions/submit-listing",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({title:title,description:desc,pay:document.getElementById("job-pay").value,category:document.getElementById("job-cat").value,phone:phone,email:document.getElementById("job-email").value,type:"job-"+jobType})});document.getElementById("jobSuccess").style.display="block";document.getElementById("job-title").value="";document.getElementById("job-desc").value="";document.getElementById("job-phone").value="";}catch(e){alert("Error. Please try again.");}}
 </script>
 <footer>
   <div class="foot-grid">

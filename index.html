@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Local Staten Island | Support Local · Strengthen Community</title>
-<script src="https://js.stripe.com/v3/"></script>
+<title>Shop Local Staten Island | Support Local · Strengthen Community — Shop Local Staten Island</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -70,6 +69,7 @@ nav{
 
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{width:22px;height:2px;background:#0b1f3a;display:block}
+
 /* ─── EXACT BRAND COLORS FROM KIT ─── */
 :root{
   --navy:#0b1f3a;
@@ -94,33 +94,25 @@ a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy)}
 
 /* ─── EMERGENCY STRIP ─── */
-.emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600;letter-spacing:.2px}
+
 .emstrip a{color:rgba(255,255,255,.9)}.emstrip a:hover{color:#fff}
-.emstrip .sep{color:rgba(255,255,255,.95)}.emstrip .em-label{color:rgba(255,255,255,.85);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+.emstrip .sep{color:rgba(255,255,255,.3)}.emstrip .em-label{color:rgba(255,255,255,.88);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
 
 /* ─── TOP BAR (dark navy, centered tagline) ─── */
-.top-bar{background:var(--navy);padding:.4rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem;letter-spacing:.5px}
+
 .top-bar-tagline{color:rgba(255,255,255,.95);text-align:center;flex:1;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;font-size:.65rem}
 .top-bar-right{display:flex;gap:1.25rem;align-items:center;flex-shrink:0}
-.top-bar-right a{color:rgba(255,255,255,.85);font-size:.68rem;transition:color .2s}.top-bar-right a:hover{color:#fff}
-.top-bar-promo{color:rgba(255,255,255,.95);font-size:.65rem}
+.top-bar-right a{color:rgba(255,255,255,.88);font-size:.68rem;transition:color .2s}.top-bar-right a:hover{color:#fff}
+.top-bar-promo{color:rgba(255,255,255,.8);font-size:.65rem}
 .top-bar-promo strong{color:var(--green2)}
 
 /* ─── NAV (WHITE background, exactly like mockup) ─── */
-nav{
-  background:var(--white);
-  border-bottom:1px solid var(--border2);
-  padding:0 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  height:82px;
-  position:sticky;top:0;z-index:999;
-  box-shadow:0 2px 16px rgba(11,31,58,.08);
-}
+
 .logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none}
-.logo-img{height:64px;width:64px;object-fit:contain}
+.logo-img{height:72px;width:72px;object-fit:contain}
 .logo-text{line-height:1}
-.logo-shop{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;display:block}
-.logo-local{font-family:'Caveat Brush','Caveat',cursive;font-size:1.2rem;font-weight:700;color:var(--green);display:block;line-height:.9;letter-spacing:.5px}
+.logo-shop{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:800;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;display:block;line-height:1}
+.logo-local{font-family:'Caveat Brush','Caveat',cursive;font-size:1.5rem;font-weight:700;color:var(--green);display:block;line-height:.9;letter-spacing:.5px}
 .logo-si{font-size:.55rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-top:.2rem}
 .logo-si::before,.logo-si::after{content:'';width:12px;height:1px;background:var(--navy);opacity:.4}
 .logo-url{font-size:.58rem;color:var(--blue);font-weight:600;letter-spacing:.5px;margin-top:.1rem;display:block}
@@ -132,11 +124,11 @@ nav{
 .nav-cta{background:var(--green)!important;color:var(--white)!important;padding:.48rem 1.2rem!important;border-radius:50px;font-weight:700!important;font-size:.72rem!important;letter-spacing:.3px!important;transition:background .2s!important}
 .nav-cta:hover{background:var(--green2)!important}
 .nav-cta::after{display:none!important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hamburger span{width:22px;height:2px;background:var(--navy);display:block}
+
 
 /* ─── HERO (photo-style with dark overlay + text, exactly like mockup) ─── */
-.hero{background:linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.25)),url('/hero-bridge.jpg') center/cover no-repeat;
+.hero{
+  background:linear-gradient(rgba(11,31,58,.45),rgba(11,31,58,.55)),url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80') center/cover no-repeat;
   min-height:520px;
   display:flex;align-items:center;justify-content:center;
   text-align:center;padding:5rem 2.5rem 4rem;
@@ -177,7 +169,7 @@ nav{
 .section-title{font-size:clamp(1.5rem,3vw,2.2rem);text-align:center;color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.5px}
 .section-title.light{color:var(--white)}
 .section-sub{font-size:.88rem;color:var(--mid);text-align:center;max-width:520px;margin:.5rem auto 0;line-height:1.75}
-.section-sub.light{color:rgba(255,255,255,.9)}
+.section-sub.light{color:rgba(255,255,255,.92)}
 .green-divider{width:48px;height:3px;background:var(--green);margin:.75rem auto 0;border-radius:2px}
 
 /* ─── STATS BAR ─── */
@@ -214,7 +206,7 @@ nav{
 .ad-screen-inner{border:1px solid var(--border2);min-height:170px;background:var(--light);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:4px;transition:border-color .25s}
 .ad-screen-inner:hover{border-color:var(--green)}
 .ad-slot-text{text-align:center;padding:1.75rem}
-.ad-slot-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem}
+.ad-slot-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
 .ad-slot-main{font-size:1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
 .ad-slot-sub{font-size:.75rem;color:var(--mid)}
 .ad-slot-link{display:inline-block;margin-top:.85rem;font-size:.7rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px}
@@ -254,13 +246,13 @@ nav{
 
 /* ─── COMMUNITY SECTION ─── */
 .comm-box{max-width:820px;margin:2.75rem auto 0;border:1px solid rgba(255,255,255,.1);border-top:4px solid var(--green);padding:3rem;border-radius:6px;text-align:center;background:rgba(255,255,255,.04)}
-.comm-quote{font-family:'Caveat Brush','Caveat',cursive;font-size:1.3rem;color:#fff;line-height:1.7;margin-bottom:1.25rem;font-weight:700}
+.comm-quote{font-family:'Caveat Brush','Caveat',cursive;font-size:1.3rem;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:1.25rem;font-weight:700}
 .comm-text{font-size:.9rem;color:rgba(255,255,255,.9);line-height:1.85;margin-bottom:.6rem}
 .comm-bold{color:var(--green2);font-weight:700}
 .comm-orgs{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;border-top:1px solid rgba(255,255,255,.08);padding-top:2rem}
 .org-item{text-align:center;padding:.85rem 1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;border-top:2px solid var(--green)}
-.org-name{font-size:.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px}
-.org-detail{font-size:.7rem;color:rgba(255,255,255,.95);margin-top:.2rem}
+.org-name{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.3px}
+.org-detail{font-size:.7rem;color:rgba(255,255,255,.78);margin-top:.2rem}
 
 /* ─── DIRECTORY ─── */
 .search-wrap{background:var(--light);border-bottom:1px solid var(--border);padding:1rem 2.5rem;position:sticky;top:88px;z-index:99}
@@ -338,23 +330,23 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .foot-logo-img{height:52px;width:52px;object-fit:contain}
 .foot-brand-text .shop{font-size:.95rem;font-weight:800;color:#fff;text-transform:uppercase;display:block;line-height:1}
 .foot-brand-text .local{font-family:'Caveat Brush','Caveat',cursive;font-size:1.1rem;color:var(--green2);display:block;font-weight:700;line-height:.9}
-.foot-brand-text .si{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.95);display:block;margin-top:.25rem}
-.foot-tagline{font-size:.78rem;color:rgba(255,255,255,.95);line-height:1.75;max-width:220px}
-.foot-heading{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.95);margin-bottom:1rem}
+.foot-brand-text .si{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.25rem}
+.foot-tagline{font-size:.78rem;color:rgba(255,255,255,.78);line-height:1.75;max-width:220px}
+.foot-heading{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
 .foot-links{list-style:none;display:flex;flex-direction:column;gap:.5rem}
 .foot-links a{font-size:.8rem;color:rgba(255,255,255,.85);transition:color .2s}
 .foot-links a:hover{color:var(--green2)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.7rem;color:rgba(255,255,255,.95);max-width:1100px;margin:0 auto;letter-spacing:.3px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.7rem;color:rgba(255,255,255,.7);max-width:1100px;margin:0 auto;letter-spacing:.3px}
 .foot-bottom a{color:var(--green2);opacity:.7}.foot-bottom a:hover{opacity:1}
 
 /* ─── PAGE HERO (inner pages) ─── */
 .page-hero{background:var(--navy);padding:3.5rem 2.5rem 3rem;text-align:center;position:relative;overflow:hidden;border-bottom:4px solid var(--green)}
 .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,110,158,.12),transparent);pointer-events:none}
-.page-hero-eyebrow{font-size:.62rem;font-weight:700;color:#7ee8a2;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+.page-hero-eyebrow{font-size:.62rem;font-weight:700;color:var(--green2);letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
 .page-hero-eyebrow::before,.page-hero-eyebrow::after{content:'';width:20px;height:2px;background:var(--green2)}
 .page-hero h1{font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:800;color:var(--white);letter-spacing:.5px;text-transform:uppercase}
 .page-hero h1 span{color:var(--green2)}
-.page-hero p{color:rgba(255,255,255,.9);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
+.page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
 
 /* ─── UTILITIES ─── */
 .container{max-width:1100px;margin:0 auto;padding:0 2.5rem}
@@ -383,35 +375,85 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   .section{padding:3.5rem 1.5rem}
 }
 
-/* ── HOMEPAGE SPECIFIC ── */
-.hero{
-  background:linear-gradient(rgba(11,31,58,.38),rgba(11,31,58,.50)),
-    url('/hero-bridge.jpg') center/cover no-repeat;
-  min-height:520px;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:6rem 2.5rem 5rem;
-}
+
+.hero{background:linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.12)),url('/hero-bridge.jpg') center/cover no-repeat;min-height:500px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2.5rem 5rem}
 .hero-content{max-width:820px}
-.hero h1{
-  font-size:clamp(2rem,5vw,3.6rem);
-  font-weight:800;color:#0b1f3a;
-  text-transform:uppercase;letter-spacing:2px;
-  line-height:1.05;
-  text-shadow:0 1px 3px rgba(255,255,255,.3);
-  margin-bottom:.35rem;
-}
-.hero-script{
-  font-family:'Caveat',cursive;
-  font-size:clamp(1.5rem,3.5vw,2.4rem);
-  color:#3e7c59;display:block;
-  font-weight:700;
-  text-shadow:none;
-  margin-bottom:2rem;
-}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:#0b1f3a;text-transform:uppercase;letter-spacing:2px;line-height:1.05;text-shadow:0 1px 4px rgba(255,255,255,.5);margin-bottom:.35rem}
+.hero-script{font-family:"Caveat",cursive;font-size:clamp(1.5rem,3.5vw,2.4rem);color:#3e7c59;display:block;font-weight:700;margin-bottom:2rem;text-shadow:0 1px 3px rgba(255,255,255,.4)}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.stats-bar{background:#fff;border-bottom:1px solid var(--border2)}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:1.5rem;text-align:center;border-right:1px solid var(--border2);border-bottom:3px solid transparent;transition:border-color .3s}
+.stat:last-child{border-right:none}
+.stat:hover{border-bottom-color:var(--green)}
+.stat-n{font-size:2rem;font-weight:800;color:var(--navy);display:block;line-height:1}
+.stat-l{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
+.ql-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:1100px;margin:2.5rem auto 0;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.ql-card{background:#fff;padding:1.85rem 1rem;text-align:center;text-decoration:none;transition:all .25s;display:block;border-right:1px solid var(--border);border-bottom:3px solid transparent}
+.ql-card:last-child{border-right:none}
+.ql-card:hover{background:var(--light);border-bottom-color:var(--green)}
+.ql-icon{font-size:1.4rem;display:block;margin-bottom:.65rem}
+.ql-label{font-size:.75rem;font-weight:700;color:var(--navy);letter-spacing:.3px;text-transform:uppercase;display:block}
+.ql-sub{font-size:.68rem;color:var(--muted);margin-top:.2rem;display:block}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.5rem;max-width:1100px;margin:2.75rem auto 0}
+.feat-card{border:1px solid var(--border2);border-radius:6px;padding:1.75rem;transition:all .3s;cursor:pointer;border-top:3px solid var(--green);background:#fff}
+.feat-card:hover{box-shadow:0 8px 28px rgba(62,124,89,.12);transform:translateY(-3px);border-color:var(--green)}
+.feat-badge{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.35rem;margin-bottom:.85rem}
+.feat-badge::before{content:"";width:14px;height:2px;background:var(--green)}
+.feat-name{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.2px}
+.feat-desc{font-size:.8rem;color:var(--mid);line-height:1.6}
+.feat-phone{font-size:.82rem;font-weight:700;color:var(--blue);margin-top:.75rem}
+.ad-screen-frame{border:2px solid var(--border2);border-radius:6px;background:#fff;padding:1.25rem;max-width:380px;margin:2.5rem auto 0;position:relative}
+.ad-screen-label{position:absolute;top:-10px;left:1.25rem;background:var(--light);padding:0 .6rem;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border2);font-weight:700}
+.ad-screen-inner{border:1px solid var(--border2);min-height:170px;background:var(--light);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:4px;transition:border-color .25s}
+.ad-screen-inner:hover{border-color:var(--green)}
+.ad-slot-text{text-align:center;padding:1.75rem}
+.ad-slot-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.ad-slot-main{font-size:1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
+.ad-slot-sub{font-size:.75rem;color:var(--mid)}
+.ad-slot-link{display:inline-block;margin-top:.85rem;font-size:.7rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px}
+.ad-screen-legs{display:flex;justify-content:center;gap:55px;margin-top:0}
+.ad-screen-leg{width:8px;height:14px;background:var(--border2)}
+.ad-screen-base{width:100px;height:5px;background:var(--border2);margin:0 auto;border-radius:3px}
+.city-select-wrap{position:relative;max-width:580px;margin:2.5rem auto 0}
+.city-select{width:100%;padding:.75rem 1rem;background:#fff;border:2px solid var(--green);border-radius:6px;font-size:.9rem;font-weight:600;color:var(--navy);outline:none;font-family:"Montserrat",sans-serif;cursor:pointer;appearance:none;-webkit-appearance:none;margin-bottom:1rem}
+.city-select option{background:#fff;color:var(--navy)}
+.city-select-arrow{position:absolute;right:1rem;top:1rem;color:var(--green);pointer-events:none;font-weight:700}
+.shab-card{background:#fff;border:2px solid var(--border2);border-radius:8px;padding:2rem;max-width:580px;margin:0 auto;border-top:4px solid var(--green)}
+.shab-date{text-align:center;font-size:.82rem;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:1.5rem;text-transform:uppercase}
+.shab-times{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border2);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
+.shab-block{background:var(--light);padding:1.35rem .75rem;text-align:center}
+.shab-block.rt{background:#f0faf5;border-top:3px solid var(--green)}
+.shab-lbl{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
+.shab-time{font-size:1.3rem;font-weight:800;color:var(--navy);display:block}
+.shab-block.rt .shab-time{color:var(--green)}
+.shab-note{font-size:.62rem;color:var(--muted);margin-top:.3rem;display:block}
+.shab-disclaimer{font-size:.72rem;color:var(--mid);text-align:center;line-height:1.75}
+.shab-disclaimer a{color:var(--blue);border-bottom:1px solid rgba(44,110,158,.3)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.5rem;max-width:1100px;margin:2.75rem auto 0}
+.blog-card{background:#fff;border:1px solid var(--border2);border-radius:6px;padding:1.75rem;transition:all .3s;border-top:3px solid transparent;cursor:pointer}
+.blog-card:nth-child(1){border-top-color:var(--green)}
+.blog-card:nth-child(2){border-top-color:var(--navy)}
+.blog-card:nth-child(3){border-top-color:var(--blue)}
+.blog-card:hover{box-shadow:0 6px 22px rgba(11,31,58,.08);transform:translateY(-2px)}
+.blog-cat{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.blog-title{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.35;text-transform:uppercase;letter-spacing:.2px}
+.blog-exc{font-size:.8rem;color:var(--mid);line-height:1.65}
+.blog-meta{font-size:.68rem;color:var(--muted);margin-top:1rem;display:flex;justify-content:space-between;align-items:center}
+.blog-read{color:var(--green);font-weight:700;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px}
+.comm-box{max-width:820px;margin:2.75rem auto 0;border:1px solid rgba(255,255,255,.12);border-top:4px solid var(--green);padding:3rem;border-radius:6px;text-align:center;background:rgba(255,255,255,.05)}
+.comm-quote{font-family:"Caveat",cursive;font-size:1.3rem;color:#fff;line-height:1.7;margin-bottom:1.25rem;font-weight:700}
+.comm-text{font-size:.9rem;color:rgba(255,255,255,.9);line-height:1.85;margin-bottom:.6rem}
+.comm-bold{color:#7ee8a2;font-weight:700}
+.comm-orgs{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;border-top:1px solid rgba(255,255,255,.1);padding-top:2rem}
+.org-item{text-align:center;padding:.85rem 1.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;border-top:2px solid var(--green)}
+.org-name{font-size:.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px}
+.org-detail{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:.2rem}
+@media(max-width:768px){.stats-inner{grid-template-columns:repeat(2,1fr)}.ql-grid{grid-template-columns:repeat(3,1fr)}.shab-times{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
-
 <!-- EMERGENCY STRIP -->
 <div class="emstrip">
   <span class="em-label">Emergency</span>
@@ -483,5 +525,310 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 })();
 </script>
 
+
+<!-- BANNER SLOT -->
+<div class="banner-slot" id="bannerSlot" style="background:var(--light);border-bottom:1px solid var(--border);padding:.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+  <div style="font-size:.6rem;font-weight:700;color:var(--muted);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;flex-shrink:0"><span style="width:16px;height:2px;background:var(--green);display:inline-block"></span>Premium Spot</div>
+  <div id="bannerSlotText" style="font-size:.82rem;color:var(--mid);font-style:italic;flex:1;text-align:center">Your business banner featured here — seen by every visitor to ShopLocal SI</div>
+  <a href="/advertise.html" style="font-size:.72rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px;flex-shrink:0">Reserve this space →</a>
+</div>
+<div id="bannerWrap" style="display:none;background:var(--light);border-bottom:1px solid var(--border);padding:.85rem 2.5rem"><div id="bannerRotator"></div></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Shop Local. Love Local.</h1>
+    <span class="hero-script">Right here on Staten Island.</span>
+    <div class="hero-btns">
+      <a href="/directory.html" class="btn-green">Browse Directory</a>
+      <a href="/marketplace.html" class="btn-outline-navy" style="border-radius:50px">Marketplace</a>
+      <a href="/advertise.html" class="btn-outline-navy" style="border-radius:50px">List Your Business</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-n" data-target="80">0</span><span class="stat-l">Local Businesses</span></div>
+    <div class="stat"><span class="stat-n" data-target="14">0</span><span class="stat-l">Categories</span></div>
+    <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Community Impact</span></div>
+    <div class="stat"><span class="stat-n" data-target="1">0</span><span class="stat-l">Community</span></div>
+  </div>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="section bg-light">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Explore</div>
+    <h2 class="section-title fade-up">Everything Your Community Needs</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="ql-grid fade-up">
+    <a href="/directory.html" class="ql-card"><span class="ql-icon">🏪</span><span class="ql-label">Directory</span><span class="ql-sub">80+ businesses</span></a>
+    <a href="/marketplace.html" class="ql-card"><span class="ql-icon">🛍</span><span class="ql-label">Marketplace</span><span class="ql-sub">Buy &amp; sell locally</span></a>
+    <a href="/simcha.html" class="ql-card"><span class="ql-icon">💒</span><span class="ql-label">Simcha</span><span class="ql-sub">Event planning</span></a>
+    <a href="/coupons.html" class="ql-card"><span class="ql-icon">🎟</span><span class="ql-label">Coupons</span><span class="ql-sub">Exclusive deals</span></a>
+    <a href="/jobs.html" class="ql-card"><span class="ql-icon">💼</span><span class="ql-label">Jobs</span><span class="ql-sub">Hire &amp; find work</span></a>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<div class="section bg-white" id="featSection">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Our Sponsors</div>
+    <h2 class="section-title fade-up">Featured &amp; Premium Businesses</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="feat-grid" id="featGrid"><div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted);font-size:.85rem">Loading featured businesses…</div></div>
+  <div style="text-align:center;margin-top:2.5rem" class="fade-up"><a href="/advertise.html" class="btn-green">Get Featured — First Month Free</a></div>
+</div>
+
+<!-- AD SCREEN -->
+<div class="section bg-navy">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up" style="color:#7ee8a2">Live Advertising</div>
+    <h2 class="section-title fade-up" style="color:#fff">Community Ad Screen</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="ad-screen-frame">
+    <div class="ad-screen-label">Live Display</div>
+    <div class="ad-screen-inner" id="adScreenInner" onclick="window.location.href='/advertise.html'">
+      <div class="ad-slot-text" id="adSlotContent">
+        <div class="ad-slot-eyebrow">Premium Advertising</div>
+        <div class="ad-slot-main">Your Business Here</div>
+        <div class="ad-slot-sub">Reach the entire Staten Island community</div>
+        <a href="/advertise.html" class="ad-slot-link" onclick="event.stopPropagation()">Reserve this spot →</a>
+      </div>
+    </div>
+  </div>
+  <div class="ad-screen-legs"><div class="ad-screen-leg"></div><div class="ad-screen-leg"></div></div>
+  <div class="ad-screen-base"></div>
+  <div style="text-align:center;margin-top:1.25rem"><a href="/advertise.html" style="font-size:.7rem;color:rgba(255,255,255,.75);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px">View all ads &amp; promotions</a></div>
+</div>
+
+<!-- SHABBOS -->
+<section id="shabbos" class="section bg-light">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Weekly Times</div>
+    <h2 class="section-title fade-up">Shabbos Times</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="city-select-wrap">
+    <select id="citySelect" class="city-select" onchange="updateShabbos()">
+      <optgroup label="United States">
+        <option value="40.5795,-74.1502,-5,-4">Staten Island, NY</option>
+        <option value="40.6782,-73.9442,-5,-4">Brooklyn, NY</option>
+        <option value="40.0975,-74.2148,-5,-4">Lakewood, NJ</option>
+        <option value="40.7282,-74.0776,-5,-4">Passaic / Clifton, NJ</option>
+        <option value="40.9176,-74.1719,-5,-4">Monsey, NY</option>
+        <option value="41.3107,-74.1254,-5,-4">Monroe / Kiryas Joel, NY</option>
+        <option value="41.0534,-74.1301,-5,-4">Spring Valley, NY</option>
+        <option value="39.9526,-75.1652,-5,-4">Philadelphia, PA</option>
+        <option value="42.3601,-71.0589,-5,-4">Boston, MA</option>
+        <option value="41.4993,-81.6944,-5,-4">Cleveland, OH</option>
+        <option value="42.3314,-83.0458,-5,-4">Detroit, MI</option>
+        <option value="41.8781,-87.6298,-6,-5">Chicago, IL</option>
+        <option value="34.0522,-118.2437,-8,-7">Los Angeles, CA</option>
+        <option value="25.7617,-80.1918,-5,-4">Miami, FL</option>
+        <option value="38.9072,-77.0369,-5,-4">Washington DC</option>
+      </optgroup>
+      <optgroup label="United Kingdom">
+        <option value="51.5074,-0.1278,0,1">London</option>
+        <option value="53.4808,-2.2426,0,1">Manchester</option>
+      </optgroup>
+      <optgroup label="Israel">
+        <option value="31.7683,35.2137,2,3">Jerusalem</option>
+        <option value="32.0853,34.7818,2,3">Tel Aviv / Bnei Brak</option>
+        <option value="32.7940,34.9896,2,3">Haifa</option>
+        <option value="31.7442,34.9885,2,3">Beit Shemesh</option>
+      </optgroup>
+      <optgroup label="Other">
+        <option value="48.8566,2.3522,1,2">Paris, France</option>
+        <option value="43.6532,-79.3832,-5,-4">Toronto, Canada</option>
+        <option value="45.5017,-73.5673,-5,-4">Montreal, Canada</option>
+        <option value="-33.8688,151.2093,10,11">Sydney, Australia</option>
+      </optgroup>
+    </select>
+    <span class="city-select-arrow">▾</span>
+    <div class="shab-card">
+      <div class="shab-date" id="shabDate">Loading…</div>
+      <div class="shab-times">
+        <div class="shab-block"><span class="shab-lbl">Candle Lighting</span><span class="shab-time" id="candleLighting">—</span><span class="shab-note">18 min before sunset</span></div>
+        <div class="shab-block"><span class="shab-lbl">Shabbos Ends</span><span class="shab-time" id="shabbosEnds">—</span><span class="shab-note">50 min after sunset</span></div>
+        <div class="shab-block rt"><span class="shab-lbl">Rabbeinu Tam</span><span class="shab-time" id="rabbeinuTam">—</span><span class="shab-note">72 min after sunset</span></div>
+      </div>
+      <p class="shab-disclaimer">Times are approximate. Always verify with your local Rav. &nbsp;<a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank">Chabad.org</a> · <a href="https://myzmanim.com" target="_blank">MyZmanim.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<div class="section bg-white">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Community Stories</div>
+    <h2 class="section-title fade-up">Community Blog</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="blog-grid fade-up">
+    <div class="blog-card"><div class="blog-cat">Community News</div><div class="blog-title">Why Every Dollar You Spend Locally Makes a Difference</div><div class="blog-exc">When you choose a local business, you strengthen families and support our community infrastructure.</div><div class="blog-meta"><span>June 2025</span><a href="#" class="blog-read">Read more →</a></div></div>
+    <div class="blog-card"><div class="blog-cat">Business Spotlight</div><div class="blog-title">Meet the Local Businesses Behind Our Community</div><div class="blog-exc">The incredible variety of services available right here on Staten Island — from gifting to medical care.</div><div class="blog-meta"><span>June 2025</span><a href="#" class="blog-read">Read more →</a></div></div>
+    <div class="blog-card"><div class="blog-cat">Charity &amp; Giving</div><div class="blog-title">Supporting Bikur Cholim &amp; COJO — How Shopping Local Helps</div><div class="blog-exc">Every dollar spent locally contributes to organisations providing aid to those who need it most.</div><div class="blog-meta"><span>May 2025</span><a href="#" class="blog-read">Read more →</a></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem" class="fade-up"><a href="/advertise.html" class="btn-outline-green">Submit a Blog Post</a></div>
+</div>
+
+<!-- COMMUNITY -->
+<div class="section bg-navy">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up" style="color:#7ee8a2">Our Why</div>
+    <h2 class="section-title fade-up" style="color:#fff">Why It Matters</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="comm-box fade-up">
+    <div class="comm-quote">"When you shop local, you support a dream, a family, and our community."</div>
+    <p class="comm-text">Every dollar spent locally strengthens our community. It supports families and lightens the burden on vital organisations like <span class="comm-bold">Staten Island Bikur Cholim</span> and <span class="comm-bold">COJO</span>.</p>
+    <p class="comm-text" style="margin-top:.5rem"><span class="comm-bold">Have Maaser to give? Start at home.</span></p>
+    <div class="comm-orgs">
+      <div class="org-item"><div class="org-name">Staten Island Bikur Cholim</div><div class="org-detail">Zelle: 718-494-4343</div></div>
+      <div class="org-item"><div class="org-name">COJO Staten Island</div><div class="org-detail">Community Support Since 1980</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="biz-modal-overlay" id="bizModalOverlay" onclick="if(event.target===this)closeBizModal()">
+  <div class="biz-modal">
+    <div class="biz-modal-handle"></div>
+    <div id="bizModalBanner"></div>
+    <div class="biz-modal-body">
+      <div class="biz-modal-badge" id="bizModalBadge">Featured Partner</div>
+      <div class="biz-modal-name" id="bizModalName"></div>
+      <div class="biz-modal-cat" id="bizModalCat"></div>
+      <div class="biz-modal-desc" id="bizModalDesc"></div>
+      <div class="biz-modal-actions" id="bizModalActions"></div>
+      <div class="biz-modal-coupons" id="bizModalCoupons" style="display:none"><h4>Active Coupons</h4><div id="bizModalCouponsList"></div></div>
+      <button class="biz-modal-close" onclick="closeBizModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function nextFri(){const d=new Date(),day=d.getDay(),fri=new Date(d);fri.setDate(d.getDate()+(day<=5?5-day||7:6));fri.setHours(12,0,0,0);return fri;}
+  function sunset(d,lat,lon,std,dst){const yr=d.getFullYear(),dt=d>=new Date(yr,2,8)&&d<new Date(yr,10,1),off=dt?dst:std,J=Math.floor((d-new Date(yr,0,0))/86400000),D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180,cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);if(cosH>1||cosH<-1)return null;return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+off;}
+  function fmt(h){if(h===null)return"N/A";h=((h%24)+24)%24;const hr=Math.floor(h),mn=Math.round((h-hr)*60),m=mn<10?"0"+mn:mn,p=hr>=12?"PM":"AM",h12=hr>12?hr-12:hr===0?12:hr;return h12+":"+m+" "+p;}
+  const Mo=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const Da=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  window.updateShabbos=function(){
+    const sel=document.getElementById("citySelect");if(!sel)return;
+    const[lat,lon,std,dst]=sel.value.split(",").map(Number);
+    const fri=nextFri(),sun=sunset(fri,lat,lon,std,dst),sat=new Date(fri);sat.setDate(fri.getDate()+1);
+    const city=sel.options[sel.selectedIndex].text;
+    document.getElementById("shabDate").textContent=city.toUpperCase()+" · "+Da[fri.getDay()].toUpperCase()+", "+Mo[fri.getMonth()].toUpperCase()+" "+fri.getDate()+" — "+Mo[sat.getMonth()].toUpperCase()+" "+sat.getDate()+", "+sat.getFullYear();
+    document.getElementById("candleLighting").textContent=fmt(sun!==null?sun-18/60:null);
+    document.getElementById("shabbosEnds").textContent=fmt(sun!==null?sun+50/60:null);
+    document.getElementById("rabbeinuTam").textContent=fmt(sun!==null?sun+72/60:null);
+  };
+  updateShabbos();
+  // Counter
+  const co=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting&&!en.target.dataset.done){en.target.dataset.done="1";en.target.querySelectorAll(".stat-n[data-target]").forEach(el=>{const t=parseInt(el.dataset.target);let c=0;const i=setInterval(()=>{c=Math.min(c+Math.ceil(t/40),t);el.textContent=c+(t===80?"+":"");if(c>=t)clearInterval(i);},40);});}});},{threshold:.5});
+  const s=document.querySelector(".stats-bar");if(s)co.observe(s);
+})();
+// Ads
+(function(){
+  let allCoupons=[];
+  async function loadAll(){
+    try{
+      const[ar,cr]=await Promise.all([fetch("/.netlify/functions/get-ads"),fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}})]);
+      if(ar.ok){
+        const data=await ar.json(),all=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];
+        if(data.banners&&data.banners.length){document.getElementById("bannerSlot").style.display="none";const wrap=document.getElementById("bannerWrap"),rot=document.getElementById("bannerRotator");wrap.style.display="block";let cur=0;const show=i=>{const b=data.banners[i];rot.innerHTML=b.bannerHTML?'<iframe srcdoc="'+b.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:90px;border:none"></iframe>':'<div style="background:var(--navy);height:90px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+b.businessName+"</div></div>";};show(0);if(data.banners.length>1)setInterval(()=>{cur=(cur+1)%data.banners.length;show(cur);},5000);}
+        const grid=document.getElementById("featGrid");
+        if(all.length){grid.innerHTML=all.map(a=>'<div class="feat-card" onclick="openBizModal('+JSON.stringify(a).replace(/"/g,"&quot;")+')"><div class="feat-badge">'+(a.planType==="premium"?"Premium Partner":"Featured Partner")+'</div><div class="feat-name">'+a.businessName+'</div><div class="feat-desc">'+(a.tagline||a.description||"")+"</div>"+(a.phone?'<div class="feat-phone">'+a.phone+"</div>":"")+"</div>").join("");}
+        else document.getElementById("featSection").style.display="none";
+        if(all.length){const inn=document.getElementById("adSlotContent");let cur=0;const show=i=>{const ad=all[i];inn.innerHTML='<div class="ad-slot-eyebrow">'+(ad.planType==="premium"?"Premium":"Featured")+'</div><div class="ad-slot-main">'+ad.businessName+'</div><div class="ad-slot-sub">'+(ad.tagline||ad.description||"")+"</div>"+(ad.phone?'<div style="font-size:.75rem;color:var(--green);margin-top:.5rem;font-weight:700">'+ad.phone+"</div>":"");};show(0);if(all.length>1)setInterval(()=>{inn.style.opacity="0";inn.style.transition="opacity .3s";setTimeout(()=>{cur=(cur+1)%all.length;show(cur);inn.style.opacity="1";},300);},4500);}
+      }
+      if(cr.ok){const cd=await cr.json();allCoupons=(cd.records||[]).filter(r=>(r.fields.Status||"").toLowerCase()==="active").map(r=>({biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""}));}
+    }catch(e){const f=document.getElementById("featSection");if(f)f.style.display="none";}
+  }
+  window.openBizModal=function(ad){
+    if(typeof ad==="string")ad=JSON.parse(ad);
+    const b=document.getElementById("bizModalBanner");
+    b.innerHTML=ad.bannerHTML?'<iframe srcdoc="'+ad.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:140px;border:none"></iframe>':'<div style="height:72px;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:0 2rem"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+ad.businessName+"</div></div>";
+    document.getElementById("bizModalBadge").textContent=ad.planType==="premium"?"Premium Partner":"Featured Partner";
+    document.getElementById("bizModalName").textContent=ad.businessName||"";
+    document.getElementById("bizModalCat").textContent=(ad.category||"")+(ad.address?" · "+ad.address:"");
+    document.getElementById("bizModalDesc").textContent=ad.description||ad.tagline||"";
+    let a="";if(ad.phone)a+='<a href="tel:'+ad.phone.replace(/\D/g,"")+'" class="biz-modal-btn-call">Call Now</a>';if(ad.link)a+='<a href="'+ad.link+'" target="_blank" class="biz-modal-btn-web">Visit Website</a>';if(ad.email)a+='<a href="mailto:'+ad.email+'" class="biz-modal-btn-email">Email Us</a>';
+    document.getElementById("bizModalActions").innerHTML=a;
+    const bc=allCoupons.filter(c=>c.biz.toLowerCase()===(ad.businessName||"").toLowerCase());
+    const cs=document.getElementById("bizModalCoupons");
+    if(bc.length){cs.style.display="block";document.getElementById("bizModalCouponsList").innerHTML=bc.map(c=>'<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">'+c.discount+'</div><div class="biz-modal-coupon-desc">'+c.desc+"</div></div>"+(c.code?'<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText(''+c.code+'');this.textContent='Copied!';setTimeout(()=>this.textContent=''+c.code+'',2000)">'+c.code+"</div>":"")+"</div>").join("");}else cs.style.display="none";
+    document.getElementById("bizModalOverlay").classList.add("open");document.body.style.overflow="hidden";
+  };
+  window.closeBizModal=function(){document.getElementById("bizModalOverlay").classList.remove("open");document.body.style.overflow="";};
+  document.addEventListener("DOMContentLoaded",loadAll);
+})();
+</script>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo-wrap">
+        <img src="/logo.png" alt="Shop Local SI" class="foot-logo-img">
+        <div class="foot-brand-text">
+          <span class="shop">SHOP <span style="color:var(--green2)">LOCAL</span></span>
+          <span class="si">Staten Island</span>
+        </div>
+      </div>
+      <p class="foot-tagline">Supporting the businesses that support our Staten Island community — one purchase at a time.</p>
+    </div>
+    <div>
+      <div class="foot-heading">Pages</div>
+      <ul class="foot-links">
+        <li><a href="/directory.html">Business Directory</a></li>
+        <li><a href="/marketplace.html">Marketplace</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/coupons.html">Coupons & Deals</a></li>
+        <li><a href="/advertise.html">Advertise With Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Community</div>
+      <ul class="foot-links">
+        <li><a href="/#shabbos">Shabbos Times</a></li>
+        <li><a href="/island-kosher-deals.html">Island Kosher Deals</a></li>
+        <li><a href="/advertise.html">List Your Business</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Emergency</div>
+      <ul class="foot-links">
+        <li><a href="tel:7182301000">Hatzolah: 718-230-1000</a></li>
+        <li><a href="tel:7187612428">Chaveirim: 718-761-2428</a></li>
+        <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
+        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
+        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
+        <li><a href="tel:7188544548">Misaskim: 718-854-4548</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Shop Local Staten Island · Strengthening our community</span>
+    <span><a href="/advertise.html">Advertise with us</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const path=window.location.pathname;
+  const page=path==='/'?'home':path.replace('/','').replace('.html','');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{if(a.dataset.page===page)a.classList.add('active');});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}document.getElementById('navLinks').classList.remove('open')});});
+})();
+</script>
 </body>
 </html>
