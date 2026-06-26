@@ -724,7 +724,11 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     try{
       const[ar,cr]=await Promise.all([fetch("/.netlify/functions/get-ads"),fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}})]);
       if(ar.ok){
-        const data=await ar.json(),all=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];
+        const data=await ar.json(),all = data.all || [
+  ...(data.banners || []),
+  ...(data.featured || []),
+  ...(data.sponsored || [])
+];
         if(data.banners&&data.banners.length){document.getElementById("bannerSlot").style.display="none";const wrap=document.getElementById("bannerWrap"),rot=document.getElementById("bannerRotator");wrap.style.display="block";let cur=0;const show=i=>{const b=data.banners[i];rot.innerHTML=b.bannerHTML?'<iframe srcdoc="'+b.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:90px;border:none"></iframe>':'<div style="background:var(--navy);height:90px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+b.businessName+"</div></div>";};show(0);if(data.banners.length>1)setInterval(()=>{cur=(cur+1)%data.banners.length;show(cur);},5000);}
         const grid=document.getElementById("featGrid");
         if(all.length){grid.innerHTML=all.map(a=>'<div class="feat-card" onclick="openBizModal('+JSON.stringify(a).replace(/"/g,"&quot;")+')"><div class="feat-badge">'+(a.planType==="premium"?"Premium Partner":"Featured Partner")+'</div><div class="feat-name">'+a.businessName+'</div><div class="feat-desc">'+(a.tagline||a.description||"")+"</div>"+(a.phone?'<div class="feat-phone">'+a.phone+"</div>":"")+"</div>").join("");}
