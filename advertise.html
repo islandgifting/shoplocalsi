@@ -509,7 +509,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <div class="section-eyebrow fade-up">Our Plans</div>
     <h2 class="section-title fade-up">Choose Your Listing</h2>
     <div class="green-divider fade-up"></div>
-    <p class="section-sub fade-up">Click any paid plan to go straight to checkout. Cancel anytime.</p>
+    <p class="section-sub fade-up">Click any paid plan to pay first. After Stripe checkout, you will be sent to the upload form.</p>
   </div>
   <div class="price-grid">
     <div class="price-card">
@@ -537,7 +537,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Featured spotlight</li>
         <li>View Details button</li>
       </ul>
-      <button class="price-btn" onclick="startPayment('FeaturedBusiness')">&#x1F4B3; Pay &amp; Start &rarr;</button>
+      <button class="price-btn" onclick="startPayment('featured', event)">&#x1F4B3; Pay &amp; Start &rarr;</button>
     </div>
     <div class="price-card">
       <div class="price-tier">Premium</div>
@@ -553,7 +553,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Blog post feature</li>
         <li>Maximum visibility</li>
       </ul>
-      <button class="price-btn" onclick="startPayment('Bundle')">&#x1F4B3; Pay &amp; Start &rarr;</button>
+      <button class="price-btn" onclick="startPayment('premium', event)">&#x1F4B3; Pay &amp; Start &rarr;</button>
     </div>
     <div class="price-card">
       <div class="price-tier">Coupon</div>
@@ -567,7 +567,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Expires end of month</li>
         <li>Renews monthly</li>
       </ul>
-      <button class="price-btn" onclick="startPayment('Coupon')">&#x1F4B3; Pay &amp; Start &rarr;</button>
+      <button class="price-btn" onclick="startPayment('coupon', event)">&#x1F4B3; Pay &amp; Start &rarr;</button>
     </div>
   </div>
   <div class="grand-note fade-up">
@@ -578,7 +578,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 <div class="section bg-light" id="free-listing">
   <div class="section-inner" style="text-align:center">
     <div class="section-eyebrow fade-up">Free Basic Listing</div>
-    <h2 class="section-title fade-up">Submit Your Free Listing</h2>
+    <h2 class="section-title fade-up">Submit Your Free Basic Listing</h2>
     <div class="green-divider fade-up"></div>
     <p class="section-sub fade-up">Basic listings are free forever &mdash; submit your details and we will add you to the directory.</p>
   </div>
@@ -618,8 +618,8 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 </div>
 <script>
 var stripe=Stripe('pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5');
-async function startPayment(plan){
-  var btn=event.target;
+async function startPayment(plan, evt){
+  var btn=(evt && evt.currentTarget) || event.target;
   var orig=btn.innerHTML;
   btn.innerHTML='Loading&hellip;';
   btn.disabled=true;
