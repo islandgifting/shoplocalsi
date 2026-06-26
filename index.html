@@ -735,6 +735,17 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     document.getElementById('candleLighting').textContent=fmt(sun!==null?sun-18/60:null);
     document.getElementById('shabbosEnds').textContent=fmt(sun!==null?sun+50/60:null);
     document.getElementById('rabbeinuTam').textContent=fmt(sun!==null?sun+72/60:null);
+    // Fetch parsha from Hebcal
+    var parshaEl=document.getElementById('shabParsha');
+    if(parshaEl){
+      fetch('https://www.hebcal.com/shabbat?cfg=json&city=Staten+Island,+NY&m=50&b=18')
+        .then(function(r){return r.json();})
+        .then(function(data){
+          var parsha=(data.items||[]).find(function(i){return i.category==='parashat';});
+          if(parsha){parshaEl.textContent='פרשת השבוע — '+parsha.title;parshaEl.style.display='block';}
+        })
+        .catch(function(){});
+    }
   };
   updateShabbos();
 })();
