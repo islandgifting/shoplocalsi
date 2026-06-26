@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "stripe": "^17.5.0",
+    "node-fetch": "^2.7.0"
+  }
+}
