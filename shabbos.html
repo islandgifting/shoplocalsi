@@ -40,7 +40,7 @@ nav{
 .logo-url{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:600;color:#2c6e9e;letter-spacing:.5px}
 
 /* NAV LINKS - small, spaced, uppercase, green underline on active */
-.nav-links{display:flex;align-items:center;gap:0;list-style:none;margin:0 .5rem}
+.nav-links{display:flex;align-items:center;gap:.1rem;list-style:none;margin:0 1.5rem}
 .nav-links a{
   font-family:'Montserrat',sans-serif;
   font-size:.72rem;font-weight:600;color:#1a2a3a;
@@ -116,8 +116,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy
 .logo-si{font-size:.55rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-top:.2rem}
 .logo-si::before,.logo-si::after{content:'';width:12px;height:1px;background:var(--navy);opacity:.4}
 .logo-url{font-size:.58rem;color:var(--blue);font-weight:600;letter-spacing:.5px;margin-top:.1rem;display:block}
-.nav-links{display:flex;align-items:center;gap:0;list-style:none}
-.nav-links a{font-size:.72rem;font-weight:600;color:var(--text);letter-spacing:.4px;text-transform:uppercase;padding:.5rem .7rem;position:relative;transition:color .2s}
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none}
+.nav-links a{font-size:.75rem;font-weight:600;color:var(--text);letter-spacing:.5px;text-transform:uppercase;padding:.5rem .85rem;position:relative;transition:color .2s}
 .nav-links a:hover{color:var(--green)}
 .nav-links a.active{color:var(--green)}
 .nav-links a.active::after{content:'';position:absolute;bottom:-1px;left:.85rem;right:.85rem;height:3px;background:var(--green);border-radius:2px 2px 0 0}
@@ -454,14 +454,14 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <ul class="nav-links" id="navLinks">
     <li><a href="/" data-page="home">Home</a></li>
     <li><a href="/directory.html" data-page="directory">Directory</a></li>
-    <li><a href="/marketplace.html" data-page="marketplace">Market</a></li>
+    <li><a href="/marketplace.html" data-page="marketplace">Marketplace</a></li>
     <li><a href="/simcha.html" data-page="simcha">Simcha</a></li>
     <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
-    <li><a href="/realty.html" data-page="realty">Realty</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
+    <li><a href="/advertise.html" class="nav-cta" data-page="advertise">List Your Business</a></li>
   </ul>
-  <a href="/advertise.html" class="nav-cta" data-page="advertise" style="margin-left:.75rem;white-space:nowrap">List Your Business</a>
+
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
@@ -595,7 +595,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="foot-heading">Pages</div>
       <ul class="foot-links">
         <li><a href="/directory.html">Business Directory</a></li>
-        <li><a href="/marketplace.html">Market</a></li>
+        <li><a href="/marketplace.html">Marketplace</a></li>
         <li><a href="/simcha.html">Simcha Planning</a></li>
         <li><a href="/coupons.html">Coupons & Deals</a></li>
         <li><a href="/advertise.html">Advertise With Us</a></li>
