@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Realty Listings &mdash; Shop Local Staten Island</title>
+<title>Realty Listings — Shop Local Staten Island</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/"></script>
 <style>
@@ -382,28 +382,26 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .page-hero h1{font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:.5px;text-transform:uppercase}
 .page-hero h1 span{color:#7ee8a2}
 .page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
-
 .realty-tabs{display:flex;gap:0;max-width:1100px;margin:2rem auto 0;border:2px solid var(--green);border-radius:8px;overflow:hidden}
 .realty-tab{flex:1;padding:.85rem;text-align:center;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;font-family:"Montserrat",sans-serif;border:none;background:#fff;color:var(--navy);transition:all .2s;border-right:1px solid var(--border2)}
 .realty-tab:last-child{border-right:none}
 .realty-tab.active{background:var(--green);color:#fff}
-.realty-tab.wanted.active{background:var(--navy);color:#fff}
+.realty-tab.tw.active{background:var(--navy);color:#fff}
 .listings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:2rem auto 0}
 .listing-card{background:#fff;border:1px solid var(--border2);border-radius:8px;overflow:hidden;transition:all .3s;position:relative}
 .listing-card:hover{box-shadow:0 8px 28px rgba(11,31,58,.1);transform:translateY(-2px)}
 .listing-card.featured-card{border:2px solid var(--green)}
 .listing-card.premium-card{border:2px solid var(--blue);background:var(--navy)}
-.listing-card.sold-card,.listing-card.rented-card{opacity:.65;order:99}
-.sold-bar{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%) rotate(-3deg);background:#cc2222;color:#fff;text-align:center;font-size:.85rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:.5rem;z-index:10;display:none}
-.listing-card.sold-card .sold-bar,.listing-card.rented-card .sold-bar{display:block}
-.listing-img-placeholder{height:180px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem}
-.listing-img{width:100%;height:180px;object-fit:cover}
+.listing-card.rented-card{opacity:.6}
+.rented-bar{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%) rotate(-3deg);background:#cc2222;color:#fff;text-align:center;font-size:.9rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:.5rem;z-index:10;display:none}
+.listing-card.rented-card .rented-bar{display:block}
+.listing-img-placeholder{height:190px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.listing-img{width:100%;height:190px;object-fit:cover;display:block}
 .listing-badge{position:absolute;top:.75rem;left:.75rem;font-size:.62rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:.25rem .65rem;border-radius:50px;color:#fff}
 .listing-badge.rentals{background:#6b4fbb}
 .listing-badge.featured{background:var(--green)}
 .listing-badge.premium{background:var(--blue)}
-.listing-badge.agency{background:var(--navy);border:1px solid rgba(255,255,255,.3)}
-.listing-badge.sold{background:#cc2222}
+.listing-badge.agency{background:var(--navy)}
 .listing-badge.rented{background:#cc2222}
 .listing-body{padding:1.25rem}
 .listing-price{font-size:1.4rem;font-weight:800;color:var(--navy);margin-bottom:.25rem}
@@ -425,21 +423,21 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .wanted-title{font-size:.92rem;font-weight:800;color:var(--navy);margin-bottom:.3rem}
 .wanted-desc{font-size:.8rem;color:var(--mid);line-height:1.6;margin-bottom:.65rem}
 .wanted-meta{font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between}
+/* Pricing */
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1px;max-width:1100px;margin:2.5rem auto 0;border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--border2)}
 .pricing-card{background:#fff;padding:1.75rem 1.5rem;position:relative}
 .pricing-card.dark{background:var(--navy)}
 .pricing-card.popular::before{content:"MOST POPULAR";position:absolute;top:0;left:0;right:0;background:var(--green);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:2px;text-align:center;padding:.3rem}
 .pricing-card.popular{padding-top:2.25rem}
-.ptier{font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:.25rem;letter-spacing:.3px;text-transform:uppercase}
-.ptier::before{display:none}
+.ptier{font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:.25rem;text-transform:uppercase;letter-spacing:.3px}
 .pricing-card.dark .ptier{color:#fff}
+.ptier-bar{width:32px;height:3px;background:var(--green);border-radius:2px;margin:.35rem 0 .85rem}
+.pricing-card.dark .ptier-bar{background:#7ee8a2}
 .pval{font-size:1.6rem;font-weight:800;color:var(--green);line-height:1;margin-bottom:.1rem}
 .pricing-card.dark .pval{color:#7ee8a2}
-.ptier-divider{width:32px;height:3px;background:var(--green);border-radius:2px;margin:.4rem 0 .85rem}
-.pricing-card.dark .ptier-divider{background:#7ee8a2}
-.pmo{font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.2rem}
+.pmo{font-size:.76rem;font-weight:600;color:var(--muted);margin-bottom:.2rem}
 .pricing-card.dark .pmo{color:rgba(255,255,255,.6)}
-.per-listing{font-size:.68rem;font-weight:800;color:#cc2222;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.per-listing{font-size:.67rem;font-weight:800;color:#cc2222;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
 .pricing-card.dark .per-listing{color:#ffaaaa}
 .pfeats{list-style:none;margin:.85rem 0 1.25rem}
 .pfeats li{font-size:.76rem;color:var(--mid);padding:.28rem 0;border-bottom:1px solid var(--border2);display:flex;align-items:flex-start;gap:.4rem;line-height:1.4}
@@ -451,17 +449,23 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .pricing-card.dark .pbtn:hover{background:var(--green);color:#fff}
 .cancel-note{text-align:center;font-size:.7rem;font-weight:700;color:var(--green);margin-top:.5rem}
 .pricing-card.dark .cancel-note{color:#7ee8a2}
-.final-warning{background:rgba(204,34,34,.06);border:1px solid rgba(204,34,34,.2);border-radius:6px;padding:.65rem 1rem;font-size:.72rem;color:#cc2222;font-weight:700;text-align:center;margin-top:.5rem}
+.final-warning{background:rgba(204,34,34,.06);border:1px solid rgba(204,34,34,.2);border-radius:6px;padding:.6rem .9rem;font-size:.7rem;color:#cc2222;font-weight:700;text-align:center;margin-top:.5rem;line-height:1.5}
+/* Sold modal */
 .sold-modal{position:fixed;inset:0;background:rgba(11,31,58,.6);z-index:999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .sold-modal.open{display:flex}
 .sold-modal-box{background:#fff;border-radius:8px;padding:2rem;max-width:420px;width:90%;border-top:4px solid #cc2222}
-.sold-modal-box h3{font-size:.9rem;font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:.35rem}
-.sold-modal-box p{font-size:.82rem;color:var(--mid);margin-bottom:1.25rem;line-height:1.65}
 .field{margin-bottom:.85rem}
 .field label{display:block;font-size:.65rem;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.32rem}
 .field input{width:100%;padding:.62rem .9rem;border:2px solid var(--border2);border-radius:4px;font-size:.86rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:var(--light);transition:border .2s}
 .field input:focus{border-color:var(--green);background:#fff}
-
+/* Wanted form */
+.wanted-form-card{max-width:620px;margin:2rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2.25rem;border-top:4px solid var(--navy)}
+.wfield{margin-bottom:.85rem}
+.wfield label{display:block;font-size:.65rem;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.32rem}
+.wfield input,.wfield textarea,.wfield select{width:100%;padding:.62rem .9rem;border:2px solid var(--border2);border-radius:4px;font-size:.86rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:var(--light);transition:border .2s}
+.wfield input:focus,.wfield textarea:focus{border-color:var(--navy);background:#fff}
+.wfield textarea{height:80px;resize:vertical}
+.wfr{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
 </style>
 </head>
 <body>
@@ -517,6 +521,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <li><a href="/simcha.html" data-page="simcha">Simcha</a></li>
     <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
+    <li><a href="/realty.html" data-page="realty">Realty</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
     <li><a href="/advertise.html" class="nav-cta" data-page="advertise">List Your Business</a></li>
   </ul>
@@ -536,40 +541,99 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 })();
 </script>
 
+
 <div class="page-hero">
   <div class="page-hero-eyebrow">Staten Island Real Estate</div>
   <h1>Realty <span>Listings</span></h1>
   <p>Buy, sell &amp; rent &mdash; hyper-targeted to the Staten Island Jewish community</p>
 </div>
 
-<!-- TABS -->
+<!-- TABS + LISTINGS -->
 <div style="max-width:1100px;margin:2.5rem auto 0;padding:0 1.5rem">
   <div class="realty-tabs">
     <button class="realty-tab active" onclick="showTab('sale',this)">&#x1F3E0; For Sale</button>
     <button class="realty-tab" onclick="showTab('rent',this)">&#x1F511; For Rent</button>
-    <button class="realty-tab wanted" onclick="showTab('wanted',this)">&#x1F50D; Rental Wanted</button>
+    <button class="realty-tab tw" onclick="showTab('wanted',this)">&#x1F50D; Rental Wanted</button>
   </div>
 </div>
 
 <div class="section bg-light" style="padding-top:1.5rem">
   <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem">
-    <p style="font-size:.78rem;color:var(--mid);font-weight:500" id="listingCount">Loading listings&hellip;</p>
-    <a href="#pricing" class="btn-green" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false" style="padding:.45rem 1.1rem;font-size:.74rem">+ Post a Listing</a>
+    <p id="listingCount" style="font-size:.78rem;color:var(--mid);font-weight:500">Loading listings&hellip;</p>
+    <div style="display:flex;gap:.65rem;flex-wrap:wrap">
+      <a href="#pricing" class="btn-green" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false" style="padding:.45rem 1.1rem;font-size:.74rem">+ Post a Listing</a>
+      <a href="#wanted-form" class="btn-outline-green" onclick="document.getElementById('wanted-form').scrollIntoView({behavior:'smooth'});return false" style="padding:.43rem 1.1rem;font-size:.74rem;border-radius:50px">&#x1F50D; Rental Wanted (Free)</a>
+    </div>
   </div>
 
+  <!-- FOR SALE -->
   <div id="saleTab">
     <div class="listings-grid" id="saleGrid">
-      <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted);font-size:.85rem">Loading sale listings&hellip;</div>
+      <!-- Sample cards shown until real ones load -->
+      <div class="listing-card featured-card">
+        <div style="position:relative"><div class="listing-img-placeholder">&#x1F3E1;</div><div class="listing-badge featured">Featured</div></div>
+        <div class="listing-body">
+          <div class="listing-price">$749,000</div>
+          <div class="listing-address">&#x1F4CD; 42 Lighthouse Ave, Westerleigh</div>
+          <div class="listing-specs"><span>&#x1F6CF; 4 bed</span><span>&#x1F6BF; 2.5 bath</span><span>2,100 sqft</span></div>
+          <div class="listing-desc">Beautiful single-family home in prime location. Updated kitchen, finished basement, large backyard. Walking distance to shul.</div>
+        </div>
+        <div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><button class="mark-btn" onclick="openSoldModal(this,'rented','sample')">Mark Rented</button></div>
+      </div>
+      <div class="listing-card">
+        <div style="position:relative"><div class="listing-img-placeholder">&#x1F3E0;</div><div class="listing-badge rentals">Rental</div></div>
+        <div class="listing-body">
+          <div class="listing-price">$525,000</div>
+          <div class="listing-address">&#x1F4CD; 18 Manor Rd, Willowbrook</div>
+          <div class="listing-specs"><span>&#x1F6CF; 3 bed</span><span>&#x1F6BF; 2 bath</span></div>
+          <div class="listing-desc">Semi-detached, excellent condition. New roof 2023. Great neighborhood.</div>
+        </div>
+        <div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><button class="mark-btn" onclick="openSoldModal(this,'rented','sample')">Mark Rented</button></div>
+      </div>
+      <div class="listing-card premium-card">
+        <div style="position:relative"><div class="listing-img-placeholder" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)">&#x1F3E0;</div><div class="listing-badge premium">Premium</div></div>
+        <div class="listing-body">
+          <div class="listing-price">$1,100,000</div>
+          <div class="listing-address">&#x1F4CD; 7 Harbor View Dr, Tottenville</div>
+          <div class="listing-specs"><span>&#x1F6CF; 5 bed</span><span>&#x1F6BF; 3.5 bath</span><span>3,400 sqft</span></div>
+          <div class="listing-desc">Stunning waterfront colonial with panoramic views. Chef kitchen, home theater, resort-style backyard.</div>
+        </div>
+        <div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000" style="color:#7ee8a2">&#x1F4DE; 000-000-0000</a></span><button class="mark-btn" onclick="openSoldModal(this,'rented','sample')" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">Mark Rented</button></div>
+      </div>
     </div>
   </div>
+
+  <!-- FOR RENT -->
   <div id="rentTab" style="display:none">
     <div class="listings-grid" id="rentGrid">
-      <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted);font-size:.85rem">Loading rental listings&hellip;</div>
+      <div class="listing-card featured-card">
+        <div style="position:relative"><div class="listing-img-placeholder">&#x1F3E0;</div><div class="listing-badge featured">Featured</div></div>
+        <div class="listing-body">
+          <div class="listing-price">$2,800/mo</div>
+          <div class="listing-address">&#x1F4CD; 55 Victory Blvd, Tompkinsville</div>
+          <div class="listing-specs"><span>&#x1F6CF; 3 bed</span><span>&#x1F6BF; 2 bath</span></div>
+          <div class="listing-desc">Spacious apartment, updated throughout. Parking included. Available immediately.</div>
+        </div>
+        <div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><button class="mark-btn" onclick="openSoldModal(this,'rented','sample')">Mark Rented</button></div>
+      </div>
+      <div class="listing-card">
+        <div style="position:relative"><div class="listing-img-placeholder">&#x1F3E1;</div><div class="listing-badge rentals">Rental</div></div>
+        <div class="listing-body">
+          <div class="listing-price">$1,800/mo</div>
+          <div class="listing-address">&#x1F4CD; 12 Bradley Ave, Willowbrook</div>
+          <div class="listing-specs"><span>&#x1F6CF; 2 bed</span><span>&#x1F6BF; 1 bath</span></div>
+          <div class="listing-desc">Clean 2BR apartment. Jewish neighborhood. Close to shopping and shul.</div>
+        </div>
+        <div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><button class="mark-btn" onclick="openSoldModal(this,'rented','sample')">Mark Rented</button></div>
+      </div>
     </div>
   </div>
+
+  <!-- RENTAL WANTED -->
   <div id="wantedTab" style="display:none">
     <div class="listings-grid" id="wantedGrid">
-      <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted);font-size:.85rem">Loading rental requests&hellip;</div>
+      <div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">Family seeking 3BR in Westerleigh / Willowbrook</div><div class="wanted-desc">Frum family, excellent references. Max $3,000/mo. Need parking. Available July 1.</div><div class="wanted-meta"><span>&#x1F4DE; 000-000-0000</span><span>Posted 2 days ago</span></div></div>
+      <div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">Couple looking for 2BR near shul</div><div class="wanted-desc">Quiet couple, no pets, strong references. Budget $2,200/mo. Flexible move-in date.</div><div class="wanted-meta"><span>&#x2709; email@example.com</span><span>Posted 5 days ago</span></div></div>
     </div>
   </div>
 </div>
@@ -580,35 +644,32 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <div class="section-eyebrow fade-up">Post Your Property</div>
     <h2 class="section-title fade-up">Choose Your Listing Plan</h2>
     <div class="green-divider fade-up"></div>
-    <p class="section-sub fade-up">Each plan is <strong>per listing, per month</strong> &mdash; one property per listing. Your listing is final once submitted. Cancel anytime.</p>
+    <p class="section-sub fade-up">Each plan is <strong>per listing, per month</strong> &mdash; one property per listing. Your listing is final once submitted.</p>
   </div>
-
   <div class="pricing-grid fade-up">
 
-    <!-- RENTALS (was Basic) -->
     <div class="pricing-card">
       <div class="ptier">Rentals</div>
-      <div class="ptier-divider"></div>
+      <div class="ptier-bar"></div>
       <div class="pval">$49</div>
       <div class="pmo">/month</div>
       <div class="per-listing">Per rental listing</div>
       <ul class="pfeats">
         <li>1 rental property listing</li>
-        <li>Up to 5 photos &mdash; rotating display</li>
+        <li>Up to 5 photos &mdash; rotating</li>
         <li>Price, specs &amp; contact info</li>
         <li>For Rent listings only</li>
         <li>Private code to mark Rented</li>
         <li>Listing is final once submitted</li>
       </ul>
-      <a href="https://buy.stripe.com/realty-rentals" class="pbtn" onclick="goStripe('rentals');return false">Post Rental &rarr;</a>
+      <a href="/realty-success.html?plan=rentals" class="pbtn">Post Rental &rarr;</a>
       <div class="cancel-note">&#x2713; Cancel anytime</div>
-      <div class="final-warning">&#x26A0; One property per listing. Final once submitted.</div>
+      <div class="final-warning">&#x26A0; One property. Cannot be swapped once live.</div>
     </div>
 
-    <!-- FEATURED -->
     <div class="pricing-card popular dark">
       <div class="ptier">Featured</div>
-      <div class="ptier-divider"></div>
+      <div class="ptier-bar"></div>
       <div class="pval">$149</div>
       <div class="pmo">/month</div>
       <div class="per-listing" style="color:#ffaaaa">Per listing &mdash; sale or rental</div>
@@ -621,15 +682,14 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Private removal code</li>
         <li>Listing is final once submitted</li>
       </ul>
-      <a href="#" class="pbtn" onclick="goStripe('featured');return false">Post Featured &rarr;</a>
+      <a href="/realty-success.html?plan=featured" class="pbtn">Post Featured &rarr;</a>
       <div class="cancel-note">&#x2713; Cancel anytime</div>
-      <div class="final-warning" style="color:#ffaaaa;background:rgba(255,170,170,.08);border-color:rgba(255,170,170,.2)">&#x26A0; One property. Cannot be changed once live.</div>
+      <div class="final-warning" style="color:#ffaaaa;background:rgba(255,170,170,.08);border-color:rgba(255,170,170,.2)">&#x26A0; One property. Cannot be swapped once live.</div>
     </div>
 
-    <!-- PREMIUM -->
     <div class="pricing-card">
       <div class="ptier">Premium</div>
-      <div class="ptier-divider"></div>
+      <div class="ptier-bar"></div>
       <div class="pval">$299</div>
       <div class="pmo">/month</div>
       <div class="per-listing">Per listing &mdash; sale or rental</div>
@@ -642,15 +702,14 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Private removal code</li>
         <li>Listing is final once submitted</li>
       </ul>
-      <a href="#" class="pbtn" onclick="goStripe('premium');return false">Post Premium &rarr;</a>
+      <a href="/realty-success.html?plan=premium" class="pbtn">Post Premium &rarr;</a>
       <div class="cancel-note">&#x2713; Cancel anytime</div>
-      <div class="final-warning">&#x26A0; One property. Cannot be changed once live.</div>
+      <div class="final-warning">&#x26A0; One property. Cannot be swapped once live.</div>
     </div>
 
-    <!-- AGENCY -->
     <div class="pricing-card">
       <div class="ptier">Agency</div>
-      <div class="ptier-divider"></div>
+      <div class="ptier-bar"></div>
       <div class="pval">$249</div>
       <div class="pmo">/month</div>
       <div class="per-listing" style="color:var(--blue)">Up to 10 listings &mdash; any mix</div>
@@ -658,19 +717,17 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Up to 10 listings per month</li>
         <li>Mix of sale &amp; rental listings</li>
         <li>Everything in Featured &amp; Premium</li>
-        <li>Video tours &amp; ad screen for all</li>
+        <li>Video tours &amp; ad screen</li>
         <li>Agency branding &amp; banner</li>
         <li>Add, remove &amp; update listings</li>
-        <li>Priority placement</li>
       </ul>
-      <a href="#" class="pbtn" onclick="goStripe('agency');return false">Post Agency &rarr;</a>
+      <a href="/realty-success.html?plan=agency" class="pbtn">Post Agency &rarr;</a>
       <div class="cancel-note">&#x2713; Cancel anytime</div>
     </div>
 
-    <!-- RENTAL WANTED -->
     <div class="pricing-card">
       <div class="ptier">Rental Wanted</div>
-      <div class="ptier-divider"></div>
+      <div class="ptier-bar"></div>
       <div class="pval">Free</div>
       <div class="pmo">expires 30 days</div>
       <ul class="pfeats">
@@ -679,25 +736,22 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Contact info</li>
         <li>Auto-expires after 30 days</li>
       </ul>
-      <a href="/realty-success.html?plan=wanted" class="pbtn">Post Free &rarr;</a>
+      <a href="#wanted-form" class="pbtn" onclick="document.getElementById('wanted-form').scrollIntoView({behavior:'smooth'});return false">Post Free &rarr;</a>
     </div>
 
   </div>
 
-  <div style="max-width:1100px;margin:1.5rem auto 0;padding:1.25rem 1.75rem;background:#fff;border:1px solid var(--border2);border-radius:6px;line-height:1.8">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;flex-wrap:wrap">
-      <div>
-        <div style="font-size:.65rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem">&#x1F511; Private Removal Code</div>
-        <div style="font-size:.8rem;color:var(--mid)">Every paid listing comes with a unique private code shown once at checkout. When your property sells or rents, enter your code on the listing to display a red <strong style="color:#cc2222">SOLD</strong> or <strong style="color:#cc2222">RENTED</strong> bar across the card. The listing moves to the bottom and expires at the end of the month.</div>
-      </div>
-      <div style="border-left:1px solid var(--border2);padding-left:1.5rem">
-        <div style="font-size:.65rem;font-weight:800;color:#cc2222;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem">&#x26A0; One Listing Per Plan &mdash; No Substitutions</div>
-        <div style="font-size:.8rem;color:var(--mid)">Each <strong style="color:var(--navy)">Rental, Featured, and Premium</strong> plan covers <strong style="color:var(--navy)">one specific property for the duration of the billing month</strong>. Once a listing is submitted and goes live, it cannot be withdrawn, substituted, or replaced with a different property under the same payment. If a property sells or rents and is marked as such, the plan does not carry over to a new listing &mdash; a new subscription is required for each new property.</div>
-      </div>
+  <div style="max-width:1100px;margin:1.5rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:6px;padding:1.25rem 1.75rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+    <div>
+      <div style="font-size:.65rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem">&#x1F511; Private Removal Code</div>
+      <div style="font-size:.8rem;color:var(--mid);line-height:1.75">Every paid listing comes with a unique private code shown once at checkout. Enter your code to display a red <strong style="color:#cc2222">RENTED</strong> bar across your listing. The listing moves to the bottom and expires at end of the month.</div>
+    </div>
+    <div style="border-left:1px solid var(--border2);padding-left:1.5rem">
+      <div style="font-size:.65rem;font-weight:800;color:#cc2222;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem">&#x26A0; One Listing Per Plan &mdash; No Substitutions</div>
+      <div style="font-size:.8rem;color:var(--mid);line-height:1.75">Rentals, Featured, and Premium plans each cover <strong style="color:var(--navy)">one specific property for the billing month</strong>. Once live, a listing cannot be withdrawn and replaced with a different property under the same payment. A new subscription is required for each new property.</div>
     </div>
   </div>
 </div>
-
 
 <!-- RENTAL WANTED FORM -->
 <div class="section bg-light" id="wanted-form">
@@ -705,219 +759,49 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <div class="section-eyebrow fade-up">Free &mdash; No Payment Needed</div>
     <h2 class="section-title fade-up">Post a Rental Wanted</h2>
     <div class="green-divider fade-up"></div>
-    <p class="section-sub fade-up">Tell the community what you are looking for. Your post goes live instantly and auto-expires after 30 days.</p>
+    <p class="section-sub fade-up">Tell the community what you are looking for. Goes live instantly. Auto-expires after 30 days.</p>
   </div>
-  <div style="max-width:620px;margin:2rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2.25rem;border-top:4px solid var(--navy)" class="fade-up">
-    <div class="field"><label>What Are You Looking For? *</label>
+  <div class="wanted-form-card fade-up">
+    <div class="wfield"><label>What Are You Looking For? *</label>
       <input type="text" id="w-title" placeholder="e.g. 3BR apartment in Westerleigh / Willowbrook">
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-      <div class="field"><label>Max Budget / Rent</label><input type="text" id="w-budget" placeholder="e.g. $3,000/mo"></div>
-      <div class="field"><label>Desired Move-in Date</label><input type="text" id="w-movein" placeholder="e.g. August 1, flexible"></div>
+    <div class="wfr">
+      <div class="wfield"><label>Max Budget / Rent</label><input type="text" id="w-budget" placeholder="e.g. $3,000/mo"></div>
+      <div class="wfield"><label>Desired Move-in</label><input type="text" id="w-movein" placeholder="e.g. August 1, flexible"></div>
     </div>
-    <div class="field"><label>Additional Requirements <span style="font-size:.6rem;color:var(--muted);font-weight:600;background:var(--light);border:1px solid var(--border2);padding:.1rem .4rem;border-radius:50px;text-transform:uppercase;letter-spacing:.5px">Optional</span></label>
-      <textarea id="w-req" style="height:80px;width:100%;padding:.62rem .9rem;border:2px solid var(--border2);border-radius:4px;font-size:.86rem;font-family:Montserrat,sans-serif;outline:none;background:var(--light);resize:vertical" placeholder="Parking, ground floor, near shul, pet-friendly..."></textarea>
+    <div class="wfield"><label>Additional Requirements <span style="font-size:.6rem;color:var(--muted);background:var(--light);border:1px solid var(--border2);padding:.1rem .4rem;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;font-weight:600">optional</span></label>
+      <textarea id="w-req" placeholder="Parking, ground floor, near shul, pet-friendly..."></textarea>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-      <div class="field"><label>Your Phone *</label><input type="tel" id="w-phone" placeholder="718-000-0000"></div>
-      <div class="field"><label>Your Email <span style="font-size:.6rem;color:var(--muted);font-weight:600;background:var(--light);border:1px solid var(--border2);padding:.1rem .4rem;border-radius:50px;text-transform:uppercase;letter-spacing:.5px">Optional</span></label><input type="email" id="w-email" placeholder="email@example.com"></div>
+    <div class="wfr">
+      <div class="wfield"><label>Your Phone *</label><input type="tel" id="w-phone" placeholder="718-000-0000"></div>
+      <div class="wfield"><label>Email <span style="font-size:.6rem;color:var(--muted);background:var(--light);border:1px solid var(--border2);padding:.1rem .4rem;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;font-weight:600">optional</span></label><input type="email" id="w-email" placeholder="email@example.com"></div>
     </div>
-    <div class="field"><label>Your Name</label><input type="text" id="w-name" placeholder="Your name"></div>
-    <button class="btn-green" style="width:100%;justify-content:center;padding:.75rem;font-size:.82rem;margin-top:.25rem" id="wantedSubmitBtn" onclick="submitWanted()">Post Rental Wanted &mdash; Free &amp; Instant</button>
-    <div id="wantedSuccess" style="display:none;margin-top:.75rem;background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:1rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600;line-height:1.65">
-      ✅ Your rental request is now live! The community can see it on the Rental Wanted tab. It will automatically expire after 30 days.
+    <div class="wfield"><label>Your Name</label><input type="text" id="w-name" placeholder="Your name"></div>
+    <button class="btn-green" style="width:100%;justify-content:center;padding:.75rem;font-size:.82rem;margin-top:.25rem" id="wBtn" onclick="submitWanted()">Post Rental Wanted &mdash; Free &amp; Instant</button>
+    <div id="wSuccess" style="display:none;margin-top:.75rem;background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:1rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600;line-height:1.65">
+      &#x2705; Your rental request is now live in the Rental Wanted tab. It will automatically expire after 30 days.
     </div>
   </div>
 </div>
 
-<!-- MARK SOLD MODAL -->
+<!-- MARK RENTED MODAL -->
 <div class="sold-modal" id="soldModal">
   <div class="sold-modal-box">
     <div style="width:40px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 1.25rem"></div>
-    <h3 id="modalTitle">Mark as Sold</h3>
-    <p>Enter your private removal code to mark this listing as <span id="modalAction">sold</span>. This cannot be undone. The listing will show a red SOLD/RENTED bar and move to the bottom.</p>
+    <h3 style="font-size:.9rem;font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:.35rem">Mark as Rented</h3>
+    <p style="font-size:.82rem;color:var(--mid);margin-bottom:1.25rem;line-height:1.65">Enter your private removal code to mark this listing as rented. A red RENTED bar will appear and the listing will move to the bottom.</p>
     <div class="field">
       <label>Your Private Code</label>
       <input type="text" id="removalCode" placeholder="e.g. SI-4X9K2" style="letter-spacing:2px;font-weight:700;text-transform:uppercase">
     </div>
     <div style="display:flex;gap:.75rem;margin-top:.5rem">
-      <button class="btn-green" style="flex:1;justify-content:center" onclick="confirmRemoval()">Confirm</button>
+      <button class="btn-green" style="flex:1;justify-content:center" onclick="confirmRented()">Confirm</button>
       <button class="btn-outline-navy" style="flex:1;justify-content:center;border-radius:50px" onclick="closeSoldModal()">Cancel</button>
     </div>
     <div id="codeError" style="display:none;margin-top:.65rem;font-size:.78rem;color:#cc2222;font-weight:700;text-align:center">Incorrect code. Please try again.</div>
   </div>
 </div>
 
-<script>
-// Stripe price IDs per plan
-var STRIPE_PRICES = {
-  rentals: 'price_1Tmdz7IDdMLYVh4oTGoUAwnN',
-  featured: 'price_1Tmdt5IDdMLYVh4opztOr2i6',
-  premium: 'price_1TmduZIDdMLYVh4oug2vPj8Q',
-  agency: 'price_1TmdvCIDdMLYVh4oSvJOoUNb'
-};
-
-
-async function submitWanted(){
-  var title=document.getElementById('w-title').value.trim();
-  var phone=document.getElementById('w-phone').value.trim();
-  if(!title||!phone){alert('Please fill in what you are looking for and your phone number.');return;}
-  var btn=document.getElementById('wantedSubmitBtn');
-  btn.textContent='Posting...';btn.disabled=true;
-  try{
-    var budget=document.getElementById('w-budget').value;
-    var req=document.getElementById('w-req').value;
-    var tagline='Rental Wanted · '+title+(budget?' · Budget: '+budget:'');
-    var desc=title+(req?'
-
-Requirements: '+req:'');
-    await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads',{
-      method:'POST',
-      headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87','Content-Type':'application/json'},
-      body:JSON.stringify({fields:{
-        BusinessName:document.getElementById('w-name').value||phone,
-        ContactName:document.getElementById('w-name').value||'',
-        Phone:phone,Email:document.getElementById('w-email').value||'',
-        Tagline:tagline,Description:desc,
-        Category:'Realty-wanted',PlanType:'wanted',Status:'Active',
-        Hours:document.getElementById('w-movein').value||''
-      }})
-    });
-    document.getElementById('wantedSuccess').style.display='block';
-    btn.style.display='none';
-  }catch(e){btn.textContent='Post Rental Wanted — Free & Instant';btn.disabled=false;alert('Error. Please call 917-753-4444.');}
-}
-async function goStripe(plan){
-  try{
-    var r=await fetch('/.netlify/functions/create-checkout',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({plan:'realty-'+plan, priceId: STRIPE_PRICES[plan], successUrl: 'https://shoplocalsi.com/realty-success.html?plan='+plan})
-    });
-    var d=await r.json();
-    if(d.url) window.location.href=d.url;
-    else if(d.sessionId){
-      var stripe=Stripe('pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5');
-      stripe.redirectToCheckout({sessionId:d.sessionId});
-    } else {
-      // Fallback: go direct to form
-      window.location.href='/realty-success.html?plan='+plan;
-    }
-  }catch(e){
-    window.location.href='/realty-success.html?plan='+plan;
-  }
-}
-
-function showTab(tab,btn){
-  document.querySelectorAll('.realty-tab').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.getElementById('saleTab').style.display=tab==='sale'?'block':'none';
-  document.getElementById('rentTab').style.display=tab==='rent'?'block':'none';
-  document.getElementById('wantedTab').style.display=tab==='wanted'?'block':'none';
-}
-
-// Load live listings from Airtable
-(async function(){
-  try{
-    var res=await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads?maxRecords=100',{
-      headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}
-    });
-    if(!res.ok){showSampleCards();return;}
-    var data=await res.json();
-    var records=data.records||[];
-    // Filter to only Realty listings client-side
-    records = records.filter(function(r){
-      return r.fields && r.fields.Category && r.fields.Category.toString().toLowerCase().includes('realty');
-    });
-    var sales=[],rents=[],wanted=[];
-    records.forEach(function(r){
-      var f=r.fields;
-      var cat=(f.Category||'').toLowerCase();
-      var obj={fields:f,id:r.id};
-      if(cat.includes('wanted')) wanted.push(obj);
-      else if(cat.includes('rent')) rents.push(obj);
-      else sales.push(obj);
-    });
-    function makeCard(obj,type){
-      var f=obj.fields;
-      var plan=(f.PlanType||'').toLowerCase();
-      var isSold=(f.Status||'').toLowerCase()==='sold';
-      var isRented=(f.Status||'').toLowerCase()==='rented';
-      var badgeClass=plan==='premium'?'premium':plan==='featured'?'featured':plan==='agency'?'agency':plan==='rentals'?'rentals':'basic';
-      var badgeText=plan==='premium'?'Premium':plan==='featured'?'Featured':plan==='agency'?'Agency':plan==='rentals'?'Rental':'Listed';
-      if(isSold) badgeText='SOLD';
-      if(isRented) badgeText='RENTED';
-      if(isSold||isRented) badgeClass='sold';
-      var tagParts=(f.Tagline||'').split('·');
-      var price=tagParts[0]||'';
-      var specs=tagParts.slice(1).join('·')||'';
-      var isPrem=plan==='premium';
-      var cardClass='listing-card'+(isPrem?' premium-card':plan==='featured'||plan==='agency'?' featured-card':'')+(isSold?' sold-card':isRented?' rented-card':'');
-      var imgHtml=f.Logo&&f.Logo[0]?'<img src="'+f.Logo[0].url+'" class="listing-img" alt="property">':'<div class="listing-img-placeholder">&#x1F3E0;</div>';
-      return '<div class="'+cardClass+'" id="card-'+obj.id+'">'
-        +'<div style="position:relative">'
-        +imgHtml
-        +'<div class="listing-badge '+badgeClass+'">'+badgeText+'</div>'
-        +'<div class="sold-bar" id="bar-'+obj.id+'">'+(isSold?'SOLD':isRented?'RENTED':'')+'</div>'
-        +'</div>'
-        +'<div class="listing-body">'
-        +(price?'<div class="listing-price">'+price+'</div>':'')
-        +(f.Address?'<div class="listing-address">&#x1F4CD; '+f.Address+'</div>':'')
-        +(specs?'<div class="listing-specs"><span class="listing-spec">'+specs.trim()+'</span></div>':'')
-        +(f.Description?'<div class="listing-desc">'+f.Description.substring(0,140)+(f.Description.length>140?'&hellip;':'')+'</div>':'')
-        +'</div>'
-        +'<div class="listing-footer">'
-        +'<span class="listing-contact">'+(f.Phone?'<a href="tel:'+(f.Phone||'').replace(/[^0-9]/g,'')+'">&#x1F4DE; '+f.Phone+'</a>':'')+'</span>'
-        +(!isSold&&!isRented?'<button class="mark-btn" onclick="openSoldModal(this,''+(type==='rent'?'rented':'sold')+'',''+obj.id+'')">Mark '+(type==='rent'?'Rented':'Sold')+'</button>':'<span style="font-size:.7rem;font-weight:700;color:#cc2222;">'+(isSold?'SOLD':'RENTED')+'</span>')
-        +'</div></div>';
-    }
-    var saleGrid=document.getElementById('saleGrid');
-    var rentGrid=document.getElementById('rentGrid');
-    var wantedGrid=document.getElementById('wantedGrid');
-    saleGrid.innerHTML=sales.length?sales.map(function(o){return makeCard(o,'sale');}).join(''):'<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-size:.85rem">No sale listings yet &mdash; <a href="#pricing" style="color:var(--green);font-weight:700" onclick="document.getElementById(\'pricing\').scrollIntoView({behavior:\'smooth\'});return false">be the first to post!</a></div>';
-    rentGrid.innerHTML=rents.length?rents.map(function(o){return makeCard(o,'rent');}).join(''):'<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-size:.85rem">No rentals yet &mdash; <a href="#pricing" style="color:var(--green);font-weight:700" onclick="document.getElementById(\'pricing\').scrollIntoView({behavior:\'smooth\'});return false">post your rental!</a></div>';
-    wantedGrid.innerHTML=wanted.length?wanted.map(function(o){
-      var f=o.fields;
-      return '<div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+(f.Tagline||f.BusinessName||'')+'</div><div class="wanted-desc">'+(f.Description||'').substring(0,150)+'</div><div class="wanted-meta"><span>&#x1F4DE; '+(f.Phone||'')+'</span><span>Active</span></div></div>';
-    }).join(''):'<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-size:.85rem">No rental requests yet. <a href="#wanted-form" style="color:var(--green);font-weight:700" onclick="document.getElementById(\'wanted-form\').scrollIntoView({behavior:\'smooth\'});return false">Post yours free!</a></div>';
-    var total=sales.length+rents.length+wanted.length;
-    document.getElementById('listingCount').textContent=total?total+' active listing'+(total!==1?'s':''):'Be the first to list your property!';
-  }catch(e){showSampleCards();}
-})();
-
-function showSampleCards(){
-  document.getElementById('listingCount').textContent='Sample listings — be the first to post!';
-  document.getElementById('saleGrid').innerHTML='<div class="listing-card featured-card"><div style="position:relative"><div class="listing-img-placeholder">&#x1F3E1;</div><div class="listing-badge featured">Featured</div></div><div class="listing-body"><div class="listing-price">$749,000</div><div class="listing-address">&#x1F4CD; 42 Lighthouse Ave, Westerleigh</div><div class="listing-specs"><span class="listing-spec">&#x1F6CF; 4 bed</span><span class="listing-spec">&#x1F6BF; 2.5 bath</span><span class="listing-spec">2,100 sqft</span></div><div class="listing-desc">Beautiful single-family home in prime location. Updated kitchen, finished basement, large backyard. Walking distance to shul.</div></div><div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><span style="font-size:.7rem;color:var(--muted);font-style:italic">Sample listing</span></div></div>'
-  +'<div class="listing-card"><div style="position:relative"><div class="listing-img-placeholder">&#x1F3E0;</div><div class="listing-badge rentals">Rental</div></div><div class="listing-body"><div class="listing-price">$525,000</div><div class="listing-address">&#x1F4CD; 18 Manor Rd, Willowbrook</div><div class="listing-specs"><span class="listing-spec">&#x1F6CF; 3 bed</span><span class="listing-spec">&#x1F6BF; 2 bath</span></div><div class="listing-desc">Semi-detached, excellent condition. New roof 2023.</div></div><div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><span style="font-size:.7rem;color:var(--muted);font-style:italic">Sample listing</span></div></div>';
-  document.getElementById('rentGrid').innerHTML='<div class="listing-card featured-card"><div style="position:relative"><div class="listing-img-placeholder">&#x1F3E0;</div><div class="listing-badge featured">Featured</div></div><div class="listing-body"><div class="listing-price">$2,800/mo</div><div class="listing-address">&#x1F4CD; 55 Victory Blvd</div><div class="listing-specs"><span class="listing-spec">&#x1F6CF; 3 bed</span><span class="listing-spec">&#x1F6BF; 2 bath</span></div><div class="listing-desc">Spacious apartment, updated throughout. Parking included. Available immediately.</div></div><div class="listing-footer"><span class="listing-contact"><a href="tel:0000000000">&#x1F4DE; 000-000-0000</a></span><span style="font-size:.7rem;color:var(--muted);font-style:italic">Sample listing</span></div></div>';
-  document.getElementById('wantedGrid').innerHTML='<div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">Family seeking 3BR in Westerleigh / Willowbrook</div><div class="wanted-desc">Frum family, excellent references. Max $3,000/mo. Need parking. Available July 1.</div><div class="wanted-meta"><span>&#x1F4DE; 000-000-0000</span><span>Sample post</span></div></div>';
-}
-
-var soldCardId='';
-var soldAction='sold';
-function openSoldModal(btn,action,cardId){soldAction=action;soldCardId=cardId;document.getElementById('modalTitle').textContent='Mark as Rented';document.getElementById('modalAction').textContent='rented';document.getElementById('removalCode').value='';document.getElementById('codeError').style.display='none';document.getElementById('soldModal').classList.add('open');document.body.style.overflow='hidden';}
-function closeSoldModal(){document.getElementById('soldModal').classList.remove('open');document.body.style.overflow='';}
-async function confirmRemoval(){
-  var code=document.getElementById('removalCode').value.trim().toUpperCase();
-  if(!/^SI-[A-Z0-9]{5}$/.test(code)){document.getElementById('codeError').style.display='block';return;}
-  // Verify code against Airtable
-  try{
-    var res=await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads/'+soldCardId,{headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}});
-    var data=await res.json();
-    if((data.fields.CouponCode||'').toUpperCase()!==code){document.getElementById('codeError').style.display='block';document.getElementById('codeError').textContent='Incorrect code. Please try again.';return;}
-    // Update status in Airtable
-    await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads/'+soldCardId,{method:'PATCH',headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87','Content-Type':'application/json'},body:JSON.stringify({fields:{Status:soldAction==='sold'?'Sold':'Rented'}})});
-    // Update UI
-    var card=document.getElementById('card-'+soldCardId);
-    var bar=document.getElementById('bar-'+soldCardId);
-    if(card){card.classList.add(soldAction==='sold'?'sold-card':'rented-card');}
-    if(bar){bar.textContent=soldAction==='sold'?'SOLD':'RENTED';}
-    closeSoldModal();
-    alert('Listing marked as '+(soldAction==='sold'?'SOLD':'RENTED')+'. It will move to the bottom of the list and expire at end of month. Thank you!');
-    location.reload();
-  }catch(e){document.getElementById('codeError').style.display='block';document.getElementById('codeError').textContent='Error verifying code. Please try again.';}
-}
-</script>
 <footer>
   <div class="foot-grid">
     <div>
@@ -965,12 +849,123 @@ async function confirmRemoval(){
     <span><a href="/advertise.html">Advertise with us</a></span>
   </div>
 </footer>
+
+
 <script>
 (function(){
   var path=window.location.pathname;
   var pg=path==="/"?"home":path.replace("/","").replace(".html","");
   document.querySelectorAll(".nav-links a[data-page]").forEach(function(a){if(a.dataset.page===pg)a.classList.add("active");});
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("visible");});},{threshold:.1});
+  document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
 })();
+
+function showTab(tab,btn){
+  document.querySelectorAll('.realty-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.getElementById('saleTab').style.display=tab==='sale'?'block':'none';
+  document.getElementById('rentTab').style.display=tab==='rent'?'block':'none';
+  document.getElementById('wantedTab').style.display=tab==='wanted'?'block':'none';
+}
+
+var soldCardEl=null;
+var soldCardId='';
+function openSoldModal(btn,action,cardId){
+  soldCardEl=btn.closest('.listing-card');
+  soldCardId=cardId;
+  document.getElementById('removalCode').value='';
+  document.getElementById('codeError').style.display='none';
+  document.getElementById('soldModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeSoldModal(){document.getElementById('soldModal').classList.remove('open');document.body.style.overflow='';}
+
+async function confirmRented(){
+  var code=document.getElementById('removalCode').value.trim().toUpperCase();
+  if(!/^SI-[A-Z0-9]{5}$/.test(code)){document.getElementById('codeError').style.display='block';return;}
+  if(soldCardId&&soldCardId!=='sample'){
+    try{
+      var res=await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads/'+soldCardId,{headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}});
+      var data=await res.json();
+      if((data.fields.CouponCode||'').toUpperCase()!==code){document.getElementById('codeError').style.display='block';document.getElementById('codeError').textContent='Incorrect code. Please try again.';return;}
+      await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads/'+soldCardId,{method:'PATCH',headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87','Content-Type':'application/json'},body:JSON.stringify({fields:{Status:'Rented'}})});
+    }catch(e){}
+  }
+  if(soldCardEl){
+    soldCardEl.classList.add('rented-card');
+    var bar=soldCardEl.querySelector('.rented-bar');
+    if(!bar){bar=document.createElement('div');bar.className='rented-bar';bar.textContent='RENTED';soldCardEl.querySelector('[style*="position:relative"]').appendChild(bar);}
+    bar.style.display='block';
+  }
+  closeSoldModal();
+  alert('Listing marked as RENTED. It will move to the bottom of the list and expire at end of month.');
+}
+
+async function submitWanted(){
+  var title=document.getElementById('w-title').value.trim();
+  var phone=document.getElementById('w-phone').value.trim();
+  if(!title||!phone){alert('Please fill in what you are looking for and your phone number.');return;}
+  var btn=document.getElementById('wBtn');btn.textContent='Posting...';btn.disabled=true;
+  try{
+    var budget=document.getElementById('w-budget').value;
+    var req=document.getElementById('w-req').value;
+    var tagline='Rental Wanted \u00b7 '+title+(budget?' \u00b7 Budget: '+budget:'');
+    await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads',{
+      method:'POST',
+      headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87','Content-Type':'application/json'},
+      body:JSON.stringify({fields:{
+        BusinessName:document.getElementById('w-name').value||phone,
+        ContactName:document.getElementById('w-name').value||'',
+        Phone:phone,Email:document.getElementById('w-email').value||'',
+        Tagline:tagline,
+        Description:title+(req?'\n\nRequirements: '+req:''),
+        Category:'Realty-wanted',PlanType:'wanted',Status:'Active',
+        Hours:document.getElementById('w-movein').value||''
+      }})
+    });
+    document.getElementById('wSuccess').style.display='block';
+    btn.style.display='none';
+    // Add to wanted grid
+    var card=document.createElement('div');
+    card.className='wanted-card';
+    card.innerHTML='<div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+tagline+'</div><div class="wanted-desc">'+(req||'')+'</div><div class="wanted-meta"><span>&#x1F4DE; '+phone+'</span><span>Just posted</span></div>';
+    document.getElementById('wantedGrid').appendChild(card);
+  }catch(e){btn.textContent='Post Rental Wanted \u2014 Free & Instant';btn.disabled=false;alert('Error. Please call 917-753-4444.');}
+}
+
+// Load real listings from Airtable (if any exist)
+document.addEventListener('DOMContentLoaded',function(){
+  fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads',{
+    headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}
+  }).then(function(r){return r.json();}).then(function(data){
+    var records=(data.records||[]).filter(function(r){
+      return r.fields&&r.fields.Category&&r.fields.Category.toString().includes('Realty')&&r.fields.Status==='Active';
+    });
+    if(!records.length){document.getElementById('listingCount').textContent='Sample listings shown \u2014 be the first to post!';return;}
+    // If real records exist, replace sample cards
+    var sales=[],rents=[],wanted=[];
+    records.forEach(function(r){
+      var cat=(r.fields.Category||'').toLowerCase();
+      if(cat.includes('wanted'))wanted.push(r);
+      else if(cat.includes('rent'))rents.push(r);
+      else sales.push(r);
+    });
+    function makeCard(r){
+      var f=r.fields;
+      var plan=(f.PlanType||'').toLowerCase();
+      var bc=plan==='premium'?'premium':plan==='featured'?'featured':plan==='agency'?'agency':'rentals';
+      var bl=plan==='premium'?'Premium':plan==='featured'?'Featured':plan==='agency'?'Agency':'Rental';
+      var img=f.Logo&&f.Logo[0]?'<img src="'+f.Logo[0].url+'" class="listing-img">':'<div class="listing-img-placeholder">&#x1F3E0;</div>';
+      var tag=(f.Tagline||'').split('\u00b7');
+      return '<div class="listing-card'+(plan==='premium'?' premium-card':plan==='featured'?' featured-card':'')+'"><div style="position:relative">'+img+'<div class="listing-badge '+bc+'">'+bl+'</div></div><div class="listing-body"><div class="listing-price">'+(tag[0]||'')+'</div>'+(f.Address?'<div class="listing-address">&#x1F4CD; '+f.Address+'</div>':'')+(tag[1]?'<div class="listing-specs"><span>'+tag.slice(1).join(' ')+'</span></div>':'')+(f.Description?'<div class="listing-desc">'+f.Description.substring(0,140)+'</div>':'')+'</div><div class="listing-footer"><span class="listing-contact"><a href="tel:'+(f.Phone||'').replace(/[^0-9]/g,'')+'">&#x1F4DE; '+(f.Phone||'')+'</a></span><button class="mark-btn" onclick="openSoldModal(this,\'rented\',\''+r.id+'\')">Mark Rented</button></div></div>';
+    }
+    if(sales.length)document.getElementById('saleGrid').innerHTML=sales.map(makeCard).join('');
+    if(rents.length)document.getElementById('rentGrid').innerHTML=rents.map(makeCard).join('');
+    if(wanted.length)document.getElementById('wantedGrid').innerHTML=wanted.map(function(r){var f=r.fields;return '<div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+(f.Tagline||'')+'</div><div class="wanted-desc">'+(f.Description||'').substring(0,150)+'</div><div class="wanted-meta"><span>&#x1F4DE; '+(f.Phone||'')+'</span><span>Active</span></div></div>';}).join('');
+    var total=sales.length+rents.length+wanted.length;
+    document.getElementById('listingCount').textContent=total+' active listing'+(total!==1?'s':'');
+  }).catch(function(){document.getElementById('listingCount').textContent='Sample listings shown \u2014 be the first to post!';});
+});
 </script>
 </body>
 </html>
