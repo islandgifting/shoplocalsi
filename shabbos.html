@@ -504,37 +504,58 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <div class="shab-block"><span class="shab-lbl">Shabbos Ends</span><span class="shab-time" id="shabbosEnds">&mdash;</span><span class="shab-note">50 min after sunset</span></div>
         <div class="shab-block rt"><span class="shab-lbl">Rabbeinu Tam</span><span class="shab-time" id="rabbeinuTam">&mdash;</span><span class="shab-note">72 min after sunset</span></div>
       </div>
-      <p class="shab-disclaimer">Times are approximate. Always verify with your local Rav.<br>
+      <p class="shab-disclaimer">Times loaded from live zmanim source. Always follow your local Rav/community minhag.<br>
       <a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank">Chabad.org</a> &middot;
       <a href="https://myzmanim.com" target="_blank">MyZmanim.com</a></p>
     </div>
   </div>
 </div>
 <script>
-// SHABBOS / PARSHA TIMES VIA HEBCAL
+// SHABBOS / PARSHA TIMES FROM HEBCAL API
 (function(){
   const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const sourceText='Times loaded from Hebcal using exact latitude/longitude for the selected city. Always follow your local Rav/community minhag.';
   function setText(id,value){const el=document.getElementById(id); if(el) el.textContent=value;}
   function cleanTitle(title){return String(title||'').replace(/^Candle lighting:\s*/i,'').replace(/^Havdalah(?: \(\d+ min\))?:\s*/i,'').trim();}
   function formatDateRange(date){const fri=new Date(date+'T12:00:00'); const sat=new Date(fri); sat.setDate(fri.getDate()+1); return months[fri.getMonth()]+' '+fri.getDate()+' — '+months[sat.getMonth()]+' '+sat.getDate()+', '+sat.getFullYear();}
+  async function getJson(url){const r=await fetch(url,{cache:'no-store'}); if(!r.ok) throw new Error('Hebcal API '+r.status); return r.json();}
   async function loadHebcal(lat,lon,tzid){
-    const base='https://www.hebcal.com/shabbat?cfg=json&m=18&b=50&latitude='+encodeURIComponent(lat)+'&longitude='+encodeURIComponent(lon)+'&tzid='+encodeURIComponent(tzid);
-    const regular=await fetch(base).then(r=>{if(!r.ok) throw new Error('Hebcal '+r.status); return r.json();});
-    const rt=await fetch(base.replace('&b=50','&b=72')).then(r=>{if(!r.ok) throw new Error('Hebcal '+r.status); return r.json();});
+    const common='cfg=json&geo=pos&latitude='+encodeURIComponent(lat)+'&longitude='+encodeURIComponent(lon)+'&tzid='+encodeURIComponent(tzid)+'&m=18';
+    const regular=await getJson('https://www.hebcal.com/shabbat?'+common+'&b=50');
+    const rt=await getJson('https://www.hebcal.com/shabbat?'+common+'&b=72');
     const candles=(regular.items||[]).find(i=>i.category==='candles');
     const havdalah=(regular.items||[]).find(i=>i.category==='havdalah');
     const rabbeinu=(rt.items||[]).find(i=>i.category==='havdalah');
     const parsha=(regular.items||[]).find(i=>i.category==='parashat');
-    return {date: candles && candles.date ? candles.date.slice(0,10) : regular.date, candle: cleanTitle(candles && candles.title), havdalah: cleanTitle(havdalah && havdalah.title), rabbeinu: cleanTitle(rabbeinu && rabbeinu.title), parsha: parsha ? (parsha.hebrew ? parsha.title + ' · ' + parsha.hebrew : parsha.title) : 'Parsha unavailable'};
+    return {
+      date: candles && candles.date ? candles.date.slice(0,10) : regular.date,
+      candle: cleanTitle(candles && candles.title),
+      havdalah: cleanTitle(havdalah && havdalah.title),
+      rabbeinu: cleanTitle(rabbeinu && rabbeinu.title),
+      parsha: parsha ? (parsha.hebrew ? parsha.title + ' · ' + parsha.hebrew : parsha.title) : 'Parsha unavailable'
+    };
   }
   window.updateShabbos=async function(){
     const sel=document.getElementById('citySelect'); if(!sel) return;
     const [lat,lon,tzid]=sel.value.split(','); const city=sel.options[sel.selectedIndex].text;
     setText('shabDate','Loading '+city+'…'); setText('parshaName','Loading parsha…'); setText('candleLighting','—'); setText('shabbosEnds','—'); setText('rabbeinuTam','—');
-    try{const data=await loadHebcal(lat,lon,tzid); setText('shabDate',city+' · '+formatDateRange(data.date)); setText('parshaName',data.parsha); setText('candleLighting',data.candle||'—'); setText('shabbosEnds',data.havdalah||'—'); setText('rabbeinuTam',data.rabbeinu||'—');}
-    catch(e){console.error('Shabbos times error:',e); setText('shabDate',city+' · Times temporarily unavailable'); setText('parshaName','Please refresh or check MyZmanim/Chabad.');}
+    try{
+      const data=await loadHebcal(lat,lon,tzid);
+      setText('shabDate',city+' · '+formatDateRange(data.date));
+      setText('parshaName',data.parsha);
+      setText('candleLighting',data.candle||'—');
+      setText('shabbosEnds',data.havdalah||'—');
+      setText('rabbeinuTam',data.rabbeinu||'—');
+      document.querySelectorAll('.shab-disclaimer').forEach(el=>{el.innerHTML=sourceText+'<br><a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank" rel="noopener">Chabad.org Zmanim</a> &middot; <a href="https://myzmanim.com" target="_blank" rel="noopener">MyZmanim.com</a> &middot; <a href="https://www.hebcal.com" target="_blank" rel="noopener">Hebcal</a>';});
+    }catch(e){
+      console.error('Shabbos times error:',e);
+      setText('shabDate',city+' · Times temporarily unavailable');
+      setText('parshaName','Check Chabad.org or MyZmanim for this city.');
+      document.querySelectorAll('.shab-disclaimer').forEach(el=>{el.innerHTML='Could not load live zmanim from Hebcal. Please check <a href="https://www.chabad.org/calendar/zmanim.htm" target="_blank" rel="noopener">Chabad.org Zmanim</a> or <a href="https://myzmanim.com" target="_blank" rel="noopener">MyZmanim.com</a>.';});
+    }
   };
-  document.addEventListener('DOMContentLoaded', window.updateShabbos); if(document.readyState!=='loading') window.updateShabbos();
+  document.addEventListener('DOMContentLoaded', window.updateShabbos);
+  if(document.readyState!=='loading') window.updateShabbos();
 })();
 </script>
 <footer>
