@@ -7,28 +7,22 @@ exports.handler = async (event) => {
 
   try {
     const { plan } = JSON.parse(event.body || '{}');
-    const planLower = (plan || '').toLowerCase();
+    const planLower = (plan || '').toLowerCase().replace(/\s/g,'');
 
-    // Basic is free
-    if (planLower.includes('basic')) {
+    let priceId = '';
+    let successPage = 'success.html';
+
+    if (planLower.includes('basic') || planLower === 'free') {
+      // Free — no Stripe needed, redirect to free form
       return {
         statusCode: 200,
         headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ redirect: '/#contact-form' })
+        body: JSON.stringify({ redirect: '/advertise.html#free-listing' })
       };
-    }
-
-    let priceId = '';
-    let mode = 'subscription';
-    let successPage = 'success.html';
-
-    if (planLower.includes('featured') && !planLower.includes('business')) {
-      priceId = 'price_1TioHvIDdMLYVh4o7KeHpSwF'; // $18/mo Featured (old)
+    } else if (planLower.includes('featuredbusiness') || planLower === 'featured') {
+      priceId = 'price_1TjqHpIDdMLYVh4ozAzwrUzX'; // $79/mo Featured
       successPage = 'success.html?plan=Featured';
-    } else if (planLower === 'featured' || planLower.includes('featured business') || planLower.includes('featuredbusiness')) {
-      priceId = 'price_1TjqHpIDdMLYVh4ozAzwrUzX'; // $79/mo Featured Business
-      successPage = 'success.html?plan=Featured';
-    } else if (planLower.includes('premium') || planLower.includes('bundle')) {
+    } else if (planLower.includes('bundle') || planLower.includes('premium')) {
       priceId = 'price_1TjqJTIDdMLYVh4oey44O6Il'; // $129/mo Premium/Bundle
       successPage = 'success.html?plan=Premium';
     } else if (planLower.includes('banner')) {
@@ -46,17 +40,17 @@ exports.handler = async (event) => {
       return {
         statusCode: 200,
         headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ redirect: '/#contact-form' })
+        body: JSON.stringify({ redirect: '/advertise.html#free-listing' })
       };
     }
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
-      mode,
+      mode: 'subscription',
       discounts: [{ coupon: 'GRANDOPENING' }],
       success_url: `https://shoplocalsi.com/${successPage}`,
-      cancel_url: 'https://shoplocalsi.com/#advertise',
+      cancel_url: 'https://shoplocalsi.com/advertise.html',
     });
 
     return {

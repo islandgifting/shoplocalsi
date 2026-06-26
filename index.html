@@ -721,7 +721,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 <script>
 // ── SHABBOS ──
 (function(){
-  function nextFriday(){const d=new Date(),day=d.getDay(),diff=day<=5?5-day:6,fri=new Date(d);fri.setDate(d.getDate()+(diff===0?7:diff));fri.setHours(12,0,0,0);return fri;}
+  function nextFriday(){const d=new Date(),day=d.getDay(),diff=day<=5?5-day:6,fri=new Date(d);fri.setDate(d.getDate()+diff);fri.setHours(12,0,0,0);return fri;}
   function sunset(date,lat,lon,std,dst){const yr=date.getFullYear(),isDST=date>=new Date(yr,2,8)&&date<new Date(yr,10,1),offset=isDST?dst:std,J=Math.floor((date-new Date(yr,0,0))/86400000),D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180,cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);if(cosH>1||cosH<-1)return null;return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+offset;}
   function fmt(h){if(h===null)return'N/A';h=((h%24)+24)%24;const hr=Math.floor(h),min=Math.round((h-hr)*60),m=min<10?'0'+min:min,p=hr>=12?'PM':'AM',h12=hr>12?hr-12:hr===0?12:hr;return h12+':'+m+' '+p;}
   const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
