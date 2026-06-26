@@ -384,7 +384,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
 
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;max-width:980px;margin:2.75rem auto 0;border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--border2)}
-.price-card{background:#fff;padding:2.25rem 1.75rem;transition:background .2s;position:relative}
+.price-card{background:#fff;padding:2.25rem 1.75rem;transition:background .2s}
 .price-card:hover{background:var(--light)}
 .price-card.feat{background:var(--navy)}
 .price-card.feat:hover{background:#0d2545}
@@ -403,13 +403,23 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .price-feats li{font-size:.8rem;color:var(--mid);padding:.32rem 0;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:.5rem}
 .price-feats li::before{content:"";width:6px;height:6px;background:var(--green);border-radius:50%;flex-shrink:0}
 .price-card.feat .price-feats li{color:rgba(255,255,255,.88);border-bottom-color:rgba(255,255,255,.1)}
-.price-btn{display:block;width:100%;padding:.62rem;text-align:center;font-size:.74rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:"Montserrat",sans-serif;transition:all .2s;border:2px solid var(--navy);color:var(--navy);background:transparent;border-radius:50px;text-decoration:none}
+.price-btn{display:block;width:100%;padding:.72rem;text-align:center;font-size:.76rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:"Montserrat",sans-serif;transition:all .2s;border:2px solid var(--navy);color:var(--navy);background:transparent;border-radius:50px;text-decoration:none}
 .price-btn:hover{background:var(--navy);color:#fff}
 .price-card.feat .price-btn{border-color:var(--green);color:#7ee8a2}
 .price-card.feat .price-btn:hover{background:var(--green);color:#fff}
-.grand-note{text-align:center;margin-top:1.65rem;padding:1.1rem;border:1px solid rgba(62,124,89,.2);border-radius:6px;background:rgba(62,124,89,.04);max-width:980px;margin-left:auto;margin-right:auto}
+.free-form{max-width:640px;margin:3rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2.5rem;border-top:4px solid var(--green)}
+.free-form h3{font-size:.9rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
+.free-form p{font-size:.8rem;color:var(--mid);margin-bottom:1.5rem}
+.field{margin-bottom:.85rem}
+.field label{display:block;font-size:.65rem;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.32rem}
+.field input,.field select,.field textarea{width:100%;padding:.62rem .9rem;border:2px solid var(--border2);border-radius:4px;font-size:.86rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:var(--light);transition:border .2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);background:#fff}
+.field textarea{height:90px;resize:vertical}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.grand-note{text-align:center;margin:1.65rem auto 0;padding:1rem;border:1px solid rgba(62,124,89,.2);border-radius:6px;background:rgba(62,124,89,.04);max-width:980px}
 .grand-note p{font-size:.8rem;color:var(--mid)}
 .grand-note strong{color:var(--green);font-weight:700}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -463,9 +473,8 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <li><a href="/" data-page="home">Home</a></li>
     <li><a href="/directory.html" data-page="directory">Directory</a></li>
     <li><a href="/marketplace.html" data-page="marketplace">Marketplace</a></li>
-    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simcha</a></li>
     <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
-    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
     <li><a href="/advertise.html" class="nav-cta" data-page="advertise">List Your Business</a></li>
@@ -500,15 +509,19 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <div class="section-eyebrow fade-up">Our Plans</div>
     <h2 class="section-title fade-up">Choose Your Listing</h2>
     <div class="green-divider fade-up"></div>
-    <p class="section-sub fade-up">Transparent pricing &mdash; no hidden fees. Cancel anytime.</p>
+    <p class="section-sub fade-up">Click any paid plan to go straight to checkout. Cancel anytime.</p>
   </div>
   <div class="price-grid">
     <div class="price-card">
       <div class="price-tier">Basic</div>
       <div class="price-val">Free</div>
       <div class="price-period">Forever free</div>
-      <ul class="price-feats"><li>Business name &amp; phone</li><li>Category listing</li><li>Searchable directory</li></ul>
-      <a href="/marketplace.html" class="price-btn">Get Listed Free</a>
+      <ul class="price-feats">
+        <li>Business name &amp; phone</li>
+        <li>Category listing</li>
+        <li>Searchable directory</li>
+      </ul>
+      <a href="#free-listing" class="price-btn" onclick="document.getElementById('free-listing').scrollIntoView({behavior:'smooth'});return false;">Get Listed Free</a>
     </div>
     <div class="price-card feat">
       <div class="price-tier">Featured</div>
@@ -516,8 +529,15 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="price-was">$79/mo</div>
       <div class="price-free">First month complimentary</div>
       <div class="price-period">then $79/month</div>
-      <ul class="price-feats"><li>Everything in Basic</li><li>Green featured card</li><li>Business description</li><li>Address &amp; website link</li><li>Featured spotlight</li><li>View Details button</li></ul>
-      <button class="price-btn" onclick="startPayment('FeaturedBusiness')">Start Free &rarr;</button>
+      <ul class="price-feats">
+        <li>Everything in Basic</li>
+        <li>Green featured card</li>
+        <li>Business description</li>
+        <li>Address &amp; website link</li>
+        <li>Featured spotlight</li>
+        <li>View Details button</li>
+      </ul>
+      <button class="price-btn" onclick="startPayment('FeaturedBusiness')">&#x1F4B3; Pay &amp; Start &rarr;</button>
     </div>
     <div class="price-card">
       <div class="price-tier">Premium</div>
@@ -525,8 +545,15 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="price-was">$129/mo</div>
       <div class="price-free">First month complimentary</div>
       <div class="price-period">then $129/month</div>
-      <ul class="price-feats"><li>Everything in Featured</li><li>Full profile page</li><li>Homepage banner ad</li><li>TV screen display</li><li>Blog post feature</li><li>Maximum visibility</li></ul>
-      <button class="price-btn" onclick="startPayment('Bundle')">Start Free &rarr;</button>
+      <ul class="price-feats">
+        <li>Everything in Featured</li>
+        <li>Full profile page</li>
+        <li>Homepage banner ad</li>
+        <li>TV screen display</li>
+        <li>Blog post feature</li>
+        <li>Maximum visibility</li>
+      </ul>
+      <button class="price-btn" onclick="startPayment('Bundle')">&#x1F4B3; Pay &amp; Start &rarr;</button>
     </div>
     <div class="price-card">
       <div class="price-tier">Coupon</div>
@@ -534,17 +561,95 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="price-was">$29/mo</div>
       <div class="price-free">First month complimentary</div>
       <div class="price-period">then $29/month</div>
-      <ul class="price-feats"><li>Coupon on coupons page</li><li>Tap-to-copy coupon code</li><li>Expires end of month</li><li>Renews monthly</li></ul>
-      <button class="price-btn" onclick="startPayment('Coupon')">Start Free &rarr;</button>
+      <ul class="price-feats">
+        <li>Coupon on coupons page</li>
+        <li>Tap-to-copy code</li>
+        <li>Expires end of month</li>
+        <li>Renews monthly</li>
+      </ul>
+      <button class="price-btn" onclick="startPayment('Coupon')">&#x1F4B3; Pay &amp; Start &rarr;</button>
     </div>
   </div>
   <div class="grand-note fade-up">
     <p>* Grand Opening offer. Your card is stored but <strong>not charged until month two</strong>. Cancel anytime before then at no cost.</p>
   </div>
 </div>
+
+<div class="section bg-light" id="free-listing">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Free Basic Listing</div>
+    <h2 class="section-title fade-up">Submit Your Free Listing</h2>
+    <div class="green-divider fade-up"></div>
+    <p class="section-sub fade-up">Basic listings are free forever &mdash; submit your details and we will add you to the directory.</p>
+  </div>
+  <div class="free-form fade-up">
+    <h3>Your Business Details</h3>
+    <p>Fill in your details and we will add you to the directory within 24 hours.</p>
+    <div class="field-row">
+      <div class="field"><label>Business Name *</label><input type="text" id="biz-name" placeholder="Your Business Name"></div>
+      <div class="field"><label>Contact Name *</label><input type="text" id="biz-contact" placeholder="Your Name"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Phone *</label><input type="tel" id="biz-phone" placeholder="718-000-0000"></div>
+      <div class="field"><label>Email</label><input type="email" id="biz-email" placeholder="email@example.com"></div>
+    </div>
+    <div class="field"><label>Category</label>
+      <select id="biz-cat">
+        <option>Select category&hellip;</option>
+        <option>Restaurants &amp; Food</option>
+        <option>Home Services</option>
+        <option>Photography</option>
+        <option>Auto Services</option>
+        <option>Medical</option>
+        <option>Specialty Shops</option>
+        <option>Beauty &amp; Self Care</option>
+        <option>Services</option>
+        <option>Transportation</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label>Address</label><input type="text" id="biz-addr" placeholder="123 Victory Blvd, Staten Island"></div>
+    <div class="field"><label>Brief Description</label><textarea id="biz-desc" placeholder="What does your business do?"></textarea></div>
+    <button class="btn-green" style="width:100%;justify-content:center" id="submitBtn" onclick="submitFree()">Submit Free Listing</button>
+    <div id="submitMsg" style="display:none;margin-top:.75rem;background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:.85rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600">
+      &#x2705; Thank you! Your listing has been submitted and will appear in the directory within 24 hours. We will be in touch if we need anything else.
+    </div>
+  </div>
+</div>
 <script>
-var stripe=Stripe("pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5");
-async function startPayment(plan){try{var r=await fetch("/.netlify/functions/create-checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({plan:plan})});var d=await r.json();if(d.sessionId){await stripe.redirectToCheckout({sessionId:d.sessionId});}else{alert("Please call 917-753-4444 to get listed.");}}catch(e){alert("Please call 917-753-4444 to get listed.");}}
+var stripe=Stripe('pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5');
+async function startPayment(plan){
+  try{
+    var r=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:plan})});
+    var d=await r.json();
+    if(d.sessionId){await stripe.redirectToCheckout({sessionId:d.sessionId});}
+    else{alert('Error starting checkout. Please call 917-753-4444.');}
+  }catch(e){alert('Error starting checkout. Please call 917-753-4444.');}
+}
+async function submitFree(){
+  var name=document.getElementById('biz-name').value.trim();
+  var phone=document.getElementById('biz-phone').value.trim();
+  if(!name||!phone){alert('Please fill in your business name and phone number.');return;}
+  var btn=document.getElementById('submitBtn');
+  btn.textContent='Submitting...';btn.disabled=true;
+  try{
+    await fetch('/.netlify/functions/submit-listing',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      title:name,
+      category:document.getElementById('biz-cat').value,
+      phone:phone,
+      email:document.getElementById('biz-email').value,
+      address:document.getElementById('biz-addr').value,
+      description:document.getElementById('biz-desc').value,
+      contact:document.getElementById('biz-contact').value,
+      type:'free-directory-listing'
+    })});
+    document.getElementById('submitMsg').style.display='block';
+    btn.style.display='none';
+  }catch(e){
+    btn.textContent='Submit Free Listing';btn.disabled=false;
+    alert('Error submitting. Please call 917-753-4444.');
+  }
+}
 </script>
 <footer>
   <div class="foot-grid">
@@ -573,7 +678,7 @@ async function startPayment(plan){try{var r=await fetch("/.netlify/functions/cre
       <ul class="foot-links">
         <li><a href="/#shabbos">Shabbos Times</a></li>
         <li><a href="/island-kosher-deals.html">Island Kosher Deals</a></li>
-        <li><a href="/advertise.html">Advertise / List Your Business</a></li>
+        <li><a href="/advertise.html">List Your Business</a></li>
       </ul>
     </div>
     <div>
@@ -593,7 +698,6 @@ async function startPayment(plan){try{var r=await fetch("/.netlify/functions/cre
     <span><a href="/advertise.html">Advertise with us</a></span>
   </div>
 </footer>
-
 <script>
 (function(){
   var path=window.location.pathname;
@@ -603,6 +707,5 @@ async function startPayment(plan){try{var r=await fetch("/.netlify/functions/cre
   document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
 })();
 </script>
-
 </body>
 </html>
