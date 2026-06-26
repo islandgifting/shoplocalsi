@@ -503,7 +503,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <li><a href="/" data-page="home">Home</a></li>
     <li><a href="/directory.html" data-page="directory">Directory</a></li>
     <li><a href="/marketplace.html" data-page="marketplace">Marketplace</a></li>
-    <li><a href="/simcha.html" data-page="simcha">Simcha</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
     <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
@@ -541,8 +541,8 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <span class="hero-script">Right here on Staten Island.</span>
     <div class="hero-btns">
       <a href="/directory.html" class="btn-green">Browse Directory</a>
-      <a href="/marketplace.html" class="btn-outline-navy" style="border-radius:50px">Marketplace</a>
-      <a href="/advertise.html" class="btn-outline-navy" style="border-radius:50px">List Your Business</a>
+      <a href="/marketplace.html" class="btn-green">Marketplace</a>
+      <a href="/advertise.html" class="btn-green">List Your Business</a>
     </div>
   </div>
 </div>
@@ -714,8 +714,9 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function(){
 (function(){
-  function nextFri(){const d=new Date(),day=d.getDay(),fri=new Date(d);fri.setDate(d.getDate()+(day<=5?5-day||7:6));fri.setHours(12,0,0,0);return fri;}
+  function nextFri(){const d=new Date(),day=d.getDay();var diff;if(day===5)diff=0;else if(day===6)diff=6;else diff=5-day;const fri=new Date(d);fri.setDate(d.getDate()+diff);fri.setHours(12,0,0,0);return fri;}
   function sunset(d,lat,lon,std,dst){const yr=d.getFullYear(),dt=d>=new Date(yr,2,8)&&d<new Date(yr,10,1),off=dt?dst:std,J=Math.floor((d-new Date(yr,0,0))/86400000),D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180,cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);if(cosH>1||cosH<-1)return null;return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+off;}
   function fmt(h){if(h===null)return"N/A";h=((h%24)+24)%24;const hr=Math.floor(h),mn=Math.round((h-hr)*60),m=mn<10?"0"+mn:mn,p=hr>=12?"PM":"AM",h12=hr>12?hr-12:hr===0?12:hr;return h12+":"+m+" "+p;}
   const Mo=["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -731,10 +732,12 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     document.getElementById("rabbeinuTam").textContent=fmt(sun!==null?sun+72/60:null);
   };
   updateShabbos();
+  document.getElementById("citySelect").addEventListener("change", updateShabbos);
   // Counter
   const co=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting&&!en.target.dataset.done){en.target.dataset.done="1";en.target.querySelectorAll(".stat-n[data-target]").forEach(el=>{const t=parseInt(el.dataset.target);let c=0;const i=setInterval(()=>{c=Math.min(c+Math.ceil(t/40),t);el.textContent=c+(t===80?"+":"");if(c>=t)clearInterval(i);},40);});}});},{threshold:.5});
   const s=document.querySelector(".stats-bar");if(s)co.observe(s);
 })();
+}); // end DOMContentLoaded
 // Ads
 (function(){
   let allCoupons=[];
