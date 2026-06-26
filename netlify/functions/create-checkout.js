@@ -7,13 +7,12 @@ exports.handler = async (event) => {
 
   try {
     const { plan } = JSON.parse(event.body || '{}');
-    const planLower = (plan || '').toLowerCase().replace(/\s/g,'');
+    const planLower = (plan || '').toLowerCase().replace(/\s/g, '');
 
     let priceId = '';
     let successPage = 'success.html';
 
     if (planLower.includes('basic') || planLower === 'free') {
-      // Free — no Stripe needed, redirect to free form
       return {
         statusCode: 200,
         headers: { 'Access-Control-Allow-Origin': '*' },
@@ -23,7 +22,7 @@ exports.handler = async (event) => {
       priceId = 'price_1TjqHpIDdMLYVh4ozAzwrUzX'; // $79/mo Featured
       successPage = 'success.html?plan=Featured';
     } else if (planLower.includes('bundle') || planLower.includes('premium')) {
-      priceId = 'price_1TjqJTIDdMLYVh4oey44O6Il'; // $129/mo Premium/Bundle
+      priceId = 'price_1TjqJTIDdMLYVh4oey44O6Il'; // $129/mo Premium
       successPage = 'success.html?plan=Premium';
     } else if (planLower.includes('banner')) {
       priceId = 'price_1TjqGzIDdMLYVh4olYMxSAun'; // $99/mo Banner
@@ -44,22 +43,39 @@ exports.handler = async (event) => {
       };
     }
 
+    // Use 30-day free trial instead of coupon code
+    // Customer enters card now, not charged for 30 days
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
       mode: 'subscription',
-      discounts: [{ coupon: 'GRANDOPENING' }],
+      subscription_data: {
+        trial_period_days: 30,
+        metadata: {
+          plan: plan,
+          source: 'shoplocalsi.com',
+          promo: 'GrandOpening'
+        }
+      },
       success_url: `https://shoplocalsi.com/${successPage}`,
       cancel_url: 'https://shoplocalsi.com/advertise.html',
     });
 
     return {
       statusCode: 200,
-      headers: { 'Access-Control-Allow-Origin': '*' },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ sessionId: session.id })
     };
 
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    console.error('Checkout error:', error.message);
+    return {
+      statusCode: 500,
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: error.message })
+    };
   }
 };
