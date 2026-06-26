@@ -220,8 +220,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy
 .city-select option{background:#fff;color:var(--navy)}
 .city-select-arrow{position:absolute;right:1rem;top:1rem;color:var(--green);pointer-events:none;font-weight:700}
 .shab-card{background:var(--white);border:2px solid var(--border2);border-radius:8px;padding:2rem;max-width:580px;margin:0 auto;border-top:4px solid var(--green)}
-.shab-date{text-align:center;font-size:.82rem;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:.75rem;text-transform:uppercase}
-.shab-parsha{text-align:center;font-size:1rem;font-weight:800;color:var(--green);margin-bottom:1.25rem}
+.shab-date{text-align:center;font-size:.82rem;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:1.5rem;text-transform:uppercase}
 .shab-times{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border2);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
 .shab-block{background:var(--light);padding:1.35rem .75rem;text-align:center}
 .shab-block.rt{background:#f0faf5;border-top:3px solid var(--green)}
@@ -618,14 +617,47 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   </div>
   <div class="city-select-wrap">
     <select id="citySelect" class="city-select" onchange="updateShabbos()">
-        <optgroup label="Staten Island"><option value="40.5795,-74.1502,America/New_York" selected>Staten Island, NY</option></optgroup>
-        <optgroup label="United States"><option value="40.6782,-73.9442,America/New_York">Brooklyn, NY</option><option value="40.0975,-74.2148,America/New_York">Lakewood, NJ</option><option value="40.7282,-74.0776,America/New_York">Passaic / Clifton, NJ</option><option value="40.9176,-74.1719,America/New_York">Monsey, NY</option><option value="41.3107,-74.1254,America/New_York">Monroe / Kiryas Joel, NY</option><option value="41.0534,-74.1301,America/New_York">Spring Valley, NY</option><option value="39.9526,-75.1652,America/New_York">Philadelphia, PA</option><option value="42.3601,-71.0589,America/New_York">Boston, MA</option><option value="41.4993,-81.6944,America/New_York">Cleveland, OH</option><option value="42.3314,-83.0458,America/Detroit">Detroit, MI</option><option value="41.8781,-87.6298,America/Chicago">Chicago, IL</option><option value="34.0522,-118.2437,America/Los_Angeles">Los Angeles, CA</option><option value="25.7617,-80.1918,America/New_York">Miami, FL</option><option value="38.9072,-77.0369,America/New_York">Washington, DC</option></optgroup>
-        <optgroup label="World"><option value="31.7683,35.2137,Asia/Jerusalem">Jerusalem, Israel</option><option value="32.0853,34.7818,Asia/Jerusalem">Tel Aviv / Bnei Brak, Israel</option><option value="32.7940,34.9896,Asia/Jerusalem">Haifa, Israel</option><option value="31.7442,34.9885,Asia/Jerusalem">Beit Shemesh, Israel</option><option value="31.5213,35.1179,Asia/Jerusalem">Beitar Illit, Israel</option><option value="51.5074,-0.1278,Europe/London">London, UK</option><option value="53.4808,-2.2426,Europe/London">Manchester, UK</option><option value="52.4862,-1.8904,Europe/London">Birmingham, UK</option><option value="43.6532,-79.3832,America/Toronto">Toronto, Canada</option><option value="45.5017,-73.5673,America/Toronto">Montreal, Canada</option><option value="48.8566,2.3522,Europe/Paris">Paris, France</option><option value="52.3676,4.9041,Europe/Amsterdam">Amsterdam, Netherlands</option><option value="19.4326,-99.1332,America/Mexico_City">Mexico City, Mexico</option><option value="-33.8688,151.2093,Australia/Sydney">Sydney, Australia</option></optgroup>
-      </select>
+      <optgroup label="United States">
+        <option value="40.5795,-74.1502,-5,-4">Staten Island, NY</option>
+        <option value="40.6782,-73.9442,-5,-4">Brooklyn, NY</option>
+        <option value="40.0975,-74.2148,-5,-4">Lakewood, NJ</option>
+        <option value="40.7282,-74.0776,-5,-4">Passaic / Clifton, NJ</option>
+        <option value="40.9176,-74.1719,-5,-4">Monsey, NY</option>
+        <option value="41.3107,-74.1254,-5,-4">Monroe / Kiryas Joel, NY</option>
+        <option value="41.0534,-74.1301,-5,-4">Spring Valley, NY</option>
+        <option value="39.9526,-75.1652,-5,-4">Philadelphia, PA</option>
+        <option value="42.3601,-71.0589,-5,-4">Boston, MA</option>
+        <option value="41.4993,-81.6944,-5,-4">Cleveland, OH</option>
+        <option value="42.3314,-83.0458,-5,-4">Detroit, MI</option>
+        <option value="41.8781,-87.6298,-6,-5">Chicago, IL</option>
+        <option value="34.0522,-118.2437,-8,-7">Los Angeles, CA</option>
+        <option value="25.7617,-80.1918,-5,-4">Miami, FL</option>
+        <option value="38.9072,-77.0369,-5,-4">Washington DC</option>
+        <option value="19.4326,-99.1332,-6,-6">Mexico City</option>
+      </optgroup>
+      <optgroup label="United Kingdom">
+        <option value="51.5074,-0.1278,0,1">London</option>
+        <option value="53.4808,-2.2426,0,1">Manchester</option>
+        <option value="52.4862,-1.8904,0,1">Birmingham</option>
+      </optgroup>
+      <optgroup label="Israel">
+        <option value="31.7683,35.2137,2,3">Jerusalem</option>
+        <option value="32.0853,34.7818,2,3">Tel Aviv / Bnei Brak</option>
+        <option value="32.7940,34.9896,2,3">Haifa</option>
+        <option value="31.7442,34.9885,2,3">Beit Shemesh</option>
+        <option value="31.5213,35.1179,2,3">Beitar Illit</option>
+      </optgroup>
+      <optgroup label="Other">
+        <option value="48.8566,2.3522,1,2">Paris, France</option>
+        <option value="52.3676,4.9041,1,2">Amsterdam</option>
+        <option value="-33.8688,151.2093,10,11">Sydney, Australia</option>
+        <option value="43.6532,-79.3832,-5,-4">Toronto, Canada</option>
+        <option value="45.5017,-73.5673,-5,-4">Montreal, Canada</option>
+      </optgroup>
+    </select>
     <span class="city-select-arrow">▾</span>
     <div class="shab-card">
       <div class="shab-date" id="shabDate">Loading…</div>
-      <div class="shab-parsha" id="parshaName">Parsha loading…</div>
       <div class="shab-times">
         <div class="shab-block"><span class="shab-lbl">Candle Lighting</span><span class="shab-time" id="candleLighting">—</span><span class="shab-note">18 min before sunset</span></div>
         <div class="shab-block"><span class="shab-lbl">Shabbos Ends</span><span class="shab-time" id="shabbosEnds">—</span><span class="shab-note">50 min after sunset</span></div>
@@ -687,74 +719,30 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 </div>
 
 <script>
-// SHABBOS / PARSHA TIMES VIA HEBCAL
+// ── SHABBOS ──
 (function(){
+  function nextFriday(){const d=new Date(),day=d.getDay(),diff=day<=5?5-day:6,fri=new Date(d);fri.setDate(d.getDate()+(diff===0?7:diff));fri.setHours(12,0,0,0);return fri;}
+  function sunset(date,lat,lon,std,dst){const yr=date.getFullYear(),isDST=date>=new Date(yr,2,8)&&date<new Date(yr,10,1),offset=isDST?dst:std,J=Math.floor((date-new Date(yr,0,0))/86400000),D=23.45*Math.sin((2*Math.PI/365)*(J-81))*Math.PI/180,cosH=-Math.tan(lat*Math.PI/180)*Math.tan(D);if(cosH>1||cosH<-1)return null;return 12+Math.acos(cosH)*180/Math.PI/15-lon/15+offset;}
+  function fmt(h){if(h===null)return'N/A';h=((h%24)+24)%24;const hr=Math.floor(h),min=Math.round((h-hr)*60),m=min<10?'0'+min:min,p=hr>=12?'PM':'AM',h12=hr>12?hr-12:hr===0?12:hr;return h12+':'+m+' '+p;}
   const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  function setText(id,value){const el=document.getElementById(id); if(el) el.textContent=value;}
-  function cleanTitle(title){return String(title||'').replace(/^Candle lighting:\s*/i,'').replace(/^Havdalah(?: \(\d+ min\))?:\s*/i,'').trim();}
-  function formatDateRange(date){const fri=new Date(date+'T12:00:00'); const sat=new Date(fri); sat.setDate(fri.getDate()+1); return months[fri.getMonth()]+' '+fri.getDate()+' — '+months[sat.getMonth()]+' '+sat.getDate()+', '+sat.getFullYear();}
-  async function loadHebcal(lat,lon,tzid){
-    const base='https://www.hebcal.com/shabbat?cfg=json&m=18&b=50&latitude='+encodeURIComponent(lat)+'&longitude='+encodeURIComponent(lon)+'&tzid='+encodeURIComponent(tzid);
-    const regular=await fetch(base).then(r=>{if(!r.ok) throw new Error('Hebcal '+r.status); return r.json();});
-    const rt=await fetch(base.replace('&b=50','&b=72')).then(r=>{if(!r.ok) throw new Error('Hebcal '+r.status); return r.json();});
-    const candles=(regular.items||[]).find(i=>i.category==='candles');
-    const havdalah=(regular.items||[]).find(i=>i.category==='havdalah');
-    const rabbeinu=(rt.items||[]).find(i=>i.category==='havdalah');
-    const parsha=(regular.items||[]).find(i=>i.category==='parashat');
-    return {date: candles && candles.date ? candles.date.slice(0,10) : regular.date, candle: cleanTitle(candles && candles.title), havdalah: cleanTitle(havdalah && havdalah.title), rabbeinu: cleanTitle(rabbeinu && rabbeinu.title), parsha: parsha ? (parsha.hebrew ? parsha.title + ' · ' + parsha.hebrew : parsha.title) : 'Parsha unavailable'};
-  }
-  window.updateShabbos=async function(){
-    const sel=document.getElementById('citySelect'); if(!sel) return;
-    const [lat,lon,tzid]=sel.value.split(','); const city=sel.options[sel.selectedIndex].text;
-    setText('shabDate','Loading '+city+'…'); setText('parshaName','Loading parsha…'); setText('candleLighting','—'); setText('shabbosEnds','—'); setText('rabbeinuTam','—');
-    try{const data=await loadHebcal(lat,lon,tzid); setText('shabDate',city+' · '+formatDateRange(data.date)); setText('parshaName',data.parsha); setText('candleLighting',data.candle||'—'); setText('shabbosEnds',data.havdalah||'—'); setText('rabbeinuTam',data.rabbeinu||'—');}
-    catch(e){console.error('Shabbos times error:',e); setText('shabDate',city+' · Times temporarily unavailable'); setText('parshaName','Please refresh or check MyZmanim/Chabad.');}
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  window.updateShabbos=function(){
+    const sel=document.getElementById('citySelect');if(!sel)return;
+    const[lat,lon,std,dst]=sel.value.split(',').map(Number);
+    const fri=nextFriday(),sun=sunset(fri,lat,lon,std,dst),sat=new Date(fri);sat.setDate(fri.getDate()+1);
+    const city=sel.options[sel.selectedIndex].text;
+    document.getElementById('shabDate').textContent=city+' · '+days[fri.getDay()]+', '+months[fri.getMonth()]+' '+fri.getDate()+' — '+months[sat.getMonth()]+' '+sat.getDate()+', '+sat.getFullYear();
+    document.getElementById('candleLighting').textContent=fmt(sun!==null?sun-18/60:null);
+    document.getElementById('shabbosEnds').textContent=fmt(sun!==null?sun+50/60:null);
+    document.getElementById('rabbeinuTam').textContent=fmt(sun!==null?sun+72/60:null);
   };
-  document.addEventListener('DOMContentLoaded', window.updateShabbos); if(document.readyState!=='loading') window.updateShabbos();
+  updateShabbos();
 })();
+
 // ── COUNTER ANIMATION ──
 (function(){
   const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.counted){e.target.dataset.counted='1';e.target.querySelectorAll('.stat-n[data-target]').forEach(el=>{const t=parseInt(el.dataset.target),suffix=el.textContent.includes('+')?'+':'';let c=0;const i=setInterval(()=>{c=Math.min(c+Math.ceil(t/40),t);el.textContent=c+suffix;if(c>=t)clearInterval(i);},40);});}});},{threshold:.5});
   const s=document.querySelector('.stats-bar');if(s)co.observe(s);
-})();
-// Ads
-(function(){
-  let allCoupons=[];
-  async function loadAll(){
-    try{
-      const[ar,cr]=await Promise.all([fetch("/.netlify/functions/get-ads"),fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}})]);
-      if(ar.ok){
-        const data=await ar.json(),all = data.all || [
-  ...(data.banners || []),
-  ...(data.featured || []),
-  ...(data.sponsored || [])
-];
-        if(data.banners&&data.banners.length){document.getElementById("bannerSlot").style.display="none";const wrap=document.getElementById("bannerWrap"),rot=document.getElementById("bannerRotator");wrap.style.display="block";let cur=0;const show=i=>{const b=data.banners[i];rot.innerHTML=b.bannerHTML?'<iframe srcdoc="'+b.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:90px;border:none"></iframe>':'<div style="background:var(--navy);height:90px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+b.businessName+"</div></div>";};show(0);if(data.banners.length>1)setInterval(()=>{cur=(cur+1)%data.banners.length;show(cur);},5000);}
-        const grid=document.getElementById("featGrid");
-        if(all.length){grid.innerHTML=all.map(a=>'<div class="feat-card" onclick="openBizModal('+JSON.stringify(a).replace(/"/g,"&quot;")+')"><div class="feat-badge">'+(a.planType==="premium"?"Premium Partner":"Featured Partner")+'</div><div class="feat-name">'+a.businessName+'</div><div class="feat-desc">'+(a.tagline||a.description||"")+"</div>"+(a.phone?'<div class="feat-phone">'+a.phone+"</div>":"")+"</div>").join("");}
-        else document.getElementById("featSection").style.display="none";
-        if(all.length){const inn=document.getElementById("adSlotContent");let cur=0;const show=i=>{const ad=all[i];inn.innerHTML='<div class="ad-slot-eyebrow">'+(ad.planType==="premium"?"Premium":"Featured")+'</div><div class="ad-slot-main">'+ad.businessName+'</div><div class="ad-slot-sub">'+(ad.tagline||ad.description||"")+"</div>"+(ad.phone?'<div style="font-size:.75rem;color:var(--green);margin-top:.5rem;font-weight:700">'+ad.phone+"</div>":"");};show(0);if(all.length>1)setInterval(()=>{inn.style.opacity="0";inn.style.transition="opacity .3s";setTimeout(()=>{cur=(cur+1)%all.length;show(cur);inn.style.opacity="1";},300);},4500);}
-      }
-      if(cr.ok){const cd=await cr.json();allCoupons=(cd.records||[]).filter(r=>(r.fields.Status||"").toLowerCase()==="active").map(r=>({biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""}));}
-    }catch(e){const f=document.getElementById("featSection");if(f)f.style.display="none";}
-  }
-  window.openBizModal=function(ad){
-    if(typeof ad==="string")ad=JSON.parse(ad);
-    const b=document.getElementById("bizModalBanner");
-    b.innerHTML=ad.bannerHTML?'<iframe srcdoc="'+ad.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:140px;border:none"></iframe>':'<div style="height:72px;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:0 2rem"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+ad.businessName+"</div></div>";
-    document.getElementById("bizModalBadge").textContent=ad.planType==="premium"?"Premium Partner":"Featured Partner";
-    document.getElementById("bizModalName").textContent=ad.businessName||"";
-    document.getElementById("bizModalCat").textContent=(ad.category||"")+(ad.address?" · "+ad.address:"");
-    document.getElementById("bizModalDesc").textContent=ad.description||ad.tagline||"";
-    let a="";if(ad.phone)a+='<a href="tel:'+ad.phone.replace(/\D/g,"")+'" class="biz-modal-btn-call">Call Now</a>';if(ad.link)a+='<a href="'+ad.link+'" target="_blank" class="biz-modal-btn-web">Visit Website</a>';if(ad.email)a+='<a href="mailto:'+ad.email+'" class="biz-modal-btn-email">Email Us</a>';
-    document.getElementById("bizModalActions").innerHTML=a;
-    const bc=allCoupons.filter(c=>c.biz.toLowerCase()===(ad.businessName||"").toLowerCase());
-    const cs=document.getElementById("bizModalCoupons");
-    if(bc.length){cs.style.display="block";document.getElementById("bizModalCouponsList").innerHTML=bc.map(c=>'<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">'+c.discount+'</div><div class="biz-modal-coupon-desc">'+c.desc+"</div></div>"+(c.code?'<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText(''+c.code+'');this.textContent='Copied!';setTimeout(()=>this.textContent=''+c.code+'',2000)">'+c.code+"</div>":"")+"</div>").join("");}else cs.style.display="none";
-    document.getElementById("bizModalOverlay").classList.add("open");document.body.style.overflow="hidden";
-  };
-  window.closeBizModal=function(){document.getElementById("bizModalOverlay").classList.remove("open");document.body.style.overflow="";};
-  document.addEventListener("DOMContentLoaded",loadAll);
 })();
 </script>
 
