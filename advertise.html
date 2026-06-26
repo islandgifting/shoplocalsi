@@ -422,8 +422,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 @media(max-width:600px){.field-row{grid-template-columns:1fr}}
 
 </style>
-<script src="https://js.stripe.com/v3/"></script>
-</head>
+
 <body>
 <!-- EMERGENCY STRIP -->
 <div class="emstrip">
@@ -617,34 +616,18 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   </div>
 </div>
 <script>
-var stripe=Stripe('pk_live_51Tin6MIDdMLYVh4oK2QStvaVhBuIEgCcD92cHrhppumHc9xe2fAdlUbniSIWtfccPi2Pqoohh8mzGtjA4Zvq2IPu000Marfnt5');
-async function startPayment(plan){
-  var btn=event.target;
-  var orig=btn.innerHTML;
-  btn.innerHTML='Loading&hellip;';
-  btn.disabled=true;
-  try{
-    var r=await fetch('/.netlify/functions/create-checkout',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({plan:plan})
-    });
-    if(!r.ok) throw new Error('Server error '+r.status);
-    var d=await r.json();
-    if(d.redirect){
-      window.location.href=d.redirect;
-    } else if(d.sessionId){
-      await stripe.redirectToCheckout({sessionId:d.sessionId});
-    } else if(d.error){
-      throw new Error(d.error);
-    } else {
-      throw new Error('No session returned');
-    }
-  }catch(e){
-    console.error('Payment error:',e);
-    alert('Could not start checkout: '+e.message+'\n\nPlease call 917-753-4444 to sign up.');
-    btn.innerHTML=orig;
-    btn.disabled=false;
+// Direct Stripe Payment Links - no server needed
+var PAYMENT_LINKS = {
+  'FeaturedBusiness': 'https://buy.stripe.com/bJe4gAbKR8J57YKcXxfIs01',
+  'Bundle':           'https://buy.stripe.com/5kQ4gA9CJf7tdj4bTtfIs02',
+  'Coupon':           'https://buy.stripe.com/fZu5kE8yFaRd0wi9LlfIs03'
+};
+function startPayment(plan){
+  var url = PAYMENT_LINKS[plan];
+  if(url){
+    window.location.href = url;
+  } else {
+    document.getElementById('free-listing').scrollIntoView({behavior:'smooth'});
   }
 }
 async function submitFree(){
