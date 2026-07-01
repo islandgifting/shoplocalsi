@@ -538,6 +538,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <option value="emergency">Emergency Services</option>
       <option value="media">Media</option>
       <option value="daycare">Daycare</option>
+      <option value="playgroup">Playgroup</option>
       <option value="other">Other</option>
     </select>
     <button class="search-btn" onclick="filterBiz()">Search</button>
@@ -589,6 +590,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <button class="ctab" onclick="setTab('gemach',this)">Gemach</button>
   <button class="ctab" onclick="setTab('media',this)">Media</button>
   <button class="ctab" onclick="setTab('daycare',this)">Daycare</button>
+  <button class="ctab" onclick="setTab('playgroup',this)">Playgroup</button>
   <button class="ctab em" onclick="setTab('emergency',this)">Emergency</button>
   <button class="ctab" onclick="setTab('other',this)">Other</button>
 </div>
@@ -622,7 +624,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-card" data-cat="photo" data-search="koby yedgar photography simcha events"><div class="biz-name">Koby Yedgar Photography</div><div class="biz-phone"><a href="tel:9176821351">917-682-1351</a></div><div class="biz-tag">Simcha Photography</div></div>
       <div class="biz-card" data-cat="photo" data-search="nechami photography family portraits"><div class="biz-name">Nechami Photography</div><div class="biz-phone"><a href="tel:3472486011">347-248-6011</a></div><div class="biz-tag">Family Portraits</div></div>
       <div class="biz-card" data-cat="photo" data-search="rikkiz photography portraits events"><div class="biz-name">Rikkiz Photography</div><div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div><div class="biz-tag">Portraits &amp; Events</div></div>
-      <div class="biz-card" data-cat="photo" data-search="ulano photography portraits events"><div class="biz-name">Ulano Photography</div><div class="biz-phone"><a href="tel:9176157568">917-615-7568</a></div><div class="biz-tag">Portraits &amp; Events</div></div>
+      <div class="biz-card" data-cat="photo" data-search="ulano studios photography portraits events"><div class="biz-name">Ulano Studios</div><div class="biz-phone"><a href="tel:7188120377">718-812-0377</a> / <a href="tel:7188120412">718-812-0412</a></div><div class="biz-tag">Portraits &amp; Events</div></div>
     </div></div>
     <div class="cat-section" data-cat="auto"><div class="cat-title">Auto Services</div><div class="biz-grid">
       <div class="biz-card" data-cat="auto" data-search="buckle up leasing auto car"><div class="biz-name">Buckle Up Leasing</div><div class="biz-phone"><a href="tel:9172259663">917-225-9663</a></div><div class="biz-tag">Auto Leasing</div></div>
@@ -670,7 +672,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-card" data-cat="services" data-search="lactation consultant raizy rubinson clc breastfeeding"><div class="biz-name">Lactation Consultant</div><div class="biz-desc">Raizy Rubinson CLC</div><div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div><div class="biz-tag">Breastfeeding Support</div></div>
       <div class="biz-card" data-cat="services" data-search="mobile phone screen repair moshe kustin"><div class="biz-name">Mobile Phone Screen Repair</div><div class="biz-desc">Moshe Kustin</div><div class="biz-phone"><a href="tel:3472656499">347-265-6499</a></div><div class="biz-tag">Phone Repairs</div></div>
       <div class="biz-card" data-cat="services" data-search="physical therapist alexander yegorov pt"><div class="biz-name">Physical Therapist</div><div class="biz-desc">Alexander Yegorov</div><div class="biz-phone"><a href="tel:7187014545">718-701-4545</a></div><div class="biz-tag">Physical Therapy</div></div>
-      <div class="biz-card" data-cat="services" data-search="sew chic alterations miri gabel tailoring"><div class="biz-name">Sew Chic Alterations</div><div class="biz-desc">Miri Gabel</div><div class="biz-phone"><a href="tel:9295295214">929-529-5214</a></div><div class="biz-tag">Clothing Alterations</div></div>
+      <div class="biz-card" data-cat="services" data-search="sew chic alterations miri tailoring"><div class="biz-name">Sew Chic Alterations</div><div class="biz-desc">Miri</div><div class="biz-phone"><a href="tel:9295295214">929-529-5214</a></div><div class="biz-tag">Clothing Alterations</div></div>
       <div class="biz-card" data-cat="services" data-search="sparkle agency home office cleaning service"><div class="biz-name">Sparkle Agency</div><div class="biz-desc">Home &amp; Office Cleaning Service</div><div class="biz-phone"><a href="tel:3474073931">347-407-3931</a></div><div class="biz-tag">Home &amp; Office Cleaning</div></div>
       <div class="biz-card" data-cat="services" data-search="we buy gold silver wayne greenberg cash"><div class="biz-name">We Buy Gold &amp; Silver</div><div class="biz-desc">Wayne Greenberg</div><div class="biz-phone"><a href="tel:9173641511">917-364-1511</a></div><div class="biz-tag">Gold &amp; Silver Buyers</div></div>
       <div class="biz-card" data-cat="services" data-search="wealth concierge group businesses consulting"><div class="biz-name">Wealth Concierge Group</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div><div class="biz-tag">Business Growth</div></div>
@@ -708,7 +710,8 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-card em" data-cat="emergency" data-search="shomrim neighborhood watch security"><div class="biz-name">Shomrim</div><div class="biz-phone"><a href="tel:7183702121">718-370-2121</a></div><div class="biz-tag">Neighborhood Watch</div></div>
     </div></div>
     <div class="cat-section hidden" data-cat="media"><div class="cat-title">Media &amp; Marketing</div><div class="biz-grid"></div></div>
-    <div class="cat-section hidden" data-cat="daycare"><div class="cat-title">Daycare &amp; Playgroups</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="daycare"><div class="cat-title">Daycare</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="playgroup"><div class="cat-title">Playgroups</div><div class="biz-grid"></div></div>
     <div class="cat-section hidden" data-cat="other"><div class="cat-title" style="color:var(--muted);border-bottom-color:var(--border2)">Newly Added &mdash; Awaiting Category Review</div><div class="biz-grid"></div></div>
     <p id="noResults" class="hidden" style="color:var(--muted);padding:3rem;text-align:center;font-size:.9rem">No businesses found. Try a different search.</p>
   </div>
@@ -815,7 +818,8 @@ var CAT_MAP={
   'community gemachs':'gemach','gemach':'gemach',
   'emergency services':'emergency','emergency':'emergency',
   'media':'media','marketing':'media',
-  'daycare':'daycare','childcare':'daycare','playgroup':'daycare'
+  'daycare':'daycare','childcare':'daycare',
+  'playgroup':'playgroup','play group':'playgroup'
 };
 function normName(s){return (s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
 function mapCategory(raw){var k=(raw||'').trim().toLowerCase();return CAT_MAP[k]||'other';}
