@@ -88,6 +88,14 @@ nav{background:#fff;border-bottom:1px solid #dde4ea;padding:0 2.5rem;display:fle
 .donorbox-placeholder{background:var(--light);border:2px dashed var(--border);border-radius:6px;padding:2.5rem 1.5rem;text-align:center;color:var(--muted);font-size:.8rem;line-height:1.7}
 .donorbox-placeholder strong{color:var(--navy);display:block;margin-bottom:.5rem;font-size:.9rem}
 
+/* Chai amount buttons */
+.amt-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.9rem .5rem;border:2px solid var(--border2);border-radius:8px;text-decoration:none;background:#fff;transition:all .18s;cursor:pointer}
+.amt-btn:hover{border-color:var(--green);background:#f0f7f3;transform:translateY(-2px);box-shadow:0 4px 14px rgba(62,124,89,.15)}
+.amt-btn .amt{font-size:1.25rem;font-weight:800;color:var(--navy);line-height:1}
+.amt-btn .amt-label{font-size:.62rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-top:.3rem}
+.custom-btn{display:block;text-align:center;background:var(--gold);color:var(--navy);border-radius:50px;padding:.95rem;font-size:.85rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;text-decoration:none;margin-top:1rem;transition:filter .2s,transform .15s}
+.custom-btn:hover{filter:brightness(1.08);transform:scale(1.02)}
+
 .secure-note{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;font-size:.7rem;color:var(--muted);font-weight:600}
 
 /* ── FOOTER ── */
@@ -196,12 +204,15 @@ footer{background:var(--navy);color:#fff;padding:3.5rem 2.5rem 1.5rem;margin-top
       <li><strong>Food Pantry & Pesach Distribution</strong> — Hundreds of families receive food and Yom Tov essentials each year, allowing them to celebrate with dignity.</li>
       <li><strong>Housing & Eviction Prevention</strong> — COJO advocates tirelessly to keep families in their homes and stop foreclosures before they happen.</li>
       <li><strong>Utility Assistance</strong> — When the lights are about to go out, COJO is often the first call a family makes.</li>
-      <li><strong>Senior Services</strong> — Helping elderly residents navigate benefits, care, and support so they can remain safe and independent.</li>
+      <li><strong>Senior Referrals</strong> — Connecting seniors and their families to homecare services, food programs, and the support resources they need.</li>
       <li><strong>Crisis Support</strong> — When an unexpected emergency strikes, COJO is there — no questions asked, no judgment, just help.</li>
     </ul>
 
     <div class="tax-note">
-      <p><strong>Your donation is fully tax-deductible.</strong> COJO Staten Island operates under Igud Harabonim of America Inc, a 501(c)(3) nonprofit recognized by the IRS since 1981. EIN: <strong>11-2575788</strong>. You will receive an official tax receipt for your records.</p>
+      <p><strong>Your donation is fully tax-deductible.</strong> Donations are processed by Igud Harabonim of America Inc, a 501(c)(3) nonprofit recognized by the IRS since 1981 (EIN: <strong>11-2575788</strong>), and are <strong>designated for COJO Staten Island programs</strong>. You will receive an official tax receipt for your records.</p>
+    </div>
+    <div class="tax-note" style="border-left-color:var(--green);margin-top:.75rem">
+      <p><strong>Important:</strong> When completing your donation, please add a note designating your gift <strong>"For COJO Programs"</strong> so it is directed to COJO Staten Island's community work.</p>
     </div>
 
     <div style="margin-top:2rem;padding:1.5rem;background:#fff;border-radius:8px;border:1px solid var(--border2);border-top:4px solid var(--green)">
@@ -211,7 +222,7 @@ footer{background:var(--navy);color:#fff;padding:3.5rem 2.5rem 1.5rem;margin-top
     </div>
   </div>
 
-  <!-- Right: Donorbox widget -->
+  <!-- Right: Square donation buttons -->
   <div class="donate-right">
     <div class="widget-card">
       <div class="widget-header">
@@ -220,23 +231,21 @@ footer{background:var(--navy);color:#fff;padding:3.5rem 2.5rem 1.5rem;margin-top
       </div>
       <div class="widget-body">
 
-        <!-- ══════════════════════════════════════════════
-             PASTE YOUR DONORBOX EMBED CODE BELOW.
-             It looks like this:
-             <script src="https://donorbox.org/widget.js" ...></script>
-             <iframe src="https://donorbox.org/embed/your-campaign" ...></iframe>
-             ══════════════════════════════════════════════ -->
-
-        <div class="donorbox-placeholder">
-          <strong>Donation Form Loading...</strong>
-          Paste your Donorbox embed code here once your campaign is set up at donorbox.org
+        <!-- ═══ REPLACE EACH href="#" BELOW WITH YOUR SQUARE CHECKOUT LINKS ═══ -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+          <a href="#SQUARE_LINK_18" class="amt-btn"><span class="amt">$18</span><span class="amt-label">Chai</span></a>
+          <a href="#SQUARE_LINK_36" class="amt-btn"><span class="amt">$36</span><span class="amt-label">Double Chai</span></a>
+          <a href="#SQUARE_LINK_54" class="amt-btn"><span class="amt">$54</span><span class="amt-label">Triple Chai</span></a>
+          <a href="#SQUARE_LINK_100" class="amt-btn"><span class="amt">$100</span><span class="amt-label">Supporter</span></a>
+          <a href="#SQUARE_LINK_180" class="amt-btn"><span class="amt">$180</span><span class="amt-label">Chai ×10</span></a>
+          <a href="#SQUARE_LINK_360" class="amt-btn"><span class="amt">$360</span><span class="amt-label">Builder</span></a>
         </div>
 
-        <!-- ══════════════════════════════════════════════
-             END DONORBOX EMBED
-             ══════════════════════════════════════════════ -->
+        <a href="#SQUARE_LINK_CUSTOM" class="custom-btn">💛 Give a Different Amount</a>
+        <div style="text-align:center;font-size:.68rem;color:var(--muted);margin-top:.4rem">Choose your own amount — every gift counts</div>
+        <div style="text-align:center;font-size:.7rem;font-weight:700;color:var(--green);margin-top:.75rem;padding:.6rem;background:#f0f7f3;border-radius:6px">✍️ Please note your donation "For COJO Programs" at checkout</div>
 
-        <div class="secure-note">🔒 Secure · Encrypted · Tax Receipt Included</div>
+        <div class="secure-note">🔒 Secure via Square · Tax Receipt Included</div>
       </div>
     </div>
   </div>
