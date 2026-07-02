@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTW71T3PS0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VTW71T3PS0');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate to COJO Staten Island | Shop Local SI</title>
+<meta name="description" content="Support COJO Staten Island — helping families with food, housing, utilities, and more since 1968. All donations are tax-deductible under Igud Harabonim of America Inc, EIN 11-2575788.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1f3a;--green:#3e7c59;--green2:#4a9469;
+  --gold:#d4a843;--light:#f4f4f2;--white:#fff;
+  --mid:#4a5568;--muted:#8a96a3;
+  --border:#dde4ea;--border2:#e8edf2;--red:#c0392b;--blue:#2c6e9e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--navy)}
+
+.emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600}
+.emstrip a{color:rgba(255,255,255,.92);text-decoration:none}.emstrip a:hover{color:#fff}
+.emstrip .sep{color:rgba(255,255,255,.35)}
+
+.top-bar{background:#0d2137;padding:.42rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem}
+.top-bar-tagline{color:rgba(255,255,255,.9);text-align:center;flex:1;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:.65rem}
+.top-bar-right{display:flex;gap:1rem;align-items:center}
+.top-bar-right a{color:rgba(255,255,255,.7);font-size:.75rem;text-decoration:none}.top-bar-right a:hover{color:#fff}
+
+nav{background:#fff;border-bottom:1px solid #dde4ea;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:88px;position:sticky;top:0;z-index:999;box-shadow:0 2px 16px rgba(11,31,58,.07)}
+.logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+.logo-img{height:70px;width:70px;object-fit:contain}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-wordmark{display:flex;align-items:baseline;gap:.2rem}
+.logo-shop{font-size:1.4rem;font-weight:800;color:var(--navy);letter-spacing:1px;text-transform:uppercase}
+.logo-local-word{font-size:1.4rem;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase}
+.logo-divider-row{display:flex;align-items:center;gap:.4rem;margin:.1rem 0 .15rem}
+.logo-dash{width:18px;height:2px;background:var(--navy);opacity:.4}
+.logo-staten{font-size:.6rem;font-weight:700;color:var(--navy);letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
+.logo-url{font-size:.62rem;font-weight:600;color:var(--blue);letter-spacing:.5px}
+.nav-links{display:flex;align-items:center;gap:0;list-style:none}
+.nav-links a{font-size:.72rem;font-weight:600;color:#1a2a3a;letter-spacing:.6px;text-transform:uppercase;padding:.5rem .75rem;text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--green)}
+.nav-cta{background:var(--green)!important;color:#fff!important;padding:.48rem 1.1rem!important;border-radius:50px!important;font-weight:700!important;font-size:.7rem!important;letter-spacing:.3px!important;text-decoration:none;white-space:nowrap;margin-left:.75rem}
+.nav-cta:hover{background:var(--green2)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--navy);display:block}
+
+/* ── HERO ── */
+.donate-hero{background:var(--navy);padding:4.5rem 2.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.donate-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,168,67,.08),transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(62,124,89,.1),transparent 60%);pointer-events:none}
+.donate-hero .eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1rem}
+.donate-hero .eyebrow span{width:24px;height:2px;background:var(--gold);display:inline-block}
+.donate-hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.1;max-width:700px;margin:0 auto .75rem}
+.donate-hero h1 em{color:var(--gold);font-style:normal}
+.donate-hero p{font-size:.92rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto;line-height:1.75}
+
+/* ── IMPACT STRIP ── */
+.impact-strip{background:var(--green);padding:1.5rem 2.5rem}
+.impact-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+.impact-stat .num{font-size:1.6rem;font-weight:800;color:#fff;display:block;line-height:1}
+.impact-stat .lbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:1.5px;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* ── MAIN LAYOUT ── */
+.donate-wrap{max-width:1060px;margin:0 auto;padding:3.5rem 2.5rem;display:grid;grid-template-columns:1fr 420px;gap:3rem;align-items:start}
+
+/* ── LEFT: WHY DONATE ── */
+.donate-left h2{font-size:1.1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.4px;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem}
+.donate-left h2::before{content:'';width:20px;height:3px;background:var(--green);flex-shrink:0}
+.donate-left p{font-size:.88rem;color:var(--mid);line-height:1.85;margin-bottom:1.1rem}
+.impact-list{list-style:none;margin:1.5rem 0}
+.impact-list li{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.9rem;font-size:.85rem;color:var(--mid);line-height:1.6}
+.impact-list li::before{content:'✓';width:22px;height:22px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0;margin-top:.1rem}
+.tax-note{background:#fff;border:1px solid var(--border2);border-left:4px solid var(--gold);border-radius:0 6px 6px 0;padding:1rem 1.25rem;margin-top:1.75rem}
+.tax-note p{font-size:.78rem;color:var(--mid);margin:0;line-height:1.65}
+.tax-note strong{color:var(--navy)}
+
+/* ── RIGHT: DONORBOX WIDGET ── */
+.donate-right{position:sticky;top:108px}
+.widget-card{background:#fff;border:1px solid var(--border2);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(11,31,58,.1)}
+.widget-header{background:var(--navy);padding:1.5rem 1.75rem;text-align:center}
+.widget-header h3{font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.widget-header p{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.35rem}
+.widget-body{padding:1.75rem}
+
+/* Donorbox embed goes here */
+.donorbox-placeholder{background:var(--light);border:2px dashed var(--border);border-radius:6px;padding:2.5rem 1.5rem;text-align:center;color:var(--muted);font-size:.8rem;line-height:1.7}
+.donorbox-placeholder strong{color:var(--navy);display:block;margin-bottom:.5rem;font-size:.9rem}
+
+.secure-note{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;font-size:.7rem;color:var(--muted);font-weight:600}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:#fff;padding:3.5rem 2.5rem 1.5rem;margin-top:4rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-logo-wrap{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.foot-logo-img{height:48px;width:48px;object-fit:contain;border-radius:50%;border:2px solid rgba(255,255,255,.15)}
+.shop{font-size:1rem;font-weight:800;display:block;color:#fff;letter-spacing:.5px}
+.si{font-size:.65rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);display:block}
+.foot-tagline{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.75}
+.foot-heading{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-links{list-style:none}
+.foot-links li{margin-bottom:.55rem}
+.foot-links a{font-size:.78rem;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:#fff}
+.foot-bottom{max-width:1100px;margin:1.5rem auto 0;display:flex;justify-content:space-between;font-size:.7rem;color:rgba(255,255,255,.4)}
+.foot-bottom a{color:rgba(255,255,255,.55);text-decoration:none}
+
+@media(max-width:900px){
+  .donate-wrap{grid-template-columns:1fr}
+  .donate-right{position:static}
+  .impact-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .top-bar-right{display:none}
+  .nav-links{display:none;position:absolute;top:88px;left:0;right:0;background:#fff;flex-direction:column;padding:1rem 0;border-bottom:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.08)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.75rem 2rem}
+  .hamburger{display:flex}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-bottom{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="emstrip">
+  <a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a><span class="sep">|</span>
+  <a href="tel:7187612428">Chaveirim: 718-761-2428</a><span class="sep">|</span>
+  <a href="tel:7187614444">Shmira: 718-761-4444</a><span class="sep">|</span>
+  <a href="tel:7183702121">Shomrim: 718-370-2121</a>
+</div>
+
+<div class="top-bar">
+  <div style="width:100px"></div>
+  <div class="top-bar-tagline">Support Local · Strengthen Community</div>
+  <div class="top-bar-right">
+    <a href="#">&#x1F426; Facebook</a>
+    <a href="#">&#x1F4F7; Instagram</a>
+    <a href="mailto:info@shoplocalsi.com">✉ Email</a>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="logo-wrap">
+    <img src="/logo.png" alt="Shop Local Staten Island" class="logo-img">
+    <div class="logo-text">
+      <div class="logo-wordmark"><span class="logo-shop">SHOP&nbsp;</span><span class="logo-local-word">LOCAL</span></div>
+      <div class="logo-divider-row"><span class="logo-dash"></span><span class="logo-staten">Staten Island</span><span class="logo-dash"></span></div>
+      <span class="logo-url">shoplocalsi.com</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/directory.html">Directory</a></li>
+    <li><a href="/marketplace.html">Market</a></li>
+    <li><a href="/simcha.html">Simchas</a></li>
+    <li><a href="/coupons.html">Coupons</a></li>
+    <li><a href="/advertise.html">Ads</a></li>
+    <li><a href="/jobs.html">Jobs</a></li>
+    <li><a href="/realty.html">Realty</a></li>
+    <li><a href="/community.html">Community</a></li>
+  </ul>
+  <a href="/advertise.html" class="nav-cta">List Your Business</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="donate-hero">
+  <div class="eyebrow"><span></span>Make a Difference Today<span></span></div>
+  <h1>Support <em>COJO</em> Staten Island</h1>
+  <p>For over 55 years, COJO has been a lifeline for our community — providing food, housing, emergency support, and dignity to families in need. Your donation makes it possible.</p>
+</div>
+
+<!-- Impact strip -->
+<div class="impact-strip">
+  <div class="impact-inner">
+    <div class="impact-stat"><span class="num">55+</span><span class="lbl">Years of Service</span></div>
+    <div class="impact-stat"><span class="num">100s</span><span class="lbl">Families Helped Each Year</span></div>
+    <div class="impact-stat"><span class="num">100%</span><span class="lbl">Tax Deductible</span></div>
+    <div class="impact-stat"><span class="num">1968</span><span class="lbl">Serving Since</span></div>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="donate-wrap">
+
+  <!-- Left: Why give -->
+  <div class="donate-left">
+    <h2>Where Your Donation Goes</h2>
+    <p>Every dollar you give to COJO Staten Island goes directly to supporting Jewish families across Staten Island. COJO is there when families have nowhere else to turn — treating every situation with compassion, confidentiality, and genuine care.</p>
+
+    <ul class="impact-list">
+      <li><strong>Food Pantry & Pesach Distribution</strong> — Hundreds of families receive food and Yom Tov essentials each year, allowing them to celebrate with dignity.</li>
+      <li><strong>Housing & Eviction Prevention</strong> — COJO advocates tirelessly to keep families in their homes and stop foreclosures before they happen.</li>
+      <li><strong>Utility Assistance</strong> — When the lights are about to go out, COJO is often the first call a family makes.</li>
+      <li><strong>Senior Services</strong> — Helping elderly residents navigate benefits, care, and support so they can remain safe and independent.</li>
+      <li><strong>Crisis Support</strong> — When an unexpected emergency strikes, COJO is there — no questions asked, no judgment, just help.</li>
+    </ul>
+
+    <div class="tax-note">
+      <p><strong>Your donation is fully tax-deductible.</strong> COJO Staten Island operates under Igud Harabonim of America Inc, a 501(c)(3) nonprofit recognized by the IRS since 1981. EIN: <strong>11-2575788</strong>. You will receive an official tax receipt for your records.</p>
+    </div>
+
+    <div style="margin-top:2rem;padding:1.5rem;background:#fff;border-radius:8px;border:1px solid var(--border2);border-top:4px solid var(--green)">
+      <p style="font-size:.82rem;color:var(--mid);margin:0;line-height:1.75">Questions about your donation? Contact COJO directly:<br>
+      📞 <a href="tel:7184480900" style="color:var(--blue);font-weight:700">718-448-0900</a> &nbsp;·&nbsp;
+      ✉ <a href="mailto:cojooutreach@gmail.com" style="color:var(--blue);font-weight:700">cojooutreach@gmail.com</a></p>
+    </div>
+  </div>
+
+  <!-- Right: Donorbox widget -->
+  <div class="donate-right">
+    <div class="widget-card">
+      <div class="widget-header">
+        <h3>Donate to COJO Staten Island</h3>
+        <p>Every amount makes a difference</p>
+      </div>
+      <div class="widget-body">
+
+        <!-- ══════════════════════════════════════════════
+             PASTE YOUR DONORBOX EMBED CODE BELOW.
+             It looks like this:
+             <script src="https://donorbox.org/widget.js" ...></script>
+             <iframe src="https://donorbox.org/embed/your-campaign" ...></iframe>
+             ══════════════════════════════════════════════ -->
+
+        <div class="donorbox-placeholder">
+          <strong>Donation Form Loading...</strong>
+          Paste your Donorbox embed code here once your campaign is set up at donorbox.org
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             END DONORBOX EMBED
+             ══════════════════════════════════════════════ -->
+
+        <div class="secure-note">🔒 Secure · Encrypted · Tax Receipt Included</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo-wrap">
+        <img src="/logo.png" alt="Shop Local SI" class="foot-logo-img">
+        <div><span class="shop">SHOP <span style="color:var(--green2)">LOCAL</span></span><span class="si">Staten Island</span></div>
+      </div>
+      <p class="foot-tagline">Supporting the businesses that support our Staten Island community — one purchase at a time.</p>
+    </div>
+    <div>
+      <div class="foot-heading">Pages</div>
+      <ul class="foot-links">
+        <li><a href="/directory.html">Business Directory</a></li>
+        <li><a href="/marketplace.html">Market</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/coupons.html">Coupons &amp; Deals</a></li>
+        <li><a href="/advertise.html">Advertise With Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Community</div>
+      <ul class="foot-links">
+        <li><a href="/donate.html">Donate to COJO</a></li>
+        <li><a href="/blog-cojo-staten-island.html">About COJO</a></li>
+        <li><a href="/community.html">Community Hub</a></li>
+        <li><a href="/#shabbos">Shabbos Times</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Emergency</div>
+      <ul class="foot-links">
+        <li><a href="tel:7182301000">Hatzolah: 718-230-1000</a></li>
+        <li><a href="tel:7187612428">Chaveirim: 718-761-2428</a></li>
+        <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
+        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
+        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
+        <li><a href="tel:7188544548">Misaskim: 718-854-4548</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Shop Local Staten Island · A project of COJO Staten Island</span>
+    <span><a href="/advertise.html">Advertise with us</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}});});
+})();
+</script>
+</body>
+</html>
