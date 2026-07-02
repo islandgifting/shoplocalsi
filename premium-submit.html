@@ -25,7 +25,6 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 .logo-staten{font-size:.6rem;font-weight:700;color:var(--navy);letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
 .logo-url{font-size:.62rem;font-weight:600;color:var(--blue);letter-spacing:.5px}
 
-/* HERO */
 .hero{padding:2.5rem 2.5rem 1.5rem;text-align:center}
 .plan-badge{display:inline-block;padding:.4rem 1.25rem;border-radius:50px;font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
 .plan-badge.premium{background:var(--gold);color:var(--navy)}
@@ -33,7 +32,6 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 .hero h1{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:.6rem}
 .hero p{font-size:.85rem;color:var(--mid);max-width:560px;margin:0 auto;line-height:1.7}
 
-/* STEPS */
 .steps{display:flex;justify-content:center;gap:0;max-width:500px;margin:.5rem auto 2rem;padding:0 2rem}
 .step{flex:1;text-align:center;position:relative}
 .step::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--border);z-index:0}
@@ -45,11 +43,11 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 .step-label{font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mid)}
 .step.active .step-label{color:var(--navy);font-weight:800}
 
-/* FORM */
 .form-wrap{max-width:700px;margin:0 auto;padding:0 2rem 4rem}
 .form-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem;margin-bottom:1.25rem;box-shadow:0 2px 10px rgba(11,31,58,.04)}
-.form-card h2{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+.form-card h2{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:.5rem;display:flex;align-items:center;gap:.6rem}
 .form-card h2::before{content:'';width:18px;height:3px;background:var(--green);flex-shrink:0}
+.card-sub{font-size:.72rem;color:var(--mid);line-height:1.6;margin-bottom:1.5rem}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 .field-row.full{grid-template-columns:1fr}
 .field label{display:block;font-size:.68rem;font-weight:700;color:var(--navy);letter-spacing:.3px;text-transform:uppercase;margin-bottom:.4rem}
@@ -60,39 +58,56 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 .hint{font-size:.67rem;color:var(--mid);margin-top:.3rem;line-height:1.5}
 .char-count{font-size:.65rem;color:var(--mid);text-align:right;margin-top:.2rem}
 
-/* FILE UPLOAD */
-.upload-area{border:2px dashed var(--border);border-radius:8px;padding:1.5rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;background:#fafbfc}
+.upload-area{border:2px dashed var(--border);border-radius:8px;padding:1.4rem 1rem;text-align:center;cursor:pointer;transition:all .2s;position:relative;background:#fafbfc}
 .upload-area:hover{border-color:var(--green);background:#f0f7f3}
 .upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.upload-icon{font-size:1.6rem;margin-bottom:.4rem}
-.upload-label{font-size:.78rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.2rem}
-.upload-sub{font-size:.68rem;color:var(--mid)}
-.upload-preview{display:none;margin-top:.75rem;align-items:center;gap:.75rem}
-.upload-preview img{width:56px;height:56px;object-fit:cover;border-radius:6px;border:1px solid var(--border)}
-.upload-preview .preview-info{text-align:left}
-.upload-preview .preview-name{font-size:.72rem;font-weight:700;color:var(--navy)}
-.upload-preview .preview-status{font-size:.65rem;color:var(--green);font-weight:600}
+.upload-icon{font-size:1.5rem;margin-bottom:.35rem}
+.upload-label{font-size:.75rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.15rem}
+.upload-sub{font-size:.66rem;color:var(--mid)}
 .upload-progress{width:100%;height:4px;background:var(--border);border-radius:2px;margin-top:.5rem;overflow:hidden;display:none}
 .upload-progress-bar{height:100%;background:var(--green);border-radius:2px;width:0;transition:width .3s}
-.premium-tag{display:inline-block;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.4);border-radius:4px;font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6a10;padding:.1rem .45rem;margin-left:.4rem;vertical-align:middle}
+.upload-preview{display:none;margin-top:.75rem;align-items:center;gap:.75rem}
+.upload-preview img,.upload-preview video{width:56px;height:56px;object-fit:cover;border-radius:6px;border:1px solid var(--border)}
+.upload-preview .preview-info{text-align:left}
+.upload-preview .preview-name{font-size:.72rem;font-weight:700;color:var(--navy);word-break:break-all}
+.upload-preview .preview-status{font-size:.65rem;color:var(--green);font-weight:600}
 
+/* Gallery grid */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:.75rem}
+.gallery-thumb{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-thumb .rm{position:absolute;top:4px;right:4px;width:20px;height:20px;background:rgba(11,31,58,.75);color:#fff;border:none;border-radius:50%;font-size:.65rem;cursor:pointer;line-height:1}
+
+.premium-tag{display:inline-block;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.4);border-radius:4px;font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6a10;padding:.1rem .45rem;margin-left:.4rem;vertical-align:middle}
 .premium-only{display:none}
 .premium-only.show{display:block}
 
-/* SUBMIT */
+/* Optional toggles */
+.opt-toggle{display:flex;align-items:center;gap:.75rem;padding:1rem;background:#fafbfc;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s;margin-bottom:1rem}
+.opt-toggle:hover{border-color:var(--green)}
+.opt-toggle input[type=checkbox]{width:20px;height:20px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
+.opt-toggle .opt-title{font-size:.8rem;font-weight:700;color:var(--navy)}
+.opt-toggle .opt-desc{font-size:.68rem;color:var(--mid);margin-top:.15rem}
+.opt-body{display:none;padding:0 .25rem}
+.opt-body.show{display:block}
+
+/* Radio pills for ad type */
+.pill-row{display:flex;gap:.75rem;margin-bottom:1rem}
+.pill{flex:1;text-align:center;padding:.8rem;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:.75rem;font-weight:700;color:var(--mid);transition:all .2s;background:#fafbfc}
+.pill.selected{border-color:var(--green);background:#f0f7f3;color:var(--navy)}
+
 .submit-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:50px;padding:1rem;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:.5rem}
 .submit-btn:hover{background:var(--green2)}
 .submit-btn:disabled{background:var(--border);color:var(--mid);cursor:not-allowed}
 .err-msg{background:#fdf3f3;border:1px solid #f5c0c0;border-radius:6px;padding:.75rem 1rem;font-size:.78rem;color:var(--red);margin-top:.75rem;display:none}
 
-/* SUCCESS */
 .success-screen{display:none;text-align:center;padding:4rem 2rem;max-width:560px;margin:0 auto}
 .success-screen .icon{font-size:3.5rem;margin-bottom:1rem}
 .success-screen h2{font-size:1.4rem;font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:.75rem}
 .success-screen p{font-size:.85rem;color:var(--mid);line-height:1.8;margin-bottom:1.5rem}
 .success-screen a{display:inline-block;background:var(--green);color:#fff;padding:.7rem 1.75rem;border-radius:50px;font-size:.78rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.3px}
 
-@media(max-width:600px){.field-row{grid-template-columns:1fr}.form-card{padding:1.25rem}}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}.form-card{padding:1.25rem}.gallery-grid{grid-template-columns:repeat(2,1fr)}.pill-row{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -119,7 +134,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 <div class="hero">
   <div id="planBadge" class="plan-badge premium">⭐ Premium Listing</div>
   <h1>Welcome! Let's set up your listing.</h1>
-  <p>Your payment was received — thank you! Fill in the details below, upload your images, and your listing will go live within 24 hours.</p>
+  <p>Your payment was received — thank you! Fill in the details below and your listing will go live within 24 hours.</p>
 </div>
 
 <div class="steps">
@@ -130,9 +145,10 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 
 <div class="form-wrap" id="formSection">
 
-  <!-- Basic Info -->
+  <!-- ═══ BUSINESS INFO (all plans) ═══ -->
   <div class="form-card">
     <h2>Business Information</h2>
+    <div class="card-sub">Appears on your directory card and profile.</div>
     <div class="field-row">
       <div class="field">
         <label>Business Name <span class="req">*</span></label>
@@ -161,6 +177,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
       <div class="field">
         <label>Your Email <span class="req">*</span></label>
         <input type="email" id="bizEmail" placeholder="you@yourbusiness.com">
+        <div class="hint">For confirmation &amp; listing updates. Not shown publicly.</div>
       </div>
     </div>
     <div class="field-row full">
@@ -172,105 +189,160 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
     </div>
     <div class="field-row">
       <div class="field">
-        <label>Address / Neighborhood</label>
-        <input type="text" id="bizAddr" placeholder="e.g. 123 Victory Blvd, Willowbrook">
+        <label>Business Address</label>
+        <input type="text" id="bizAddr" placeholder="e.g. 123 Victory Blvd, Staten Island">
       </div>
       <div class="field">
         <label>Website</label>
         <input type="url" id="bizWeb" placeholder="https://yourbusiness.com">
       </div>
     </div>
-  </div>
-
-  <!-- UPLOADS -->
-  <div class="form-card">
-    <h2>Upload Your Images</h2>
-    <div class="field-row">
-      <!-- Logo upload -->
-      <div class="field">
-        <label>Logo / Profile Photo</label>
-        <div class="upload-area" id="logoArea">
-          <input type="file" id="logoFile" accept="image/*" onchange="handleUpload(this,'logo')">
-          <div class="upload-icon">🖼️</div>
-          <span class="upload-label">Click to upload logo</span>
-          <span class="upload-sub">PNG, JPG · Max 5MB</span>
-          <div class="upload-progress" id="logoProg"><div class="upload-progress-bar" id="logoBar"></div></div>
-        </div>
-        <div class="upload-preview" id="logoPreview">
-          <img id="logoThumb" src="" alt="">
-          <div class="preview-info">
-            <div class="preview-name" id="logoName"></div>
-            <div class="preview-status">✓ Uploaded</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Banner upload — premium only -->
-      <div class="field premium-only" id="bannerFieldWrap">
-        <label>Banner Image <span class="premium-tag">⭐ Premium</span></label>
-        <div class="upload-area" id="bannerArea">
-          <input type="file" id="bannerFile" accept="image/*" onchange="handleUpload(this,'banner')">
-          <div class="upload-icon">🌄</div>
-          <span class="upload-label">Click to upload banner</span>
-          <span class="upload-sub">Wide image · 1200×400px ideal · Max 8MB</span>
-          <div class="upload-progress" id="bannerProg"><div class="upload-progress-bar" id="bannerBar"></div></div>
-        </div>
-        <div class="upload-preview" id="bannerPreview">
-          <img id="bannerThumb" src="" alt="">
-          <div class="preview-info">
-            <div class="preview-name" id="bannerName"></div>
-            <div class="preview-status">✓ Uploaded</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Social -->
-  <div class="form-card">
-    <h2>Contact & Social Media</h2>
     <div class="field-row">
       <div class="field">
         <label>WhatsApp Number</label>
         <input type="tel" id="bizWA" placeholder="718-555-1234">
       </div>
       <div class="field">
-        <label>Instagram Handle</label>
+        <label>Instagram / Social</label>
         <input type="text" id="bizIG" placeholder="@yourbusiness">
-      </div>
-    </div>
-    <div class="field-row premium-only" id="socialExtended">
-      <div class="field">
-        <label>Facebook Page <span class="premium-tag">⭐ Premium</span></label>
-        <input type="url" id="bizFB" placeholder="https://facebook.com/yourbusiness">
-      </div>
-      <div class="field">
-        <label>TikTok / Other <span class="premium-tag">⭐ Premium</span></label>
-        <input type="text" id="bizOther" placeholder="@handle or link">
       </div>
     </div>
   </div>
 
-  <!-- Premium extras -->
-  <div class="form-card premium-only" id="premiumExtras">
-    <h2>Premium Extras <span class="premium-tag">⭐ Premium</span></h2>
+  <!-- ═══ LOGO (all plans) ═══ -->
+  <div class="form-card">
+    <h2>Your Logo</h2>
+    <div class="card-sub">Shown on your green featured card in the directory.</div>
     <div class="field-row full">
+      <div class="field">
+        <div class="upload-area" id="logoArea">
+          <input type="file" id="logoFile" accept="image/*" onchange="handleUpload(this,'logo','image')">
+          <div class="upload-icon">🖼️</div>
+          <span class="upload-label">Click to upload your logo</span>
+          <span class="upload-sub">PNG or JPG · Max 5MB</span>
+          <div class="upload-progress" id="logoProg"><div class="upload-progress-bar" id="logoBar"></div></div>
+        </div>
+        <div class="upload-preview" id="logoPreview">
+          <img id="logoThumb" src="" alt="">
+          <div class="preview-info"><div class="preview-name" id="logoName"></div><div class="preview-status">✓ Uploaded</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PREMIUM: GALLERY ═══ -->
+  <div class="form-card premium-only">
+    <h2>Photo Gallery <span class="premium-tag">⭐ Premium</span></h2>
+    <div class="card-sub">Your full profile page includes a photo gallery — upload up to 6 photos of your work, products, or storefront.</div>
+    <div class="upload-area" id="galleryArea">
+      <input type="file" id="galleryFile" accept="image/*" multiple onchange="handleGalleryUpload(this)">
+      <div class="upload-icon">📸</div>
+      <span class="upload-label">Click to upload gallery photos</span>
+      <span class="upload-sub">Select up to 6 images · JPG or PNG</span>
+      <div class="upload-progress" id="galleryProg"><div class="upload-progress-bar" id="galleryBar"></div></div>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+
+  <!-- ═══ PREMIUM: AD DISPLAY ═══ -->
+  <div class="form-card premium-only">
+    <h2>Advertising Display <span class="premium-tag">⭐ Premium</span></h2>
+    <div class="card-sub">Your ad appears on the advertising screen display and in homepage banner rotation. Choose a static image or a short video clip.</div>
+    <div class="pill-row">
+      <div class="pill selected" id="pillImage" onclick="setAdType('image')">🖼️ Static Image</div>
+      <div class="pill" id="pillVideo" onclick="setAdType('video')">🎬 Short Video Clip</div>
+    </div>
+    <div id="adImageWrap">
+      <div class="upload-area" id="adImageArea">
+        <input type="file" id="adImageFile" accept="image/*" onchange="handleUpload(this,'adImage','image')">
+        <div class="upload-icon">🌄</div>
+        <span class="upload-label">Upload your ad image</span>
+        <span class="upload-sub">Wide format · 1200×400px ideal · Max 8MB</span>
+        <div class="upload-progress" id="adImageProg"><div class="upload-progress-bar" id="adImageBar"></div></div>
+      </div>
+      <div class="upload-preview" id="adImagePreview">
+        <img id="adImageThumb" src="" alt="">
+        <div class="preview-info"><div class="preview-name" id="adImageName"></div><div class="preview-status">✓ Uploaded</div></div>
+      </div>
+    </div>
+    <div id="adVideoWrap" style="display:none">
+      <div class="upload-area" id="adVideoArea">
+        <input type="file" id="adVideoFile" accept="video/*" onchange="handleUpload(this,'adVideo','video')">
+        <div class="upload-icon">🎬</div>
+        <span class="upload-label">Upload your video clip</span>
+        <span class="upload-sub">MP4 or MOV · Max 30 seconds · Max 50MB</span>
+        <div class="upload-progress" id="adVideoProg"><div class="upload-progress-bar" id="adVideoBar"></div></div>
+      </div>
+      <div class="upload-preview" id="adVideoPreview">
+        <video id="adVideoThumb" src="" muted></video>
+        <div class="preview-info"><div class="preview-name" id="adVideoName"></div><div class="preview-status">✓ Uploaded</div></div>
+      </div>
+    </div>
+    <div class="field-row full" style="margin-top:1rem">
       <div class="field">
         <label>Business Hours</label>
-        <textarea id="bizHours" style="min-height:70px" placeholder="e.g. Sun–Thu: 9am–6pm · Fri: 9am–2pm · Shabbos: Closed"></textarea>
+        <textarea id="bizHours" style="min-height:65px" placeholder="e.g. Sun–Thu: 9am–6pm · Fri: 9am–2pm · Shabbos: Closed"></textarea>
       </div>
     </div>
-    <div class="field-row full">
-      <div class="field">
-        <label>Special Offer or Tagline</label>
-        <input type="text" id="bizOffer" maxlength="120" placeholder="e.g. Free consultation for ShopLocalSI members!">
-        <div class="hint">Shown as a highlighted badge on your listing.</div>
+  </div>
+
+  <!-- ═══ PREMIUM: OPTIONAL COUPON ═══ -->
+  <div class="form-card premium-only">
+    <h2>Coupon Listing <span class="premium-tag">⭐ Premium · Optional</span></h2>
+    <label class="opt-toggle">
+      <input type="checkbox" id="wantCoupon" onchange="document.getElementById('couponBody').classList.toggle('show',this.checked)">
+      <div>
+        <div class="opt-title">Yes — add my coupon to the Coupons page</div>
+        <div class="opt-desc">Included free with your Premium plan. Drives customers directly to you.</div>
+      </div>
+    </label>
+    <div class="opt-body" id="couponBody">
+      <div class="field-row">
+        <div class="field">
+          <label>Coupon Offer</label>
+          <input type="text" id="couponOffer" maxlength="80" placeholder="e.g. 10% off your first order">
+        </div>
+        <div class="field">
+          <label>Expiration Date</label>
+          <input type="date" id="couponExp">
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label>Terms / Fine Print</label>
+          <input type="text" id="couponTerms" maxlength="120" placeholder="e.g. New customers only. Mention ShopLocalSI.">
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- ═══ PREMIUM: OPTIONAL BLOG POST ═══ -->
+  <div class="form-card premium-only">
+    <h2>Community Blog Post <span class="premium-tag">⭐ Premium · Optional</span></h2>
+    <label class="opt-toggle">
+      <input type="checkbox" id="wantBlog" onchange="document.getElementById('blogBody').classList.toggle('show',this.checked)">
+      <div>
+        <div class="opt-title">Yes — feature my business in a community blog post</div>
+        <div class="opt-desc">We'll write a spotlight article about your business for the ShopLocalSI blog.</div>
+      </div>
+    </label>
+    <div class="opt-body" id="blogBody">
+      <div class="field-row full">
+        <div class="field">
+          <label>Tell us your story</label>
+          <textarea id="blogNotes" maxlength="500" placeholder="How did your business start? What makes it special? Any milestones, family history, or fun facts we should include…" style="min-height:110px"></textarea>
+          <div class="hint">Our team will turn this into a polished article and share it with you before publishing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ANYTHING ELSE ═══ -->
+  <div class="form-card">
+    <h2>Anything Else?</h2>
     <div class="field-row full">
       <div class="field">
-        <label>Anything else you'd like us to know?</label>
-        <textarea id="bizNotes" maxlength="300" style="min-height:70px" placeholder="Certifications, special instructions, etc."></textarea>
+        <textarea id="bizNotes" maxlength="300" style="min-height:65px" placeholder="Special instructions, certifications, or anything you want us to know… (optional)"></textarea>
       </div>
     </div>
   </div>
@@ -280,24 +352,20 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
   <p style="text-align:center;font-size:.7rem;color:var(--mid);margin-top:1rem">Need help? <a href="mailto:info@shoplocalsi.com" style="color:var(--blue)">info@shoplocalsi.com</a></p>
 </div>
 
-<!-- Success -->
 <div class="success-screen" id="successScreen">
   <div class="icon">🎉</div>
   <h2>You're all set!</h2>
-  <p>Your listing has been submitted and will go live on ShopLocalSI.com within 24 hours. Check back soon — we're excited to feature your business!</p>
+  <p>Your listing has been submitted and will go live on ShopLocalSI.com within 24 hours. We're excited to feature your business!</p>
   <a href="/directory.html">View the Directory →</a>
 </div>
 
 <script>
-// ── CONFIG ── paste your Cloudinary cloud name below after setup
 const CLOUDINARY_CLOUD = 'jvzi0jct';
 const CLOUDINARY_PRESET = 'shoplocalsi';
-
 const TOKEN = 'pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
 const BASE  = 'appyNDNuwGFgR44sg';
 const TABLE = 'tblBt9FfVcrMK1aOs';
 
-// Detect plan
 const params = new URLSearchParams(window.location.search);
 const plan = (params.get('plan') || 'featured').toLowerCase();
 const isPremium = plan === 'premium';
@@ -306,55 +374,84 @@ document.getElementById('planBadge').className = 'plan-badge ' + plan;
 document.getElementById('planBadge').textContent = isPremium ? '⭐ Premium Listing' : '✦ Featured Listing';
 if(isPremium) document.querySelectorAll('.premium-only').forEach(el=>el.classList.add('show'));
 
-// Stored upload URLs
-const uploads = { logo: '', banner: '' };
+const uploads = { logo:'', adImage:'', adVideo:'', gallery: [] };
+let adType = 'image';
 
-async function handleUpload(input, type) {
-  const file = input.files[0];
-  if(!file) return;
+function setAdType(type){
+  adType = type;
+  document.getElementById('pillImage').classList.toggle('selected', type==='image');
+  document.getElementById('pillVideo').classList.toggle('selected', type==='video');
+  document.getElementById('adImageWrap').style.display = type==='image' ? 'block' : 'none';
+  document.getElementById('adVideoWrap').style.display = type==='video' ? 'block' : 'none';
+}
 
-  const progWrap = document.getElementById(type + 'Prog');
-  const progBar  = document.getElementById(type + 'Bar');
-  progWrap.style.display = 'block';
-  progBar.style.width = '20%';
-
+async function uploadToCloudinary(file, resourceType){
   const fd = new FormData();
   fd.append('file', file);
   fd.append('upload_preset', CLOUDINARY_PRESET);
+  const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/${resourceType}/upload`, { method:'POST', body:fd });
+  const data = await res.json();
+  if(!data.secure_url) throw new Error(data.error && data.error.message || 'Upload failed');
+  return data.secure_url;
+}
 
+async function handleUpload(input, key, resourceType){
+  const file = input.files[0];
+  if(!file) return;
+  if(resourceType==='video' && file.size > 50*1024*1024){ alert('Video too large — max 50MB.'); return; }
+  const prog = document.getElementById(key+'Prog'), bar = document.getElementById(key+'Bar');
+  prog.style.display='block'; bar.style.width='30%';
   try {
-    progBar.style.width = '50%';
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`, {
-      method: 'POST', body: fd
-    });
-    progBar.style.width = '90%';
-    const data = await res.json();
-    if(data.secure_url) {
-      uploads[type] = data.secure_url;
-      progBar.style.width = '100%';
-      setTimeout(() => { progWrap.style.display = 'none'; }, 600);
-      // Show preview
-      const preview = document.getElementById(type + 'Preview');
-      document.getElementById(type + 'Thumb').src = data.secure_url;
-      document.getElementById(type + 'Name').textContent = file.name;
-      preview.style.display = 'flex';
-      document.getElementById(type + 'Area').style.borderColor = 'var(--green)';
-    } else {
-      throw new Error('Upload failed');
-    }
-  } catch(e) {
-    progWrap.style.display = 'none';
+    bar.style.width='60%';
+    const url = await uploadToCloudinary(file, resourceType);
+    uploads[key] = url;
+    bar.style.width='100%';
+    setTimeout(()=>{ prog.style.display='none'; }, 600);
+    const preview = document.getElementById(key+'Preview');
+    const thumb = document.getElementById(key+'Thumb');
+    thumb.src = url;
+    document.getElementById(key+'Name').textContent = file.name;
+    preview.style.display='flex';
+    document.getElementById(key+'Area').style.borderColor='var(--green)';
+  } catch(e){
+    prog.style.display='none';
     alert('Upload failed — please try again or email info@shoplocalsi.com');
   }
 }
 
-function showErr(msg) {
+async function handleGalleryUpload(input){
+  const files = Array.from(input.files).slice(0, 6 - uploads.gallery.length);
+  if(!files.length) return;
+  const prog = document.getElementById('galleryProg'), bar = document.getElementById('galleryBar');
+  prog.style.display='block';
+  for(let i=0; i<files.length; i++){
+    bar.style.width = Math.round(((i+0.5)/files.length)*100)+'%';
+    try {
+      const url = await uploadToCloudinary(files[i], 'image');
+      uploads.gallery.push(url);
+      renderGallery();
+    } catch(e){ alert('One image failed to upload — you can try it again.'); }
+  }
+  bar.style.width='100%';
+  setTimeout(()=>{ prog.style.display='none'; bar.style.width='0'; }, 600);
+  input.value='';
+}
+
+function renderGallery(){
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = uploads.gallery.map((url,i)=>
+    `<div class="gallery-thumb"><img src="${url}"><button class="rm" onclick="removeGalleryImg(${i})">✕</button></div>`
+  ).join('');
+}
+function removeGalleryImg(i){ uploads.gallery.splice(i,1); renderGallery(); }
+
+function showErr(msg){
   const el = document.getElementById('errMsg');
-  el.textContent = msg; el.style.display = 'block';
+  el.textContent = msg; el.style.display='block';
   el.scrollIntoView({behavior:'smooth', block:'center'});
 }
 
-async function submitListing() {
+async function submitListing(){
   const name  = document.getElementById('bizName').value.trim();
   const cat   = document.getElementById('bizCat').value;
   const phone = document.getElementById('bizPhone').value.trim();
@@ -368,45 +465,54 @@ async function submitListing() {
   if(!desc)  return showErr('Please add a short description.');
 
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = 'Submitting…';
-  document.getElementById('errMsg').style.display = 'none';
+  btn.disabled=true; btn.textContent='Submitting…';
+  document.getElementById('errMsg').style.display='none';
 
   const fields = {
     Title: name, Category: cat, Phone: phone, Email: email,
     Description: desc,
     Address: document.getElementById('bizAddr').value.trim(),
     Website: document.getElementById('bizWeb').value.trim(),
-    Logo: uploads.logo || '',
-    Instagram: document.getElementById('bizIG').value.trim(),
     WhatsApp: document.getElementById('bizWA').value.trim(),
+    Instagram: document.getElementById('bizIG').value.trim(),
+    Logo: uploads.logo,
+    Notes: document.getElementById('bizNotes').value.trim(),
     Plan: isPremium ? 'Premium' : 'Featured',
     Status: 'Pending Review',
     Submitted: new Date().toISOString().split('T')[0]
   };
 
-  if(isPremium) {
-    fields['Banner']       = uploads.banner || '';
-    fields['Facebook']     = document.getElementById('bizFB').value.trim();
-    fields['OtherSocial']  = document.getElementById('bizOther').value.trim();
-    fields['Hours']        = document.getElementById('bizHours').value.trim();
-    fields['SpecialOffer'] = document.getElementById('bizOffer').value.trim();
-    fields['Notes']        = document.getElementById('bizNotes').value.trim();
+  if(isPremium){
+    fields['Gallery']  = uploads.gallery.join('\n');
+    fields['AdType']   = adType;
+    fields['AdImage']  = uploads.adImage;
+    fields['AdVideo']  = uploads.adVideo;
+    fields['Hours']    = document.getElementById('bizHours').value.trim();
+    if(document.getElementById('wantCoupon').checked){
+      fields['CouponOffer'] = document.getElementById('couponOffer').value.trim();
+      fields['CouponExp']   = document.getElementById('couponExp').value;
+      fields['CouponTerms'] = document.getElementById('couponTerms').value.trim();
+    }
+    if(document.getElementById('wantBlog').checked){
+      fields['BlogRequest'] = 'Yes';
+      fields['BlogNotes']   = document.getElementById('blogNotes').value.trim();
+    }
   }
 
   try {
     const res = await fetch(`https://api.airtable.com/v0/${BASE}/${TABLE}`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+      method:'POST',
+      headers:{ 'Authorization':`Bearer ${TOKEN}`, 'Content-Type':'application/json' },
       body: JSON.stringify({ fields })
     });
-    if(!res.ok) throw new Error('Airtable ' + res.status);
-    document.getElementById('formSection').style.display = 'none';
-    document.querySelector('.hero').style.display = 'none';
-    document.querySelector('.steps').style.display = 'none';
-    document.getElementById('successScreen').style.display = 'block';
-    window.scrollTo({top:0, behavior:'smooth'});
-  } catch(e) {
-    btn.disabled = false; btn.textContent = 'Submit My Listing →';
+    if(!res.ok) throw new Error('Airtable '+res.status);
+    document.getElementById('formSection').style.display='none';
+    document.querySelector('.hero').style.display='none';
+    document.querySelector('.steps').style.display='none';
+    document.getElementById('successScreen').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  } catch(e){
+    btn.disabled=false; btn.textContent='Submit My Listing →';
     showErr('Something went wrong. Please try again or email info@shoplocalsi.com');
   }
 }
