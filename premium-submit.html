@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTW71T3PS0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VTW71T3PS0');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Set Up Your Listing | Shop Local SI</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3a;--green:#3e7c59;--green2:#4a9469;--gold:#d4a843;--light:#f4f4f2;--white:#fff;--mid:#4a5568;--border:#dde4ea;--red:#c0392b;--blue:#2c6e9e}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--navy)}
+.emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600}
+.emstrip a{color:rgba(255,255,255,.92);text-decoration:none}.emstrip .sep{color:rgba(255,255,255,.35)}
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:88px;position:sticky;top:0;z-index:999;box-shadow:0 2px 16px rgba(11,31,58,.07)}
+.logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+.logo-img{height:70px;width:70px;object-fit:contain}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-wordmark{display:flex;align-items:baseline;gap:.2rem}
+.logo-shop{font-size:1.4rem;font-weight:800;color:var(--navy);letter-spacing:1px;text-transform:uppercase}
+.logo-local-word{font-size:1.4rem;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase}
+.logo-divider-row{display:flex;align-items:center;gap:.4rem;margin:.1rem 0 .15rem}
+.logo-dash{width:18px;height:2px;background:var(--navy);opacity:.4}
+.logo-staten{font-size:.6rem;font-weight:700;color:var(--navy);letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
+.logo-url{font-size:.62rem;font-weight:600;color:var(--blue);letter-spacing:.5px}
+
+/* HERO */
+.hero{padding:2.5rem 2.5rem 1.5rem;text-align:center}
+.plan-badge{display:inline-block;padding:.4rem 1.25rem;border-radius:50px;font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+.plan-badge.premium{background:var(--gold);color:var(--navy)}
+.plan-badge.featured{background:var(--green);color:#fff}
+.hero h1{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:.6rem}
+.hero p{font-size:.85rem;color:var(--mid);max-width:560px;margin:0 auto;line-height:1.7}
+
+/* STEPS */
+.steps{display:flex;justify-content:center;gap:0;max-width:500px;margin:.5rem auto 2rem;padding:0 2rem}
+.step{flex:1;text-align:center;position:relative}
+.step::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--border);z-index:0}
+.step:last-child::after{display:none}
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;margin:0 auto .4rem;position:relative;z-index:1}
+.step.done .step-dot{background:var(--green);color:#fff}
+.step.active .step-dot{background:var(--navy);color:#fff}
+.step.waiting .step-dot{background:var(--border);color:var(--mid)}
+.step-label{font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mid)}
+.step.active .step-label{color:var(--navy);font-weight:800}
+
+/* FORM */
+.form-wrap{max-width:700px;margin:0 auto;padding:0 2rem 4rem}
+.form-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem;margin-bottom:1.25rem;box-shadow:0 2px 10px rgba(11,31,58,.04)}
+.form-card h2{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+.form-card h2::before{content:'';width:18px;height:3px;background:var(--green);flex-shrink:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.field-row.full{grid-template-columns:1fr}
+.field label{display:block;font-size:.68rem;font-weight:700;color:var(--navy);letter-spacing:.3px;text-transform:uppercase;margin-bottom:.4rem}
+.req{color:var(--red)}
+.field input,.field textarea,.field select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--border);border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--navy);background:#fff;transition:border-color .2s;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green)}
+.field textarea{resize:vertical;min-height:90px;line-height:1.6}
+.hint{font-size:.67rem;color:var(--mid);margin-top:.3rem;line-height:1.5}
+.char-count{font-size:.65rem;color:var(--mid);text-align:right;margin-top:.2rem}
+
+/* FILE UPLOAD */
+.upload-area{border:2px dashed var(--border);border-radius:8px;padding:1.5rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;background:#fafbfc}
+.upload-area:hover{border-color:var(--green);background:#f0f7f3}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:1.6rem;margin-bottom:.4rem}
+.upload-label{font-size:.78rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.2rem}
+.upload-sub{font-size:.68rem;color:var(--mid)}
+.upload-preview{display:none;margin-top:.75rem;align-items:center;gap:.75rem}
+.upload-preview img{width:56px;height:56px;object-fit:cover;border-radius:6px;border:1px solid var(--border)}
+.upload-preview .preview-info{text-align:left}
+.upload-preview .preview-name{font-size:.72rem;font-weight:700;color:var(--navy)}
+.upload-preview .preview-status{font-size:.65rem;color:var(--green);font-weight:600}
+.upload-progress{width:100%;height:4px;background:var(--border);border-radius:2px;margin-top:.5rem;overflow:hidden;display:none}
+.upload-progress-bar{height:100%;background:var(--green);border-radius:2px;width:0;transition:width .3s}
+.premium-tag{display:inline-block;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.4);border-radius:4px;font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6a10;padding:.1rem .45rem;margin-left:.4rem;vertical-align:middle}
+
+.premium-only{display:none}
+.premium-only.show{display:block}
+
+/* SUBMIT */
+.submit-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:50px;padding:1rem;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.submit-btn:hover{background:var(--green2)}
+.submit-btn:disabled{background:var(--border);color:var(--mid);cursor:not-allowed}
+.err-msg{background:#fdf3f3;border:1px solid #f5c0c0;border-radius:6px;padding:.75rem 1rem;font-size:.78rem;color:var(--red);margin-top:.75rem;display:none}
+
+/* SUCCESS */
+.success-screen{display:none;text-align:center;padding:4rem 2rem;max-width:560px;margin:0 auto}
+.success-screen .icon{font-size:3.5rem;margin-bottom:1rem}
+.success-screen h2{font-size:1.4rem;font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:.75rem}
+.success-screen p{font-size:.85rem;color:var(--mid);line-height:1.8;margin-bottom:1.5rem}
+.success-screen a{display:inline-block;background:var(--green);color:#fff;padding:.7rem 1.75rem;border-radius:50px;font-size:.78rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.3px}
+
+@media(max-width:600px){.field-row{grid-template-columns:1fr}.form-card{padding:1.25rem}}
+</style>
+</head>
+<body>
+
+<div class="emstrip">
+  <a href="tel:7182301000">🚑 Hatzolah: 718-230-1000</a><span class="sep">|</span>
+  <a href="tel:7187612428">Chaveirim: 718-761-2428</a><span class="sep">|</span>
+  <a href="tel:7187614444">Shmira: 718-761-4444</a><span class="sep">|</span>
+  <a href="tel:7183702121">Shomrim: 718-370-2121</a>
+</div>
+
+<nav>
+  <a href="/" class="logo-wrap">
+    <img src="/logo.png" alt="Shop Local Staten Island" class="logo-img">
+    <div class="logo-text">
+      <div class="logo-wordmark"><span class="logo-shop">SHOP&nbsp;</span><span class="logo-local-word">LOCAL</span></div>
+      <div class="logo-divider-row"><span class="logo-dash"></span><span class="logo-staten">Staten Island</span><span class="logo-dash"></span></div>
+      <span class="logo-url">shoplocalsi.com</span>
+    </div>
+  </a>
+  <div style="font-size:.76rem;font-weight:700;color:var(--mid)">Setting up your listing…</div>
+</nav>
+
+<div class="hero">
+  <div id="planBadge" class="plan-badge premium">⭐ Premium Listing</div>
+  <h1>Welcome! Let's set up your listing.</h1>
+  <p>Your payment was received — thank you! Fill in the details below, upload your images, and your listing will go live within 24 hours.</p>
+</div>
+
+<div class="steps">
+  <div class="step done"><div class="step-dot">✓</div><div class="step-label">Payment</div></div>
+  <div class="step active"><div class="step-dot">2</div><div class="step-label">Your Info</div></div>
+  <div class="step waiting"><div class="step-dot">3</div><div class="step-label">Go Live</div></div>
+</div>
+
+<div class="form-wrap" id="formSection">
+
+  <!-- Basic Info -->
+  <div class="form-card">
+    <h2>Business Information</h2>
+    <div class="field-row">
+      <div class="field">
+        <label>Business Name <span class="req">*</span></label>
+        <input type="text" id="bizName" placeholder="e.g. Sweetpics Photography" maxlength="80">
+      </div>
+      <div class="field">
+        <label>Category <span class="req">*</span></label>
+        <select id="bizCat">
+          <option value="">Select category…</option>
+          <option>Restaurants & Food</option><option>Home Services</option>
+          <option>Photography</option><option>Auto Services</option>
+          <option>Medical</option><option>Specialty Shops</option>
+          <option>Beauty & Self Care</option><option>Pool Rental</option>
+          <option>Services</option><option>Transportation</option>
+          <option>Realtors</option><option>Insurance</option>
+          <option>Media</option><option>Daycare</option>
+          <option>Playgroup</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="tel" id="bizPhone" placeholder="718-555-1234">
+      </div>
+      <div class="field">
+        <label>Your Email <span class="req">*</span></label>
+        <input type="email" id="bizEmail" placeholder="you@yourbusiness.com">
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field">
+        <label>Business Description <span class="req">*</span></label>
+        <textarea id="bizDesc" maxlength="300" placeholder="Tell the community what makes your business special…" oninput="document.getElementById('descCount').textContent=this.value.length"></textarea>
+        <div class="char-count"><span id="descCount">0</span>/300</div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Address / Neighborhood</label>
+        <input type="text" id="bizAddr" placeholder="e.g. 123 Victory Blvd, Willowbrook">
+      </div>
+      <div class="field">
+        <label>Website</label>
+        <input type="url" id="bizWeb" placeholder="https://yourbusiness.com">
+      </div>
+    </div>
+  </div>
+
+  <!-- UPLOADS -->
+  <div class="form-card">
+    <h2>Upload Your Images</h2>
+    <div class="field-row">
+      <!-- Logo upload -->
+      <div class="field">
+        <label>Logo / Profile Photo</label>
+        <div class="upload-area" id="logoArea">
+          <input type="file" id="logoFile" accept="image/*" onchange="handleUpload(this,'logo')">
+          <div class="upload-icon">🖼️</div>
+          <span class="upload-label">Click to upload logo</span>
+          <span class="upload-sub">PNG, JPG · Max 5MB</span>
+          <div class="upload-progress" id="logoProg"><div class="upload-progress-bar" id="logoBar"></div></div>
+        </div>
+        <div class="upload-preview" id="logoPreview">
+          <img id="logoThumb" src="" alt="">
+          <div class="preview-info">
+            <div class="preview-name" id="logoName"></div>
+            <div class="preview-status">✓ Uploaded</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner upload — premium only -->
+      <div class="field premium-only" id="bannerFieldWrap">
+        <label>Banner Image <span class="premium-tag">⭐ Premium</span></label>
+        <div class="upload-area" id="bannerArea">
+          <input type="file" id="bannerFile" accept="image/*" onchange="handleUpload(this,'banner')">
+          <div class="upload-icon">🌄</div>
+          <span class="upload-label">Click to upload banner</span>
+          <span class="upload-sub">Wide image · 1200×400px ideal · Max 8MB</span>
+          <div class="upload-progress" id="bannerProg"><div class="upload-progress-bar" id="bannerBar"></div></div>
+        </div>
+        <div class="upload-preview" id="bannerPreview">
+          <img id="bannerThumb" src="" alt="">
+          <div class="preview-info">
+            <div class="preview-name" id="bannerName"></div>
+            <div class="preview-status">✓ Uploaded</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social -->
+  <div class="form-card">
+    <h2>Contact & Social Media</h2>
+    <div class="field-row">
+      <div class="field">
+        <label>WhatsApp Number</label>
+        <input type="tel" id="bizWA" placeholder="718-555-1234">
+      </div>
+      <div class="field">
+        <label>Instagram Handle</label>
+        <input type="text" id="bizIG" placeholder="@yourbusiness">
+      </div>
+    </div>
+    <div class="field-row premium-only" id="socialExtended">
+      <div class="field">
+        <label>Facebook Page <span class="premium-tag">⭐ Premium</span></label>
+        <input type="url" id="bizFB" placeholder="https://facebook.com/yourbusiness">
+      </div>
+      <div class="field">
+        <label>TikTok / Other <span class="premium-tag">⭐ Premium</span></label>
+        <input type="text" id="bizOther" placeholder="@handle or link">
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium extras -->
+  <div class="form-card premium-only" id="premiumExtras">
+    <h2>Premium Extras <span class="premium-tag">⭐ Premium</span></h2>
+    <div class="field-row full">
+      <div class="field">
+        <label>Business Hours</label>
+        <textarea id="bizHours" style="min-height:70px" placeholder="e.g. Sun–Thu: 9am–6pm · Fri: 9am–2pm · Shabbos: Closed"></textarea>
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field">
+        <label>Special Offer or Tagline</label>
+        <input type="text" id="bizOffer" maxlength="120" placeholder="e.g. Free consultation for ShopLocalSI members!">
+        <div class="hint">Shown as a highlighted badge on your listing.</div>
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field">
+        <label>Anything else you'd like us to know?</label>
+        <textarea id="bizNotes" maxlength="300" style="min-height:70px" placeholder="Certifications, special instructions, etc."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="submitListing()">Submit My Listing →</button>
+  <div class="err-msg" id="errMsg"></div>
+  <p style="text-align:center;font-size:.7rem;color:var(--mid);margin-top:1rem">Need help? <a href="mailto:info@shoplocalsi.com" style="color:var(--blue)">info@shoplocalsi.com</a></p>
+</div>
+
+<!-- Success -->
+<div class="success-screen" id="successScreen">
+  <div class="icon">🎉</div>
+  <h2>You're all set!</h2>
+  <p>Your listing has been submitted and will go live on ShopLocalSI.com within 24 hours. Check back soon — we're excited to feature your business!</p>
+  <a href="/directory.html">View the Directory →</a>
+</div>
+
+<script>
+// ── CONFIG ── paste your Cloudinary cloud name below after setup
+const CLOUDINARY_CLOUD = 'jvzi0jct';
+const CLOUDINARY_PRESET = 'shoplocalsi';
+
+const TOKEN = 'pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
+const BASE  = 'appyNDNuwGFgR44sg';
+const TABLE = 'tblBt9FfVcrMK1aOs';
+
+// Detect plan
+const params = new URLSearchParams(window.location.search);
+const plan = (params.get('plan') || 'featured').toLowerCase();
+const isPremium = plan === 'premium';
+
+document.getElementById('planBadge').className = 'plan-badge ' + plan;
+document.getElementById('planBadge').textContent = isPremium ? '⭐ Premium Listing' : '✦ Featured Listing';
+if(isPremium) document.querySelectorAll('.premium-only').forEach(el=>el.classList.add('show'));
+
+// Stored upload URLs
+const uploads = { logo: '', banner: '' };
+
+async function handleUpload(input, type) {
+  const file = input.files[0];
+  if(!file) return;
+
+  const progWrap = document.getElementById(type + 'Prog');
+  const progBar  = document.getElementById(type + 'Bar');
+  progWrap.style.display = 'block';
+  progBar.style.width = '20%';
+
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', CLOUDINARY_PRESET);
+
+  try {
+    progBar.style.width = '50%';
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`, {
+      method: 'POST', body: fd
+    });
+    progBar.style.width = '90%';
+    const data = await res.json();
+    if(data.secure_url) {
+      uploads[type] = data.secure_url;
+      progBar.style.width = '100%';
+      setTimeout(() => { progWrap.style.display = 'none'; }, 600);
+      // Show preview
+      const preview = document.getElementById(type + 'Preview');
+      document.getElementById(type + 'Thumb').src = data.secure_url;
+      document.getElementById(type + 'Name').textContent = file.name;
+      preview.style.display = 'flex';
+      document.getElementById(type + 'Area').style.borderColor = 'var(--green)';
+    } else {
+      throw new Error('Upload failed');
+    }
+  } catch(e) {
+    progWrap.style.display = 'none';
+    alert('Upload failed — please try again or email info@shoplocalsi.com');
+  }
+}
+
+function showErr(msg) {
+  const el = document.getElementById('errMsg');
+  el.textContent = msg; el.style.display = 'block';
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+async function submitListing() {
+  const name  = document.getElementById('bizName').value.trim();
+  const cat   = document.getElementById('bizCat').value;
+  const phone = document.getElementById('bizPhone').value.trim();
+  const email = document.getElementById('bizEmail').value.trim();
+  const desc  = document.getElementById('bizDesc').value.trim();
+
+  if(!name)  return showErr('Please enter your business name.');
+  if(!cat)   return showErr('Please select a category.');
+  if(!phone) return showErr('Please enter your phone number.');
+  if(!email) return showErr('Please enter your email address.');
+  if(!desc)  return showErr('Please add a short description.');
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Submitting…';
+  document.getElementById('errMsg').style.display = 'none';
+
+  const fields = {
+    Title: name, Category: cat, Phone: phone, Email: email,
+    Description: desc,
+    Address: document.getElementById('bizAddr').value.trim(),
+    Website: document.getElementById('bizWeb').value.trim(),
+    Logo: uploads.logo || '',
+    Instagram: document.getElementById('bizIG').value.trim(),
+    WhatsApp: document.getElementById('bizWA').value.trim(),
+    Plan: isPremium ? 'Premium' : 'Featured',
+    Status: 'Pending Review',
+    Submitted: new Date().toISOString().split('T')[0]
+  };
+
+  if(isPremium) {
+    fields['Banner']       = uploads.banner || '';
+    fields['Facebook']     = document.getElementById('bizFB').value.trim();
+    fields['OtherSocial']  = document.getElementById('bizOther').value.trim();
+    fields['Hours']        = document.getElementById('bizHours').value.trim();
+    fields['SpecialOffer'] = document.getElementById('bizOffer').value.trim();
+    fields['Notes']        = document.getElementById('bizNotes').value.trim();
+  }
+
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${BASE}/${TABLE}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields })
+    });
+    if(!res.ok) throw new Error('Airtable ' + res.status);
+    document.getElementById('formSection').style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    document.querySelector('.steps').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  } catch(e) {
+    btn.disabled = false; btn.textContent = 'Submit My Listing →';
+    showErr('Something went wrong. Please try again or email info@shoplocalsi.com');
+  }
+}
+</script>
+</body>
+</html>
