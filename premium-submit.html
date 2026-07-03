@@ -510,12 +510,13 @@ async function submitListing(){
     let errData = {};
     try { errData = await res.json(); } catch(e){}
     const msg = (errData.error && (errData.error.message || errData.error.type)) || ('HTTP '+res.status);
-    // If Airtable names an unknown field, remove it and retry (up to ~15 times)
-    const m = msg.match(/Unknown field name:?\s*"?([^"]+)"?/i);
-    if(m && attempt < 15){
-      const bad = m[1].trim();
-      const cleaned = Object.assign({}, fieldsObj);
-      delete cleaned[bad];
+    // If Airtable names an unknown field, remove it and retry (up to 25 times)
+    const m = msg.match(/Unknown field name:\s*"([^"]+)"/i);
+    if(m && attempt < 25){
+      const bad = m[1];
+      const cleaned = {};
+      // Rebuild object excluding the bad key (exact match)
+      Object.keys(fieldsObj).forEach(function(k){ if(k !== bad) cleaned[k] = fieldsObj[k]; });
       return saveToAirtable(cleaned, attempt+1);
     }
     return { ok:false, msg };
