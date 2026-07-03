@@ -478,7 +478,7 @@ async function submitListing(){
     Logo: uploads.logo,
     Notes: document.getElementById('bizNotes').value.trim(),
     Plan: isPremium ? 'Premium' : 'Featured',
-    Status: 'Pending Review',
+    Status: 'Pending',
     Submitted: new Date().toISOString().split('T')[0]
   };
 
@@ -499,13 +499,31 @@ async function submitListing(){
     }
   }
 
-  try {
+  // Try to save. If Airtable rejects an unknown field, strip it and retry automatically.
+  async function saveToAirtable(fieldsObj, attempt){
     const res = await fetch(`https://api.airtable.com/v0/${BASE}/${TABLE}`, {
       method:'POST',
       headers:{ 'Authorization':`Bearer ${TOKEN}`, 'Content-Type':'application/json' },
-      body: JSON.stringify({ fields })
+      body: JSON.stringify({ fields: fieldsObj, typecast: true })
     });
-    if(!res.ok) throw new Error('Airtable '+res.status);
+    if(res.ok) return { ok:true };
+    let errData = {};
+    try { errData = await res.json(); } catch(e){}
+    const msg = (errData.error && (errData.error.message || errData.error.type)) || ('HTTP '+res.status);
+    // If Airtable names an unknown field, remove it and retry (up to ~15 times)
+    const m = msg.match(/Unknown field name:?\s*"?([^"]+)"?/i);
+    if(m && attempt < 15){
+      const bad = m[1].trim();
+      const cleaned = Object.assign({}, fieldsObj);
+      delete cleaned[bad];
+      return saveToAirtable(cleaned, attempt+1);
+    }
+    return { ok:false, msg };
+  }
+
+  try {
+    const result = await saveToAirtable(fields, 0);
+    if(!result.ok) throw new Error(result.msg);
     document.getElementById('formSection').style.display='none';
     document.querySelector('.hero').style.display='none';
     document.querySelector('.steps').style.display='none';
@@ -513,7 +531,7 @@ async function submitListing(){
     window.scrollTo({top:0,behavior:'smooth'});
   } catch(e){
     btn.disabled=false; btn.textContent='Submit My Listing →';
-    showErr('Something went wrong. Please try again or email info@shoplocalsi.com');
+    showErr('Could not save: ' + e.message + ' — please try again or email info@shoplocalsi.com');
   }
 }
 </script>
