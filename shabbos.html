@@ -392,6 +392,37 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
 
 .shab-wrap{max-width:580px;margin:2.5rem auto 0}
+
+/* ── SHUL LUACH (multi-shul) ── */
+.shul-section{background:var(--white);padding:4rem 2.5rem}
+.shul-inner{max-width:900px;margin:0 auto}
+.shul-head{text-align:center;margin-bottom:2.5rem}
+.shul-card{background:var(--white);border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-bottom:1.5rem;box-shadow:0 2px 14px rgba(11,31,58,.06)}
+.shul-card-header{background:var(--navy);padding:1.5rem 1.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.shul-card-header h3{color:#fff;font-size:1.15rem;font-weight:800;letter-spacing:.3px}
+.shul-card-header .shul-parsha{color:var(--green2);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:.25rem}
+.shul-card-header .shul-links{display:flex;gap:.6rem;flex-wrap:wrap}
+.shul-btn{display:inline-block;background:rgba(255,255,255,.12);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.72rem;font-weight:700;text-decoration:none;transition:background .2s;white-space:nowrap}
+.shul-btn:hover{background:rgba(255,255,255,.25)}
+.shul-btn.gold{background:var(--gold);color:var(--navy)}
+.shul-body{padding:1.75rem}
+.luach-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.luach-col h4{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:2px solid var(--border2)}
+.luach-row{display:flex;justify-content:space-between;align-items:baseline;padding:.4rem 0;font-size:.85rem;gap:1rem}
+.luach-row .lbl{color:var(--mid);font-weight:500}
+.luach-row .val{color:var(--navy);font-weight:700;text-align:right;white-space:nowrap}
+.luach-highlight{background:rgba(212,168,67,.1);border-left:3px solid var(--gold);padding:.6rem .85rem;border-radius:0 6px 6px 0;margin:.75rem 0;font-size:.82rem}
+.luach-highlight .drasha-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#8a6a10;display:block;margin-bottom:.2rem}
+.luach-highlight .drasha-topic{color:var(--navy);font-weight:700}
+.halacha-box{margin-top:1.5rem;padding:1.25rem;background:var(--light);border-radius:8px;border-left:3px solid var(--green)}
+.halacha-box h4{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:.6rem}
+.halacha-box p{font-size:.8rem;color:var(--mid);line-height:1.7;margin-bottom:.6rem}
+.halacha-box p:last-child{margin-bottom:0}
+.shul-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:1rem;line-height:1.6}
+.add-shul-cta{text-align:center;margin-top:2rem;padding:1.75rem;border:2px dashed var(--border);border-radius:12px}
+.add-shul-cta p{font-size:.82rem;color:var(--mid);margin-bottom:.75rem}
+.add-shul-cta a{color:var(--green);font-weight:700;text-decoration:none;border-bottom:2px solid var(--green)}
+@media(max-width:600px){.luach-grid{grid-template-columns:1fr}.shul-card-header{flex-direction:column;align-items:flex-start}}
 .city-select-wrap{position:relative;margin-bottom:1rem}
 .city-select{width:100%;padding:.75rem 1rem;background:#fff;border:2px solid var(--green);border-radius:6px;font-size:.9rem;font-weight:600;color:var(--navy);outline:none;font-family:"Montserrat",sans-serif;cursor:pointer;appearance:none;-webkit-appearance:none}
 .city-select option{background:#fff;color:var(--navy)}
@@ -554,6 +585,92 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     </div>
   </div>
 </div>
+
+<!-- ═══════ SHUL LUACH (multi-shul) ═══════ -->
+<div class="shul-section">
+  <div class="shul-inner">
+    <div class="shul-head">
+      <div class="section-eyebrow">Local Shul Schedules</div>
+      <h2 class="section-title">Shul Luach</h2>
+      <div class="green-divider" style="margin:.7rem auto"></div>
+      <p style="font-size:.88rem;color:var(--mid);max-width:520px;margin:0 auto">Weekly davening times and announcements from Staten Island shuls.</p>
+    </div>
+
+    <!-- ─── YOUNG ISRAEL OF STATEN ISLAND ─── -->
+    <div class="shul-card">
+      <div class="shul-card-header">
+        <div>
+          <h3>Young Israel of Staten Island</h3>
+          <div class="shul-parsha">Parshas Pinchas · July 4, 2026</div>
+        </div>
+        <div class="shul-links">
+          <a href="https://www.yisi.org" target="_blank" class="shul-btn">🌐 yisi.org</a>
+          <a href="/yisi-announcements.pdf" target="_blank" class="shul-btn gold">📄 Full Announcements</a>
+        </div>
+      </div>
+      <div class="shul-body">
+        <div class="luach-grid">
+
+          <!-- Shabbos column -->
+          <div class="luach-col">
+            <h4>🕯️ Shabbos — July 3–4</h4>
+            <div class="luach-row"><span class="lbl">Candle Lighting</span><span class="val">7:05 / 7:40 / 8:13 PM</span></div>
+            <div class="luach-row"><span class="lbl">Mincha (Erev)</span><span class="val">6:40 / 7:15 / 8:25 PM</span></div>
+            <div class="luach-row"><span class="lbl">Shacharis</span><span class="val">7, 8, 9, 9:30 Sfard</span></div>
+            <div class="luach-row"><span class="lbl">Rabbi's Parsha Shiur</span><span class="val">8:25 AM</span></div>
+            <div class="luach-row"><span class="lbl">Z'man Krias Shema</span><span class="val">9:16 AM</span></div>
+            <div class="luach-row"><span class="lbl">Women's Learning</span><span class="val">4:00 PM</span></div>
+            <div class="luach-row"><span class="lbl">Daf Yomi</span><span class="val">7:10 PM</span></div>
+            <div class="luach-row"><span class="lbl">Mishna Yomis</span><span class="val">8:00 PM</span></div>
+            <div class="luach-row"><span class="lbl">Mincha</span><span class="val">3:00 & 8:10 PM</span></div>
+            <div class="luach-row"><span class="lbl">Shabbos Ends</span><span class="val">9:16 PM</span></div>
+            <div class="luach-highlight">
+              <span class="drasha-lbl">Rabbi Lehrfield speaks (between Mincha & Maariv)</span>
+              <span class="drasha-topic">Pinchas — The Kohen Gadol</span>
+            </div>
+          </div>
+
+          <!-- Weekday column -->
+          <div class="luach-col">
+            <h4>📅 Weekday Luach</h4>
+            <div class="luach-row"><span class="lbl">Earliest T&amp;T</span><span class="val">4:32 AM</span></div>
+            <div class="luach-row"><span class="lbl">Early Mincha (Sun only)</span><span class="val">1:45 PM</span></div>
+            <div class="luach-row"><span class="lbl">Mincha / Maariv (Sun–Thu)</span><span class="val">8:25 PM</span></div>
+            <div class="luach-row"><span class="lbl">Oraysa (Sun–Thu)</span><span class="val">45 min before Mincha</span></div>
+            <div class="luach-row"><span class="lbl">Semichas Chaver (Wed)</span><span class="val">9:00 PM</span></div>
+            <div class="luach-row"><span class="lbl">Chazara w/ R' Katzman (Mon)</span><span class="val">9:15 PM</span></div>
+            <div class="luach-row"><span class="lbl">R' Weiss Tefilla (Wed)</span><span class="val">9:00 PM</span></div>
+            <div class="luach-row"><span class="lbl">R' Weiss Parsha (Wed)</span><span class="val">9:30 PM</span></div>
+            <div class="luach-row" style="border-top:1px solid var(--border2);margin-top:.4rem;padding-top:.6rem"><span class="lbl">R' Weiss dial-in</span><span class="val">425-436-6327 · 435236#</span></div>
+            <div class="luach-highlight" style="border-left-color:var(--green);background:rgba(62,124,89,.08)">
+              <span class="drasha-lbl" style="color:var(--green)">Calendar Correction</span>
+              <span class="drasha-topic" style="font-weight:500;font-size:.8rem">No weekday Early Mincha until after Labor Day. Sunday Early Mincha continues at 1:45 PM.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Halacha of the week -->
+        <div class="halacha-box">
+          <h4>📖 Halacha of the Week — Shehecheyanu During the Three Weeks</h4>
+          <p>One should refrain from saying Shehecheyanu during the Three Weeks since it is a period of calamity for Klal Yisroel. Many poskim permit saying Shehecheyanu on Shabbos during the Three Weeks.</p>
+          <p>A garment requiring a Shehecheyanu should not be worn during the Three Weeks, except for Shabbos, when a Shehecheyanu may be recited. This permit is only until Rosh Chodesh Av, since during the Nine Days new clothing may not be bought or worn. If the Shehecheyanu was already recited at the time of purchase, the garment may be worn for the first time during the Three Weeks until Rosh Chodesh Av.</p>
+          <p>A new fruit requiring a Shehecheyanu may be purchased and eaten during the Three Weeks after saying the Shehecheyanu. If the fruit will not spoil, it should be kept until Shabbos, with the Shehecheyanu recited then.</p>
+        </div>
+
+        <p class="shul-note">Eruv is up on both sides · YISI, 718.494.6700 · Full weekly announcements at <a href="https://www.yisi.org" target="_blank" style="color:var(--green)">yisi.org</a><br>Times are for informational purposes — always confirm with the shul.</p>
+      </div>
+    </div>
+
+    <!-- Add-your-shul invitation -->
+    <div class="add-shul-cta">
+      <p>Is your shul's schedule not listed here?</p>
+      <a href="mailto:info@shoplocalsi.com?subject=Add%20Our%20Shul%20to%20ShopLocalSI">Add your shul's luach →</a>
+    </div>
+
+  </div>
+</div>
+
 <script>
 // ── SHABBOS ──
 (function(){
@@ -631,7 +748,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2025 Shop Local Staten Island · Strengthening our community</span>
+    <span>© 2026 Shop Local Staten Island · Strengthening our community</span>
     <span><a href="/advertise.html">Advertise with us</a></span>
   </div>
 </footer>
