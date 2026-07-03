@@ -537,8 +537,10 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <option value="gemach">Community Gemachs</option>
       <option value="emergency">Emergency Services</option>
       <option value="media">Media</option>
-      <option value="daycare">Daycare</option>
-      <option value="playgroup">Playgroup</option>
+      <option value="playgroups">Playgroups/Daycare</option>
+      <option value="community">Community Organizations</option>
+      <option value="schools">Schools</option>
+      <option value="shuls">Shuls</option>
       <option value="other">Other</option>
     </select>
     <button class="search-btn" onclick="filterBiz()">Search</button>
@@ -589,8 +591,10 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <button class="ctab" onclick="setTab('insurance',this)">Insurance</button>
   <button class="ctab" onclick="setTab('gemach',this)">Gemach</button>
   <button class="ctab" onclick="setTab('media',this)">Media</button>
-  <button class="ctab" onclick="setTab('daycare',this)">Daycare</button>
-  <button class="ctab" onclick="setTab('playgroup',this)">Playgroup</button>
+  <button class="ctab" onclick="setTab('playgroups',this)">Playgroups/Daycare</button>
+  <button class="ctab" onclick="setTab('community',this)">Community Organizations</button>
+  <button class="ctab" onclick="setTab('schools',this)">Schools</button>
+  <button class="ctab" onclick="setTab('shuls',this)">Shuls</button>
   <button class="ctab em" onclick="setTab('emergency',this)">Emergency</button>
   <button class="ctab" onclick="setTab('other',this)">Other</button>
 </div>
@@ -633,7 +637,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     </div></div>
     <div class="cat-section" data-cat="medical"><div class="cat-title">Medical</div><div class="biz-grid">
       <div class="biz-card" data-cat="medical" data-search="dr kenneth horowitz eyes ophthalmology"><div class="biz-name">Dr Kenneth Horowitz MD</div><div class="biz-desc">Care &amp; Treatment of the Eyes</div><div class="biz-phone"><a href="tel:7182701794">718-270-1794</a></div><div class="biz-tag">Eye Care Specialist</div></div>
-      <div class="biz-card" data-cat="medical" data-search="elysha schwartz stitches aesthetics botox"><div class="biz-name">Elysha Schwartz</div><div class="biz-desc">Stitches · Aesthetics · Botox</div><div class="biz-phone"><a href="tel:9293224480">929-322-4480</a></div><div class="biz-tag">Aesthetics &amp; Botox</div></div>
+      <div class="biz-card" data-cat="medical" data-search="ehysha schwartz stitches aesthetics botox"><div class="biz-name">Ehysha Schwartz</div><div class="biz-desc">Stitches · Aesthetics · Botox</div><div class="biz-phone"><a href="tel:9293224480">929-322-4480</a></div><div class="biz-tag">Aesthetics &amp; Botox</div></div>
       <div class="biz-card" data-cat="medical" data-search="miriam blau np after hours medical"><div class="biz-name">Miriam Blau NP</div><div class="biz-desc">After Hours Medical · 7 Ismay St</div><div class="biz-phone"><a href="tel:6465807333">646-580-7333</a></div><div class="biz-tag">After-Hours Medical</div></div>
       <div class="biz-card" data-cat="medical" data-search="sincere medical bradley family practice"><div class="biz-name">Sincere Medical</div><div class="biz-addr">314 Bradley Ave</div><div class="biz-phone"><a href="tel:7184941700">718-494-1700</a></div><div class="biz-tag">Family Medical Practice</div></div>
     </div></div>
@@ -710,8 +714,10 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-card em" data-cat="emergency" data-search="shomrim neighborhood watch security"><div class="biz-name">Shomrim</div><div class="biz-phone"><a href="tel:7183702121">718-370-2121</a></div><div class="biz-tag">Neighborhood Watch</div></div>
     </div></div>
     <div class="cat-section hidden" data-cat="media"><div class="cat-title">Media &amp; Marketing</div><div class="biz-grid"></div></div>
-    <div class="cat-section hidden" data-cat="daycare"><div class="cat-title">Daycare</div><div class="biz-grid"></div></div>
-    <div class="cat-section hidden" data-cat="playgroup"><div class="cat-title">Playgroups</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="playgroups"><div class="cat-title">Playgroups/Daycare</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="community"><div class="cat-title">Community Organizations</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="schools"><div class="cat-title">Schools</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="shuls"><div class="cat-title">Shuls</div><div class="biz-grid"></div></div>
     <div class="cat-section hidden" data-cat="other"><div class="cat-title" style="color:var(--muted);border-bottom-color:var(--border2)">Newly Added &mdash; Awaiting Category Review</div><div class="biz-grid"></div></div>
     <p id="noResults" class="hidden" style="color:var(--muted);padding:3rem;text-align:center;font-size:.9rem">No businesses found. Try a different search.</p>
   </div>
@@ -776,7 +782,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2025 Shop Local Staten Island · Strengthening our community</span>
+    <span>© 2026 Shop Local Staten Island · Strengthening our community</span>
     <span><a href="/advertise.html">Advertise with us</a></span>
   </div>
 </footer>
@@ -818,8 +824,12 @@ var CAT_MAP={
   'community gemachs':'gemach','gemach':'gemach',
   'emergency services':'emergency','emergency':'emergency',
   'media':'media','marketing':'media',
-  'daycare':'daycare','childcare':'daycare',
-  'playgroup':'playgroup','play group':'playgroup'
+  'daycare':'playgroups','childcare':'playgroups',
+  'playgroup':'playgroups','play group':'playgroups','play groups':'playgroups','playgroups':'playgroups',
+  'playgroups/daycare':'playgroups','daycare/playgroups':'playgroups',
+  'community':'community','community organization':'community','community organizations':'community',
+  'schools':'schools','school':'schools',
+  'shuls':'shuls','shul':'shuls','synagogue':'shuls','synagogues':'shuls'
 };
 function normName(s){return (s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
 function mapCategory(raw){var k=(raw||'').trim().toLowerCase();return CAT_MAP[k]||'other';}

@@ -667,8 +667,11 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <p class="section-sub fade-up">No payment needed. Fill in your details and we'll add you to the directory within 24 hours.</p>
   </div>
   <div style="max-width:620px;margin:2.5rem auto 0;background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2.5rem;border-top:4px solid var(--green)" class="fade-up">
-    <div style="font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;padding:.75rem;background:var(--light);border-radius:4px;border-left:3px solid var(--green)">
+    <div style="font-size:.8rem;color:var(--mid);margin-bottom:.75rem;padding:.75rem;background:var(--light);border-radius:4px;border-left:3px solid var(--green)">
       ✅ Free listings include your business name, phone, category, and address. Upgrade to Featured for a full profile with description and logo.
+    </div>
+    <div style="font-size:.74rem;color:var(--mid);margin-bottom:1.5rem;padding:.75rem;background:rgba(212,168,67,.07);border-radius:4px;border-left:3px solid #d4a843;line-height:1.65">
+      💛 <strong style="color:var(--navy)">This service is free thanks to COJO Staten Island.</strong> ShopLocalSI was built and is maintained as a community project of COJO. If you find it valuable, a small voluntary donation helps keep COJO's community work going. <a href="/donate.html" style="color:#8a6a10;font-weight:700">Learn more →</a>
     </div>
 
 
@@ -688,14 +691,23 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <option>Photography</option><option>Auto Services</option><option>Medical</option>
         <option>Specialty Shops</option><option>Beauty &amp; Self Care</option>
         <option>Services</option><option>Transportation</option><option>Realtors</option>
-        <option>Media</option><option>Daycare</option><option>Playgroup</option><option>Other</option>
+        <option>Media</option><option>Playgroups/Daycare</option><option>Community Organizations</option><option>Schools</option><option>Shuls</option><option>Other</option>
       </select>
     </div>
     <div class="field"><label>Address</label><input type="text" id="biz-addr" placeholder="123 Victory Blvd, Staten Island"></div>
     <div class="field"><label>Brief Description (optional)</label><textarea id="biz-desc" placeholder="One line about your business"></textarea></div>
     <button class="btn-green" style="width:100%;justify-content:center" id="submitBtn" onclick="submitFree()">Submit Free Listing</button>
-    <div id="submitMsg" style="display:none;margin-top:.75rem;background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:.85rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600">
-      ✅ Thank you! Your listing has been submitted and will appear in the directory within 24 hours.
+    <div id="submitMsg" style="display:none;margin-top:.75rem">
+      <div style="background:rgba(62,124,89,.08);border:2px solid rgba(62,124,89,.25);border-radius:6px;padding:.85rem;text-align:center;font-size:.85rem;color:var(--navy);font-weight:600">
+        ✅ Thank you! Your listing has been submitted and will appear in the directory within 24 hours.
+      </div>
+      <div style="background:#0b1f3a;border-radius:8px;padding:1.5rem;margin-top:1rem;text-align:center;border-top:4px solid #d4a843">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d4a843;margin-bottom:.6rem">Pay It Forward 💛</div>
+        <div style="font-size:.92rem;font-weight:800;color:#fff;margin-bottom:.6rem;line-height:1.35">Your listing is 100% free — thanks to COJO Staten Island.</div>
+        <div style="font-size:.76rem;color:rgba(255,255,255,.78);line-height:1.7;max-width:420px;margin:0 auto .9rem">ShopLocalSI is a community project of COJO, the organization that has quietly supported Staten Island families with food, housing, and crisis help since 1968. If this free service brings you value, consider a small voluntary donation to keep COJO's work going. Any amount helps.</div>
+        <a href="/donate.html" style="display:inline-block;background:#d4a843;color:#0b1f3a;padding:.6rem 1.75rem;border-radius:50px;font-size:.75rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;text-decoration:none">Donate to COJO →</a>
+        <div style="font-size:.62rem;color:rgba(255,255,255,.4);margin-top:.6rem">Completely optional · Tax-deductible · EIN 11-2575788</div>
+      </div>
     </div>
   </div>
 </div>
@@ -773,7 +785,7 @@ async function submitFree(){
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2025 Shop Local Staten Island · Strengthening our community</span>
+    <span>© 2026 Shop Local Staten Island · Strengthening our community</span>
     <span><a href="/advertise.html">Advertise with us</a></span>
   </div>
 </footer>
