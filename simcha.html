@@ -534,50 +534,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <a href="#announce" class="btn-outline-green" style="padding:.43rem 1rem;font-size:.72rem">Announce Your Simcha</a>
   <a href="#checklist" class="btn-outline-navy" style="padding:.43rem 1rem;font-size:.72rem">Planning Checklist</a>
 </div>
-<section id="vendors" class="section bg-light">
-  <div class="section-inner" style="text-align:center">
-    <div class="section-eyebrow fade-up">Trusted Local Vendors</div>
-    <h2 class="section-title fade-up">Find Your Perfect Vendor</h2>
-    <div class="green-divider fade-up"></div>
-  </div>
-  <div class="vfilter-wrap">
-    <button class="vfilter active" onclick="fv('all',this)">All</button>
-    <button class="vfilter" onclick="fv('catering',this)">Catering</button>
-    <button class="vfilter" onclick="fv('photo',this)">Photography</button>
-    <button class="vfilter" onclick="fv('decor',this)">Decor</button>
-    <button class="vfilter" onclick="fv('gifts',this)">Gifts</button>
-    <button class="vfilter" onclick="fv('beauty',this)">Beauty</button>
-    <button class="vfilter" onclick="fv('clothing',this)">Clothing</button>
-    <button class="vfilter" onclick="fv('transport',this)">Transport</button>
-  </div>
-  <div class="vendor-grid">
-    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Catering</div><div class="vendor-name">Island Catering NY</div><div class="vendor-desc">Full-service kosher catering for all simchos. Steven Israel.</div></div><div class="vendor-footer"><span class="vphone">646-645-6609</span></div></div>
-    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Catering</div><div class="vendor-name">Dairy Palace Pizza &amp; Caterers</div><div class="vendor-desc">Catering for kiddushim, sheva brachos, and all dairy events.</div></div><div class="vendor-footer"><span class="vphone">718-761-5200</span></div></div>
-    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Desserts</div><div class="vendor-name">321 Desserts</div><div class="vendor-desc">Beautiful dessert tables and cakes for your simcha.</div></div><div class="vendor-footer"><span class="vphone">718-290-7785</span></div></div>
-    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Ice Cream</div><div class="vendor-name">Sugar House Ice Cream</div><div class="vendor-desc">Ice cream station and dessert catering &mdash; a crowd favorite!</div></div><div class="vendor-footer"><span class="vphone">718-701-6891</span></div></div>
-    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Engaging Pix Photography</div><div class="vendor-desc">Weddings, bar/bas mitzvahs, vorts, and family portraits.</div></div><div class="vendor-footer"><span class="vphone">347-393-6094</span></div></div>
-    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Koby Yedgar Photography</div><div class="vendor-desc">Professional simcha photography capturing every precious moment.</div></div><div class="vendor-footer"><span class="vphone">917-682-1351</span></div></div>
-    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Nechami Photography</div><div class="vendor-desc">Family portraits and simcha photography with a warm touch.</div></div><div class="vendor-footer"><span class="vphone">347-248-6011</span></div></div>
-    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Rikkiz Photography</div><div class="vendor-desc">Portraits and events &mdash; capturing your simcha beautifully.</div></div><div class="vendor-footer"><span class="vphone">917-753-4444</span></div></div>
-    <div class="vendor-card" data-v="decor"><div class="vendor-header"><div class="vendor-cat-badge">Balloon Decor</div><div class="vendor-name">Sabine ExtraaoridnAir</div><div class="vendor-desc">Stunning balloon decor for weddings, bar mitzvahs, and all smachot.</div></div><div class="vendor-footer"><span class="vphone">917-838-2707</span></div></div>
-    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Gifts &amp; Favors</div><div class="vendor-name">Island Gifting</div><div class="vendor-desc">Custom engraved gifts, photo printing, and personalized favors.</div></div><div class="vendor-footer"><span class="vphone">917-753-4444</span></div></div>
-    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Gifts</div><div class="vendor-name">Hedy's Gifts</div><div class="vendor-desc">Beautiful gifts for all simcha occasions. We ship!</div></div><div class="vendor-footer"><span class="vphone">347-729-3538</span></div></div>
-    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Baby Gifts</div><div class="vendor-name">Little Lilac</div><div class="vendor-desc">Baby layette and gifting &mdash; perfect for bris and baby naming.</div></div><div class="vendor-footer"><span class="vphone">347-675-1567</span></div></div>
-    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Jewelry</div><div class="vendor-name">Lab Grown Jewelry</div><div class="vendor-desc">14ct &amp; 18ct gold diamond jewelry &mdash; perfect for engagement rings.</div></div><div class="vendor-footer"><span class="vphone">917-640-7675</span></div></div>
-    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Hair &amp; Makeup</div><div class="vendor-name">Danielle Besser</div><div class="vendor-desc">Wig, hair, and makeup services for brides and simcha guests.</div></div><div class="vendor-footer"><span class="vphone">718-232-2789</span></div></div>
-    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Makeup</div><div class="vendor-name">Glam n Go</div><div class="vendor-desc">Makeup by Chani &mdash; bridal and simcha makeup that lasts all night.</div></div><div class="vendor-footer"><span class="vphone">917-843-8740</span></div></div>
-    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Makeup</div><div class="vendor-name">Makeup by Naomi</div><div class="vendor-desc">Professional makeup for brides and simcha occasions.</div></div><div class="vendor-footer"><span class="vphone">718-598-7865</span></div></div>
-    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Wigs &amp; Hair</div><div class="vendor-name">Hair by Gall</div><div class="vendor-desc">Wigs, hair styling, and haircuts for the kallah and guests.</div></div><div class="vendor-footer"><span class="vphone">347-424-7505</span></div></div>
-    <div class="vendor-card" data-v="clothing"><div class="vendor-header"><div class="vendor-cat-badge">Bridal Lingerie</div><div class="vendor-name">White Petal Lingerie</div><div class="vendor-desc">Perfect fitting for the kallah and all simcha occasions.</div></div><div class="vendor-footer"><span class="vphone">347-707-4637</span></div></div>
-    <div class="vendor-card" data-v="clothing"><div class="vendor-header"><div class="vendor-cat-badge">Mens &amp; Boys</div><div class="vendor-name">Mr Basics</div><div class="vendor-desc">Mens and boys dry goods &mdash; everything for the simcha.</div></div><div class="vendor-footer"><span class="vphone">718-851-1799</span></div></div>
-    <div class="vendor-card" data-v="transport"><div class="vendor-header"><div class="vendor-cat-badge">Transportation</div><div class="vendor-name">Yakov Schmelczer</div><div class="vendor-desc">VIP long distance transportation and messenger services.</div></div><div class="vendor-footer"><span class="vphone">917-200-4594</span></div></div>
-  </div>
-  <div style="text-align:center;margin-top:2.5rem" class="fade-up">
-    <p style="font-size:.8rem;color:var(--mid);margin-bottom:1rem">Are you a simcha vendor? First month free.</p>
-    <a href="/advertise.html" class="btn-green">List Your Business</a>
-  </div>
-</section>
-<section id="announce" class="section bg-white">
+<section id="announce" class="section bg-light">
   <div class="section-inner" style="text-align:center">
     <div class="section-eyebrow fade-up">Share the Joy</div>
     <h2 class="section-title fade-up">Simcha Announcements</h2>
@@ -648,6 +605,49 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 
       </div>
     </div>
+  </div>
+</section>
+<section id="vendors" class="section bg-white">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-eyebrow fade-up">Trusted Local Vendors</div>
+    <h2 class="section-title fade-up">Find Your Perfect Vendor</h2>
+    <div class="green-divider fade-up"></div>
+  </div>
+  <div class="vfilter-wrap">
+    <button class="vfilter active" onclick="fv('all',this)">All</button>
+    <button class="vfilter" onclick="fv('catering',this)">Catering</button>
+    <button class="vfilter" onclick="fv('photo',this)">Photography</button>
+    <button class="vfilter" onclick="fv('decor',this)">Decor</button>
+    <button class="vfilter" onclick="fv('gifts',this)">Gifts</button>
+    <button class="vfilter" onclick="fv('beauty',this)">Beauty</button>
+    <button class="vfilter" onclick="fv('clothing',this)">Clothing</button>
+    <button class="vfilter" onclick="fv('transport',this)">Transport</button>
+  </div>
+  <div class="vendor-grid">
+    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Catering</div><div class="vendor-name">Island Catering NY</div><div class="vendor-desc">Full-service kosher catering for all simchos. Steven Israel.</div></div><div class="vendor-footer"><span class="vphone">646-645-6609</span></div></div>
+    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Catering</div><div class="vendor-name">Dairy Palace Pizza &amp; Caterers</div><div class="vendor-desc">Catering for kiddushim, sheva brachos, and all dairy events.</div></div><div class="vendor-footer"><span class="vphone">718-761-5200</span></div></div>
+    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Desserts</div><div class="vendor-name">321 Desserts</div><div class="vendor-desc">Beautiful dessert tables and cakes for your simcha.</div></div><div class="vendor-footer"><span class="vphone">718-290-7785</span></div></div>
+    <div class="vendor-card" data-v="catering"><div class="vendor-header"><div class="vendor-cat-badge">Ice Cream</div><div class="vendor-name">Sugar House Ice Cream</div><div class="vendor-desc">Ice cream station and dessert catering &mdash; a crowd favorite!</div></div><div class="vendor-footer"><span class="vphone">718-701-6891</span></div></div>
+    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Engaging Pix Photography</div><div class="vendor-desc">Weddings, bar/bas mitzvahs, vorts, and family portraits.</div></div><div class="vendor-footer"><span class="vphone">347-393-6094</span></div></div>
+    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Koby Yedgar Photography</div><div class="vendor-desc">Professional simcha photography capturing every precious moment.</div></div><div class="vendor-footer"><span class="vphone">917-682-1351</span></div></div>
+    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Nechami Photography</div><div class="vendor-desc">Family portraits and simcha photography with a warm touch.</div></div><div class="vendor-footer"><span class="vphone">347-248-6011</span></div></div>
+    <div class="vendor-card" data-v="photo"><div class="vendor-header"><div class="vendor-cat-badge">Photography</div><div class="vendor-name">Rikkiz Photography</div><div class="vendor-desc">Portraits and events &mdash; capturing your simcha beautifully.</div></div><div class="vendor-footer"><span class="vphone">917-753-4444</span></div></div>
+    <div class="vendor-card" data-v="decor"><div class="vendor-header"><div class="vendor-cat-badge">Balloon Decor</div><div class="vendor-name">Sabine ExtraaoridnAir</div><div class="vendor-desc">Stunning balloon decor for weddings, bar mitzvahs, and all smachot.</div></div><div class="vendor-footer"><span class="vphone">917-838-2707</span></div></div>
+    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Gifts &amp; Favors</div><div class="vendor-name">Island Gifting</div><div class="vendor-desc">Custom engraved gifts, photo printing, and personalized favors.</div></div><div class="vendor-footer"><span class="vphone">917-753-4444</span></div></div>
+    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Gifts</div><div class="vendor-name">Hedy's Gifts</div><div class="vendor-desc">Beautiful gifts for all simcha occasions. We ship!</div></div><div class="vendor-footer"><span class="vphone">347-729-3538</span></div></div>
+    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Baby Gifts</div><div class="vendor-name">Little Lilac</div><div class="vendor-desc">Baby layette and gifting &mdash; perfect for bris and baby naming.</div></div><div class="vendor-footer"><span class="vphone">347-675-1567</span></div></div>
+    <div class="vendor-card" data-v="gifts"><div class="vendor-header"><div class="vendor-cat-badge">Jewelry</div><div class="vendor-name">Lab Grown Jewelry</div><div class="vendor-desc">14ct &amp; 18ct gold diamond jewelry &mdash; perfect for engagement rings.</div></div><div class="vendor-footer"><span class="vphone">917-640-7675</span></div></div>
+    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Hair &amp; Makeup</div><div class="vendor-name">Danielle Besser</div><div class="vendor-desc">Wig, hair, and makeup services for brides and simcha guests.</div></div><div class="vendor-footer"><span class="vphone">718-232-2789</span></div></div>
+    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Makeup</div><div class="vendor-name">Glam n Go</div><div class="vendor-desc">Makeup by Chani &mdash; bridal and simcha makeup that lasts all night.</div></div><div class="vendor-footer"><span class="vphone">917-843-8740</span></div></div>
+    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Makeup</div><div class="vendor-name">Makeup by Naomi</div><div class="vendor-desc">Professional makeup for brides and simcha occasions.</div></div><div class="vendor-footer"><span class="vphone">718-598-7865</span></div></div>
+    <div class="vendor-card" data-v="beauty"><div class="vendor-header"><div class="vendor-cat-badge">Wigs &amp; Hair</div><div class="vendor-name">Hair by Gall</div><div class="vendor-desc">Wigs, hair styling, and haircuts for the kallah and guests.</div></div><div class="vendor-footer"><span class="vphone">347-424-7505</span></div></div>
+    <div class="vendor-card" data-v="clothing"><div class="vendor-header"><div class="vendor-cat-badge">Bridal Lingerie</div><div class="vendor-name">White Petal Lingerie</div><div class="vendor-desc">Perfect fitting for the kallah and all simcha occasions.</div></div><div class="vendor-footer"><span class="vphone">347-707-4637</span></div></div>
+    <div class="vendor-card" data-v="clothing"><div class="vendor-header"><div class="vendor-cat-badge">Mens &amp; Boys</div><div class="vendor-name">Mr Basics</div><div class="vendor-desc">Mens and boys dry goods &mdash; everything for the simcha.</div></div><div class="vendor-footer"><span class="vphone">718-851-1799</span></div></div>
+    <div class="vendor-card" data-v="transport"><div class="vendor-header"><div class="vendor-cat-badge">Transportation</div><div class="vendor-name">Yakov Schmelczer</div><div class="vendor-desc">VIP long distance transportation and messenger services.</div></div><div class="vendor-footer"><span class="vphone">917-200-4594</span></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem" class="fade-up">
+    <p style="font-size:.8rem;color:var(--mid);margin-bottom:1rem">Are you a simcha vendor? First month free.</p>
+    <a href="/advertise.html" class="btn-green">List Your Business</a>
   </div>
 </section>
 <section id="checklist" class="section bg-light">
