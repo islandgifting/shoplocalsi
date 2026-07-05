@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staten Island Shuttle Route | ShopLocalSI</title>
+<meta name="description" content="Staten Island Shuttle route map with all pickup and dropoff stops, including the Boro Park route.">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background:#f7f9f4; color:#1f2a1f; }
+  header { background:#1d3b2a; color:#fff; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  header a.logo { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:700; }
+  header a.logo span { color:#8bc34a; }
+  nav { display:flex; flex-wrap:wrap; gap:14px; }
+  nav a { color:#e6f2e0; text-decoration:none; font-size:.95rem; }
+  nav a:hover { color:#8bc34a; }
+  .hero { background:linear-gradient(135deg,#6cae3e,#8bc34a); color:#fff; text-align:center; padding:40px 20px; }
+  .hero h1 { font-size:2rem; margin-bottom:8px; }
+  .hero p { font-size:1.05rem; opacity:.95; max-width:640px; margin:0 auto; }
+  .wrap { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
+  .map-card { background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:14px; margin-bottom:34px; }
+  .map-card img { width:100%; height:auto; border-radius:10px; display:block; }
+  .map-card .tap-hint { text-align:center; font-size:.85rem; color:#667; margin-top:8px; }
+  h2.section { color:#1d3b2a; font-size:1.4rem; margin:26px 0 12px; border-left:5px solid #8bc34a; padding-left:12px; }
+  .stops-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:700px){ .stops-grid { grid-template-columns:1fr; } }
+  .stop-card { background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:20px 22px; }
+  .stop-card h3 { color:#6cae3e; text-transform:uppercase; letter-spacing:1px; font-size:1.05rem; margin-bottom:12px; }
+  .stop-card ol { padding-left:22px; }
+  .stop-card li { padding:4px 0; font-size:.97rem; }
+  .boro { background:#1d3b2a; color:#fff; border-radius:14px; padding:24px 26px; margin-top:30px; }
+  .boro h3 { color:#8bc34a; font-size:1.25rem; margin-bottom:12px; }
+  .boro p { margin:6px 0; line-height:1.5; }
+  .boro strong { color:#c7e8a9; }
+  .note { background:#eef6e5; border-radius:10px; padding:14px 18px; margin-top:26px; font-size:.92rem; color:#3a4a3a; }
+  footer { background:#1d3b2a; color:#cfe2c4; text-align:center; padding:22px; font-size:.9rem; }
+  footer a { color:#8bc34a; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">ShopLocal<span>SI</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="community.html">Community</a>
+    <a href="shuls.html">Shuls</a>
+    <a href="simcha.html">Simcha</a>
+    <a href="donate.html">Donate</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>🚌 Staten Island Shuttle Route</h1>
+  <p>Full route map with all pickup and dropoff stops around the neighborhood, plus the Boro Park route.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="map-card">
+    <a href="shuttlemap.jpg" target="_blank" rel="noopener">
+      <img src="shuttlemap.jpg" alt="Staten Island Shuttle route map showing dropoff stops along N Gannon, Forest Hill, Willowbrook, and Holden, and pickup stops along Harold St., Forest Hill, Willowbrook, and S Gannon">
+    </a>
+    <div class="tap-hint">Tap the map to open full size</div>
+  </div>
+
+  <h2 class="section">Stop List</h2>
+  <div class="stops-grid">
+
+    <div class="stop-card">
+      <h3>Dropoff</h3>
+      <ol>
+        <li>N Gannon / Bradley</li>
+        <li>N Gannon / Warwick</li>
+        <li>N Gannon / Wooley</li>
+        <li>Forest Hill / Westwood</li>
+        <li>Willowbrook / Ardmore</li>
+        <li>Willowbrook / Birchard</li>
+        <li>Willowbrook / Roosevelt</li>
+        <li>Holden / Wellbrook</li>
+        <li>Holden / Suffolk</li>
+        <li>Holden / Mountainview</li>
+        <li>Holden / Fanning</li>
+        <li>Holden / Manor</li>
+      </ol>
+    </div>
+
+    <div class="stop-card">
+      <h3>Pickup</h3>
+      <ol>
+        <li>Harold St. / Manor</li>
+        <li>Harold St. / Fanning</li>
+        <li>Harold St. / Mountainview</li>
+        <li>Harold St. / Suffolk</li>
+        <li>Harold St. / Wellbrook</li>
+        <li>Harold St. / Buchanan</li>
+        <li>Harold St. / Sunset</li>
+        <li>Harold St. / Joseph</li>
+        <li>Harold St. / Forest Hill</li>
+        <li>Forest Hill / Willowbrook</li>
+        <li>Willowbrook / Woodward</li>
+        <li>Willowbrook / Hall</li>
+        <li>S Gannon / Steward</li>
+        <li>S Gannon / Collfield</li>
+        <li>S Gannon / Woolley</li>
+        <li>S Gannon / Sheraden</li>
+        <li>S Gannon / Kell</li>
+        <li>S Gannon / Bradley</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div class="boro">
+    <h3>Boro Park Route</h3>
+    <p><strong>Dropoff — 50th St.:</strong> 11–New Utrecht, 13, 14, 15, 16, 17, 18th Ave. / 50th</p>
+    <p><strong>Pickup — 49th St.:</strong> 18, 17, 16, 15, 14, 13, 12, 12th Ave., 55–60</p>
+  </div>
+
+  <div class="note">
+    Schedule and stops are subject to change. For times or questions about the shuttle, please contact the shuttle service directly.
+  </div>
+
+</div>
+
+<footer>
+  © 2026 ShopLocalSI.com — Supporting the Staten Island Jewish Community · <a href="index.html">Home</a> · <a href="community.html">Community</a>
+</footer>
+
+</body>
+</html>
