@@ -3,129 +3,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Staten Island Shuttle Route | ShopLocalSI</title>
+<title>Shuttle Route &mdash; Shop Local Staten Island</title>
 <meta name="description" content="Staten Island Shuttle route map with all pickup and dropoff stops, including the Boro Park route.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background:#f7f9f4; color:#1f2a1f; }
-  header { background:#1d3b2a; color:#fff; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-  header a.logo { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:700; }
-  header a.logo span { color:#8bc34a; }
-  nav { display:flex; flex-wrap:wrap; gap:14px; }
-  nav a { color:#e6f2e0; text-decoration:none; font-size:.95rem; }
-  nav a:hover { color:#8bc34a; }
-  .hero { background:linear-gradient(135deg,#6cae3e,#8bc34a); color:#fff; text-align:center; padding:40px 20px; }
-  .hero h1 { font-size:2rem; margin-bottom:8px; }
-  .hero p { font-size:1.05rem; opacity:.95; max-width:640px; margin:0 auto; }
-  .wrap { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
-  .map-card { background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:14px; margin-bottom:34px; }
-  .map-card img { width:100%; height:auto; border-radius:10px; display:block; }
-  .map-card .tap-hint { text-align:center; font-size:.85rem; color:#667; margin-top:8px; }
-  h2.section { color:#1d3b2a; font-size:1.4rem; margin:26px 0 12px; border-left:5px solid #8bc34a; padding-left:12px; }
-  .stops-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-  @media (max-width:700px){ .stops-grid { grid-template-columns:1fr; } }
-  .stop-card { background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:20px 22px; }
-  .stop-card h3 { color:#6cae3e; text-transform:uppercase; letter-spacing:1px; font-size:1.05rem; margin-bottom:12px; }
-  .stop-card ol { padding-left:22px; }
-  .stop-card li { padding:4px 0; font-size:.97rem; }
-  .boro { background:#1d3b2a; color:#fff; border-radius:14px; padding:24px 26px; margin-top:30px; }
-  .boro h3 { color:#8bc34a; font-size:1.25rem; margin-bottom:12px; }
-  .boro p { margin:6px 0; line-height:1.5; }
-  .boro strong { color:#c7e8a9; }
-  .note { background:#eef6e5; border-radius:10px; padding:14px 18px; margin-top:26px; font-size:.92rem; color:#3a4a3a; }
-  footer { background:#1d3b2a; color:#cfe2c4; text-align:center; padding:22px; font-size:.9rem; }
-  footer a { color:#8bc34a; }
+:root{--navy:#0b1f3a;--blue:#2c6e9e;--green:#3e7c59;--green2:#4a9469;--light:#f4f4f2;--white:#ffffff;--red:#cc2222;--text:#1a2a3a;--mid:#4a6070;--muted:#6b8090;--border:#dde4ea;--border2:#eaeef2;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--text);font-size:15px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy)}
+.emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600;letter-spacing:.2px}
+.emstrip a{color:rgba(255,255,255,.92)}.emstrip a:hover{color:#fff}
+.emstrip .sep{color:rgba(255,255,255,.35)}.emstrip .em-label{color:rgba(255,255,255,.6);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+.top-bar{background:#0d2137;padding:.42rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem}
+.top-bar-tagline{color:rgba(255,255,255,.9);text-align:center;flex:1;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:.65rem}
+.top-bar-right{display:flex;gap:1rem;align-items:center;flex-shrink:0}
+.top-bar-right a{color:rgba(255,255,255,.7);font-size:.75rem;transition:color .2s}.top-bar-right a:hover{color:#fff}
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:88px;position:sticky;top:0;z-index:999;box-shadow:0 2px 16px rgba(11,31,58,.07)}
+.logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+.logo-img{height:70px;width:70px;object-fit:contain}
+.logo-wordmark{display:flex;align-items:baseline;gap:.2rem}
+.logo-shop{font-size:1.4rem;font-weight:800;color:#0b1f3a;letter-spacing:1px;text-transform:uppercase}
+.logo-local-word{font-size:1.4rem;font-weight:800;color:#3e7c59;letter-spacing:1px;text-transform:uppercase}
+.logo-divider-row{display:flex;align-items:center;gap:.4rem;margin:.1rem 0 .15rem}
+.logo-dash{width:18px;height:2px;background:#0b1f3a;opacity:.4;flex-shrink:0}
+.logo-staten{font-size:.6rem;font-weight:700;color:#0b1f3a;letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
+.logo-url{font-size:.62rem;font-weight:600;color:#2c6e9e;letter-spacing:.5px}
+.nav-links{display:flex;align-items:center;gap:0;list-style:none;margin:0 .5rem}
+.nav-links a{font-size:.72rem;font-weight:600;color:#1a2a3a;letter-spacing:.6px;text-transform:uppercase;padding:.5rem .75rem;position:relative;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:#3e7c59}.nav-links a.active{color:#3e7c59}
+.nav-links a.active::after{content:'';position:absolute;bottom:-2px;left:.75rem;right:.75rem;height:2px;background:#3e7c59;border-radius:1px}
+.nav-cta{background:#3e7c59!important;color:#fff!important;padding:.48rem 1.1rem!important;border-radius:50px!important;font-weight:700!important;font-size:.7rem!important;letter-spacing:.3px!important;transition:background .2s!important;white-space:nowrap}
+.nav-cta:hover{background:#4a9469!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:#0b1f3a;display:block}
+.page-hero{background:var(--navy);padding:4rem 2.5rem;text-align:center}
+.page-hero-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green2);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+.page-hero-eyebrow::before,.page-hero-eyebrow::after{content:'';width:24px;height:2px;background:var(--green2)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:2px;line-height:1.1}
+.page-hero h1 span{color:var(--green2)}
+.page-hero p{font-size:.95rem;color:rgba(255,255,255,.75);margin-top:.75rem;max-width:540px;margin-left:auto;margin-right:auto}
+
+.section{padding:3rem 2.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.sec-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem}
+.sec-eyebrow::before,.sec-eyebrow::after{content:'';width:24px;height:2px;background:var(--green)}
+.sec-title{font-size:clamp(1.3rem,3vw,1.8rem);color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
+.sec-divider{width:44px;height:3px;background:var(--green);margin:.6rem 0 2rem;border-radius:2px}
+
+/* MAP CARD */
+.map-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem;box-shadow:0 2px 16px rgba(11,31,58,.07);margin-bottom:2.5rem}
+.map-card img{width:100%;height:auto;border-radius:6px;display:block}
+.tap-hint{text-align:center;font-size:.72rem;color:var(--muted);margin-top:.65rem;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+
+/* STOP GRID */
+.stops-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+.stop-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.75rem 2rem;box-shadow:0 2px 16px rgba(11,31,58,.05)}
+.stop-card h3{font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.stop-card h3::after{content:'';flex:1;height:2px;background:var(--border2)}
+.stop-card ol{padding-left:1.4rem}
+.stop-card li{font-size:.85rem;font-weight:500;color:var(--text);padding:.28rem 0;border-bottom:1px solid var(--border2)}
+.stop-card li:last-child{border-bottom:none}
+
+/* BORO PARK BOX */
+.boro-box{background:var(--navy);border-radius:10px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.boro-title{font-size:1rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;display:flex;align-items:center;gap:.75rem}
+.boro-title::before{content:'';width:20px;height:2px;background:var(--green2)}
+.boro-box p{font-size:.88rem;color:rgba(255,255,255,.85);margin:.4rem 0;line-height:1.65}
+.boro-box strong{color:var(--green2);text-transform:uppercase;font-size:.75rem;letter-spacing:1px}
+
+.note-strip{background:#fff;border:1px solid var(--border);border-left:4px solid var(--green);border-radius:8px;padding:1rem 1.5rem;font-size:.8rem;color:var(--mid)}
+
+footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 1.5rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem}
+.foot-logo-wrap{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.foot-logo-img{height:52px;width:52px;object-fit:contain}
+.foot-brand-text{display:flex;flex-direction:column;line-height:1.2}
+.foot-brand-text .shop{font-size:1.1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.foot-brand-text .si{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem}
+.foot-tagline{font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.55);max-width:260px}
+.foot-heading{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green2);margin-bottom:.85rem}
+.foot-links{list-style:none}.foot-links li{margin-bottom:.5rem}
+.foot-links a{font-size:.78rem;color:rgba(255,255,255,.6);transition:color .2s}.foot-links a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:rgba(255,255,255,.4);max-width:1100px;margin:0 auto}
+.foot-bottom a{color:var(--green2)}
+@media(max-width:900px){
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}.foot-grid>div:first-child{grid-column:1/-1}
+  nav{padding:0 1.25rem}.nav-links{display:none}.hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:88px;left:0;right:0;background:#fff;border-bottom:2px solid var(--border);padding:1rem;z-index:998;gap:.25rem}
+  .page-hero,.section{padding:2.5rem 1.25rem}
+}
+@media(max-width:700px){
+  .stops-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .foot-grid{grid-template-columns:1fr}.foot-grid>div:first-child{grid-column:auto}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <a class="logo" href="index.html">ShopLocal<span>SI</span></a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="community.html">Community</a>
-    <a href="shuls.html">Shuls</a>
-    <a href="simcha.html">Simcha</a>
-    <a href="donate.html">Donate</a>
-  </nav>
-</header>
+<div class="emstrip">
+  <span class="em-label">Emergency</span>
+  <a href="tel:7182301000">Hatzolah 718-230-1000</a><span class="sep">&middot;</span>
+  <a href="tel:7183702121">Shomrim 718-370-2121</a><span class="sep">&middot;</span>
+  <a href="tel:7187614444">Shmira 718-761-4444</a><span class="sep">&middot;</span>
+  <a href="tel:7187612428">Chaveirim 718-761-2428</a><span class="sep">&middot;</span>
+  <a href="tel:7188717299">Chavivim 718-871-7299</a><span class="sep">&middot;</span>
+  <a href="tel:7188544548">Misaskim 718-854-4548</a>
+</div>
+<div class="top-bar">
+  <div style="width:100px"></div>
+  <div class="top-bar-tagline">Support Local &middot; Strengthen Community</div>
+  <div class="top-bar-right">
+    <a href="#">&#x1F426; Facebook</a>
+    <a href="#">&#x1F4F7; Instagram</a>
+    <a href="mailto:info@shoplocalsi.com">&#x2709; Email</a>
+  </div>
+</div>
+<nav>
+  <a href="/" class="logo-wrap">
+    <img src="/logo.png" alt="Shop Local Staten Island" class="logo-img">
+    <div style="display:flex;flex-direction:column;line-height:1">
+      <div class="logo-wordmark"><span class="logo-shop">SHOP&nbsp;</span><span class="logo-local-word">LOCAL</span></div>
+      <div class="logo-divider-row"><span class="logo-dash"></span><span class="logo-staten">Staten Island</span><span class="logo-dash"></span></div>
+      <span class="logo-url">shoplocalsi.com</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" data-page="home">Home</a></li>
+    <li><a href="/directory.html" data-page="directory">Directory</a></li>
+    <li><a href="/marketplace.html" data-page="marketplace">Market</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
+    <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
+    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
+    <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
+    <li><a href="/realty.html" data-page="realty">Realty</a></li>
+    <li><a href="/community.html" data-page="community">Community</a></li>
+    <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
+  </ul>
+  <a href="/advertise.html" class="nav-cta" style="margin-left:.75rem">List Your Business</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
 
-<div class="hero">
-  <h1>🚌 Staten Island Shuttle Route</h1>
-  <p>Full route map with all pickup and dropoff stops around the neighborhood, plus the Boro Park route.</p>
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Getting Around</div>
+  <h1>Shuttle <span>Route</span></h1>
+  <p>Full route map with every pickup and dropoff stop &mdash; plus the Boro Park route</p>
 </div>
 
-<div class="wrap">
+<!-- MAP + STOPS -->
+<div class="section">
+  <div class="section-inner">
 
-  <div class="map-card">
-    <a href="shuttlemap.jpg" target="_blank" rel="noopener">
-      <img src="shuttlemap.jpg" alt="Staten Island Shuttle route map showing dropoff stops along N Gannon, Forest Hill, Willowbrook, and Holden, and pickup stops along Harold St., Forest Hill, Willowbrook, and S Gannon">
-    </a>
-    <div class="tap-hint">Tap the map to open full size</div>
-  </div>
-
-  <h2 class="section">Stop List</h2>
-  <div class="stops-grid">
-
-    <div class="stop-card">
-      <h3>Dropoff</h3>
-      <ol>
-        <li>N Gannon / Bradley</li>
-        <li>N Gannon / Warwick</li>
-        <li>N Gannon / Wooley</li>
-        <li>Forest Hill / Westwood</li>
-        <li>Willowbrook / Ardmore</li>
-        <li>Willowbrook / Birchard</li>
-        <li>Willowbrook / Roosevelt</li>
-        <li>Holden / Wellbrook</li>
-        <li>Holden / Suffolk</li>
-        <li>Holden / Mountainview</li>
-        <li>Holden / Fanning</li>
-        <li>Holden / Manor</li>
-      </ol>
+    <div class="map-card">
+      <a href="/shuttlemap.jpg" target="_blank" rel="noopener">
+        <img src="/shuttlemap.jpg" alt="Staten Island Shuttle route map showing dropoff stops along N Gannon, Forest Hill, Willowbrook, and Holden, and pickup stops along Harold St., Forest Hill, Willowbrook, and S Gannon">
+      </a>
+      <div class="tap-hint">Tap the map to open full size</div>
     </div>
 
-    <div class="stop-card">
-      <h3>Pickup</h3>
-      <ol>
-        <li>Harold St. / Manor</li>
-        <li>Harold St. / Fanning</li>
-        <li>Harold St. / Mountainview</li>
-        <li>Harold St. / Suffolk</li>
-        <li>Harold St. / Wellbrook</li>
-        <li>Harold St. / Buchanan</li>
-        <li>Harold St. / Sunset</li>
-        <li>Harold St. / Joseph</li>
-        <li>Harold St. / Forest Hill</li>
-        <li>Forest Hill / Willowbrook</li>
-        <li>Willowbrook / Woodward</li>
-        <li>Willowbrook / Hall</li>
-        <li>S Gannon / Steward</li>
-        <li>S Gannon / Collfield</li>
-        <li>S Gannon / Woolley</li>
-        <li>S Gannon / Sheraden</li>
-        <li>S Gannon / Kell</li>
-        <li>S Gannon / Bradley</li>
-      </ol>
+    <div class="sec-eyebrow">All Stops</div>
+    <h2 class="sec-title">Pickup &amp; Dropoff Locations</h2>
+    <div class="sec-divider"></div>
+
+    <div class="stops-grid">
+      <div class="stop-card">
+        <h3>Dropoff</h3>
+        <ol>
+          <li>N Gannon / Bradley</li>
+          <li>N Gannon / Warwick</li>
+          <li>N Gannon / Wooley</li>
+          <li>Forest Hill / Westwood</li>
+          <li>Willowbrook / Ardmore</li>
+          <li>Willowbrook / Birchard</li>
+          <li>Willowbrook / Roosevelt</li>
+          <li>Holden / Wellbrook</li>
+          <li>Holden / Suffolk</li>
+          <li>Holden / Mountainview</li>
+          <li>Holden / Fanning</li>
+          <li>Holden / Manor</li>
+        </ol>
+      </div>
+      <div class="stop-card">
+        <h3>Pickup</h3>
+        <ol>
+          <li>Harold St. / Manor</li>
+          <li>Harold St. / Fanning</li>
+          <li>Harold St. / Mountainview</li>
+          <li>Harold St. / Suffolk</li>
+          <li>Harold St. / Wellbrook</li>
+          <li>Harold St. / Buchanan</li>
+          <li>Harold St. / Sunset</li>
+          <li>Harold St. / Joseph</li>
+          <li>Harold St. / Forest Hill</li>
+          <li>Forest Hill / Willowbrook</li>
+          <li>Willowbrook / Woodward</li>
+          <li>Willowbrook / Hall</li>
+          <li>S Gannon / Steward</li>
+          <li>S Gannon / Collfield</li>
+          <li>S Gannon / Woolley</li>
+          <li>S Gannon / Sheraden</li>
+          <li>S Gannon / Kell</li>
+          <li>S Gannon / Bradley</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="boro-box">
+      <div class="boro-title">Boro Park Route</div>
+      <p><strong>Dropoff &mdash; 50th St.:</strong>&nbsp; 11&ndash;New Utrecht, 13, 14, 15, 16, 17, 18th Ave. / 50th</p>
+      <p><strong>Pickup &mdash; 49th St.:</strong>&nbsp; 18, 17, 16, 15, 14, 13, 12, 12th Ave., 55&ndash;60</p>
+    </div>
+
+    <div class="note-strip">
+      Schedule and stops are subject to change. For times or questions, please contact the shuttle service directly.
     </div>
 
   </div>
-
-  <div class="boro">
-    <h3>Boro Park Route</h3>
-    <p><strong>Dropoff — 50th St.:</strong> 11–New Utrecht, 13, 14, 15, 16, 17, 18th Ave. / 50th</p>
-    <p><strong>Pickup — 49th St.:</strong> 18, 17, 16, 15, 14, 13, 12, 12th Ave., 55–60</p>
-  </div>
-
-  <div class="note">
-    Schedule and stops are subject to change. For times or questions about the shuttle, please contact the shuttle service directly.
-  </div>
-
 </div>
 
 <footer>
-  © 2026 ShopLocalSI.com — Supporting the Staten Island Jewish Community · <a href="index.html">Home</a> · <a href="community.html">Community</a>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo-wrap">
+        <img src="/logo.png" alt="Shop Local SI" class="foot-logo-img">
+        <div class="foot-brand-text">
+          <span class="shop">SHOP <span style="color:var(--green2)">LOCAL</span></span>
+          <span class="si">Staten Island</span>
+        </div>
+      </div>
+      <p class="foot-tagline">Supporting the businesses that support our Staten Island community &mdash; one purchase at a time.</p>
+    </div>
+    <div>
+      <div class="foot-heading">Pages</div>
+      <ul class="foot-links">
+        <li><a href="/directory.html">Business Directory</a></li>
+        <li><a href="/marketplace.html">Market</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/coupons.html">Coupons &amp; Deals</a></li>
+        <li><a href="/advertise.html">Advertise With Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Community</div>
+      <ul class="foot-links">
+        <li><a href="/#shabbos">Shabbos Times</a></li>
+        <li><a href="/community.html">Resource Hub</a></li>
+        <li><a href="/shuttle.html">Shuttle Route</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/advertise.html">List Your Business</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Emergency</div>
+      <ul class="foot-links">
+        <li><a href="tel:7182301000">Hatzolah: 718-230-1000</a></li>
+        <li><a href="tel:7187612428">Chaveirim: 718-761-2428</a></li>
+        <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
+        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
+        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
+        <li><a href="tel:7188544548">Misaskim: 718-854-4548</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2025 Shop Local Staten Island &middot; Strengthening our community</span>
+    <span><a href="/advertise.html">Advertise with us</a></span>
+  </div>
 </footer>
 
+<script>
+(function(){
+  var path=window.location.pathname;
+  var pg=path==="/"?"home":path.replace("/","").replace(".html","");
+  document.querySelectorAll(".nav-links a[data-page]").forEach(function(a){if(a.dataset.page===pg)a.classList.add("active");});
+})();
+</script>
 </body>
 </html>

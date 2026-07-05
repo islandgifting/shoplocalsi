@@ -3,156 +3,473 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Community | ShopLocalSI</title>
-<meta name="description" content="Staten Island Jewish community resources — shuttle route, Tehillim list, community blog, gemachs, and chesed opportunities.">
+<title>Community Resource Hub &mdash; Shop Local Staten Island</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background:#f7f9f4; color:#1f2a1f; }
-  header { background:#1d3b2a; color:#fff; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-  header a.logo { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:700; }
-  header a.logo span { color:#8bc34a; }
-  nav { display:flex; flex-wrap:wrap; gap:14px; }
-  nav a { color:#e6f2e0; text-decoration:none; font-size:.95rem; }
-  nav a:hover { color:#8bc34a; }
-  .hero { background:linear-gradient(135deg,#6cae3e,#8bc34a); color:#fff; text-align:center; padding:40px 20px; }
-  .hero h1 { font-size:2rem; margin-bottom:8px; }
-  .hero p { font-size:1.05rem; opacity:.95; max-width:640px; margin:0 auto; }
-  .wrap { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
+:root{--navy:#0b1f3a;--blue:#2c6e9e;--green:#3e7c59;--green2:#4a9469;--light:#f4f4f2;--white:#ffffff;--red:#cc2222;--text:#1a2a3a;--mid:#4a6070;--muted:#6b8090;--border:#dde4ea;--border2:#eaeef2;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--text);font-size:15px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy)}
+.emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600;letter-spacing:.2px}
+.emstrip a{color:rgba(255,255,255,.92)}.emstrip a:hover{color:#fff}
+.emstrip .sep{color:rgba(255,255,255,.35)}.emstrip .em-label{color:rgba(255,255,255,.6);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+.top-bar{background:#0d2137;padding:.42rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem}
+.top-bar-tagline{color:rgba(255,255,255,.9);text-align:center;flex:1;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:.65rem}
+.top-bar-right{display:flex;gap:1rem;align-items:center;flex-shrink:0}
+.top-bar-right a{color:rgba(255,255,255,.7);font-size:.75rem;transition:color .2s}.top-bar-right a:hover{color:#fff}
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:88px;position:sticky;top:0;z-index:999;box-shadow:0 2px 16px rgba(11,31,58,.07)}
+.logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+.logo-img{height:70px;width:70px;object-fit:contain}
+.logo-wordmark{display:flex;align-items:baseline;gap:.2rem}
+.logo-shop{font-size:1.4rem;font-weight:800;color:#0b1f3a;letter-spacing:1px;text-transform:uppercase}
+.logo-local-word{font-size:1.4rem;font-weight:800;color:#3e7c59;letter-spacing:1px;text-transform:uppercase}
+.logo-divider-row{display:flex;align-items:center;gap:.4rem;margin:.1rem 0 .15rem}
+.logo-dash{width:18px;height:2px;background:#0b1f3a;opacity:.4;flex-shrink:0}
+.logo-staten{font-size:.6rem;font-weight:700;color:#0b1f3a;letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
+.logo-url{font-size:.62rem;font-weight:600;color:#2c6e9e;letter-spacing:.5px}
+.nav-links{display:flex;align-items:center;gap:0;list-style:none;margin:0 .5rem}
+.nav-links a{font-size:.72rem;font-weight:600;color:#1a2a3a;letter-spacing:.6px;text-transform:uppercase;padding:.5rem .75rem;position:relative;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:#3e7c59}.nav-links a.active{color:#3e7c59}
+.nav-links a.active::after{content:'';position:absolute;bottom:-2px;left:.75rem;right:.75rem;height:2px;background:#3e7c59;border-radius:1px}
+.nav-cta{background:#3e7c59!important;color:#fff!important;padding:.48rem 1.1rem!important;border-radius:50px!important;font-weight:700!important;font-size:.7rem!important;letter-spacing:.3px!important;transition:background .2s!important;white-space:nowrap}
+.nav-cta:hover{background:#4a9469!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:#0b1f3a;display:block}
+.page-hero{background:var(--navy);padding:4rem 2.5rem;text-align:center}
+.page-hero-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green2);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+.page-hero-eyebrow::before,.page-hero-eyebrow::after{content:'';width:24px;height:2px;background:var(--green2)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:2px;line-height:1.1}
+.page-hero h1 span{color:var(--green2)}
+.page-hero p{font-size:.95rem;color:rgba(255,255,255,.75);margin-top:.75rem;max-width:540px;margin-left:auto;margin-right:auto}
 
-  /* Shuttle feature card */
-  .shuttle-card { display:flex; align-items:center; gap:16px; background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:18px 22px; text-decoration:none; color:#1f2a1f; margin:0 0 30px; border-left:6px solid #8bc34a; transition:transform .15s ease, box-shadow .15s ease; }
-  .shuttle-card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
-  .shuttle-card .icon { font-size:2.2rem; }
-  .shuttle-card strong { color:#1d3b2a; font-size:1.15rem; display:block; margin-bottom:4px; }
-  .shuttle-card span.desc { font-size:.95rem; color:#4a5a4a; }
+/* POPULAR RESOURCES GRID */
+.pop-section{background:var(--light);padding:3rem 2.5rem;border-bottom:1px solid var(--border)}
+.pop-section-inner{max-width:1100px;margin:0 auto;text-align:center}
+.section-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.65rem}
+.section-eyebrow span.line{display:inline-block;width:24px;height:2px;background:var(--green)}
+.section-title{font-size:clamp(1.3rem,3vw,1.8rem);color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
+.green-divider{width:44px;height:3px;background:var(--green);margin:.6rem auto 2rem;border-radius:2px}
 
-  /* Tabs */
-  .tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
-  .tab-btn { background:#fff; border:2px solid #8bc34a; color:#1d3b2a; padding:10px 22px; border-radius:30px; font-size:1rem; font-weight:600; cursor:pointer; transition:all .15s ease; }
-  .tab-btn:hover { background:#eef6e5; }
-  .tab-btn.active { background:#1d3b2a; border-color:#1d3b2a; color:#fff; }
-  .tab-panel { display:none; }
-  .tab-panel.active { display:block; }
+/* GREEN BUTTON GRID */
+.btn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;max-width:980px;margin:0 auto}
+.g-btn{background:var(--green);color:#fff;border-radius:8px;padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;transition:background .2s,transform .15s;text-decoration:none;min-height:115px;cursor:pointer;border:none;font-family:'Montserrat',sans-serif;width:100%}
+.g-btn:hover{background:var(--green2);transform:translateY(-2px)}
+.g-btn .g-ico{font-size:1.65rem;line-height:1}
+.g-btn .g-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.35;color:#fff}
+.g-btn .g-sub{font-size:.6rem;font-weight:400;color:rgba(255,255,255,.7);text-align:center;line-height:1.3;margin-top:.1rem}
 
-  .card { background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:22px 24px; margin-bottom:18px; }
-  .card h3 { color:#1d3b2a; font-size:1.15rem; margin-bottom:8px; }
-  .card p { font-size:.97rem; line-height:1.55; color:#3a4a3a; }
-  .card .meta { font-size:.85rem; color:#6b7b6b; margin-top:8px; }
-  .card a.more { color:#6cae3e; font-weight:600; text-decoration:none; }
-  .card a.more:hover { text-decoration:underline; }
+/* TABS */
+.tab-nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:1rem 1.2rem;border:none;background:none;cursor:pointer;color:var(--mid);white-space:nowrap;position:relative;transition:color .2s;display:flex;align-items:center;gap:.35rem}
+.tab-btn:hover{color:var(--navy)}.tab-btn.active{color:#fff;background:var(--green)}
+.tab-btn.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green)}
+.section{padding:3rem 2.5rem;display:none}.section.active{display:block}
+.section-inner{max-width:1100px;margin:0 auto}
+.sec-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem}
+.sec-eyebrow::before,.sec-eyebrow::after{content:'';width:24px;height:2px;background:var(--green)}
+.sec-title{font-size:clamp(1.3rem,3vw,1.8rem);color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
+.sec-divider{width:44px;height:3px;background:var(--green);margin:.6rem 0 2rem;border-radius:2px}
 
-  .submit-strip { background:#eef6e5; border-radius:12px; padding:16px 20px; font-size:.93rem; color:#3a4a3a; margin-top:8px; }
-  .submit-strip a { color:#1d3b2a; font-weight:700; }
+/* EMERGENCY QUICK BOX */
+.em-quick{background:var(--navy);border-radius:8px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.em-quick-title{font-size:1rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
+.em-quick-title::before{content:'';width:20px;height:2px;background:var(--green2)}
+.em-q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
+.em-q-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.85rem 1rem;font-family:'Montserrat',sans-serif;color:rgba(255,255,255,.88);transition:all .2s;text-decoration:none;display:block}
+.em-q-btn:hover{background:rgba(255,255,255,.14);border-color:var(--green2)}
+.em-q-name{font-size:.8rem;font-weight:700;display:block;margin-bottom:.15rem}
+.em-q-num{font-size:.75rem;color:rgba(255,255,255,.55)}
 
-  .hebrew { direction:rtl; font-size:1.05rem; }
+/* HELP HUB */
+.help-hub{background:var(--navy);border-radius:8px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.help-hub-title{font-size:1rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
+.help-hub-title::before{content:'';width:20px;height:2px;background:var(--green2)}
+.help-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.75rem}
+.help-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.85rem 1rem;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.88);cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:center;gap:.6rem}
+.help-btn:hover{background:rgba(255,255,255,.14);border-color:var(--green2);color:#fff}
 
-  footer { background:#1d3b2a; color:#cfe2c4; text-align:center; padding:22px; font-size:.9rem; margin-top:40px; }
-  footer a { color:#8bc34a; }
+/* URGENT CARE LIST */
+.uc-list{margin-top:.5rem;display:flex;flex-direction:column;gap:.4rem}
+.uc-list a{font-size:.8rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.4rem;padding:.3rem 0;border-bottom:1px solid var(--border2)}
+.uc-list a:last-child{border-bottom:none}
+.uc-star{color:var(--green)}.uc-sub{font-size:.7rem;color:var(--muted);font-weight:400;margin-left:auto}
+
+footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 1.5rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem}
+.foot-logo-wrap{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.foot-logo-img{height:52px;width:52px;object-fit:contain}
+.foot-brand-text{display:flex;flex-direction:column;line-height:1.2}
+.foot-brand-text .shop{font-size:1.1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.foot-brand-text .si{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem}
+.foot-tagline{font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.55);max-width:260px}
+.foot-heading{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green2);margin-bottom:.85rem}
+.foot-links{list-style:none}.foot-links li{margin-bottom:.5rem}
+.foot-links a{font-size:.78rem;color:rgba(255,255,255,.6);transition:color .2s}.foot-links a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:rgba(255,255,255,.4);max-width:1100px;margin:0 auto}
+.foot-bottom a{color:var(--green2)}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}.fade-up.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}.foot-grid>div:first-child{grid-column:1/-1}
+  nav{padding:0 1.25rem}.nav-links{display:none}.hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:88px;left:0;right:0;background:#fff;border-bottom:2px solid var(--border);padding:1rem;z-index:998;gap:.25rem}
+  .page-hero,.section,.pop-section{padding:2.5rem 1.25rem}
+  .tab-nav{padding:0 1rem}.btn-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}
+@media(max-width:600px){
+  .foot-grid{grid-template-columns:1fr}.foot-grid>div:first-child{grid-column:auto}
+  .em-q-grid,.help-grid{grid-template-columns:1fr 1fr}
+  .btn-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+.cat-card-btn{background:var(--green);color:#fff;border:none;border-radius:10px;padding:1.75rem 1.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.65rem;transition:background .2s,transform .15s;cursor:pointer;font-family:'Montserrat',sans-serif;min-height:130px;width:100%}
+.cat-card-btn:hover{background:var(--green2);transform:translateY(-3px)}
+.cat-ico{font-size:1.9rem;line-height:1}
+.cat-lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.4;color:#fff}
 </style>
 </head>
 <body>
 
-<header>
-  <a class="logo" href="index.html">ShopLocal<span>SI</span></a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="community.html">Community</a>
-    <a href="shuls.html">Shuls</a>
-    <a href="simcha.html">Simcha</a>
-    <a href="donate.html">Donate</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <h1>Our Community</h1>
-  <p>Resources for the Staten Island Jewish community — Tehillim, chesed, gemachs, local news, and more.</p>
+<div class="emstrip">
+  <span class="em-label">Emergency</span>
+  <a href="tel:7182301000">Hatzolah 718-230-1000</a><span class="sep">&middot;</span>
+  <a href="tel:7183702121">Shomrim 718-370-2121</a><span class="sep">&middot;</span>
+  <a href="tel:7187614444">Shmira 718-761-4444</a><span class="sep">&middot;</span>
+  <a href="tel:7187612428">Chaveirim 718-761-2428</a><span class="sep">&middot;</span>
+  <a href="tel:7188717299">Chavivim 718-871-7299</a><span class="sep">&middot;</span>
+  <a href="tel:7188544548">Misaskim 718-854-4548</a>
 </div>
-
-<div class="wrap">
-
-  <!-- Shuttle Route Feature Card -->
-  <a class="shuttle-card" href="shuttle.html">
-    <span class="icon">🚌</span>
-    <span>
-      <strong>Staten Island Shuttle Route</strong>
-      <span class="desc">Full route map with every pickup &amp; dropoff stop — plus the Boro Park route. Tap to view.</span>
-    </span>
+<div class="top-bar">
+  <div style="width:100px"></div>
+  <div class="top-bar-tagline">Support Local &middot; Strengthen Community</div>
+  <div class="top-bar-right">
+    <a href="#">&#x1F426; Facebook</a>
+    <a href="#">&#x1F4F7; Instagram</a>
+    <a href="mailto:info@shoplocalsi.com">&#x2709; Email</a>
+  </div>
+</div>
+<nav>
+  <a href="/" class="logo-wrap">
+    <img src="/logo.png" alt="Shop Local Staten Island" class="logo-img">
+    <div style="display:flex;flex-direction:column;line-height:1">
+      <div class="logo-wordmark"><span class="logo-shop">SHOP&nbsp;</span><span class="logo-local-word">LOCAL</span></div>
+      <div class="logo-divider-row"><span class="logo-dash"></span><span class="logo-staten">Staten Island</span><span class="logo-dash"></span></div>
+      <span class="logo-url">shoplocalsi.com</span>
+    </div>
   </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" data-page="home">Home</a></li>
+    <li><a href="/directory.html" data-page="directory">Directory</a></li>
+    <li><a href="/marketplace.html" data-page="marketplace">Market</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
+    <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
+    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
+    <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
+    <li><a href="/realty.html" data-page="realty">Realty</a></li>
+    <li><a href="/community.html" data-page="community">Community</a></li>
+    <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
+  </ul>
+  <a href="/advertise.html" class="nav-cta" style="margin-left:.75rem">List Your Business</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('tehillim', this)">Tehillim</button>
-    <button class="tab-btn" onclick="showTab('blog', this)">Blog</button>
-    <button class="tab-btn" onclick="showTab('gemach', this)">Gemachs</button>
-    <button class="tab-btn" onclick="showTab('chesed', this)">Chesed</button>
-  </div>
-
-  <!-- Tehillim -->
-  <div id="tehillim" class="tab-panel active">
-    <div class="card">
-      <h3>Community Tehillim List</h3>
-      <p>Please keep the following names in your tefillos. May all cholim have a refuah sheleimah bekarov.</p>
-      <p class="hebrew" style="margin-top:10px;">רפואה שלמה לכל חולי ישראל</p>
-      <p class="meta">To add a name to the Tehillim list, please reach out through the contact form.</p>
-    </div>
-    <div class="submit-strip">
-      Have a name to add? <a href="premium-submit.html">Submit it here</a> and we'll include it in the next update.
-    </div>
-  </div>
-
-  <!-- Blog -->
-  <div id="blog" class="tab-panel">
-    <div class="card">
-      <h3>Supporting Local: Why It Matters for Our Community</h3>
-      <p>Every dollar spent within our community strengthens the families, shuls, and mosdos that make Staten Island home. Here's a look at the ripple effect of shopping local.</p>
-      <p class="meta">ShopLocalSI Blog</p>
-      <a class="more" href="blog-article-1.html">Read more →</a>
-    </div>
-    <div class="card">
-      <h3>A Guide to Staten Island's Jewish Community</h3>
-      <p>New to the neighborhood or thinking about moving here? A friendly overview of shuls, schools, shopping, and community life on Staten Island.</p>
-      <p class="meta">ShopLocalSI Blog</p>
-      <a class="more" href="blog-article-2.html">Read more →</a>
-    </div>
-  </div>
-
-  <!-- Gemachs -->
-  <div id="gemach" class="tab-panel">
-    <div class="card">
-      <h3>Community Gemachs</h3>
-      <p>Our community is home to gemachs for simcha items, baby equipment, medical supplies, and more. Listings are being added — check back soon or submit your gemach below.</p>
-    </div>
-    <div class="submit-strip">
-      Run a gemach? <a href="premium-submit.html">List it here</a> so neighbors can find you.
-    </div>
-  </div>
-
-  <!-- Chesed -->
-  <div id="chesed" class="tab-panel">
-    <div class="card">
-      <h3>Chesed Opportunities</h3>
-      <p>Looking to give back? From meal trains to bikur cholim visits to helping seniors connect with services through COJO Staten Island, there are many ways to get involved.</p>
-      <a class="more" href="donate.html">Support COJO programs →</a>
-    </div>
-    <div class="submit-strip">
-      Organizing a chesed project? <a href="premium-submit.html">Share it with the community</a>.
-    </div>
-  </div>
-
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Staten Island Jewish Community</div>
+  <h1>Community <span>Resource Hub</span></h1>
+  <p>Everything our community needs &mdash; all in one place</p>
 </div>
+
+<!-- POPULAR RESOURCES GREEN BUTTONS -->
+<div class="pop-section">
+  <div class="pop-section-inner">
+    <div class="section-eyebrow fade-up"><span class="line"></span>Quick Access<span class="line"></span></div>
+    <h2 class="section-title fade-up">Popular Resources</h2>
+    <div class="green-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="/shuttle.html" class="g-btn"><span class="g-ico">&#x1F68C;</span><span class="g-lbl">Shuttle Route</span><span class="g-sub">Map &amp; All Stops</span></a>
+      <a href="https://www.siferry.com" target="_blank" class="g-btn"><span class="g-ico">&#x26F4;&#xFE0F;</span><span class="g-lbl">Ferry Schedule</span></a>
+      <a href="https://www.nyc.gov/sanitation" target="_blank" class="g-btn"><span class="g-ico">&#x1F5D1;&#xFE0F;</span><span class="g-lbl">Sanitation Day</span></a>
+      <a href="https://www.grownyc.org/greenmarket/staten-island" target="_blank" class="g-btn"><span class="g-ico">&#x1F955;</span><span class="g-lbl">Farmers Markets</span></a>
+      <a href="https://www.nycgovparks.org/facilities/beaches/status" target="_blank" class="g-btn"><span class="g-ico">&#x1F3D6;&#xFE0F;</span><span class="g-lbl">Beach Conditions</span></a>
+      <a href="https://forecast.weather.gov/MapClick.php?CityName=Staten+Island&state=NY" target="_blank" class="g-btn"><span class="g-ico">&#x1F324;&#xFE0F;</span><span class="g-lbl">Weather</span></a>
+      <a href="https://511ny.org/map#camera/1001498" target="_blank" class="g-btn"><span class="g-ico">&#x1F4F7;</span><span class="g-lbl">Traffic Cameras</span></a>
+      <a href="https://www.mta.info" target="_blank" class="g-btn"><span class="g-ico">&#x1F68C;</span><span class="g-lbl">MTA Alerts</span></a>
+      <a href="https://www.nyc.gov/311" target="_blank" class="g-btn"><span class="g-ico">&#x1F4DE;</span><span class="g-lbl">NYC 311</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY BUTTONS -->
+<div style="background:var(--light);padding:3rem 2.5rem;border-bottom:1px solid var(--border)">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <div style="font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.65rem">
+      <span style="display:inline-block;width:24px;height:2px;background:var(--green)"></span>Browse by Category<span style="display:inline-block;width:24px;height:2px;background:var(--green)"></span>
+    </div>
+    <h2 style="font-size:1.5rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem">Community Resources</h2>
+    <div style="width:44px;height:3px;background:var(--green);margin:.6rem auto 2rem;border-radius:2px"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;max-width:1000px;margin:0 auto" id="catGrid">
+      <button onclick="showTab('safety')" class="cat-card-btn"><span class="cat-ico">&#x1F6A8;</span><span class="cat-lbl">Safety &amp; Alerts</span></button>
+      <button onclick="showTab('gov')" class="cat-card-btn"><span class="cat-ico">&#x1F3DB;&#xFE0F;</span><span class="cat-lbl">Government &amp; Public Services</span></button>
+      <button onclick="showTab('travel')" class="cat-card-btn"><span class="cat-ico">&#x1F68C;</span><span class="cat-lbl">Travel</span></button>
+      <button onclick="showTab('health')" class="cat-card-btn"><span class="cat-ico">&#x1F3E5;</span><span class="cat-lbl">Health &amp; Emergency</span></button>
+      <button onclick="showTab('legal')" class="cat-card-btn"><span class="cat-ico">&#x2696;&#xFE0F;</span><span class="cat-lbl">Legal &amp; Advocacy</span></button>
+      <button onclick="showTab('social')" class="cat-card-btn"><span class="cat-ico">&#x1F91D;</span><span class="cat-lbl">Social Services</span></button>
+      <button onclick="showTab('work')" class="cat-card-btn"><span class="cat-ico">&#x1F4BC;</span><span class="cat-lbl">Work &amp; Financial</span></button>
+      <button onclick="showTab('lifestyle')" class="cat-card-btn"><span class="cat-ico">&#x1F333;</span><span class="cat-lbl">Lifestyle</span></button>
+    </div>
+  </div>
+</div>
+<!-- HIDDEN TAB NAV for JS compatibility -->
+<div style="display:none" id="tabNav">
+  <button class="tab-btn" data-tab="safety"></button>
+  <button class="tab-btn" data-tab="gov"></button>
+  <button class="tab-btn" data-tab="travel"></button>
+  <button class="tab-btn" data-tab="health"></button>
+  <button class="tab-btn" data-tab="legal"></button>
+  <button class="tab-btn" data-tab="social"></button>
+  <button class="tab-btn" data-tab="work"></button>
+  <button class="tab-btn" data-tab="lifestyle"></button>
+</div>
+
+<!-- SAFETY -->
+<section class="section" id="tab-safety">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Be Prepared</div>
+    <h2 class="sec-title fade-up">Safety &amp; Community Alerts</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="em-quick fade-up">
+      <div class="em-quick-title">Community Emergency Numbers</div>
+      <div class="em-q-grid">
+        <a href="tel:7182301000" class="em-q-btn"><span class="em-q-name">&#x1F691; Hatzolah</span><span class="em-q-num">718-230-1000</span></a>
+        <a href="tel:7183702121" class="em-q-btn"><span class="em-q-name">&#x1F6E1;&#xFE0F; Shomrim</span><span class="em-q-num">718-370-2121</span></a>
+        <a href="tel:7187612428" class="em-q-btn"><span class="em-q-name">&#x1F527; Chaveirim</span><span class="em-q-num">718-761-2428</span></a>
+        <a href="tel:7187614444" class="em-q-btn"><span class="em-q-name">&#x1F54D; Shmira</span><span class="em-q-num">718-761-4444</span></a>
+        <a href="tel:7188717299" class="em-q-btn"><span class="em-q-name">&#x1F91D; Chavivim</span><span class="em-q-num">718-871-7299</span></a>
+        <a href="tel:7188544548" class="em-q-btn"><span class="em-q-name">&#x2721;&#xFE0F; Misaskim</span><span class="em-q-num">718-854-4548</span></a>
+      </div>
+    </div>
+    <div class="btn-grid fade-up">
+      <a href="https://www.nyc.gov/notifynyc" target="_blank" class="g-btn"><span class="g-ico">&#x1F514;</span><span class="g-lbl">Notify NYC</span><span class="g-sub">Emergency Alerts Signup</span></a>
+      <a href="https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/121st-precinct.page" target="_blank" class="g-btn"><span class="g-ico">&#x1F46E;</span><span class="g-lbl">NYPD 121st Precinct</span><span class="g-sub">718-354-7900</span></a>
+      <a href="https://www.nyc.gov/site/communityboards/boards/staten-island.page" target="_blank" class="g-btn"><span class="g-ico">&#x1F3D8;&#xFE0F;</span><span class="g-lbl">Community Boards</span><span class="g-sub">Neighborhood Watch</span></a>
+      <a href="https://www.nyc.gov/html/dot/html/motorist/roadwork.shtml" target="_blank" class="g-btn"><span class="g-ico">&#x1F6A7;</span><span class="g-lbl">Road Closures</span><span class="g-sub">Construction Updates</span></a>
+      <a href="https://511ny.org/map#camera/1001498" target="_blank" class="g-btn"><span class="g-ico">&#x1F4F7;</span><span class="g-lbl">Traffic Cameras</span><span class="g-sub">Willowbrook / Manor Hts</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNMENT -->
+<section class="section" id="tab-gov">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Public Services</div>
+    <h2 class="sec-title fade-up">Government &amp; Public Services</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="https://www.nyc.gov/311" target="_blank" class="g-btn"><span class="g-ico">&#x1F4DE;</span><span class="g-lbl">NYC 311</span><span class="g-sub">Report Issues &amp; Services</span></a>
+      <a href="https://www.statenislandusa.com" target="_blank" class="g-btn"><span class="g-ico">&#x1F3DB;&#xFE0F;</span><span class="g-lbl">Borough President</span><span class="g-sub">SI Constituent Services</span></a>
+      <a href="https://www.nyc.gov/hpd" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E0;</span><span class="g-lbl">NYC HPD</span><span class="g-sub">Housing Preservation</span></a>
+      <a href="https://my.nycha.info" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E2;</span><span class="g-lbl">NYCHA Portal</span><span class="g-sub">Resident Services</span></a>
+      <a href="https://a069-access.nyc.gov" target="_blank" class="g-btn"><span class="g-ico">&#x1F37D;&#xFE0F;</span><span class="g-lbl">HRA / SNAP</span><span class="g-sub">Cash Assistance Portal</span></a>
+      <a href="https://dmv.ny.gov" target="_blank" class="g-btn"><span class="g-ico">&#x1F697;</span><span class="g-lbl">NY DMV</span><span class="g-sub">License &amp; Registration</span></a>
+      <a href="https://www.mta.info" target="_blank" class="g-btn"><span class="g-ico">&#x1F68C;</span><span class="g-lbl">MTA Alerts</span><span class="g-sub">Bus &amp; Ferry Updates</span></a>
+      <a href="https://www.siferry.com" target="_blank" class="g-btn"><span class="g-ico">&#x26F4;&#xFE0F;</span><span class="g-lbl">Ferry Schedule</span><span class="g-sub">St. George &amp; Whitehall</span></a>
+      <a href="https://www.nyc.gov/sanitation" target="_blank" class="g-btn"><span class="g-ico">&#x1F5D1;&#xFE0F;</span><span class="g-lbl">Sanitation</span><span class="g-sub">Schedule &amp; Missed Pickups</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH -->
+<section class="section" id="tab-health">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Medical &amp; Crisis</div>
+    <h2 class="sec-title fade-up">Health &amp; Emergency Resources</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="https://www.northwell.edu/find-care/locations/staten-island-university-hospital" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E5;</span><span class="g-lbl">SIUH</span><span class="g-sub">718-226-7000</span></a>
+      <a href="https://www.rumcsi.org" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E5;</span><span class="g-lbl">RUMC</span><span class="g-sub">718-818-2000</span></a>
+      <a href="https://www.sinceremedicalpllc.com" target="_blank" class="g-btn"><span class="g-ico">&#x1FA7A;</span><span class="g-lbl">Sincere Medical</span><span class="g-sub">Urgent Care &#x2605;</span></a>
+      <a href="/directory.html?listing=miriam-blau" class="g-btn"><span class="g-ico">&#x1FA7A;</span><span class="g-lbl">Miriam Blau</span><span class="g-sub">Urgent Care</span></a>
+      <a href="/directory.html?listing=elysha-schwartz" class="g-btn"><span class="g-ico">&#x1FA7A;</span><span class="g-lbl">Elysha Schwartz</span><span class="g-sub">Urgent Care</span></a>
+      <a href="https://www.mountsinai.org/locations/doctors-staten-island" target="_blank" class="g-btn"><span class="g-ico">&#x1FA7A;</span><span class="g-lbl">Mount Sinai Doctors</span><span class="g-sub">Urgent Care</span></a>
+      <a href="https://nycwell.cityofnewyork.us" target="_blank" class="g-btn"><span class="g-ico">&#x1F49A;</span><span class="g-lbl">NYC Well</span><span class="g-sub">Mental Health 24/7</span></a>
+      <a href="tel:18002221222" class="g-btn"><span class="g-ico">&#x26A0;&#xFE0F;</span><span class="g-lbl">Poison Control</span><span class="g-sub">1-800-222-1222</span></a>
+      <a href="https://nystateofhealth.ny.gov" target="_blank" class="g-btn"><span class="g-ico">&#x1F48A;</span><span class="g-lbl">NY Health Insurance</span><span class="g-sub">State Marketplace</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="section" id="tab-legal">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Know Your Rights</div>
+    <h2 class="sec-title fade-up">Legal, Advocacy &amp; Support</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="https://legalaidnyc.org" target="_blank" class="g-btn"><span class="g-ico">&#x2696;&#xFE0F;</span><span class="g-lbl">Legal Aid Society</span><span class="g-sub">Free Legal Help SI</span></a>
+      <a href="https://www.nyc.gov/familyjustice" target="_blank" class="g-btn"><span class="g-ico">&#x1F6E1;&#xFE0F;</span><span class="g-lbl">Family Justice Center</span><span class="g-sub">DV Support</span></a>
+      <a href="https://www.nyc.gov/actionnyc" target="_blank" class="g-btn"><span class="g-ico">&#x1F30D;</span><span class="g-lbl">ActionNYC</span><span class="g-sub">Immigration Legal Help</span></a>
+      <a href="https://www.nyc.gov/site/hpd/services-and-information/tenants.page" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E0;</span><span class="g-lbl">Tenant Rights</span><span class="g-sub">Housing Court Help</span></a>
+      <a href="https://www.nycourts.gov/courts/nyc/civil/smallclaims.shtml" target="_blank" class="g-btn"><span class="g-ico">&#x1F3DB;&#xFE0F;</span><span class="g-lbl">Small Claims Court</span><span class="g-sub">Staten Island Civil</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL SERVICES -->
+<section class="section" id="tab-social">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Real Help, Real People</div>
+    <h2 class="sec-title fade-up">Social Services &amp; Nonprofits</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="help-hub fade-up">
+      <div class="help-hub-title">I need help with&hellip;</div>
+      <div class="help-grid">
+        <div class="help-btn">&#x1F3E0; Housing help</div>
+        <div class="help-btn">&#x1F4BC; I lost my job</div>
+        <div class="help-btn">&#x1F34E; Food assistance</div>
+        <div class="help-btn">&#x2696;&#xFE0F; Legal help</div>
+        <div class="help-btn">&#x1F476; Childcare</div>
+        <div class="help-btn">&#x1F49A; Mental health</div>
+        <div class="help-btn">&#x1F6E1;&#xFE0F; Domestic violence</div>
+        <div class="help-btn">&#x1F4B0; Financial help</div>
+      </div>
+    </div>
+    <div class="btn-grid fade-up">
+      <a href="https://www.cojosi.org" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E2;</span><span class="g-lbl">COJO Staten Island</span><span class="g-sub">718-448-0900</span></a>
+      <a href="https://www.jccstatenisland.org" target="_blank" class="g-btn"><span class="g-ico">&#x1F3CA;</span><span class="g-lbl">JCC Staten Island</span><span class="g-sub">Programs &amp; Services</span></a>
+      <a href="https://www.cojosi.org" target="_blank" class="g-btn"><span class="g-ico">&#x1F3E0;</span><span class="g-lbl">Rental Assistance</span><span class="g-sub">COJO SI &mdash; 718-448-0900</span></a>
+      <a href="https://www.safehorizon.org" target="_blank" class="g-btn"><span class="g-ico">&#x1F6E1;&#xFE0F;</span><span class="g-lbl">DV Shelters</span><span class="g-sub">Safe Horizon</span></a>
+      <a href="https://www.nyc.gov/site/mopd/index.page" target="_blank" class="g-btn"><span class="g-ico">&#x267F;</span><span class="g-lbl">Disability Services</span><span class="g-sub">NYC MOPD</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- WORK & FINANCIAL -->
+<section class="section" id="tab-work">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Earn &amp; Grow</div>
+    <h2 class="sec-title fade-up">Work &amp; Financial Help</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="/jobs.html" class="g-btn"><span class="g-ico">&#x1F4CB;</span><span class="g-lbl">SI Job Board</span><span class="g-sub">Local Employers</span></a>
+      <a href="https://www.nyc.gov/workforce1" target="_blank" class="g-btn"><span class="g-ico">&#x1F3CB;&#xFE0F;</span><span class="g-lbl">Workforce1</span><span class="g-sub">Job Training &amp; Placement</span></a>
+      <a href="https://www.nypl.org/research-and-learn/research/career-development" target="_blank" class="g-btn"><span class="g-ico">&#x1F4C4;</span><span class="g-lbl">Resume Help</span><span class="g-sub">Career Coaching</span></a>
+      <a href="https://labor.ny.gov/unemploymentassistance.shtm" target="_blank" class="g-btn"><span class="g-ico">&#x1F4B3;</span><span class="g-lbl">Unemployment</span><span class="g-sub">NY Insurance Portal</span></a>
+      <a href="https://www.nyc.gov/fec" target="_blank" class="g-btn"><span class="g-ico">&#x1F4B0;</span><span class="g-lbl">Financial Counseling</span><span class="g-sub">Free &mdash; Book a Session</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVEL -->
+<section class="section" id="tab-travel">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Getting Around</div>
+    <h2 class="sec-title fade-up">Travel</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="/shuttle.html" class="g-btn"><span class="g-ico">&#x1F68C;</span><span class="g-lbl">Shuttle Route</span><span class="g-sub">Map &amp; All Stops + Boro Park</span></a>
+      <a href="https://www.siferry.com" target="_blank" class="g-btn"><span class="g-ico">&#x26F4;&#xFE0F;</span><span class="g-lbl">Ferry Schedule</span><span class="g-sub">St. George &amp; Whitehall</span></a>
+      <a href="https://www.mta.info" target="_blank" class="g-btn"><span class="g-ico">&#x1F68C;</span><span class="g-lbl">MTA Bus Alerts</span><span class="g-sub">SI Bus &amp; SIR Updates</span></a>
+      <a href="https://dmv.ny.gov" target="_blank" class="g-btn"><span class="g-ico">&#x1F697;</span><span class="g-lbl">NY DMV</span><span class="g-sub">License &amp; Registration</span></a>
+      <a href="https://511ny.org/map#camera/1001498" target="_blank" class="g-btn"><span class="g-ico">&#x1F4F7;</span><span class="g-lbl">Traffic Cameras</span><span class="g-sub">Willowbrook / Manor Hts</span></a>
+      <a href="https://www.nyc.gov/html/dot/html/motorist/roadwork.shtml" target="_blank" class="g-btn"><span class="g-ico">&#x1F6A7;</span><span class="g-lbl">Road Closures</span><span class="g-sub">Construction Updates</span></a>
+      <a href="https://www.nyc.gov/html/dot/html/motorist/parking/alternate-side-parking.shtml" target="_blank" class="g-btn"><span class="g-ico">&#x1F699;</span><span class="g-lbl">Parking Info</span><span class="g-sub">NYC DOT</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="section" id="tab-lifestyle">
+  <div class="section-inner">
+    <div class="sec-eyebrow fade-up">Get Outside &amp; Explore</div>
+    <h2 class="sec-title fade-up">Lifestyle &amp; Public Spaces</h2>
+    <div class="sec-divider fade-up"></div>
+    <div class="btn-grid fade-up">
+      <a href="https://www.nycgovparks.org/parks/staten-island" target="_blank" class="g-btn"><span class="g-ico">&#x1F333;</span><span class="g-lbl">Parks Directory</span><span class="g-sub">Clove Lakes, Silver Lake&hellip;</span></a>
+      <a href="https://www.nycgovparks.org/facilities/beaches/status" target="_blank" class="g-btn"><span class="g-ico">&#x1F3D6;&#xFE0F;</span><span class="g-lbl">Beaches</span><span class="g-sub">Conditions &amp; Recreation</span></a>
+      <a href="https://www.sigreenbelt.org" target="_blank" class="g-btn"><span class="g-ico">&#x1F97E;</span><span class="g-lbl">Greenbelt Trails</span><span class="g-sub">Hiking &amp; Walking</span></a>
+      <a href="https://www.nypl.org/locations/staten-island" target="_blank" class="g-btn"><span class="g-ico">&#x1F4DA;</span><span class="g-lbl">NYPL Libraries</span><span class="g-sub">SI Branches</span></a>
+      <a href="https://www.grownyc.org/greenmarket/staten-island" target="_blank" class="g-btn"><span class="g-ico">&#x1F955;</span><span class="g-lbl">Farmers Markets</span><span class="g-sub">Locations &amp; Dates</span></a>
+      <a href="https://forecast.weather.gov/MapClick.php?CityName=Staten+Island&state=NY" target="_blank" class="g-btn"><span class="g-ico">&#x1F324;&#xFE0F;</span><span class="g-lbl">Weather</span><span class="g-sub">SI Forecast</span></a>
+      <a href="https://511ny.org/map#camera/1001498" target="_blank" class="g-btn"><span class="g-ico">&#x1F4F7;</span><span class="g-lbl">Traffic Cameras</span><span class="g-sub">Willowbrook / Manor Hts</span></a>
+    </div>
+  </div>
+</section>
 
 <footer>
-  © 2026 ShopLocalSI.com — Supporting the Staten Island Jewish Community · <a href="index.html">Home</a> · <a href="donate.html">Donate</a>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo-wrap">
+        <img src="/logo.png" alt="Shop Local SI" class="foot-logo-img">
+        <div class="foot-brand-text">
+          <span class="shop">SHOP <span style="color:var(--green2)">LOCAL</span></span>
+          <span class="si">Staten Island</span>
+        </div>
+      </div>
+      <p class="foot-tagline">Supporting the businesses that support our Staten Island community &mdash; one purchase at a time.</p>
+    </div>
+    <div>
+      <div class="foot-heading">Pages</div>
+      <ul class="foot-links">
+        <li><a href="/directory.html">Business Directory</a></li>
+        <li><a href="/marketplace.html">Market</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/coupons.html">Coupons &amp; Deals</a></li>
+        <li><a href="/advertise.html">Advertise With Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Community</div>
+      <ul class="foot-links">
+        <li><a href="/#shabbos">Shabbos Times</a></li>
+        <li><a href="/community.html">Resource Hub</a></li>
+        <li><a href="/shuttle.html">Shuttle Route</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/advertise.html">List Your Business</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Emergency</div>
+      <ul class="foot-links">
+        <li><a href="tel:7182301000">Hatzolah: 718-230-1000</a></li>
+        <li><a href="tel:7187612428">Chaveirim: 718-761-2428</a></li>
+        <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
+        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
+        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
+        <li><a href="tel:7188544548">Misaskim: 718-854-4548</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2025 Shop Local Staten Island &middot; Strengthening our community</span>
+    <span><a href="/advertise.html">Advertise with us</a></span>
+  </div>
 </footer>
 
 <script>
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
+(function(){
+  var path=window.location.pathname;
+  var pg=path==="/"?"home":path.replace("/","").replace(".html","");
+  document.querySelectorAll(".nav-links a[data-page]").forEach(function(a){if(a.dataset.page===pg)a.classList.add("active");});
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("visible");});},{threshold:.1});
+  document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
+})();
+function showTab(id){
+  document.querySelectorAll(".section").forEach(function(s){s.classList.remove("active");});
+  document.querySelectorAll(".cat-card-btn").forEach(function(b){b.style.background='var(--green)';});
+  var sec=document.getElementById("tab-"+id);
+  if(sec){
+    sec.classList.add("active");
+    sec.querySelectorAll(".fade-up").forEach(function(el){setTimeout(function(){el.classList.add("visible");},50);});
+    setTimeout(function(){sec.scrollIntoView({behavior:"smooth",block:"start"});},50);
+  }
 }
+(function(){
+  var hash=window.location.hash.replace("#","");
+  if(hash) showTab(hash);
+})();
 </script>
-
 </body>
 </html>
