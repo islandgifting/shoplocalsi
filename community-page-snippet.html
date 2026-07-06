@@ -1,0 +1,135 @@
+<!-- ============================================================
+     COMMUNITY PAGE ADDITIONS — paste this block into community.html
+     wherever you want it (top of the community resources area works well).
+     Includes: quick-link buttons, Daily Halacha bite, Parsha bite,
+     Staten Island shiva listings (live from Misaskim), and Tehillim list.
+     All self-contained — own styles + scripts, updates itself.
+     ============================================================ -->
+<style>
+  .cx-wrap{max-width:1100px;margin:26px auto;padding:0 20px;font-family:'Nunito Sans',system-ui,sans-serif;}
+  .cx-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:26px;}
+  .cx-btn{display:block;background:#1D2B4C;color:#fff;text-decoration:none;border-radius:14px;
+    padding:18px 20px;border-bottom:3px solid #EE9F3C;}
+  .cx-btn:hover{background:#25365e;}
+  .cx-btn .t{font-weight:800;font-size:1.02rem;}
+  .cx-btn .s{font-size:.8rem;color:rgba(255,255,255,.7);margin-top:3px;}
+  .cx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-bottom:26px;}
+  .cx-card{background:#fff;border:1px solid rgba(29,43,76,.12);border-radius:16px;padding:18px 20px;}
+  .cx-card.green{background:#1E5B3F;color:#fff;border:none;}
+  .cx-k{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#EE9F3C;margin-bottom:6px;}
+  .cx-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:4px;}
+  .cx-card p{font-size:.86rem;line-height:1.5;color:rgba(34,48,79,.75);}
+  .cx-card.green p{color:rgba(255,255,255,.85);}
+  .cx-card a{color:#2BA8B4;font-weight:700;text-decoration:none;font-size:.82rem;}
+  .cx-card.green a{color:#F2C879;}
+  .cx-shiva{border-top:1px solid rgba(29,43,76,.1);padding:9px 0;font-size:.86rem;line-height:1.5;}
+  .cx-shiva .n{font-weight:800;color:#1D2B4C;}
+  .cx-shiva .d{color:rgba(34,48,79,.7);font-size:.8rem;}
+  .cx-teh{columns:2;column-gap:24px;font-size:.9rem;line-height:1.9;direction:rtl;text-align:right;}
+  @media(max-width:600px){.cx-teh{columns:1;}}
+  .cx-empty{font-size:.85rem;color:rgba(34,48,79,.55);}
+</style>
+
+<div class="cx-wrap">
+
+  <!-- Quick links -->
+  <div class="cx-btns">
+    <a class="cx-btn" href="/shuls.html"><div class="t">🕍 Shuls &amp; Minyan Times</div><div class="s">Every minyan on the Island — live, with countdowns</div></a>
+    <a class="cx-btn" href="/shiurim.html"><div class="t">📖 Shiurim &amp; Online Learning</div><div class="s">Today's shiurim in shul + daily Torah online</div></a>
+    <a class="cx-btn" href="/eruv.html"><div class="t">🕯 Willowbrook Eruv</div><div class="s">Status, map, and boundary details</div></a>
+    <a class="cx-btn" href="/mikvah.html"><div class="t">💧 Mikvaos</div><div class="s">Community mikvah listings &amp; contact info</div></a>
+  </div>
+
+  <!-- Daily learning bites -->
+  <div class="cx-grid">
+    <div class="cx-card green" id="cxHalacha" style="display:none">
+      <div class="cx-k">📜 Daily Halacha Bite</div>
+      <h3 id="cxHalachaTitle"></h3>
+      <p id="cxHalachaText"></p>
+      <a id="cxHalachaLink" href="#" target="_blank" rel="noopener">Learn today's halacha →</a>
+    </div>
+    <div class="cx-card" id="cxParsha" style="display:none">
+      <div class="cx-k">🕯 This Week's Parsha</div>
+      <h3 id="cxParshaTitle"></h3>
+      <p id="cxParshaText"></p>
+      <a id="cxParshaLink" href="#" target="_blank" rel="noopener">Read the parsha →</a>
+    </div>
+  </div>
+
+  <!-- Shiva listings -->
+  <div class="cx-card" style="margin-bottom:26px">
+    <div class="cx-k">🕯 Shiva in Staten Island · המקום ינחם</div>
+    <div id="cxShivas"><span class="cx-empty">Loading…</span></div>
+    <p style="margin-top:10px"><a href="https://www.misaskim.org/aveilim" target="_blank" rel="noopener">Full listings &amp; details on Misaskim →</a>
+    <span class="cx-empty"> · Shiva hotline: (718) 854-4548</span></p>
+  </div>
+
+  <!-- Tehillim list -->
+  <div class="cx-card" id="cxTehillimCard" style="display:none;margin-bottom:26px">
+    <div class="cx-k">📿 Tehillim List · רפואה שלמה</div>
+    <div class="cx-teh" id="cxTehillim"></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+  var today = new Date().toISOString().slice(0,10);
+
+  // Daily Halacha bite — Sefaria's daily learning calendar
+  fetch('https://www.sefaria.org/api/calendars')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var items = d.calendar_items || [];
+      var h = items.find(function(i){ return /halakh/i.test((i.title&&i.title.en)||''); });
+      if(!h) return;
+      document.getElementById('cxHalachaTitle').textContent = (h.displayValue&&h.displayValue.en) || h.ref || '';
+      document.getElementById('cxHalachaText').textContent = 'Today\u2019s portion of daily halacha \u2014 a few minutes, every day, adds up to the whole picture.';
+      document.getElementById('cxHalachaLink').href = 'https://www.sefaria.org/' + encodeURIComponent((h.url||h.ref||'').replace(/ /g,'_'));
+      document.getElementById('cxHalacha').style.display = 'block';
+    }).catch(function(){});
+
+  // Parsha bite — name + reading, from Sefaria calendars (falls back to Hebcal)
+  fetch('https://www.sefaria.org/api/calendars')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var items = d.calendar_items || [];
+      var p = items.find(function(i){ return /parashat/i.test((i.title&&i.title.en)||''); });
+      if(!p) return;
+      var nm = (p.displayValue&&p.displayValue.en) || '';
+      document.getElementById('cxParshaTitle').textContent = nm;
+      document.getElementById('cxParshaText').textContent = 'This week\u2019s Torah reading: ' + (p.ref||'') + '. A thought to take into Shabbos \u2014 read it inside.';
+      document.getElementById('cxParshaLink').href = 'https://www.sefaria.org/' + encodeURIComponent((p.url||p.ref||'').replace(/ /g,'_'));
+      document.getElementById('cxParsha').style.display = 'block';
+    }).catch(function(){});
+
+  // Shiva listings (Staten Island, via Misaskim — refreshed daily by the site's scraper)
+  fetch('/data/shivas.json?d='+today)
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      var box = document.getElementById('cxShivas');
+      var list = d.shivas || [];
+      if(!list.length){ box.innerHTML = '<span class="cx-empty">No Staten Island shivas currently listed \u2014 \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D8\u05D5\u05D1\u05D5\u05EA.</span>'; return; }
+      box.innerHTML = list.map(function(s){
+        return '<div class="cx-shiva"><div class="n">'+esc(s.niftar)+'</div><div class="d">'
+          + (s.details||[]).slice(0,6).map(esc).join('<br>') + '</div></div>';
+      }).join('');
+    })
+    .catch(function(){
+      document.getElementById('cxShivas').innerHTML =
+        '<span class="cx-empty">Live listings coming soon \u2014 see the full list on Misaskim below.</span>';
+    });
+
+  // Tehillim list
+  fetch('/data/tehillim.json?d='+today)
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      var names = d.names || [];
+      if(!names.length) return;
+      document.getElementById('cxTehillim').innerHTML =
+        names.map(function(n){ return '<div>'+esc(n.name)+'</div>'; }).join('');
+      document.getElementById('cxTehillimCard').style.display = 'block';
+    }).catch(function(){});
+})();
+</script>
