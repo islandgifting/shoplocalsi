@@ -131,6 +131,44 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
 </style>
 </head>
 <body>
+<!-- ============================================
+     DAF A DAY widget — paste this anywhere inside community.html
+     (a good spot: right at the top of your Tehillim/community content area)
+     Shows today's Daf Yomi with links to learn it on Sefaria or AllDaf.
+     Updates itself every day — nothing to maintain.
+     ============================================ -->
+<div id="dafWidget" style="max-width:520px;margin:20px auto;background:#1E5B3F;color:#fff;
+     border-radius:16px;padding:20px 24px;font-family:'Nunito Sans',system-ui,sans-serif;
+     box-shadow:0 4px 18px rgba(0,0,0,.12);display:none;">
+  <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#F2C879;font-weight:800;">
+    📖 Today's Daf · דף היומי
+  </div>
+  <div id="dafName" style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-top:6px;"></div>
+  <div id="dafHeb" style="font-size:1rem;color:rgba(255,255,255,.8);margin-top:2px;"></div>
+  <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;">
+    <a id="dafSefaria" href="#" target="_blank" rel="noopener"
+       style="color:#F2C879;font-weight:700;font-size:.85rem;text-decoration:none;">Learn it on Sefaria →</a>
+    <a href="https://alldaf.org" target="_blank" rel="noopener"
+       style="color:#F2C879;font-weight:700;font-size:.85rem;text-decoration:none;">Shiurim on AllDaf →</a>
+  </div>
+</div>
+<script>
+(function(){
+  var today = new Date().toISOString().slice(0,10);
+  fetch('https://www.hebcal.com/hebcal?v=1&cfg=json&start='+today+'&end='+today+'&F=on')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var daf = (d.items||[]).find(function(i){return i.category==='dafyomi';});
+      if(!daf) return;
+      document.getElementById('dafName').textContent = daf.title;
+      if(daf.hebrew) document.getElementById('dafHeb').textContent = daf.hebrew;
+      // Sefaria link: "Zevachim 12" -> https://www.sefaria.org/Zevachim.12
+      var ref = daf.title.replace(/\s+(\d+)$/, '.$1').replace(/\s+/g,'_');
+      document.getElementById('dafSefaria').href = 'https://www.sefaria.org/' + ref;
+      document.getElementById('dafWidget').style.display = 'block';
+    }).catch(function(){});
+})();
+</script>
 
 <div class="emstrip">
   <span class="em-label">Emergency</span>
