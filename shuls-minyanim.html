@@ -46,6 +46,21 @@
 <section class="hero">
   <h1>Staten Island Shuls &amp; Minyanim</h1>
   <p>Weekday minyanim, Shabbos davening, and shiurim — all in one place.</p>
+  <p id="parshaLine" style="margin-top:6px;color:#EE9F3C;font-weight:700;"></p>
+  <script>
+  fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=5139568')
+    .then(r=>r.json())
+    .then(d=>{
+      var parsha=(d.items||[]).find(i=>i.category==='parashat');
+      var candles=(d.items||[]).find(i=>i.category==='candles');
+      var havdalah=(d.items||[]).find(i=>i.category==='havdalah');
+      var parts=[];
+      if(parsha) parts.push(parsha.title+(parsha.hebrew?' · '+parsha.hebrew:''));
+      if(candles) parts.push('Candle lighting '+candles.title.replace('Candle lighting: ',''));
+      if(havdalah) parts.push('Havdalah '+havdalah.title.replace('Havdalah: ',''));
+      document.getElementById('parshaLine').textContent=parts.join('  ·  ');
+    }).catch(()=>{});
+  </script>
   <span class="updated" id="updatedTag">Loading schedule…</span>
 </section>
 
