@@ -85,6 +85,30 @@
   .zman{font-size:.78rem;line-height:1.35;}
   .zman .k{font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);font-weight:800;}
   .zman .v{font-weight:800;color:var(--navy);font-size:.95rem;}
+  .shabbos-view{max-width:1100px;margin:26px auto 40px;padding:0 20px;display:none;}
+  .sb-header{background:linear-gradient(135deg,#1E5B3F,#153f2c);color:#fff;border-radius:16px;
+    padding:22px 26px;margin-bottom:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;align-items:center;}
+  .sb-header .parsha{font-family:'Playfair Display',serif;}
+  .sb-header .parsha .k{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#F2C879;font-weight:800;}
+  .sb-header .parsha h2{font-size:1.4rem;margin-top:3px;line-height:1.2;}
+  .sb-header .parsha .heb{color:rgba(255,255,255,.75);font-size:.95rem;margin-top:2px;font-family:'Nunito Sans',system-ui,sans-serif;font-weight:400;}
+  .sb-header .z{border-left:1px solid rgba(255,255,255,.2);padding-left:18px;}
+  .sb-header .z .k{font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;color:#F2C879;font-weight:800;}
+  .sb-header .z .v{font-size:1.1rem;font-weight:800;margin-top:2px;}
+  .sb-header .z .heb{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:2px;}
+  .havdalah-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px;margin-bottom:22px;}
+  .havdalah-card h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.05rem;margin-bottom:10px;}
+  .hv-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .hv-opt{flex:1;min-width:200px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+  .hv-opt .k{font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);font-weight:800;}
+  .hv-opt .v{font-weight:800;font-size:1.05rem;color:var(--navy);margin:2px 0;}
+  .hv-opt .d{font-size:.75rem;color:rgba(34,48,79,.62);line-height:1.4;}
+  .sb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+  .sb-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:.88rem;}
+  .sb-card h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.05rem;line-height:1.3;margin-bottom:8px;}
+  .sb-card .tef{padding:3px 0;line-height:1.4;}
+  .sb-card .tef span{color:var(--navy);font-weight:800;}
+  .sb-card.no-times{opacity:.55;font-style:italic;}
   .learn{max-width:1100px;margin:10px auto 70px;padding:0 20px;}
   .learn h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);text-align:center;margin-bottom:6px;}
   .learn .sub{text-align:center;color:rgba(34,48,79,.6);font-size:.9rem;margin-bottom:20px;}
@@ -133,6 +157,7 @@
   <div class="viewtoggle" role="tablist">
     <button class="vbtn active" data-view="time">⏱ By Time</button>
     <button class="vbtn" data-view="shul">🏛 By Shul</button>
+    <button class="vbtn" data-view="shabbos">🕯 Shabbos</button>
   </div>
 </div>
 
@@ -141,6 +166,8 @@
 </section>
 
 <main class="timeline" id="timelineView"></main>
+
+<main class="shabbos-view" id="shabbosView"></main>
 
 <main class="grid" id="shulGrid" style="display:none">
   <div class="empty">Loading shul schedules…</div>
@@ -227,6 +254,7 @@
 (function(){
   var grid = document.getElementById('shulGrid');
   var timelineEl = document.getElementById('timelineView');
+  var shabbosEl = document.getElementById('shabbosView');
   var tag = document.getElementById('updatedTag');
   var search = document.getElementById('shulSearch');
   var DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Shabbos"];
@@ -298,9 +326,9 @@
   }
 
   function applyView(){
-    var isTime = view === 'time';
-    timelineEl.style.display = isTime ? 'block' : 'none';
-    grid.style.display = isTime ? 'none' : 'grid';
+    timelineEl.style.display = view === 'time' ? 'block' : 'none';
+    shabbosEl.style.display  = view === 'shabbos' ? 'block' : 'none';
+    grid.style.display       = view === 'shul' ? 'grid' : 'none';
     document.querySelectorAll('.vbtn').forEach(function(b){
       b.classList.toggle('active', b.dataset.view === view);
     });
@@ -327,6 +355,102 @@
     });
   }
 
+  function pad2(n){return n<10?'0'+n:''+n;}
+  function fmtTime(iso){
+    var d = new Date(iso), h=d.getHours(), m=d.getMinutes(), ap=h>=12?'pm':'am';
+    h = h%12||12; return h+':'+pad2(m)+' '+ap;
+  }
+
+  var shabbosZmanim = null;
+
+  function renderShabbos(list){
+    var parts = ['<div class="sb-header" id="sbHeader"><div class="parsha"><div class="k">This week</div><div id="sbParsha">Loading parsha…</div></div></div>'];
+    // Havdalah options (filled after fetch)
+    parts.push('<div class="havdalah-card"><h3>🌙 When does Shabbos end?</h3>'
+      + '<p style="font-size:.82rem;color:rgba(34,48,79,.65);margin-bottom:12px;line-height:1.5;">'
+      + 'Shabbos ends at nightfall — tzeis hakochavim ("emergence of the stars"). '
+      + 'Communities follow different opinions on exactly when that is. '
+      + 'Speak to your rav to know which zman to follow.</p>'
+      + '<div class="hv-row" id="hvRow"><div class="hv-opt"><div class="k">Loading…</div></div></div></div>');
+    // Per-shul Shabbos cards
+    parts.push('<div class="sb-grid">');
+    list.forEach(function(s){
+      var sh = s.schedule && s.schedule.Shabbos;
+      var has = sh && ((sh.shacharis&&sh.shacharis.length)||(sh.mincha&&sh.mincha.length)||(sh.maariv&&sh.maariv.length));
+      parts.push('<div class="sb-card'+(has?'':' no-times')+'"><h3>'+esc(s.name||'')+'</h3>');
+      if(has){
+        if(sh.shacharis&&sh.shacharis.length) parts.push('<div class="tef"><span>Shacharis:</span> '+esc(sh.shacharis.map(function(t){return t+' am';}).join(', '))+'</div>');
+        if(sh.mincha&&sh.mincha.length) parts.push('<div class="tef"><span>Mincha:</span> '+esc(sh.mincha.map(function(t){return t+' pm';}).join(', '))+'</div>');
+        if(sh.maariv&&sh.maariv.length) parts.push('<div class="tef"><span>Maariv:</span> '+esc(sh.maariv.map(function(t){return t+' pm';}).join(', '))+'</div>');
+      } else {
+        parts.push('<div class="tef">No Shabbos times on GoDaven.</div>');
+      }
+      parts.push('</div>');
+    });
+    parts.push('</div>');
+    shabbosEl.innerHTML = parts.join('');
+    fillShabbosZmanim();
+  }
+
+  function fillShabbosZmanim(){
+    if(!shabbosZmanim) return;
+    var header = document.getElementById('sbHeader');
+    var parsha = document.getElementById('sbParsha');
+    var hv = document.getElementById('hvRow');
+    if(parsha && shabbosZmanim.parsha){
+      parsha.innerHTML = '<h2>'+esc(shabbosZmanim.parsha.title)+'</h2>'
+        + (shabbosZmanim.parsha.hebrew ? '<div class="heb">'+esc(shabbosZmanim.parsha.hebrew)+'</div>' : '');
+    }
+    if(header && shabbosZmanim.candles){
+      var cardHtml = '<div class="z"><div class="k">🕯 Candle Lighting</div><div class="v">'+fmtTime(shabbosZmanim.candles)+'</div><div class="heb">Friday · '+esc(shabbosZmanim.candleDate||'')+'</div></div>';
+      header.insertAdjacentHTML('beforeend', cardHtml);
+    }
+    if(hv){
+      // Three havdalah options with different star-visibility standards
+      var opts = [];
+      if(shabbosZmanim.havdalahEarly)
+        opts.push('<div class="hv-opt"><div class="k">Earliest · R. Tukachinsky</div><div class="v">'+fmtTime(shabbosZmanim.havdalahEarly)+'</div><div class="d">Sunset + about 40 min. Followed in Eretz Yisrael and by many Sefardim.</div></div>');
+      if(shabbosZmanim.havdalahMain)
+        opts.push('<div class="hv-opt"><div class="k">3 Medium Stars (common in US)</div><div class="v">'+fmtTime(shabbosZmanim.havdalahMain)+'</div><div class="d">Sunset + about 50 min (3 medium stars visible). The most widely accepted zman in Ashkenazi communities.</div></div>');
+      if(shabbosZmanim.havdalahRT)
+        opts.push('<div class="hv-opt"><div class="k">72 min · Rabbeinu Tam</div><div class="v">'+fmtTime(shabbosZmanim.havdalahRT)+'</div><div class="d">Sunset + 72 minutes. Followed by many chassidishe communities and used for chumros.</div></div>');
+      hv.innerHTML = opts.join('') || '<div class="hv-opt"><div class="d">Havdalah times will appear on Friday.</div></div>';
+    }
+  }
+
+  // Fetch Shabbos parsha + candle lighting + three havdalah opinions
+  function loadShabbosZmanim(){
+    // Base shabbat call for parsha and (default) candles/havdalah
+    fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=5139568&M=on&m=50')
+      .then(function(r){return r.json();})
+      .then(function(d){
+        shabbosZmanim = shabbosZmanim || {};
+        var items = d.items||[];
+        var p = items.find(function(i){return i.category==='parashat';});
+        var c = items.find(function(i){return i.category==='candles';});
+        var h = items.find(function(i){return i.category==='havdalah';});
+        if(p) shabbosZmanim.parsha = {title:p.title, hebrew:p.hebrew||''};
+        if(c){ shabbosZmanim.candles = c.date; shabbosZmanim.candleDate = c.title.replace(/^.*: /,''); }
+        if(h) shabbosZmanim.havdalahMain = h.date;
+        // Second call: earliest (Tukachinsky) — havdalah at 40 min
+        return fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=5139568&M=on&m=40');
+      })
+      .then(function(r){return r.json();})
+      .then(function(d){
+        var h = (d.items||[]).find(function(i){return i.category==='havdalah';});
+        if(h) shabbosZmanim.havdalahEarly = h.date;
+        // Third: Rabbeinu Tam at 72 min
+        return fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=5139568&M=on&m=72');
+      })
+      .then(function(r){return r.json();})
+      .then(function(d){
+        var h = (d.items||[]).find(function(i){return i.category==='havdalah';});
+        if(h) shabbosZmanim.havdalahRT = h.date;
+        fillShabbosZmanim();
+      })
+      .catch(function(){});
+  }
+  loadShabbosZmanim();
   function tefLine(label, arr, pm){
     if(!arr || !arr.length) return '';
     var times = arr.map(function(t){ return t + (pm ? ' pm' : ' am'); }).join(', ');
@@ -415,6 +539,7 @@
     var list = filtered();
     render(list);
     renderTimeline(list);
+    renderShabbos(list);
   });
 
   // Full zmanim card — the "what men need" list: alos, hanetz, sof zman shema/tefilla,
@@ -471,6 +596,7 @@
       tag.textContent = d ? ('Updated ' + d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})) : 'Live schedule';
       render(all);
       renderTimeline(all);
+      renderShabbos(all);
       applyView();
     })
     .catch(function(){
