@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiurim & Online Learning — Shop Local Staten Island</title>
+<meta name="description" content="Today's shiurim at Staten Island shuls, plus daily Torah learning online — daf yomi, halacha, and inspiration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1D2B4C; --green:#1E5B3F; --gold:#EE9F3C; --aqua:#2BA8B4; --ivory:#FAF8F3;
+    --ink:#22304f; --line:rgba(29,43,76,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--ivory);color:var(--ink);}
+  .sitenav{background:var(--navy);border-bottom:2px solid var(--gold);display:flex;align-items:center;
+    justify-content:space-between;gap:16px;padding:12px 22px;flex-wrap:wrap;}
+  .sitenav .brand{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;text-decoration:none;font-weight:700;}
+  .sitenav .brand span{color:var(--gold);}
+  .navlinks{display:flex;gap:4px;flex-wrap:wrap;}
+  .navlinks a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;font-weight:700;padding:7px 13px;border-radius:8px;}
+  .navlinks a:hover{background:rgba(255,255,255,.1);color:#fff;}
+  .navlinks a.on{background:rgba(238,159,60,.18);color:var(--gold);}
+  .hero{background:var(--green);color:#fff;padding:46px 20px 38px;text-align:center;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.4rem);}
+  .hero p{margin-top:8px;color:rgba(255,255,255,.8);font-size:1rem;}
+  .hero .daf{margin-top:10px;color:#F2C879;font-weight:700;font-size:.95rem;}
+  .wrap{max-width:820px;margin:30px auto;padding:0 20px;}
+  .wrap h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .tl-row{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:10px 16px;margin-bottom:8px;}
+  .tl-row.passed{opacity:.45;}
+  .tl-time{font-weight:800;color:var(--navy);font-size:1rem;min-width:82px;}
+  .tl-shul{flex:1;line-height:1.35;}
+  .tl-shul .nm{font-weight:700;}
+  .tl-shul .tx{font-size:.8rem;color:rgba(34,48,79,.6);}
+  .chip{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px;background:rgba(30,91,63,.1);color:var(--green);white-space:nowrap;}
+  .chip.soon{background:var(--gold);color:#fff;animation:slsipulse 1.4s ease-in-out infinite;}
+  @keyframes slsipulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.06);opacity:.85}}
+  .empty{text-align:center;padding:34px 20px;color:rgba(34,48,79,.6);background:#fff;border:1px solid var(--line);border-radius:12px;}
+  .learn{max-width:1100px;margin:26px auto 70px;padding:0 20px;}
+  .learn h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);text-align:center;margin-bottom:6px;}
+  .learn .sub{text-align:center;color:rgba(34,48,79,.6);font-size:.9rem;margin-bottom:20px;}
+  .learn-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+  .ltab{border:1px solid var(--line);background:#fff;font:inherit;font-weight:700;font-size:.85rem;
+    padding:9px 18px;border-radius:999px;cursor:pointer;color:rgba(34,48,79,.65);}
+  .ltab.active{background:var(--green);border-color:var(--green);color:#fff;}
+  .learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+  .learn-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+  .learn-card.wide{grid-column:1/-1;}
+  @media(min-width:760px){.learn-card.wide{grid-column:span 2;}}
+  .learn-card .vid{position:relative;padding-top:56.25%;background:#0d1b12;}
+  .learn-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .learn-card .body{padding:16px 18px;}
+  .learn-card h3{font-size:1rem;color:var(--navy);}
+  .learn-card p{font-size:.82rem;color:rgba(34,48,79,.6);margin-top:4px;line-height:1.45;}
+  .learn-card .links{padding:0 18px 14px;display:flex;gap:14px;margin-top:auto;}
+  .learn-card .links a{font-size:.8rem;font-weight:700;color:var(--aqua);text-decoration:none;}
+  .note{max-width:820px;margin:0 auto 60px;padding:0 20px;font-size:.82rem;color:rgba(34,48,79,.55);text-align:center;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <a class="brand" href="/">Shop Local <span>Staten Island</span></a>
+  <div class="navlinks">
+    <a href="/">Home</a>
+    <a href="/directory.html">Directory</a>
+    <a href="/shuls.html">Shuls</a>
+    <a href="/shiurim.html" class="on">Shiurim</a>
+    <a href="/community.html">Community</a>
+    <a href="/donate.html">Donate</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Shiurim &amp; Online Learning</h1>
+  <p>Torah every day — in shul and on your screen.</p>
+  <p class="daf" id="dafLine"></p>
+</section>
+
+<div class="wrap">
+  <h2>📖 Today's Shiurim in Shul</h2>
+  <div id="shiurList"><div class="empty">Loading…</div></div>
+</div>
+
+<section class="learn">
+  <h2>Learn Online · Anytime</h2>
+  <p class="sub">Today's learning, on your schedule.</p>
+  <div class="learn-tabs">
+    <button class="ltab active" data-ltab="daf">📖 The Daily Daf</button>
+    <button class="ltab" data-ltab="quick">⏱ Quick Learning</button>
+    <button class="ltab" data-ltab="inspire">✨ Daily Inspiration</button>
+  </div>
+
+  <div class="learn-grid" data-lpanel="daf">
+    <div class="learn-card wide">
+      <div class="vid">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=UUKwQa5DB_VR98ac_r-Wyl-g"
+          title="Daf Yomi — Mercaz Daf Yomi with R' Eli Stefansky"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="body">
+        <h3>Today's Daf · R' Eli Stefansky (MDY)</h3>
+        <p>The world-famous Mercaz Daf Yomi shiur — clear, entertaining, one daf at a time. The latest daf loads here automatically every day.</p>
+      </div>
+      <div class="links">
+        <a href="https://mercazdafyomi.com" target="_blank" rel="noopener">MDY website →</a>
+        <a href="https://alldaf.org/series/4099" target="_blank" rel="noopener">On AllDaf →</a>
+      </div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>AllDaf (OU)</h3><p>Every daf, every style — from rapid summaries to deep text analysis. Pick the maggid shiur that fits you.</p></div>
+      <div class="links"><a href="https://alldaf.org" target="_blank" rel="noopener">Open AllDaf →</a></div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>Real Clear Daf</h3><p>High-level audio review of the daf — great for chazara on the go.</p></div>
+      <div class="links"><a href="https://www.realcleardaf.com" target="_blank" rel="noopener">Listen →</a></div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>Hadran</h3><p>Daily gemara shiur by Rabbanit Michelle Farber — the global women's daf yomi initiative.</p></div>
+      <div class="links"><a href="https://hadran.org.il" target="_blank" rel="noopener">Learn →</a></div>
+    </div>
+  </div>
+
+  <div class="learn-grid" data-lpanel="quick" style="display:none">
+    <div class="learn-card">
+      <div class="body"><h3>The 8-Minute Daf · MDY</h3><p>R' Stefansky's famous recap — the entire daf, illustrated, in eight minutes. Perfect for review or a busy day.</p></div>
+      <div class="links"><a href="https://mercazdafyomi.com" target="_blank" rel="noopener">Get it →</a></div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>Daily Halacha · Rabbi Eli Mansour</h3><p>Clear, practical halacha in under ten minutes a day.</p></div>
+      <div class="links"><a href="https://www.dailyhalacha.com" target="_blank" rel="noopener">Today's halacha →</a></div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>Sefaria</h3><p>The full library — chumash, gemara, halacha, and today's daf, free and searchable.</p></div>
+      <div class="links"><a href="https://www.sefaria.org" target="_blank" rel="noopener">Open the library →</a></div>
+    </div>
+  </div>
+
+  <div class="learn-grid" data-lpanel="inspire" style="display:none">
+    <div class="learn-card">
+      <div class="body"><h3>Meaningful Minute</h3><p>Short, powerful video moments from today's top speakers — plus the Meaningful People podcast.</p></div>
+      <div class="links"><a href="https://meaningfulminute.org/watch/" target="_blank" rel="noopener">Watch →</a><a href="https://www.meaningfulpeoplepodcast.com" target="_blank" rel="noopener">Podcast →</a></div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>TorahAnytime</h3><p>The largest Torah video library online — over a thousand speakers, every topic, free.</p></div>
+      <div class="links"><a href="https://www.torahanytime.com" target="_blank" rel="noopener">Browse →</a></div>
+    </div>
+    <div class="learn-card">
+      <div class="body"><h3>Living Lchaim</h3><p>Uplifting Jewish podcasts and stories — inspiration for the commute.</p></div>
+      <div class="links"><a href="https://www.livinglchaim.com" target="_blank" rel="noopener">Listen →</a></div>
+    </div>
+  </div>
+</section>
+
+<p class="note">In-shul shiurim come from GoDaven and refresh weekly. Always confirm with the shul.</p>
+
+<script>
+(function(){
+  var list = document.getElementById('shiurList');
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+  function fmt12(d){var h=d.getHours(),m=d.getMinutes(),ap=h>=12?'pm':'am';h=h%12||12;return h+':'+(m<10?'0':'')+m+' '+ap;}
+  function inMin(d){var mins=Math.round((d-new Date())/60000);if(mins<=0)return null;
+    if(mins<60)return 'in '+mins+' min';var h=Math.floor(mins/60),r=mins%60;return 'in '+h+'h'+(r?' '+r+'m':'');}
+
+  var entries = [];
+
+  function renderShiurim(){
+    if(!entries.length){
+      list.innerHTML = '<div class="empty">No in-shul shiurim listed on GoDaven yet — the online learning below is always on. Know of a shiur we should list? <a href="/community.html">Let us know</a>.</div>';
+      return;
+    }
+    var now = new Date();
+    list.innerHTML = entries.map(function(e){
+      var passed = e.when && e.when < now;
+      var cd = e.when ? inMin(e.when) : null;
+      var soon = cd && (e.when - now) < 15*60000;
+      return '<div class="tl-row'+(passed?' passed':'')+'">'
+        + '<div class="tl-time">'+(e.when?fmt12(e.when):'—')+'</div>'
+        + '<div class="tl-shul"><div class="nm">'+esc(e.shul)+'</div><div class="tx">'+esc(e.text)+'</div></div>'
+        + (cd && !passed ? '<span class="chip'+(soon?' soon':'')+'">'+(soon?'\u25CF starting soon \u00B7 ':'')+cd+'</span>' : '')
+        + '</div>';
+    }).join('');
+  }
+
+  fetch('/data/shuls.json?d=' + new Date().toISOString().slice(0,10))
+    .then(function(r){ if(!r.ok) throw new Error('missing'); return r.json(); })
+    .then(function(data){
+      var dayNum = new Date().getDay();
+      var todayWord = ["sun","mon","tue","wed","thu","fri","sat"][dayNum];
+      var isShabbos = dayNum === 6;
+      var DAY_RE = /\b(sun|mon|tue|wed|thu|fri|sat|shabbos|shabbat|weekday|daily)\w*/i;
+      (data.shuls||[]).forEach(function(s){
+        (s.shiurim||[]).forEach(function(e){
+          var t = (e.text||'').toLowerCase();
+          var mentionsDay = DAY_RE.test(t);
+          var ok;
+          if (!mentionsDay) ok = !isShabbos;
+          else if (/daily/.test(t)) ok = true;
+          else if (isShabbos) ok = /shabbos|shabbat|\bsat/.test(t);
+          else if (/weekday/.test(t)) ok = dayNum >= 1 && dayNum <= 5;
+          else {
+            var range = /(sun|mon|tue|wed|thu|fri|sat)\w*\s*[-\u2013]\s*(sun|mon|tue|wed|thu|fri|sat)/i.exec(t);
+            if (range) {
+              var names = ["sun","mon","tue","wed","thu","fri","sat"];
+              var a = names.indexOf(range[1].slice(0,3));
+              var b = names.indexOf(range[2].slice(0,3));
+              ok = (a <= b) ? (dayNum >= a && dayNum <= b) : (dayNum >= a || dayNum <= b);
+            } else ok = t.indexOf(todayWord) !== -1;
+          }
+          if (!ok) return;
+
+          var when = null;
+          var m = /(\d{1,2}):(\d{2})\s*(AM|PM|am|pm)?/.exec(e.text||'');
+          if(m){
+            var h=+m[1],min=+m[2],ap=(m[3]||'').toUpperCase();
+            if(ap==='PM'&&h<12)h+=12; else if(!ap&&h<11)h+=12;
+            when=new Date(); when.setHours(h,min,0,0);
+          }
+          entries.push({shul:s.name||'', text:e.text||'', when:when});
+        });
+      });
+      entries.sort(function(a,b){
+        if(a.when&&b.when)return a.when-b.when;
+        if(a.when)return -1; if(b.when)return 1; return 0;
+      });
+      renderShiurim();
+      setInterval(renderShiurim, 30000);
+    })
+    .catch(renderShiurim);
+
+  document.querySelectorAll('.ltab').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.ltab').forEach(function(x){x.classList.toggle('active',x===b);});
+      document.querySelectorAll('[data-lpanel]').forEach(function(p){
+        p.style.display = p.dataset.lpanel===b.dataset.ltab ? 'grid':'none';
+      });
+    });
+  });
+
+  // Today's daf in the hero
+  var today = new Date().toISOString().slice(0,10);
+  fetch('https://www.hebcal.com/hebcal?v=1&cfg=json&start='+today+'&end='+today+'&F=on')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var daf=(d.items||[]).find(function(i){return i.category==='dafyomi';});
+      if(daf) document.getElementById('dafLine').textContent =
+        "Today's Daf: " + daf.title + (daf.hebrew ? ' \u00B7 ' + daf.hebrew : '');
+    }).catch(function(){});
+})();
+</script>
+</body>
+</html>

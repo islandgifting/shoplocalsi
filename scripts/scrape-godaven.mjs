@@ -20,6 +20,13 @@ const EXTRA_SITES = [
   { name: "Young Israel of Staten Island (YISI)", url: "https://www.yisi.com" },
 ];
 
+// Paste YISI's Tehillim-list page URL between the quotes to enable the tehillim feed.
+// Leave as null to skip.
+const TEHILLIM_URL = null;
+
+// Misaskim public aveilim listing — we keep only Staten Island shivas.
+const MISASKIM_URL = "https://www.misaskim.org/aveilim";
+
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Shabbos"];
 const NUSACH = ["Ashkenaz", "Sefard", "Edut Mizrach", "Ari", "Nusach Ari", "Unspecified"];
 
@@ -187,6 +194,51 @@ async function scrapeExtraSite(page, site) {
   }
 }
 
+async function scrapeMisaskimShivas(page) {
+  try {
+    await page.goto(MISASKIM_URL, { waitUntil: "networkidle", timeout: 60000 });
+    await page.waitForTimeout(4000);
+    const text = await page.evaluate(() => document.body.innerText || "");
+    const lines = text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean);
+    // A niftar/nifteres header line contains an honorific
+    const HONORIFIC = /(\u05D6["\u201D\u05F4']?\u05DC|\u05E2["\u201D\u05F4']?\u05D4|Z[\u201D"']L|A[\u201D"']H|OB"?M)\s*$/i;
+    const blocks = [];
+    let current = null;
+    for (const l of lines) {
+      if (HONORIFIC.test(l) && l.length < 90) {
+        if (current) blocks.push(current);
+        current = { niftar: l, lines: [] };
+      } else if (current && current.lines.length < 25) {
+        current.lines.push(l);
+      }
+    }
+    if (current) blocks.push(current);
+    const si = blocks
+      .filter((b) => /staten island/i.test(b.lines.join(" ")))
+      .map((b) => ({ niftar: b.niftar, details: b.lines }));
+    return si;
+  } catch (e) {
+    console.error("Misaskim scrape failed: " + e.message);
+    return null; // null = scrape failed (keep old data); [] = ran fine, none in SI
+  }
+}
+
+async function scrapeTehillim(page) {
+  if (!TEHILLIM_URL) return null;
+  try {
+    await page.goto(TEHILLIM_URL, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await page.waitForTimeout(3000);
+    const text = await page.evaluate(() => document.body.innerText || "");
+    const lines = text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean);
+    // Hebrew-name-looking lines (contains Hebrew letters, e.g. "... בן/בת ...")
+    const names = lines.filter((l) => /[\u0590-\u05FF]/.test(l) && /\u05D1[\u05DF\u05EA]/.test(l) && l.length < 90);
+    return names.map((n) => ({ name: n }));
+  } catch (e) {
+    console.error("Tehillim scrape failed: " + e.message);
+    return null;
+  }
+}
+
 const browser = await chromium.launch();
 const page = await browser.newPage({
   userAgent: "Mozilla/5.0 (compatible; ShopLocalSI-ShulTimes/2.0; +https://shoplocalsi.com)",
@@ -209,6 +261,11 @@ for (const site of EXTRA_SITES) {
   await page.waitForTimeout(2000);
 }
 
+console.log("Scraping Misaskim shiva listings (Staten Island only)...");
+const shivas = await scrapeMisaskimShivas(page);
+console.log("Scraping Tehillim list...");
+const tehillim = await scrapeTehillim(page);
+
 await browser.close();
 
 mkdirSync("data", { recursive: true });
@@ -216,4 +273,18 @@ writeFileSync(
   "data/shuls.json",
   JSON.stringify({ updated: new Date().toISOString(), source: "godaven.com", version: 2, shuls }, null, 2)
 );
+if (shivas !== null) {
+  writeFileSync(
+    "data/shivas.json",
+    JSON.stringify({ updated: new Date().toISOString(), source: "misaskim.org", shivas }, null, 2)
+  );
+  console.log(`Shivas in Staten Island: ${shivas.length}`);
+}
+if (tehillim !== null) {
+  writeFileSync(
+    "data/tehillim.json",
+    JSON.stringify({ updated: new Date().toISOString(), source: TEHILLIM_URL, names: tehillim }, null, 2)
+  );
+  console.log(`Tehillim names: ${tehillim.length}`);
+}
 console.log(`Done. Wrote ${shuls.length} entries to data/shuls.json`);
