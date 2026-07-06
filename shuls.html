@@ -14,6 +14,15 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--ivory);color:var(--ink);}
+  .sitenav{background:var(--navy);border-bottom:2px solid var(--gold);display:flex;align-items:center;
+    justify-content:space-between;gap:16px;padding:12px 22px;flex-wrap:wrap;}
+  .sitenav .brand{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;text-decoration:none;font-weight:700;}
+  .sitenav .brand span{color:var(--gold);}
+  .navlinks{display:flex;gap:4px;flex-wrap:wrap;}
+  .navlinks a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;font-weight:700;
+    padding:7px 13px;border-radius:8px;}
+  .navlinks a:hover{background:rgba(255,255,255,.1);color:#fff;}
+  .navlinks a.on{background:rgba(238,159,60,.18);color:var(--gold);}
   .hero{background:var(--navy);color:#fff;padding:48px 20px 40px;text-align:center;}
   .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);}
   .hero p{margin-top:8px;color:rgba(255,255,255,.75);font-size:1rem;}
@@ -91,6 +100,18 @@
 </style>
 </head>
 <body>
+
+<!-- Site navigation — edit the links/labels below to match your main nav exactly -->
+<nav class="sitenav">
+  <a class="brand" href="/">Shop Local <span>Staten Island</span></a>
+  <div class="navlinks">
+    <a href="/">Home</a>
+    <a href="/directory.html">Directory</a>
+    <a href="/shuls.html" class="on">Shuls</a>
+    <a href="/community.html">Community</a>
+    <a href="/donate.html">Donate</a>
+  </div>
+</nav>
 
 <section class="hero">
   <h1>Staten Island Shuls &amp; Minyanim</h1>
