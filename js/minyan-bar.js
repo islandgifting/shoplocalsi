@@ -112,7 +112,7 @@
     var bar = el("div");
     bar.id = "slsi-minyan-bar";
     var link = el("a");
-    link.href = "/shuls.html";
+    link.href = "/shuls-minyanim.html";
     link.style.cssText = "display:flex;flex:1;justify-content:space-around;align-items:stretch;";
 
     if (zman) link.appendChild(item("\uD83C\uDF07", "\u05D1\u05D9\u05DF \u05D4\u05E9\u05DE\u05E9\u05D5\u05EA", zman, null, false));
