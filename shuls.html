@@ -50,6 +50,44 @@
   .links a:hover{text-decoration:underline;}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:rgba(34,48,79,.6);}
   .note{max-width:1100px;margin:0 auto 60px;padding:0 20px;font-size:.82rem;color:rgba(34,48,79,.55);text-align:center;}
+  .viewtoggle{display:flex;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(29,43,76,.08);}
+  .vbtn{border:none;background:none;font:inherit;font-weight:700;font-size:.9rem;padding:13px 20px;cursor:pointer;color:rgba(34,48,79,.6);}
+  .vbtn.active{background:var(--green);color:#fff;}
+  .timeline{max-width:820px;margin:26px auto 40px;padding:0 20px;display:none;}
+  .tl-sec{margin-bottom:30px;}
+  .tl-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .tl-head h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);}
+  .tl-head .heb{color:var(--gold);font-weight:700;font-size:1rem;}
+  .tl-row{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:10px 16px;margin-bottom:8px;}
+  .tl-row.passed{opacity:.45;}
+  .tl-time{font-weight:800;color:var(--navy);font-size:1.05rem;min-width:82px;}
+  .tl-shul{flex:1;line-height:1.3;}
+  .tl-shul .nm{font-weight:700;}
+  .tl-shul .ad{font-size:.75rem;color:rgba(34,48,79,.55);}
+  .chip{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px;background:rgba(30,91,63,.1);color:var(--green);white-space:nowrap;}
+  .chip.soon{background:var(--gold);color:#fff;animation:slsipulse 1.4s ease-in-out infinite;}
+  @keyframes slsipulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.06);opacity:.85}}
+  .learn{max-width:1100px;margin:10px auto 70px;padding:0 20px;}
+  .learn h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);text-align:center;margin-bottom:6px;}
+  .learn .sub{text-align:center;color:rgba(34,48,79,.6);font-size:.9rem;margin-bottom:20px;}
+  .learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+  .learn-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+  .learn-card .vid{position:relative;padding-top:56.25%;background:#0d1b12;}
+  .learn-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .learn-card .body{padding:14px 18px;}
+  .learn-card h3{font-size:1rem;color:var(--navy);}
+  .learn-card p{font-size:.82rem;color:rgba(34,48,79,.6);margin-top:4px;line-height:1.45;}
+  .learn-card .links{padding:0 18px 14px;display:flex;gap:14px;}
+  .learn-card .links a{font-size:.8rem;font-weight:700;color:var(--aqua);text-decoration:none;}
+  .learn-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+  .ltab{border:1px solid var(--line);background:#fff;font:inherit;font-weight:700;font-size:.85rem;
+    padding:9px 18px;border-radius:999px;cursor:pointer;color:rgba(34,48,79,.65);}
+  .ltab.active{background:var(--green);border-color:var(--green);color:#fff;}
+  .learn-card.wide{grid-column:1/-1;}
+  @media(min-width:760px){.learn-card.wide{grid-column:span 2;}}
+  .learn-card.link-card{justify-content:space-between;}
+  .learn-card.link-card .body{padding-top:18px;}
 </style>
 </head>
 <body>
@@ -63,23 +101,193 @@
 
 <div class="controls">
   <input type="search" id="shulSearch" placeholder="Search by shul name, rabbi, or street…" aria-label="Search shuls">
+  <div class="viewtoggle" role="tablist">
+    <button class="vbtn active" data-view="time">⏱ By Time</button>
+    <button class="vbtn" data-view="shul">🏛 By Shul</button>
+  </div>
 </div>
 
-<main class="grid" id="shulGrid">
+<main class="timeline" id="timelineView"></main>
+
+<main class="grid" id="shulGrid" style="display:none">
   <div class="empty">Loading shul schedules…</div>
 </main>
+
+<section class="learn">
+  <h2>Learn Online · Anytime</h2>
+  <p class="sub">Can't make a shiur in person? Today's learning, on your schedule.</p>
+  <div class="learn-tabs">
+    <button class="ltab active" data-ltab="daf">📖 The Daily Daf</button>
+    <button class="ltab" data-ltab="quick">⏱ Quick Learning</button>
+    <button class="ltab" data-ltab="inspire">✨ Daily Inspiration</button>
+  </div>
+
+  <div class="learn-grid" data-lpanel="daf">
+    <div class="learn-card wide">
+      <div class="vid">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=UUKwQa5DB_VR98ac_r-Wyl-g"
+          title="Daf Yomi — Mercaz Daf Yomi with R' Eli Stefansky"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="body">
+        <h3>Today's Daf · R' Eli Stefansky (MDY)</h3>
+        <p>The world-famous Mercaz Daf Yomi shiur — clear, entertaining, one daf at a time. The latest daf loads here automatically every day.</p>
+      </div>
+      <div class="links">
+        <a href="https://mercazdafyomi.com" target="_blank" rel="noopener">MDY website →</a>
+        <a href="https://alldaf.org/series/4099" target="_blank" rel="noopener">On AllDaf →</a>
+      </div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>AllDaf (OU)</h3><p>Every daf, every style — from rapid summaries to deep text analysis. Pick the maggid shiur that fits you.</p></div>
+      <div class="links"><a href="https://alldaf.org" target="_blank" rel="noopener">Open AllDaf →</a></div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>Real Clear Daf</h3><p>High-level audio review of the daf — great for chazara on the go.</p></div>
+      <div class="links"><a href="https://www.realcleardaf.com" target="_blank" rel="noopener">Listen →</a></div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>Hadran</h3><p>Daily gemara shiur by Rabbanit Michelle Farber — the global women's daf yomi initiative.</p></div>
+      <div class="links"><a href="https://hadran.org.il" target="_blank" rel="noopener">Learn →</a></div>
+    </div>
+  </div>
+
+  <div class="learn-grid" data-lpanel="quick" style="display:none">
+    <div class="learn-card link-card">
+      <div class="body"><h3>The 8-Minute Daf · MDY</h3><p>R' Stefansky's famous recap — the entire daf, illustrated, in eight minutes. Perfect for review or a busy day.</p></div>
+      <div class="links"><a href="https://mercazdafyomi.com" target="_blank" rel="noopener">Get it →</a></div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>Daily Halacha · Rabbi Eli Mansour</h3><p>Clear, practical halacha in under ten minutes a day.</p></div>
+      <div class="links"><a href="https://www.dailyhalacha.com" target="_blank" rel="noopener">Today's halacha →</a></div>
+    </div>
+    <div class="learn-card link-card" id="dailyBitesCard" style="display:none">
+      <div class="body"><h3>Daily Bites · Rabbi Weisenfeld</h3><p>A short daily dose of Torah to start your day.</p></div>
+      <div class="links" id="dailyBitesLinks"></div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>Sefaria</h3><p>The full library — chumash, gemara, halacha, and today's daf, free and searchable.</p></div>
+      <div class="links"><a href="https://www.sefaria.org" target="_blank" rel="noopener">Open the library →</a></div>
+    </div>
+  </div>
+
+  <div class="learn-grid" data-lpanel="inspire" style="display:none">
+    <div class="learn-card link-card">
+      <div class="body"><h3>Meaningful Minute</h3><p>Short, powerful video moments from today's top speakers — plus the Meaningful People podcast.</p></div>
+      <div class="links"><a href="https://meaningfulminute.org/watch/" target="_blank" rel="noopener">Watch →</a><a href="https://www.meaningfulpeoplepodcast.com" target="_blank" rel="noopener">Podcast →</a></div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>TorahAnytime</h3><p>The largest Torah video library online — over a thousand speakers, every topic, free.</p></div>
+      <div class="links"><a href="https://www.torahanytime.com" target="_blank" rel="noopener">Browse →</a></div>
+    </div>
+    <div class="learn-card link-card">
+      <div class="body"><h3>Living Lchaim</h3><p>Uplifting Jewish podcasts and stories — inspiration for the commute.</p></div>
+      <div class="links"><a href="https://www.livinglchaim.com" target="_blank" rel="noopener">Listen →</a></div>
+    </div>
+  </div>
+</section>
 
 <p class="note">Times sourced from GoDaven.com and each shul's website, refreshed automatically every week. Always confirm with the shul before relying on a time — schedules change for Yom Tov, legal holidays, and seasonal zmanim.</p>
 
 <script>
 (function(){
   var grid = document.getElementById('shulGrid');
+  var timelineEl = document.getElementById('timelineView');
   var tag = document.getElementById('updatedTag');
   var search = document.getElementById('shulSearch');
   var DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Shabbos"];
   var all = [];
+  var view = 'time';
 
   function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+
+  function toDate(t, tef){
+    var m=/^(\d{1,2}):(\d{2})$/.exec(t); if(!m) return null;
+    var h=+m[1], min=+m[2];
+    if(tef!=='shacharis' && h<12) h+=12;
+    if(tef==='shacharis' && h===12) h=0;
+    var d=new Date(); d.setHours(h,min,0,0); return d;
+  }
+  function fmt12(d){
+    var h=d.getHours(), m=d.getMinutes(), ap=h>=12?'pm':'am'; h=h%12||12;
+    return h+':' + (m<10?'0':'') + m + ' ' + ap;
+  }
+  function inMin(d){
+    var mins=Math.round((d-new Date())/60000);
+    if(mins<=0) return null;
+    if(mins<60) return 'in '+mins+' min';
+    var h=Math.floor(mins/60), r=mins%60;
+    return 'in '+h+'h'+(r?' '+r+'m':'');
+  }
+
+  function renderTimeline(list){
+    var today = DAYS[new Date().getDay()===6 ? 6 : new Date().getDay()];
+    var groups = {shacharis:[], mincha:[], maariv:[]};
+    list.forEach(function(s){
+      if(!s.schedule || !s.schedule[today]) return;
+      ['shacharis','mincha','maariv'].forEach(function(t){
+        (s.schedule[today][t]||[]).forEach(function(ts){
+          var d = toDate(ts,t);
+          if(d) groups[t].push({shul:s, when:d});
+        });
+      });
+    });
+    var meta = [
+      {key:'shacharis', title:'Shacharis', heb:'\u05E9\u05D7\u05E8\u05D9\u05EA', icon:'\u2600\uFE0F'},
+      {key:'mincha', title:'Mincha', heb:'\u05DE\u05E0\u05D7\u05D4', icon:'\uD83C\uDF07'},
+      {key:'maariv', title:'Maariv', heb:'\u05DE\u05E2\u05E8\u05D9\u05D1', icon:'\uD83C\uDF19'}
+    ];
+    var now = new Date();
+    var html = meta.map(function(m){
+      var rows = groups[m.key].sort(function(a,b){return a.when-b.when;});
+      if(!rows.length) return '';
+      return '<div class="tl-sec"><div class="tl-head"><h2>'+m.icon+' '+m.title+'</h2><span class="heb">'+m.heb+'</span></div>'
+        + rows.map(function(r){
+            var passed = r.when < now;
+            var cd = inMin(r.when);
+            var soon = cd && (r.when - now) < 15*60000;
+            var chip = passed ? '' : (cd ? '<span class="chip'+(soon?' soon':'')+'">'+(soon?'\u25CF starting soon \u00B7 ':'')+cd+'</span>' : '');
+            return '<div class="tl-row'+(passed?' passed':'')+'">'
+              + '<div class="tl-time">'+fmt12(r.when)+'</div>'
+              + '<div class="tl-shul"><div class="nm">'+esc(r.shul.name||'')+'</div>'
+              + (r.shul.address?'<div class="ad">'+esc(r.shul.address)+'</div>':'')+'</div>'
+              + chip + '</div>';
+          }).join('')
+        + '</div>';
+    }).join('');
+    timelineEl.innerHTML = html || '<div class="empty">No minyanim listed for today \u2014 check the By Shul view for full weekly schedules.</div>';
+  }
+
+  function applyView(){
+    var isTime = view === 'time';
+    timelineEl.style.display = isTime ? 'block' : 'none';
+    grid.style.display = isTime ? 'none' : 'grid';
+    document.querySelectorAll('.vbtn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.view === view);
+    });
+  }
+  document.querySelectorAll('.vbtn').forEach(function(b){
+    b.addEventListener('click', function(){ view = b.dataset.view; applyView(); });
+  });
+  document.querySelectorAll('.ltab').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.ltab').forEach(function(x){x.classList.toggle('active', x===b);});
+      document.querySelectorAll('[data-lpanel]').forEach(function(p){
+        p.style.display = p.dataset.lpanel === b.dataset.ltab ? 'grid' : 'none';
+      });
+    });
+  });
+  // keep countdown chips fresh
+  setInterval(function(){ if(view==='time' && all.length) renderTimeline(filtered()); }, 30000);
+
+  function filtered(){
+    var q = search.value.trim().toLowerCase();
+    if(!q) return all;
+    return all.filter(function(s){
+      return ((s.name||'')+' '+(s.rabbi||'')+' '+(s.address||'')).toLowerCase().indexOf(q) !== -1;
+    });
+  }
 
   function tefLine(label, arr, pm){
     if(!arr || !arr.length) return '';
@@ -165,11 +373,9 @@
   }
 
   search.addEventListener('input', function(){
-    var q = search.value.trim().toLowerCase();
-    if(!q) return render(all);
-    render(all.filter(function(s){
-      return ((s.name||'')+' '+(s.rabbi||'')+' '+(s.address||'')).toLowerCase().indexOf(q) !== -1;
-    }));
+    var list = filtered();
+    render(list);
+    renderTimeline(list);
   });
 
   // Parsha + candle lighting + havdalah (Hebcal, Staten Island)
@@ -195,10 +401,14 @@
       var d = data.updated ? new Date(data.updated) : null;
       tag.textContent = d ? ('Updated ' + d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})) : 'Live schedule';
       render(all);
+      renderTimeline(all);
+      applyView();
     })
     .catch(function(){
       tag.textContent = 'Schedule loading soon';
-      grid.innerHTML = '<div class="empty">The live schedule hasn\u2019t been generated yet. Run the \u201CUpdate shul minyan times\u201D action in GitHub and this page will fill in automatically.</div>';
+      applyView();
+      timelineEl.innerHTML = '<div class="empty">The live schedule hasn\u2019t been generated yet. Run the \u201CUpdate shul minyan times\u201D action in GitHub and this page will fill in automatically.</div>';
+      grid.innerHTML = timelineEl.innerHTML;
     });
 })();
 </script>
