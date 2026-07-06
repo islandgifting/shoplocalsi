@@ -1,15 +1,3 @@
-// Auto-adds the minyan bar to every page on the site.
-export default async (request, context) => {
-  const response = await context.next();
-  const contentType = response.headers.get("content-type") || "";
-  if (!contentType.includes("text/html")) return response;
-  const html = await response.text();
-  if (html.includes("minyan-bar.js")) return new Response(html, response);
-  const tag = '<script src="/js/minyan-bar.js" defer></script>';
-  const injected = html.includes("</body>")
-    ? html.replace("</body>", tag + "</body>")
-    : html + tag;
-  return new Response(injected, response);
-};
-
-export const config = { path: "/*" };
+<li><a href="/shiurim.html" data-page="shiurim">Shiurim</a></li>
+<li><a href="/eruv.html" data-page="eruv">Eruv</a></li>
+<li><a href="/mikvah.html" data-page="mikvah">Mikvah</a></li>
