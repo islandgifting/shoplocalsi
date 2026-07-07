@@ -5,30 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Staten Island Shuls & Minyanim — Shop Local Staten Island</title>
 <meta name="description" content="Live minyan times, Shabbos davening, and shiurim for Staten Island shuls. Updated weekly.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1D2B4C; --green:#1E5B3F; --gold:#EE9F3C; --aqua:#2BA8B4; --ivory:#FAF8F3;
-    --ink:#22304f; --line:rgba(29,43,76,.12);
+    --navy:#0b1f3a; --blue:#2c6e9e; --green:#3e7c59; --green2:#4a9469;
+    --light:#f4f4f2; --white:#ffffff; --red:#cc2222;
+    --gold:#EE9F3C; --aqua:#2BA8B4; --ivory:#f4f4f2;
+    --ink:#1a2a3a; --mid:#4a6070; --muted:#6b8090;
+    --line:#dde4ea; --border:#dde4ea; --border2:#eaeef2;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--ivory);color:var(--ink);}
-  .sitenav{background:var(--navy);border-bottom:2px solid var(--gold);display:flex;align-items:center;
-    justify-content:space-between;gap:16px;padding:12px 22px;flex-wrap:wrap;}
-  .sitenav .brand{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;text-decoration:none;font-weight:700;}
-  .sitenav .brand span{color:var(--gold);}
-  .navlinks{display:flex;gap:4px;flex-wrap:wrap;}
-  .navlinks a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;font-weight:700;
-    padding:7px 13px;border-radius:8px;}
-  .navlinks a:hover{background:rgba(255,255,255,.1);color:#fff;}
-  .navlinks a.on{background:rgba(238,159,60,.18);color:var(--gold);}
-  .hero{background:var(--navy);color:#fff;padding:48px 20px 40px;text-align:center;}
-  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);}
-  .hero p{margin-top:8px;color:rgba(255,255,255,.75);font-size:1rem;}
-  .hero .parsha{margin-top:10px;color:var(--gold);font-weight:700;font-size:.95rem;}
-  .hero .updated{margin-top:12px;display:inline-block;background:rgba(238,159,60,.15);color:var(--gold);
-    padding:5px 14px;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--ink);font-size:15px;line-height:1.6}
+  /* --- community-page top chrome --- */
+  .emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600;letter-spacing:.2px}
+  .emstrip a{color:rgba(255,255,255,.92);text-decoration:none}
+  .emstrip a:hover{color:#fff}
+  .emstrip .sep{color:rgba(255,255,255,.35)}
+  .emstrip .em-label{color:rgba(255,255,255,.6);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+  .top-bar{background:#0d2137;padding:.42rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:#fff}
+  .top-bar-tagline{color:rgba(255,255,255,.9);text-align:center;flex:1;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:.65rem}
+  .top-bar-right{display:flex;gap:1rem;align-items:center;flex-shrink:0}
+  .top-bar-right a{color:rgba(255,255,255,.7);font-size:.75rem;text-decoration:none}
+  .top-bar-right a:hover{color:#fff}
+  nav.sitenav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:88px;position:sticky;top:0;z-index:999;box-shadow:0 2px 16px rgba(11,31,58,.07)}
+  .logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+  .logo-img{height:70px;width:70px;object-fit:contain}
+  .logo-wordmark{display:flex;align-items:baseline;gap:.2rem}
+  .logo-shop{font-size:1.4rem;font-weight:800;color:#0b1f3a;letter-spacing:1px;text-transform:uppercase}
+  .logo-local-word{font-size:1.4rem;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase}
+  .logo-divider-row{display:flex;align-items:center;gap:.4rem;margin:.1rem 0 .15rem}
+  .logo-dash{width:18px;height:2px;background:#0b1f3a;opacity:.4}
+  .logo-staten{font-size:.6rem;font-weight:700;color:#0b1f3a;letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
+  .logo-url{font-size:.62rem;font-weight:600;color:var(--blue);letter-spacing:.5px}
+  .nav-links{display:flex;align-items:center;list-style:none;margin:0 .5rem}
+  .nav-links a{font-size:.72rem;font-weight:600;color:#1a2a3a;letter-spacing:.6px;text-transform:uppercase;padding:.5rem .75rem;position:relative;text-decoration:none;white-space:nowrap}
+  .nav-links a:hover{color:var(--green)}
+  .nav-links a.active{color:var(--green)}
+  .nav-links a.active::after{content:'';position:absolute;bottom:-2px;left:.75rem;right:.75rem;height:2px;background:var(--green);border-radius:1px}
+  .nav-cta{background:var(--green);color:#fff;padding:.48rem 1.1rem;border-radius:50px;font-weight:700;font-size:.7rem;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap;text-decoration:none;margin-left:.75rem}
+  .nav-cta:hover{background:var(--green2)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+  .hamburger span{width:22px;height:2px;background:#0b1f3a;display:block}
+  @media(max-width:900px){
+    nav.sitenav{padding:0 1.25rem}
+    .nav-links{display:none}
+    .hamburger{display:flex}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:88px;left:0;right:0;background:#fff;border-bottom:2px solid var(--border);padding:1rem;z-index:998}
+  }
+  .hero{background:var(--navy);color:#fff;padding:4rem 2.5rem;text-align:center}
+  .hero-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green2);display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+  .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:2px;background:var(--green2)}
+  .hero h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;letter-spacing:2px;line-height:1.1}
+  .hero h1 span{color:var(--green2)}
+  .hero p{margin-top:.75rem;color:rgba(255,255,255,.75);font-size:.95rem;max-width:540px;margin-left:auto;margin-right:auto}
+  .hero .parsha{margin-top:10px;color:var(--gold);font-weight:700;font-size:.9rem}
+  .hero .updated{margin-top:14px;display:inline-block;background:rgba(238,159,60,.15);color:var(--gold);
+    padding:6px 16px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
   .controls{max-width:1100px;margin:-22px auto 0;padding:0 20px;display:flex;gap:12px;flex-wrap:wrap;}
   .controls input{flex:1;min-width:220px;padding:13px 18px;border:1px solid var(--line);border-radius:12px;
     font:inherit;font-size:1rem;background:#fff;box-shadow:0 4px 18px rgba(29,43,76,.08);}
@@ -133,23 +165,56 @@
 </head>
 <body>
 
-<!-- Site navigation — edit the links/labels below to match your main nav exactly -->
-<nav class="sitenav">
-  <a class="brand" href="/">Shop Local <span>Staten Island</span></a>
-  <div class="navlinks">
-    <a href="/">Home</a>
-    <a href="/directory.html">Directory</a>
-    <a href="/shuls.html" class="on">Shuls</a>
-    <a href="/community.html">Community</a>
-    <a href="/donate.html">Donate</a>
+<div class="emstrip">
+  <span class="em-label">Emergency</span>
+  <a href="tel:7182301000">Hatzolah 718-230-1000</a><span class="sep">&middot;</span>
+  <a href="tel:7183702121">Shomrim 718-370-2121</a><span class="sep">&middot;</span>
+  <a href="tel:7187614444">Shmira 718-761-4444</a><span class="sep">&middot;</span>
+  <a href="tel:7187612428">Chaveirim 718-761-2428</a><span class="sep">&middot;</span>
+  <a href="tel:7188717299">Chavivim 718-871-7299</a><span class="sep">&middot;</span>
+  <a href="tel:7188544548">Misaskim 718-854-4548</a>
+</div>
+<div class="top-bar">
+  <div style="width:100px"></div>
+  <div class="top-bar-tagline">Support Local &middot; Strengthen Community</div>
+  <div class="top-bar-right">
+    <a href="#">&#x1F426; Facebook</a>
+    <a href="#">&#x1F4F7; Instagram</a>
+    <a href="mailto:info@shoplocalsi.com">&#x2709; Email</a>
   </div>
+</div>
+<nav class="sitenav">
+  <a href="/" class="logo-wrap">
+    <img src="/logo.png" alt="Shop Local Staten Island" class="logo-img">
+    <div style="display:flex;flex-direction:column;line-height:1">
+      <div class="logo-wordmark"><span class="logo-shop">SHOP&nbsp;</span><span class="logo-local-word">LOCAL</span></div>
+      <div class="logo-divider-row"><span class="logo-dash"></span><span class="logo-staten">Staten Island</span><span class="logo-dash"></span></div>
+      <span class="logo-url">shoplocalsi.com</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" data-page="home">Home</a></li>
+    <li><a href="/directory.html" data-page="directory">Directory</a></li>
+    <li><a href="/marketplace.html" data-page="marketplace">Market</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
+    <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
+    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
+    <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
+    <li><a href="/realty.html" data-page="realty">Realty</a></li>
+    <li><a href="/community.html" data-page="community">Community</a></li>
+    <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
+    <li><a href="/shuls.html" data-page="shuls" class="active">Shuls</a></li>
+  </ul>
+  <a href="/advertise.html" class="nav-cta">List Your Business</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
 </nav>
 
 <section class="hero">
-  <h1>Staten Island Shuls &amp; Minyanim</h1>
-  <p>Weekday minyanim, Shabbos davening, and shiurim — all in one place.</p>
+  <div class="hero-eyebrow">Staten Island Jewish Community</div>
+  <h1>Shuls &amp; <span>Minyanim</span></h1>
+  <p>Weekday minyanim, Shabbos davening, and shiurim &mdash; all in one place.</p>
   <p class="parsha" id="parshaLine"></p>
-  <span class="updated" id="updatedTag">Loading schedule…</span>
+  <span class="updated" id="updatedTag">Loading schedule&hellip;</span>
 </section>
 
 <div class="controls">
@@ -607,5 +672,58 @@
     });
 })();
 </script>
+
+<footer style="background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 1.5rem;margin-top:3rem;font-family:'Montserrat',sans-serif">
+  <div style="max-width:1100px;margin:0 auto 2.5rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem">
+    <div>
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem">
+        <img src="/logo.png" alt="Shop Local SI" style="height:52px;width:52px;object-fit:contain">
+        <div style="display:flex;flex-direction:column;line-height:1.2">
+          <span style="font-size:1.1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px">SHOP <span style="color:var(--green2)">LOCAL</span></span>
+          <span style="font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">Staten Island</span>
+        </div>
+      </div>
+      <p style="font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.55);max-width:260px">Supporting the businesses that support our Staten Island community &mdash; one purchase at a time.</p>
+    </div>
+    <div>
+      <div style="font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green2);margin-bottom:.85rem">Pages</div>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem">
+        <li><a href="/directory.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Business Directory</a></li>
+        <li><a href="/marketplace.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Market</a></li>
+        <li><a href="/simcha.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Simcha Planning</a></li>
+        <li><a href="/coupons.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Coupons &amp; Deals</a></li>
+        <li><a href="/advertise.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Advertise With Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green2);margin-bottom:.85rem">Community</div>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem">
+        <li><a href="/#shabbos" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Shabbos Times</a></li>
+        <li><a href="/community.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Resource Hub</a></li>
+        <li><a href="/shuls.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Shuls &amp; Minyanim</a></li>
+        <li><a href="/shuttle.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Shuttle Route</a></li>
+        <li><a href="/advertise.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">List Your Business</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green2);margin-bottom:.85rem">Emergency</div>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem">
+        <li><a href="tel:7182301000" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Hatzolah: 718-230-1000</a></li>
+        <li><a href="tel:7187612428" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Chaveirim: 718-761-2428</a></li>
+        <li><a href="tel:7188717299" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Chavivim: 718-871-7299</a></li>
+        <li><a href="tel:7187614444" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Shmira: 718-761-4444</a></li>
+        <li><a href="tel:7183702121" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Shomrim: 718-370-2121</a></li>
+        <li><a href="tel:7188544548" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem">Misaskim: 718-854-4548</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:rgba(255,255,255,.4)">
+    <span>&copy; 2026 Shop Local Staten Island &middot; Strengthening our community</span>
+    <span><a href="/advertise.html" style="color:var(--green2);text-decoration:none">Advertise with us</a></span>
+  </div>
+</footer>
+
+<script src="/js/minyan-bar.js" defer></script>
+
 </body>
 </html>
