@@ -207,7 +207,7 @@
     m.icon.textContent = "\uD83D\uDD52"; m.label.textContent = "Next Minyan";
     s.icon.textContent = "\uD83D\uDCD6"; s.label.textContent = "Next Shiur";
 
-    bar.appendChild(link);
+    bar.appendChild(row);
     document.body.insertBefore(bar, document.body.firstChild);
     refresh();
     setInterval(refresh, 30000); // live countdowns
