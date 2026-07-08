@@ -920,9 +920,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
     <h3>Have a Recipe, Tip, or Idea to Share?</h3>
     <p>This corner belongs to all of us. If you have a family recipe, a kitchen tip, a favorite activity for kids, or a topic you'd love to see covered &mdash; drop us a line. Anonymously if you'd like.</p>
     <div class="options">
-     <a href="https://airtable.com/appyNDNuwGFgR44sg/shrseGx1Rn7BmX3ZF" class="button">SHARE A RECIPE</a>
-     <a href="https://airtable.com/appyNDNuwGFgR44sg/shrseGx1Rn7BmX3ZF" class="button">SHARE A TIP</a>
-     <a href="https://airtable.com/appyNDNuwGFgR44sg/shrseGx1Rn7BmX3ZF" class="button">SUGGEST A TOPIC</a>    
+     <a href="javascript:void(0)" onclick="openForm()" class="button">SHARE A RECIPE</a>
+
+<a href="javascript:void(0)" onclick="openForm()" class="button">SHARE A TIP</a>
+
+<a href="javascript:void(0)" onclick="openForm()" class="button">SUGGEST A TOPIC</a>
     </div>
   </div>
 </section>
@@ -1031,5 +1033,33 @@ function switchKids(which){
 </script>
 
 <script src="/js/minyan-bar.js" defer></script>
+<!-- Elegant Form Popup Modal -->
+<div id="formPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; backgroundColor:rgba(0,0,0,0.5); zIndex:10000; justifyContent:center; alignItems:center;">
+  <div style="position:relative; backgroundColor:#fff; width:90%; maxWidth:600px; height:80vh; borderRadius:12px; padding:20px; boxShadow:0 5px 15px rgba(0,0,0,0.3); display:flex; flexDirection:column;">
+    
+    <!-- Close Button -->
+    <button onclick="closeForm()" style="position:absolute; top:15px; right:15px; background:none; border:none; fontSize:24px; cursor:pointer; color:#333;">&times;</button>
+    
+    <!-- Airtable Form Embed -->
+    <iframe id="formIframe" src="" frameborder="0" onmousewheel="" width="100%" height="100%" style="background:transparent; border:none; borderRadius:8px;"></iframe>
+  </div>
+</div>
+
+<script>
+  function openForm() {
+    // Replace the URL inside the quotes below with your working public Airtable 'shr...' link
+    var airtableFormUrl = "https://airtable.com/YOUR_WORKING_SHR_LINK";
+    
+    document.getElementById('formIframe').src = airtableFormUrl;
+    document.getElementById('formPopup').style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevents background scrolling
+  }
+
+  function closeForm() {
+    document.getElementById('formPopup').style.display = 'none';
+    document.getElementById('formIframe').src = ''; // Resets form on close
+    document.body.style.overflow = 'auto'; // Restores background scrolling
+  }
+</script>
 </body>
 </html>
