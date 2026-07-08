@@ -805,28 +805,63 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       if(!iso) return '';
       return new Date(iso).toLocaleDateString('en-US',{weekday:'long', month:'long', day:'numeric', year:'numeric'});
     }
+    function addMinutes(iso, minutes){
+      var d = new Date(iso);
+      d.setMinutes(d.getMinutes() + minutes);
+      return d.toISOString();
+    }
+    function getNextFriday(){
+      var d = new Date();
+      var day = d.getDay();
+      var daysUntilFri = (5 - day + 7) % 7;
+      if(daysUntilFri === 0 && d.getHours() >= 20) daysUntilFri = 7;
+      d.setDate(d.getDate() + daysUntilFri);
+      return d.toISOString().slice(0,10);
+    }
+    function getSaturday(fridayStr){
+      var d = new Date(fridayStr);
+      d.setDate(d.getDate() + 1);
+      return d.toISOString().slice(0,10);
+    }
     function load(){
       var parts = sel.value.split('|');
       var geoId = parts[0];
       var cityName = parts[1];
       ['sh_candles','sh_early','sh_main','sh_rt'].forEach(function(id){document.getElementById(id).textContent='\u2014';});
       document.getElementById('shabbosDate').textContent = cityName.toUpperCase() + ' \u00B7 LOADING\u2026';
-      var base = 'https://www.hebcal.com/shabbat?cfg=json&geonameid=' + geoId + '&M=on';
-      fetch(base + '&m=50').then(function(r){return r.json();}).then(function(d){
-        var items=d.items||[];
-        var c=items.find(function(i){return i.category==='candles';});
-        var h=items.find(function(i){return i.category==='havdalah';});
-        if(c){document.getElementById('sh_candles').textContent=fmt(c.date);document.getElementById('shabbosDate').textContent=cityName.toUpperCase()+' \u00B7 '+fmtDate(c.date).toUpperCase();}
-        if(h) document.getElementById('sh_main').textContent=fmt(h.date);
-        return fetch(base + '&m=40');
-      }).then(function(r){return r.json();}).then(function(d){
-        var h=(d.items||[]).find(function(i){return i.category==='havdalah';});
-        if(h) document.getElementById('sh_early').textContent=fmt(h.date);
-        return fetch(base + '&m=72');
-      }).then(function(r){return r.json();}).then(function(d){
-        var h=(d.items||[]).find(function(i){return i.category==='havdalah';});
-        if(h) document.getElementById('sh_rt').textContent=fmt(h.date);
-      }).catch(function(){document.getElementById('shabbosDate').textContent=cityName.toUpperCase()+' \u00B7 UNABLE TO LOAD';});
+
+      var friday = getNextFriday();
+      var saturday = getSaturday(friday);
+
+      // Candle lighting
+      fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=' + geoId + '&M=on&m=50')
+        .then(function(r){return r.json();})
+        .then(function(d){
+          var items=d.items||[];
+          var c=items.find(function(i){return i.category==='candles';});
+          if(c){
+            document.getElementById('sh_candles').textContent=fmt(c.date);
+            document.getElementById('shabbosDate').textContent=cityName.toUpperCase()+' \u00B7 '+fmtDate(c.date).toUpperCase();
+          }
+        })
+        .catch(function(){});
+
+      // Calculate three havdalah times from sunset
+      fetch('https://www.hebcal.com/zmanim?cfg=json&geonameid=' + geoId + '&date=' + saturday)
+        .then(function(r){return r.json();})
+        .then(function(d){
+          var sunset = d.times && d.times.sunset;
+          if(!sunset){
+            document.getElementById('shabbosDate').textContent=cityName.toUpperCase()+' \u00B7 UNABLE TO LOAD';
+            return;
+          }
+          document.getElementById('sh_early').textContent=fmt(addMinutes(sunset, 40));
+          document.getElementById('sh_main').textContent=fmt(addMinutes(sunset, 50));
+          document.getElementById('sh_rt').textContent=fmt(addMinutes(sunset, 72));
+        })
+        .catch(function(){
+          document.getElementById('shabbosDate').textContent=cityName.toUpperCase()+' \u00B7 UNABLE TO LOAD';
+        });
     }
     sel.addEventListener('change', load);
     load();
