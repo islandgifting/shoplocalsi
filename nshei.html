@@ -1033,32 +1033,24 @@ function switchKids(which){
 </script>
 
 <script src="/js/minyan-bar.js" defer></script>
-<!-- Elegant Form Popup Modal -->
-<div id="formPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; backgroundColor:rgba(0,0,0,0.5); zIndex:10000; justifyContent:center; alignItems:center;">
-  <div style="position:relative; backgroundColor:#fff; width:90%; maxWidth:600px; height:80vh; borderRadius:12px; padding:20px; boxShadow:0 5px 15px rgba(0,0,0,0.3); display:flex; flexDirection:column;">
-    
-    <!-- Close Button -->
-    <button onclick="closeForm()" style="position:absolute; top:15px; right:15px; background:none; border:none; fontSize:24px; cursor:pointer; color:#333;">&times;</button>
-    
-    <!-- Airtable Form Embed -->
-    <iframe id="formIframe" src="" frameborder="0" onmousewheel="" width="100%" height="100%" style="background:transparent; border:none; borderRadius:8px;"></iframe>
-  </div>
-</div>
-
 <script>
   function openForm() {
-    // Replace the URL inside the quotes below with your working public Airtable 'shr...' link
-    var airtableFormUrl = "https://airtable.com/YOUR_WORKING_SHR_LINK";
+    // This is your working public form link
+    var url = "https://airtable.com/appyNDNuwGFgR44sg/shr48y45Kl71iLigK";
     
-    document.getElementById('formIframe').src = airtableFormUrl;
-    document.getElementById('formPopup').style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevents background scrolling
+    // This defines the size and removes the cluttered browser bars
+    var width = 600;
+    var height = 700;
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+    
+    window.open(
+      url, 
+      "ShareYourInfo", 
+      "width=" + width + ",height=" + height + ",top=" + top + ",left=" + left + ",resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no"
+    );
   }
-
-  function closeForm() {
-    document.getElementById('formPopup').style.display = 'none';
-    document.getElementById('formIframe').src = ''; // Resets form on close
-    document.body.style.overflow = 'auto'; // Restores background scrolling
+</script>
   }
 </script>
 </body>
