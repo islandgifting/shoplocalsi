@@ -1,1 +1,54 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Payment Complete — Shop Local Staten Island</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet"><style>:root{--navy:#0b1f3a;--green:#3e7c59;--light:#f4f4f2;--border:#dde4ea;--text:#1a2a3a;--muted:#6b8090}*{box-sizing:border-box}body{margin:0;font-family:Montserrat,sans-serif;background:var(--light);color:var(--text)}.wrap{max-width:780px;margin:0 auto;padding:3rem 1.25rem}.card{background:#fff;border:1px solid var(--border);border-top:5px solid var(--green);border-radius:10px;padding:2rem;box-shadow:0 10px 30px rgba(11,31,58,.08)}h1{color:var(--navy);font-size:2rem;margin:0 0 .4rem;text-transform:uppercase}.ok{color:var(--green);font-weight:800}.sub{color:var(--muted);margin-bottom:1.5rem}.field{margin-bottom:1rem}.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}label{display:block;font-size:.75rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.5px}input,select,textarea{width:100%;border:2px solid var(--border);border-radius:8px;padding:.8rem;font-family:Montserrat,sans-serif;font-size:.9rem}textarea{min-height:110px}.btn{background:var(--green);color:#fff;border:0;border-radius:50px;padding:.85rem 1.4rem;font-weight:800;text-transform:uppercase;cursor:pointer;width:100%}.note{background:rgba(62,124,89,.08);border:1px solid rgba(62,124,89,.25);padding:1rem;border-radius:8px;margin-bottom:1.5rem;color:var(--navy);font-weight:600}@media(max-width:650px){.row{grid-template-columns:1fr}}</style></head><body><div class="wrap"><div class="card"><div class="ok">✓ Payment completed</div><h1>Upload Your Business Information</h1><p class="sub">Your paid listing is unlocked. Fill this out and we will prepare your listing.</p><div class="note" id="planNote">Plan: Paid Listing</div><form name="paid-listing" method="POST" data-netlify="true" enctype="multipart/form-data" onsubmit="document.getElementById('done').style.display='block'"><input type="hidden" name="form-name" value="paid-listing"><input type="hidden" name="stripe_session_id" id="sessionId"><input type="hidden" name="plan" id="planField"><div class="row"><div class="field"><label>Business Name *</label><input name="business_name" required></div><div class="field"><label>Contact Name *</label><input name="contact_name" required></div></div><div class="row"><div class="field"><label>Phone *</label><input name="phone" required></div><div class="field"><label>Email *</label><input name="email" type="email" required></div></div><div class="field"><label>Category</label><select name="category"><option>Restaurants & Food</option><option>Home Services</option><option>Photography</option><option>Auto Services</option><option>Medical</option><option>Specialty Shops</option><option>Beauty & Self Care</option><option>Services</option><option>Transportation</option><option>Other</option></select></div><div class="field"><label>Address</label><input name="address"></div><div class="field"><label>Website / Instagram</label><input name="website"></div><div class="field"><label>Business Description</label><textarea name="description" placeholder="What should the listing say?"></textarea></div><div class="field"><label>Upload Logo or Image</label><input name="image" type="file" accept="image/*,.pdf"></div><button class="btn" type="submit">Submit Paid Listing Info</button><div id="done" class="note" style="display:none;margin-top:1rem">Thank you. Your information was submitted.</div></form></div></div><script>const params=new URLSearchParams(location.search);const plan=params.get('plan')||'Paid Listing';document.getElementById('planNote').textContent='Plan: '+plan;document.getElementById('planField').value=plan;document.getElementById('sessionId').value=params.get('session_id')||'';</script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Payment Complete — Shop Local Staten Island</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet"><style>:root{--navy:#0b1f3a;--green:#3e7c59;--light:#f4f4f2;--border:#dde4ea;--text:#1a2a3a;--muted:#6b8090}*{box-sizing:border-box}body{margin:0;font-family:Montserrat,sans-serif;background:var(--light);color:var(--text)}.wrap{max-width:780px;margin:0 auto;padding:3rem 1.25rem}.card{background:#fff;border:1px solid var(--border);border-top:5px solid var(--green);border-radius:10px;padding:2rem;box-shadow:0 10px 30px rgba(11,31,58,.08)}h1{color:var(--navy);font-size:2rem;margin:0 0 .4rem;text-transform:uppercase}.ok{color:var(--green);font-weight:800}.sub{color:var(--muted);margin-bottom:1.5rem}.field{margin-bottom:1rem}.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}label{display:block;font-size:.75rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.5px}input,select,textarea{width:100%;border:2px solid var(--border);border-radius:8px;padding:.8rem;font-family:Montserrat,sans-serif;font-size:.9rem}textarea{min-height:110px}.btn{background:var(--green);color:#fff;border:0;border-radius:50px;padding:.85rem 1.4rem;font-weight:800;text-transform:uppercase;cursor:pointer;width:100%}.note{background:rgba(62,124,89,.08);border:1px solid rgba(62,124,89,.25);padding:1rem;border-radius:8px;margin-bottom:1.5rem;color:var(--navy);font-weight:600}@media(max-width:650px){.row{grid-template-columns:1fr}}</style></head><body><div class="wrap"><div class="card"><div class="ok">✓ Payment completed</div><h1>Upload Your Business Information</h1><p class="sub">Your paid listing is unlocked. Fill this out and we will prepare your listing.</p><div class="note" id="planNote">Plan: Paid Listing</div><form name="paid-listing" id="paidListingForm" method="POST" data-netlify="true" enctype="multipart/form-data"><input type="hidden" name="form-name" value="paid-listing"><input type="hidden" name="stripe_session_id" id="sessionId"><input type="hidden" name="plan" id="planField"><div class="row"><div class="field"><label>Business Name *</label><input name="business_name" required></div><div class="field"><label>Contact Name *</label><input name="contact_name" required></div></div><div class="row"><div class="field"><label>Phone *</label><input name="phone" required></div><div class="field"><label>Email *</label><input name="email" type="email" required></div></div><div class="field"><label>Category</label><select name="category"><option>Restaurants & Food</option><option>Home Services</option><option>Photography</option><option>Auto Services</option><option>Medical</option><option>Specialty Shops</option><option>Beauty & Self Care</option><option>Services</option><option>Transportation</option><option>Other</option></select></div><div class="field"><label>Address</label><input name="address"></div><div class="field"><label>Website / Instagram</label><input name="website"></div><div class="field"><label>Business Description</label><textarea name="description" placeholder="What should the listing say?"></textarea></div><div class="field"><label>Upload Logo or Image</label><input name="image" type="file" accept="image/*,.pdf"></div><button class="btn" type="submit" id="submitBtn">Submit Paid Listing Info</button><div id="done" class="note" style="display:none;margin-top:1rem">Thank you. Your listing is now live.</div><div id="errMsg" class="note" style="display:none;margin-top:1rem;background:rgba(200,60,60,.08);border-color:rgba(200,60,60,.3);color:#a33">Something went wrong saving your listing. Please email info@shoplocalsi.com with your details and we'll add it manually.</div></form></div></div><script>
+const params=new URLSearchParams(location.search);
+const plan=params.get('plan')||'Paid Listing';
+document.getElementById('planNote').textContent='Plan: '+plan;
+document.getElementById('planField').value=plan;
+document.getElementById('sessionId').value=params.get('session_id')||'';
+
+document.getElementById('paidListingForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  const data = new FormData(form);
+  const payload = {
+    plan: plan,
+    session_id: data.get('stripe_session_id'),
+    business_name: data.get('business_name'),
+    contact_name: data.get('contact_name'),
+    phone: data.get('phone'),
+    email: data.get('email'),
+    category: data.get('category'),
+    address: data.get('address'),
+    website: data.get('website'),
+    description: data.get('description')
+  };
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  document.getElementById('errMsg').style.display = 'none';
+
+  try {
+    // Create/finalize the live Airtable listing (Directory + Ads records).
+    const res = await fetch('/.netlify/functions/create-paid-listing', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error('create-paid-listing failed');
+
+    // Also submit to Netlify Forms as a backup record (captures the logo/image file).
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(Array.from(data.entries()).filter(([k,v]) => !(v instanceof File))).toString()
+    }).catch(function(){});
+
+    form.style.display = 'none';
+    document.getElementById('done').style.display = 'block';
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'Submit Paid Listing Info';
+    document.getElementById('errMsg').style.display = 'block';
+  }
+});
+</script></body></html>
