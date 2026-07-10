@@ -560,22 +560,52 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       This Week's Featured Business
     </div>
     <div style="border:3px solid var(--green);border-radius:8px;padding:1.5rem 1.75rem;background:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;position:relative;overflow:hidden">
-      <!-- Green featured banner -->
       <div style="position:absolute;top:0;left:0;right:0;background:var(--green);color:#fff;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:.28rem">⭐ FEATURED LISTING</div>
-      <!-- Business info -->
       <div style="margin-top:.75rem">
-        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem">Island Kosher Supermarket</div>
-        <div style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
-        <div style="font-size:.82rem;color:var(--muted)">📍 2200 Victory Blvd, Staten Island</div>
+        <div id="spotlightName" style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem">Island Kosher Supermarket</div>
+        <div id="spotlightDesc" style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
+        <div id="spotlightAddr" style="font-size:.82rem;color:var(--muted)">📍 2200 Victory Blvd, Staten Island</div>
       </div>
-      <!-- Actions -->
-      <div style="display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;align-items:flex-end">
-        <a href="tel:7186502200" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">📞 718-650-2200</a>
-        <a href="/island-kosher-deals.html" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">🛒 This Week's Deals →</a>
+      <div id="spotlightActions" style="display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;align-items:flex-end">
+        <a href="tel:7186502200" id="spotlightPhone" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">📞 718-650-2200</a>
+        <a href="/island-kosher-deals.html" id="spotlightLink" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">🛒 This Week's Deals →</a>
       </div>
     </div>
   </div>
 </div>
+<script>
+// Auto-rotate the Featured Spotlight to whoever most recently paid for Featured/Premium.
+(async function(){
+  try{
+    var res = await fetch('/.netlify/functions/get-ads');
+    if(!res.ok) return;
+    var data = await res.json();
+    var pick = (data.featured && data.featured[0]) || null;
+    if(!pick || !pick.businessName) return; // no paid featured business yet - keep default
+
+    document.getElementById('spotlightName').textContent = pick.businessName;
+    document.getElementById('spotlightDesc').textContent = pick.description || pick.tagline || '';
+    var addrEl = document.getElementById('spotlightAddr');
+    if(pick.address){ addrEl.textContent = '📍 ' + pick.address; addrEl.style.display=''; }
+    else { addrEl.style.display='none'; }
+
+    var phoneEl = document.getElementById('spotlightPhone');
+    if(pick.phone){
+      phoneEl.href = 'tel:' + pick.phone.replace(/[^0-9]/g,'');
+      phoneEl.textContent = '📞 ' + pick.phone;
+      phoneEl.style.display = '';
+    } else { phoneEl.style.display = 'none'; }
+
+    var linkEl = document.getElementById('spotlightLink');
+    if(pick.link){
+      linkEl.href = pick.link;
+      linkEl.target = '_blank';
+      linkEl.textContent = '🔗 Visit Website →';
+      linkEl.style.display = '';
+    } else { linkEl.style.display = 'none'; }
+  }catch(e){ console.error('spotlight auto-rotate failed', e); }
+})();
+</script>
 <div class="cat-strip">
   <button class="ctab active" onclick="setTab('all',this)">All</button>
   <button class="ctab" onclick="setTab('food',this)">Food</button>
