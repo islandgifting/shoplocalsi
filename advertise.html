@@ -725,6 +725,9 @@ function startPayment(plan){
   else document.getElementById('free-listing').scrollIntoView({behavior:'smooth'});
 }
 async function submitFree(){
+ var AT_FREE='Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
+var BASE_FREE='appyNDNuwGFgR44sg';
+async function submitFree(){
   var name=document.getElementById('biz-name').value.trim();
   var phone=document.getElementById('biz-phone').value.trim();
   var cat=document.getElementById('biz-cat').value;
@@ -732,15 +735,19 @@ async function submitFree(){
   if(!cat){alert('Please select a category for your business.');document.getElementById('biz-cat').focus();return;}
   var btn=document.getElementById('submitBtn');btn.textContent='Submitting...';btn.disabled=true;
   try{
-    await fetch('/.netlify/functions/submit-listing',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      title:name,category:cat,
-      phone:phone,email:document.getElementById('biz-email').value,
-      address:document.getElementById('biz-addr').value,
-      description:document.getElementById('biz-desc').value,
-      contact:document.getElementById('biz-contact').value,type:'free-directory-listing'
-    })});
+    await fetch('https://api.airtable.com/v0/'+BASE_FREE+'/Ads',{
+      method:'POST',headers:{'Authorization':AT_FREE,'Content-Type':'application/json'},
+      body:JSON.stringify({fields:{
+        BusinessName:name,Category:cat,Phone:phone,
+        Email:document.getElementById('biz-email').value,
+        Address:document.getElementById('biz-addr').value,
+        Description:document.getElementById('biz-desc').value,
+        PlanType:'basic',Status:'Active'
+      }})
+    });
     document.getElementById('submitMsg').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit Free Listing';btn.disabled=false;alert('Error. Please call 917-753-4444.');}
+}
 }
 </script>
 <footer>
