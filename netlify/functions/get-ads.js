@@ -13,7 +13,7 @@ exports.handler = async (event) => {
     (data.records || []).forEach(r => {
       const f = r.fields;
       const status = (f.Status || '').toLowerCase();
-      if (status !== 'active') return;
+      if (status !== 'active' && status !== 'approved') return;
 
       const item = {
         id: r.id,
