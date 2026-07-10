@@ -887,5 +887,72 @@ syncApprovedListings();
 })();
 
 </script>
+  <script>
+// Auto-publish: pulls live Featured/Premium Ads (Airtable "Ads" table) and
+// inserts them as real directory cards, so paid listings appear automatically
+// with no manual HTML editing.
+(async function(){
+  try{
+    var res = await fetch('/.netlify/functions/get-ads');
+    if(!res.ok) return;
+    var data = await res.json();
+    var ads = data.all || [];
+
+    var catMap = {
+      'restaurants & food':'food','home services':'home','photography':'photo','auto services':'auto',
+      'medical':'medical','specialty shops':'specialty','beauty & self care':'beauty','pool rental':'pool',
+      'services':'services','transportation':'transport','realtors':'realty','insurance':'insurance',
+      'community gemachs':'gemach','media':'media','playgroups/daycare':'playgroups',
+      'community organizations':'community','schools':'schools','shuls':'shuls','other':'other'
+    };
+
+    var existingNames = {};
+    document.querySelectorAll('.biz-name').forEach(function(el){
+      existingNames[el.textContent.trim().toLowerCase()] = true;
+    });
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+
+    ads.forEach(function(ad){
+      if(!ad.businessName) return;
+      // Realty listings have their own page - skip them here.
+      var catRaw = (ad.category || '').toLowerCase();
+      if(catRaw.indexOf('realty') === 0) return;
+      if(existingNames[ad.businessName.trim().toLowerCase()]) return;
+
+      var catKey = catMap[catRaw] || 'other';
+      var section = document.querySelector('.cat-section[data-cat="'+catKey+'"] .biz-grid');
+      if(!section){
+        section = document.querySelector('.cat-section[data-cat="other"] .biz-grid');
+        if(!section) return;
+      }
+
+      var isPremium = ad.planType === 'premium';
+      var cls = 'biz-card' + (isPremium ? ' premium-card' : ' featured-card');
+      var card = document.createElement('div');
+      card.className = cls;
+      card.setAttribute('data-cat', catKey);
+      card.setAttribute('data-search', ad.businessName.toLowerCase());
+
+      var html = '<div class="biz-name">' + escapeHtml(ad.businessName) + '</div>';
+      var descText = ad.description || ad.tagline || '';
+      if(descText) html += '<div class="biz-desc">' + escapeHtml(descText) + '</div>';
+      if(ad.address) html += '<div class="biz-addr">' + escapeHtml(ad.address) + '</div>';
+      if(ad.phone) html += '<div class="biz-phone"><a href="tel:' + ad.phone.replace(/[^0-9]/g,'') + '">' + escapeHtml(ad.phone) + '</a></div>';
+      if(ad.link) html += '<a href="' + ad.link + '" target="_blank" style="display:inline-block;margin-top:.4rem;font-size:.72rem;color:var(--green);font-weight:700;border-bottom:2px solid var(--green);padding-bottom:1px">Visit Website &#8594;</a>';
+      card.innerHTML = html;
+
+      section.appendChild(card);
+      existingNames[ad.businessName.trim().toLowerCase()] = true;
+    });
+  }catch(e){
+    console.error('Auto-publish directory load failed', e);
+  }
+})();
+</script>
 </body>
 </html>
