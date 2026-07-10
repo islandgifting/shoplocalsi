@@ -758,7 +758,7 @@ async function submitFeatured(){
       Instagram:document.getElementById('f-instagram').value,
       Facebook:document.getElementById('f-facebook').value,
       Hours:document.getElementById('f-hours').value,
-      PlanType:'featured',Status:'Pending'
+      PlanType:'featured',Status:'Active'
     };
     await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
       method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
