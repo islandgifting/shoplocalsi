@@ -740,6 +740,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-modal-cat" id="bizModalCat"></div>
       <div class="biz-modal-desc" id="bizModalDesc"></div>
       <div class="biz-modal-actions" id="bizModalActions"></div>
+      <div id="bizModalGallery" style="display:none;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.25rem"></div>
       <div class="biz-modal-coupons" id="bizModalCoupons" style="display:none"><h4>Active Coupons</h4><div id="bizModalCouponsList"></div></div>
       <button class="biz-modal-close" onclick="closeBizModal()">Close</button>
     </div>
@@ -864,6 +865,16 @@ function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";retur
     var slot=document.getElementById("premiumBannerSlot"),txt=document.getElementById("bannerText"),cta=document.getElementById("bannerCta"),bi=0;
     function showBanner(){
       var ad=bannerAds[bi%bannerAds.length];
+      if(ad.bannerImage){
+        slot.style.backgroundImage="url('"+ad.bannerImage+"')";
+        slot.style.backgroundSize="cover";
+        slot.style.backgroundPosition="center";
+        txt.style.textShadow="0 1px 3px rgba(0,0,0,.6)";
+        txt.style.color="#fff";
+        txt.style.fontWeight="700";
+      } else {
+        slot.style.backgroundImage="";
+      }
       txt.textContent=(ad.tagline||ad.description||ad.businessName)+" — "+ad.businessName;
       cta.onclick=function(e){e.stopPropagation();e.preventDefault();openBizModal(ad);};
       slot.style.display="flex";
@@ -873,7 +884,39 @@ function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";retur
     if(bannerAds.length>1) setInterval(showBanner,6000);
   }
 }if(cr.ok){var cd=await cr.json();allCoupons=(cd.records||[]).filter(function(r){return (r.fields.Status||"").toLowerCase()==="active";}).map(function(r){return {biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""};});}}catch(e){}})();
-function openBizModal(ad){var b=document.getElementById("bizModalBanner");b.innerHTML=ad.bannerHTML?'<iframe srcdoc="'+ad.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:140px;border:none"></iframe>':'<div style="height:72px;background:var(--navy);display:flex;align-items:center;justify-content:center"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+ad.businessName+"</div></div>";document.getElementById("bizModalBadge").textContent=ad.planType==="premium"?"Premium Partner":"Featured Partner";document.getElementById("bizModalName").textContent=ad.businessName||"";document.getElementById("bizModalCat").textContent=(ad.category||"")+(ad.address?" · "+ad.address:"");document.getElementById("bizModalDesc").textContent=ad.description||ad.tagline||"";var a="";if(ad.phone)a+='<a href="tel:'+ad.phone.replace(/[^0-9]/g,"")+'" class="biz-modal-btn-call">Call Now</a>';if(ad.link)a+='<a href="'+ad.link+'" target="_blank" class="biz-modal-btn-web">Visit Website</a>';if(ad.email)a+='<a href="mailto:'+ad.email+'" class="biz-modal-btn-email">Email Us</a>';document.getElementById("bizModalActions").innerHTML=a;var bc=allCoupons.filter(function(c){return c.biz.toLowerCase()===(ad.businessName||"").toLowerCase();});var cs=document.getElementById("bizModalCoupons");if(bc.length){cs.style.display="block";document.getElementById("bizModalCouponsList").innerHTML=bc.map(function(c){return '<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">'+c.discount+'</div><div class="biz-modal-coupon-desc">'+c.desc+"</div></div>"+(c.code?'<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText(\''+c.code+'\');this.textContent=\'Copied!\';setTimeout(function(){this.textContent=\''+c.code+"'\"},2000)\">"+c.code+"</div>":"")+"</div>";}).join("");}else cs.style.display="none";document.getElementById("bizModalOverlay").classList.add("open");document.body.style.overflow="hidden";}
+function openBizModal(ad){
+  var b=document.getElementById("bizModalBanner");
+  if(ad.bannerHTML){
+    b.innerHTML='<iframe srcdoc="'+ad.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:140px;border:none"></iframe>';
+  } else if(ad.adVideo){
+    b.innerHTML='<video src="'+ad.adVideo+'" style="width:100%;height:160px;object-fit:cover;display:block" controls muted autoplay loop></video>';
+  } else if(ad.image){
+    b.innerHTML='<img src="'+ad.image+'" style="width:100%;height:160px;object-fit:cover;display:block">';
+  } else if(ad.bannerImage){
+    b.innerHTML='<img src="'+ad.bannerImage+'" style="width:100%;height:160px;object-fit:cover;display:block">';
+  } else {
+    b.innerHTML='<div style="height:72px;background:var(--navy);display:flex;align-items:center;justify-content:center"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+ad.businessName+"</div></div>";
+  }
+  document.getElementById("bizModalBadge").textContent=ad.planType==="premium"?"Premium Partner":"Featured Partner";
+  document.getElementById("bizModalName").textContent=ad.businessName||"";
+  document.getElementById("bizModalCat").textContent=(ad.category||"")+(ad.address?" · "+ad.address:"");
+  document.getElementById("bizModalDesc").textContent=ad.description||ad.tagline||"";
+  var a="";if(ad.phone)a+='<a href="tel:'+ad.phone.replace(/[^0-9]/g,"")+'" class="biz-modal-btn-call">Call Now</a>';if(ad.link)a+='<a href="'+ad.link+'" target="_blank" class="biz-modal-btn-web">Visit Website</a>';if(ad.email)a+='<a href="mailto:'+ad.email+'" class="biz-modal-btn-email">Email Us</a>';
+  document.getElementById("bizModalActions").innerHTML=a;
+  // Photo gallery (Premium full-profile perk)
+  var galleryEl=document.getElementById("bizModalGallery");
+  if(galleryEl){
+    if(ad.gallery && ad.gallery.length){
+      galleryEl.style.display="grid";
+      galleryEl.innerHTML=ad.gallery.map(function(url){return '<img src="'+url+'" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px">';}).join("");
+    } else {
+      galleryEl.style.display="none";
+      galleryEl.innerHTML="";
+    }
+  }
+  var bc=allCoupons.filter(function(c){return c.biz.toLowerCase()===(ad.businessName||"").toLowerCase();});var cs=document.getElementById("bizModalCoupons");if(bc.length){cs.style.display="block";document.getElementById("bizModalCouponsList").innerHTML=bc.map(function(c){return '<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">'+c.discount+'</div><div class="biz-modal-coupon-desc">'+c.desc+"</div></div>"+(c.code?'<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText(\''+c.code+'\');this.textContent=\'Copied!\';setTimeout(function(){this.textContent=\''+c.code+"'\"},2000)\">"+c.code+"</div>":"")+"</div>";}).join("");}else cs.style.display="none";
+  document.getElementById("bizModalOverlay").classList.add("open");document.body.style.overflow="hidden";
+}
 function closeBizModal(){document.getElementById("bizModalOverlay").classList.remove("open");document.body.style.overflow="";}
 
 // ── AUTO-SYNC APPROVED LISTINGS FROM AIRTABLE (no manual step needed) ──
