@@ -558,7 +558,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 </div>
 
 <!-- FEATURED SPOTLIGHT -->
-<div style="background:#f5fff9;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:1.25rem 2.5rem">
+<div id="spotlightWrap" style="display:none;background:#f5fff9;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:1.25rem 2.5rem">
   <div style="max-width:1150px;margin:0 auto">
     <div style="font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem">
       <span style="width:18px;height:2px;background:var(--green);display:inline-block"></span>
@@ -566,21 +566,40 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     </div>
     <div style="border:3px solid var(--green);border-radius:8px;padding:1.5rem 1.75rem;background:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;position:relative;overflow:hidden">
       <!-- Green featured banner -->
-      <div style="position:absolute;top:0;left:0;right:0;background:var(--green);color:#fff;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:.28rem">⭐ FEATURED LISTING</div>
+      <div style="position:absolute;top:0;left:0;right:0;background:var(--green);color:#fff;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:.28rem" id="spotlightBadge">⭐ FEATURED LISTING</div>
       <!-- Business info -->
       <div style="margin-top:.75rem">
-        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem">Island Kosher Supermarket</div>
-        <div style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
-        <div style="font-size:.82rem;color:var(--muted)">📍 2200 Victory Blvd, Staten Island</div>
+        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem" id="spotlightName"></div>
+        <div style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem" id="spotlightDesc"></div>
+        <div style="font-size:.82rem;color:var(--muted)" id="spotlightAddr"></div>
       </div>
       <!-- Actions -->
       <div style="display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;align-items:flex-end">
-        <a href="tel:7186502200" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">📞 718-650-2200</a>
-        <a href="/island-kosher-deals.html" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">🛒 This Week's Deals →</a>
+        <a href="#" id="spotlightPhone" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap"></a>
+        <a href="#" id="spotlightLink" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">View Profile →</a>
       </div>
     </div>
   </div>
 </div>
+<script>
+(async function(){
+  try{
+    var res=await fetch("/.netlify/functions/get-ads");
+    if(!res.ok)return;
+    var data=await res.json();
+    var spot=(data.featured&&data.featured[0])||(data.all&&data.all[0]);
+    if(!spot)return;
+    document.getElementById("spotlightBadge").textContent=spot.planType==="premium"?"💎 PREMIUM LISTING":"⭐ FEATURED LISTING";
+    document.getElementById("spotlightName").textContent=spot.businessName||"";
+    document.getElementById("spotlightDesc").textContent=spot.description||spot.tagline||"";
+    document.getElementById("spotlightAddr").textContent=spot.address?"📍 "+spot.address:"";
+    var phoneEl=document.getElementById("spotlightPhone");
+    if(spot.phone){phoneEl.href="tel:"+spot.phone.replace(/[^0-9]/g,"");phoneEl.textContent="📞 "+spot.phone;}else{phoneEl.style.display="none";}
+    document.getElementById("spotlightLink").href="/business.html?id="+spot.id;
+    document.getElementById("spotlightWrap").style.display="block";
+  }catch(e){}
+})();
+</script>
 <div class="cat-strip">
   <button class="ctab active" onclick="setTab('all',this)">All</button>
   <button class="ctab" onclick="setTab('food',this)">Food</button>
@@ -611,7 +630,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-card" data-cat="food" data-search="dairy palace pizza caterers victory"><div class="biz-name">Dairy Palace Pizza &amp; Caterers</div><div class="biz-addr">2216 Victory Blvd</div><div class="biz-phone"><a href="tel:7187615200">718-761-5200</a></div><div class="biz-tag">Pizza &amp; Catering</div></div>
       <div class="biz-card" data-cat="food" data-search="fruitique shelley fruit platters"><div class="biz-name">Fruitique by Shelley</div><div class="biz-phone"><a href="tel:7183741418">718-374-1418</a></div><div class="biz-tag">Fresh Fruit Platters</div></div>
       <div class="biz-card" data-cat="food" data-search="island catering steven israel"><div class="biz-name">Island Catering NY</div><div class="biz-desc">Steven Israel</div><div class="biz-phone"><a href="tel:6466456609">646-645-6609</a></div><div class="biz-tag">Full-Service Catering</div></div>
-      <div class="biz-card featured-card" data-cat="food" data-search="island kosher supermarket grocery victory"><div class="biz-name">Island Kosher Supermarket</div><div class="biz-desc">Your full-service kosher supermarket — fresh produce, deli, bakery &amp; more</div><div class="biz-addr">2200 Victory Blvd</div><div class="biz-phone"><a href="tel:7186502200">718-650-2200</a></div><a href="/island-kosher-deals.html" style="display:inline-block;margin-top:.4rem;font-size:.72rem;color:var(--green);font-weight:700;border-bottom:2px solid var(--green);padding-bottom:1px">🛒 This week's deals &#8594;</a><div class="biz-tag">Full Kosher Grocery</div></div>
+      <div class="biz-card" data-cat="food" data-search="island kosher supermarket grocery victory"><div class="biz-name">Island Kosher Supermarket</div><div class="biz-desc">Your full-service kosher supermarket — fresh produce, deli, bakery &amp; more</div><div class="biz-addr">2200 Victory Blvd</div><div class="biz-phone"><a href="tel:7186502200">718-650-2200</a></div><div class="biz-tag">Full Kosher Grocery</div></div>
       <div class="biz-card" data-cat="food" data-search="milk honey bradley kosher"><div class="biz-name">Milk &amp; Honey</div><div class="biz-addr">330 Bradley Ave</div><div class="biz-phone"><a href="tel:7188714319">718-871-4319</a></div><div class="biz-tag">Kosher Grocery &amp; Deli</div></div>
       <div class="biz-card" data-cat="food" data-search="sugar house ice cream victory"><div class="biz-name">Sugar House Ice Cream</div><div class="biz-addr">2003 Victory Blvd</div><div class="biz-phone"><a href="tel:7187016891">718-701-6891</a></div><div class="biz-tag">Ice Cream &amp; Desserts</div></div>
       <div class="biz-card" data-cat="food" data-search="tasters market bradley prepared foods"><div class="biz-name">Tasters Market</div><div class="biz-addr">330 Bradley Ave</div><div class="biz-phone"><a href="tel:7184772300">718-477-2300</a></div><div class="biz-tag">Prepared Foods</div></div>
@@ -831,9 +850,9 @@ var ADS_CAT_MAP={
   'shuls':'shuls','shul':'shuls','synagogue':'shuls','synagogues':'shuls'
 };
 function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
-(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){var matched=false;document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){matched=true;if(ad.planType==="premium"||ad.planType==="featured"){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";if(ad.planType==="premium"){btn.onclick=function(e){e.stopPropagation();window.location.href="/business.html?id="+ad.id;};}else{btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};}card.appendChild(btn);}}});
+(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var adsRaw=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];var seenNames={};var ads=[];adsRaw.forEach(function(ad){var key=(ad.businessName||"").trim().toLowerCase();if(seenNames[key]!==undefined){ads[seenNames[key]]=ad;}else{seenNames[key]=ads.length;ads.push(ad);}});ads.forEach(function(ad){var matched=false;document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){matched=true;if(card.querySelector(".biz-more-btn"))return;if(ad.planType==="premium"||ad.planType==="featured"){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";if(ad.planType==="premium"){btn.onclick=function(e){e.stopPropagation();window.location.href="/business.html?id="+ad.id;};}else{btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};}card.appendChild(btn);}}});
   // No matching static card found — create one dynamically (covers new Basic/free listings and any paid tier)
-  if(!matched){
+  if(!matched && !document.querySelector('.biz-card[data-adid="'+ad.id.replace(/"/g,'')+'"]')){
     var cat=ADS_CAT_MAP[(ad.category||"").trim().toLowerCase()]||"other";
     var section=document.querySelector('.cat-section[data-cat="'+cat+'"]');
     if(section){
@@ -841,6 +860,7 @@ function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";retur
       var card=document.createElement("div");
       card.className="biz-card"+(ad.planType==="premium"?" premium-card":ad.planType==="featured"?" featured-card":"");
       card.dataset.cat=cat;
+      card.dataset.adid=ad.id;
       card.dataset.search=(ad.businessName+" "+(ad.description||"")).toLowerCase();
       var html='<div class="biz-name">'+adsEsc(ad.businessName)+"</div>";
       if(ad.description)html+='<div class="biz-desc">'+adsEsc(ad.description)+"</div>";
