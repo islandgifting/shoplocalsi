@@ -804,7 +804,7 @@ async function submitPremium(){
       Instagram:document.getElementById('p-instagram').value,
       Hours:document.getElementById('p-hours').value,
       CouponOffer:couponDiscount,
-      CouponTerms:(couponCode?('Code: '+couponCode+'. ':'')+couponDesc),
+      CouponTerms:(couponCode?('Code: '+couponCode+'. '+couponDesc):couponDesc),
       BlogRequest:blogTitle?'Yes':'',
       BlogNotes:blogTitle?('Title: '+blogTitle+'\n\n'+blogBody):'',
       PlanType:'premium',Status:'Active'
