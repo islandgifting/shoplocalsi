@@ -1,3 +1,11 @@
+function normalizeUrl(url) {
+  if (!url) return '';
+  url = url.trim();
+  if (!url) return '';
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+  return url;
+}
+
 exports.handler = async (event) => {
   try {
     const token = process.env.AIRTABLE_TOKEN;
@@ -21,7 +29,7 @@ exports.handler = async (event) => {
         description: f.Description || '',
         phone: f.PhoneNumber || f.Phone || '',
         email: f.Email || '',
-        link: f.Link || f.Website || '',
+        link: normalizeUrl(f.Link || f.Website || ''),
         address: f.Address || '',
         image: f.Image ? f.Image[0]?.url : null,
         bannerImage: f.Banner ? f.Banner[0]?.url : null,

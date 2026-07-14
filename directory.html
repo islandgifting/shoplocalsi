@@ -831,7 +831,7 @@ var ADS_CAT_MAP={
   'shuls':'shuls','shul':'shuls','synagogue':'shuls','synagogues':'shuls'
 };
 function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
-(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){var matched=false;document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){matched=true;if(ad.planType==="premium"||ad.planType==="featured"){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};card.appendChild(btn);}}});
+(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){var matched=false;document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){matched=true;if(ad.planType==="premium"||ad.planType==="featured"){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";if(ad.planType==="premium"){btn.onclick=function(e){e.stopPropagation();window.location.href="/business.html?id="+ad.id;};}else{btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};}card.appendChild(btn);}}});
   // No matching static card found — create one dynamically (covers new Basic/free listings and any paid tier)
   if(!matched){
     var cat=ADS_CAT_MAP[(ad.category||"").trim().toLowerCase()]||"other";
@@ -851,7 +851,11 @@ function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";retur
         var btn2=document.createElement("button");
         btn2.className="biz-more-btn";
         btn2.textContent=ad.planType==="premium"?"View Profile":"View Details";
-        btn2.onclick=function(e){e.stopPropagation();openBizModal(ad);};
+        if(ad.planType==="premium"){
+          (function(adId){btn2.onclick=function(e){e.stopPropagation();window.location.href="/business.html?id="+adId;};})(ad.id);
+        } else {
+          btn2.onclick=function(e){e.stopPropagation();openBizModal(ad);};
+        }
         card.appendChild(btn2);
       }
       grid.appendChild(card);

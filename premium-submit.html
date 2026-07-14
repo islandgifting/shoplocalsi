@@ -246,8 +246,8 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 
   <!-- ═══ PREMIUM: AD DISPLAY ═══ -->
   <div class="form-card premium-only">
-    <h2>Advertising Display <span class="premium-tag">⭐ Premium</span></h2>
-    <div class="card-sub">Your ad appears on the advertising screen display and in homepage banner rotation. Choose a static image or a short video clip.</div>
+    <h2>Advertising Screen Display <span class="premium-tag">⭐ Premium</span></h2>
+    <div class="card-sub">This appears on your business profile page's advertising screen. If you upload a video, it plays automatically on your profile. Choose a static image OR a short video clip.</div>
     <div class="pill-row">
       <div class="pill selected" id="pillImage" onclick="setAdType('image')">🖼️ Static Image</div>
       <div class="pill" id="pillVideo" onclick="setAdType('video')">🎬 Short Video Clip</div>
@@ -257,7 +257,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
         <input type="file" id="adImageFile" accept="image/*" onchange="handleUpload(this,'adImage','image')">
         <div class="upload-icon">🌄</div>
         <span class="upload-label">Upload your ad image</span>
-        <span class="upload-sub">Wide format · 1200×400px ideal · Max 8MB</span>
+        <span class="upload-sub">Wide format · 1200×675px ideal (16:9) · Max 8MB</span>
         <div class="upload-progress" id="adImageProg"><div class="upload-progress-bar" id="adImageBar"></div></div>
       </div>
       <div class="upload-preview" id="adImagePreview">
@@ -269,7 +269,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
       <div class="upload-area" id="adVideoArea">
         <input type="file" id="adVideoFile" accept="video/*" onchange="handleUpload(this,'adVideo','video')">
         <div class="upload-icon">🎬</div>
-        <span class="upload-label">Upload your video clip</span>
+        <span class="upload-label">Upload your video clip — plays on your profile's ad screen</span>
         <span class="upload-sub">MP4 or MOV · Max 30 seconds · Max 50MB</span>
         <div class="upload-progress" id="adVideoProg"><div class="upload-progress-bar" id="adVideoBar"></div></div>
       </div>
@@ -277,6 +277,26 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
         <video id="adVideoThumb" src="" muted></video>
         <div class="preview-info"><div class="preview-name" id="adVideoName"></div><div class="preview-status">✓ Uploaded</div></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ═══ PREMIUM: HOMEPAGE BANNER ═══ -->
+  <div class="form-card premium-only">
+    <h2>Homepage Banner Rotation <span class="premium-tag">⭐ Premium</span></h2>
+    <div class="card-sub">This image rotates in the banner bar on the ShopLocalSI.com homepage — seen by every visitor. Use exactly these dimensions for the sharpest, no-crop result:</div>
+    <div style="background:#fff8e6;border:1.5px solid #f0d999;border-radius:6px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.75rem;color:#8a6a10;font-weight:700">
+      📐 Recommended size: <strong>1600 × 400px</strong> (4:1 wide landscape) &nbsp;·&nbsp; JPG or PNG &nbsp;·&nbsp; Max 8MB
+    </div>
+    <div class="upload-area" id="bannerImgArea">
+      <input type="file" id="bannerImgFile" accept="image/*" onchange="handleUpload(this,'bannerImg','image')">
+      <div class="upload-icon">🖼️</div>
+      <span class="upload-label">Upload your homepage banner image</span>
+      <span class="upload-sub">1600×400px recommended · JPG/PNG · Max 8MB</span>
+      <div class="upload-progress" id="bannerImgProg"><div class="upload-progress-bar" id="bannerImgBar"></div></div>
+    </div>
+    <div class="upload-preview" id="bannerImgPreview">
+      <img id="bannerImgThumb" src="" alt="">
+      <div class="preview-info"><div class="preview-name" id="bannerImgName"></div><div class="preview-status">✓ Uploaded</div></div>
     </div>
     <div class="field-row full" style="margin-top:1rem">
       <div class="field">
@@ -374,7 +394,7 @@ document.getElementById('planBadge').className = 'plan-badge ' + plan;
 document.getElementById('planBadge').textContent = isPremium ? '⭐ Premium Listing' : '✦ Featured Listing';
 if(isPremium) document.querySelectorAll('.premium-only').forEach(el=>el.classList.add('show'));
 
-const uploads = { logo:'', adImage:'', adVideo:'', gallery: [] };
+const uploads = { logo:'', adImage:'', adVideo:'', bannerImg:'', gallery: [] };
 let adType = 'image';
 
 function setAdType(type){
@@ -463,6 +483,11 @@ async function submitListing(){
   if(!phone) return showErr('Please enter your phone number.');
   if(!email) return showErr('Please enter your email address.');
   if(!desc)  return showErr('Please add a short description.');
+  if(isPremium){
+    if(adType==='image' && !uploads.adImage) return showErr('Please upload your advertising screen image (or switch to video).');
+    if(adType==='video' && !uploads.adVideo) return showErr('Please upload your advertising screen video (or switch to image).');
+    if(!uploads.bannerImg) return showErr('Please upload your homepage banner image (1600×400px recommended).');
+  }
 
   const btn = document.getElementById('submitBtn');
   btn.disabled=true; btn.textContent='Submitting…';
@@ -484,11 +509,13 @@ async function submitListing(){
   if(isPremium){
     fields['AdType'] = adType;
     if(adType==='image' && uploads.adImage){
-      fields['Image']  = [{ url: uploads.adImage }];
-      fields['Banner'] = [{ url: uploads.adImage }];
+      fields['Image'] = [{ url: uploads.adImage }];
     }
     if(adType==='video' && uploads.adVideo){
       fields['AdVideo'] = [{ url: uploads.adVideo }];
+    }
+    if(uploads.bannerImg){
+      fields['Banner'] = [{ url: uploads.bannerImg }];
     }
     if(uploads.gallery.length){
       const galleryAtt = uploads.gallery.map(url => ({ url }));
