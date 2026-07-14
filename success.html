@@ -822,12 +822,14 @@ async function submitPremium(){
     var createData=await createRes.json();
     var recordId=createData.id;
 
-    // Step 2: upload each attachment separately via Airtable's attachment-upload endpoint.
+    // Step 2: upload each attachment separately via our Netlify function
+    // (proxies to Airtable's attachment-upload endpoint server-side — avoids
+    // CORS issues from calling content.airtable.com directly from the browser).
     async function uploadAttachment(fieldName, file){
       var b64=await fileToBase64(file);
-      var res=await fetch('https://content.airtable.com/v0/'+BASE+'/'+recordId+'/'+fieldName+'/uploadAttachment',{
-        method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
-        body:JSON.stringify({contentType:file.type,file:b64,filename:file.name})
+      var res=await fetch('/.netlify/functions/upload-attachment',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({table:'Ads',recordId:recordId,fieldName:fieldName,filename:file.name,contentType:file.type,file:b64})
       });
       if(!res.ok){console.error('Attachment upload failed for '+fieldName, await res.text());}
     }
