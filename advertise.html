@@ -742,7 +742,7 @@ async function submitFree(){
         Address:document.getElementById('biz-addr').value,
         Description:document.getElementById('biz-desc').value,
         PlanType:'basic',Status:'Active'
-      }})
+      },typecast:true})
     });
     document.getElementById('submitMsg').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit Free Listing';btn.disabled=false;alert('Error. Please call 917-753-4444.');}

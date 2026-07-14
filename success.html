@@ -771,7 +771,7 @@ async function submitFeatured(){
     };
     await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
       method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
-      body:JSON.stringify({fields:fields})
+      body:JSON.stringify({fields:fields,typecast:true})
     });
     document.getElementById('f-success').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit My Listing →';btn.disabled=false;alert('Error submitting. Please call 917-753-4444.');}
@@ -813,7 +813,7 @@ async function submitPremium(){
     // Airtable's create-record endpoint doesn't reliably accept inline file uploads).
     var createRes=await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
       method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
-      body:JSON.stringify({fields:fields})
+      body:JSON.stringify({fields:fields,typecast:true})
     });
     if(!createRes.ok){var errBody=await createRes.text();console.error('Create record failed:',errBody);throw new Error('Could not save your listing (status '+createRes.status+')');}
     var createData=await createRes.json();
@@ -857,7 +857,7 @@ async function submitCoupon(){
         Description:document.getElementById('c-desc').value,
         Category:document.getElementById('c-cat').value,
         Status:'Active'
-      }})
+      },typecast:true})
     });
     document.getElementById('c-success').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit My Coupon →';btn.disabled=false;alert('Error. Please call 917-753-4444.');}
