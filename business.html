@@ -423,6 +423,27 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 .not-found p{color:var(--mid);margin-bottom:1.5rem}
 @media(max-width:900px){.biz-body{grid-template-columns:1fr}}
 
+/* ─── ISLAND-KOSHER-STYLE PROFILE LAYOUT ─── */
+.ik-wrapper{max-width:900px;margin:0 auto;padding:3rem 2.5rem}
+.ik-intro{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:2rem;text-align:center;margin-bottom:2.5rem;border-top:4px solid var(--green)}
+.ik-intro h2{font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.5rem}
+.ik-intro p{font-size:.88rem;color:var(--mid);line-height:1.7}
+.ik-intro strong{color:var(--green)}
+.ik-ad-frame{background:#fff;border:1px solid var(--border2);border-radius:8px;padding:1.5rem;margin-bottom:2.5rem;border-top:4px solid var(--green);text-align:center}
+.ik-ad-label{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.ik-ad-label::before,.ik-ad-label::after{content:'';width:20px;height:2px;background:var(--green)}
+.ik-ad-media{width:100%;border-radius:8px;cursor:zoom-in;display:block;max-height:600px;object-fit:cover}
+.ik-ad-media.is-video{cursor:default}
+.ik-gallery-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.ik-gallery-grid img{width:100%;border-radius:8px;border:2px solid var(--border2);cursor:zoom-in;transition:transform .3s;display:block;aspect-ratio:1;object-fit:cover}
+.ik-gallery-grid img:hover{transform:scale(1.02);border-color:var(--green)}
+.lightbox{position:fixed;inset:0;background:rgba(11,31,58,.9);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:92vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.15);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lightbox-close:hover{background:rgba(255,255,255,.3)}
+@media(max-width:700px){.ik-gallery-grid{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body>
@@ -503,7 +524,15 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 </script>
 
 <div id="profileContent" style="text-align:center;padding:5rem;color:var(--muted)">Loading business profile&hellip;</div>
+<div class="lightbox" id="lightbox" onclick="closeLB()">
+  <button class="lightbox-close" onclick="closeLB()">&times;</button>
+  <img id="lbImg" src="" alt="Zoomed">
+</div>
 <script>
+function openLB(src){document.getElementById("lbImg").src=src;document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
+function closeLB(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLB();});
+
 (async function(){
   var params=new URLSearchParams(window.location.search);
   var slug=params.get("b")||params.get("slug"),id=params.get("id");
@@ -517,20 +546,54 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     document.title=biz.businessName+" &mdash; Shop Local Staten Island";
     var bc=coupons.filter(function(c){return c.biz.toLowerCase()===biz.businessName.toLowerCase();});
     var isPrem=biz.planType==="premium";
-    var couponHtml=bc.length?"<div class='biz-section'><div class='biz-section-title'>Active Coupons</div>"+bc.map(function(c){return "<div class='coupon-card'><div><div class='coupon-discount'>"+c.discount+"</div><div class='coupon-desc'>"+c.desc+"</div></div>"+(c.code?"<button class='coupon-code-btn' onclick=\"navigator.clipboard.writeText('"+c.code+"');this.textContent='Copied!';setTimeout(function(){this.textContent='"+c.code+"'},2000)\">"+c.code+"</button>":"")+"</div>";}).join("")+"</div>":"";
-    // Advertising Screen: video takes priority, otherwise show the ad image
+
+    // Big Advertising Screen — video takes priority, otherwise the ad image (click to zoom)
     var adScreenHtml="";
     if(isPrem && biz.adVideo){
-      adScreenHtml="<div class='biz-section'><div class='biz-section-title'>&#x1F4FA; Advertising Screen</div><video src='"+biz.adVideo+"' style='width:100%;border-radius:8px;max-height:400px;object-fit:cover' controls autoplay muted loop playsinline></video></div>";
+      adScreenHtml="<div class='ik-ad-frame fade-up'><div class='ik-ad-label'>Advertising Screen</div><video src='"+biz.adVideo+"' class='ik-ad-media is-video' controls autoplay muted loop playsinline></video></div>";
     } else if(isPrem && biz.image){
-      adScreenHtml="<div class='biz-section'><div class='biz-section-title'>&#x1F4FA; Advertising Screen</div><img src='"+biz.image+"' style='width:100%;border-radius:8px;max-height:400px;object-fit:cover'></div>";
+      adScreenHtml="<div class='ik-ad-frame fade-up'><div class='ik-ad-label'>Advertising Screen</div><img src='"+biz.image+"' class='ik-ad-media' onclick=\"openLB('"+biz.image+"')\"></div>";
     }
+
     // Photo Gallery (Premium perk)
     var galleryHtml="";
     if(isPrem && biz.gallery && biz.gallery.length){
-      galleryHtml="<div class='biz-section'><div class='biz-section-title'>&#x1F4F8; Photo Gallery</div><div style='display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem'>"+biz.gallery.map(function(url){return "<img src='"+url+"' style='width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px'>";}).join("")+"</div></div>";
+      galleryHtml="<div class='ik-ad-frame fade-up'><div class='ik-ad-label'>Photo Gallery</div><div class='ik-gallery-grid'>"+biz.gallery.map(function(url){return "<img src='"+url+"' onclick=\"openLB('"+url+"')\">";}).join("")+"</div></div>";
     }
-    document.getElementById("profileContent").innerHTML="<div class='biz-hero'>"+(biz.image?"<img src='"+biz.image+"' class='biz-hero-img' alt='"+biz.businessName+"'>":"")+"<div class='biz-hero-overlay'></div><div class='biz-hero-content'><div style='display:flex;align-items:flex-end;gap:1.25rem;flex:1'><div class='biz-logo-wrap'>"+(biz.logo?"<img src='"+biz.logo+"' alt='logo'>":(biz.businessName.charAt(0)))+"</div><div><div class='biz-plan-badge'>"+(isPrem?"&#x1F48E; Premium Partner":"&#x2B50; Featured Partner")+"</div><div class='biz-hero-name'>"+biz.businessName+"</div><div class='biz-hero-tagline'>"+(biz.tagline||biz.category||"")+"</div></div></div><div style='display:flex;gap:.75rem;flex-wrap:wrap'>"+(biz.phone?"<a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"' class='btn-green'>Call Now</a>":"")+(biz.link?"<a href='"+biz.link+"' target='_blank' class='btn-white'>Website</a>":"")+"</div></div></div><div class='biz-body'><div>"+(biz.description?"<div class='biz-section'><div class='biz-section-title'>About</div><p class='biz-desc-text'>"+biz.description+"</p></div>":"")+adScreenHtml+galleryHtml+couponHtml+"</div><div><div class='biz-contact-card'><h3>Contact &amp; Info</h3>"+(biz.phone?"<div class='c-item'><div class='c-icon'>&#x1F4DE;</div><div><span class='c-label'>Phone</span><span class='c-val'><a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"'>"+biz.phone+"</a></span></div></div>":"")+(biz.email?"<div class='c-item'><div class='c-icon'>&#x2709;</div><div><span class='c-label'>Email</span><span class='c-val'><a href='mailto:"+biz.email+"'>"+biz.email+"</a></span></div></div>":"")+(biz.address?"<div class='c-item'><div class='c-icon'>&#x1F4CD;</div><div><span class='c-label'>Address</span><span class='c-val'>"+biz.address+"</span></div></div>":"")+"<div class='biz-action-btns'>"+(biz.phone?"<a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"' class='btn-call'>&#x1F4DE; Call Now</a>":"")+(biz.link?"<a href='"+biz.link+"' target='_blank' class='btn-navy' style='border-radius:50px;text-align:center;justify-content:center'>&#x1F310; Visit Website</a>":"")+(biz.email?"<a href='mailto:"+biz.email+"' class='btn-outline-navy' style='border-radius:50px;justify-content:center'>&#x2709; Email Us</a>":"")+"</div></div><div class='biz-contact-card' style='background:rgba(62,124,89,.05);border-color:var(--green)'><h3>Want a profile like this?</h3><p style='font-size:.78rem;color:var(--mid);line-height:1.65;margin-bottom:.85rem'>Upgrade to Featured or Premium and get your own full business profile page. First month free.</p><a href='/advertise.html' class='btn-green' style='display:block;text-align:center;justify-content:center'>Learn More &#x2192;</a></div></div></div>";
+
+    var couponHtml=bc.length?"<div class='ik-ad-frame fade-up'><div class='ik-ad-label'>Active Coupons</div>"+bc.map(function(c){return "<div class='coupon-card'><div><div class='coupon-discount'>"+c.discount+"</div><div class='coupon-desc'>"+c.desc+"</div></div>"+(c.code?"<button class='coupon-code-btn' onclick=\"navigator.clipboard.writeText('"+c.code+"');this.textContent='Copied!';setTimeout(function(){this.textContent='"+c.code+"'},2000)\">"+c.code+"</button>":"")+"</div>";}).join("")+"</div>":"";
+
+    document.getElementById("profileContent").innerHTML=
+      "<div class='page-hero'>"
+        +"<div class='page-hero-eyebrow'>"+(isPrem?"&#x1F48E; Premium Partner":"&#x2B50; Featured Partner")+"</div>"
+        +"<h1>"+biz.businessName+"</h1>"
+        +"<p>"+(biz.tagline||biz.category||"")+(biz.address?" &middot; "+biz.address:"")+"</p>"
+      +"</div>"
+      +"<div class='ik-wrapper'>"
+        +"<div class='ik-intro fade-up'>"
+          +"<h2>"+biz.businessName+"</h2>"
+          +"<p>"+(biz.description?biz.description+"<br>":"")
+          +(biz.address?"<strong>"+biz.address+"</strong> &middot; ":"")
+          +(biz.phone?"Call: <a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"' style='color:var(--blue);font-weight:700'>"+biz.phone+"</a>":"")
+          +"</p>"
+          +"<div style='margin-top:1.25rem;display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap'>"
+            +(biz.phone?"<a href='tel:"+biz.phone.replace(/[^0-9]/g,"")+"' class='btn-green'>&#x1F4DE; Call Now</a>":"")
+            +(biz.link?"<a href='"+biz.link+"' target='_blank' class='btn-navy' style='border-radius:50px'>&#x1F310; Visit Website</a>":"")
+            +(biz.email?"<a href='mailto:"+biz.email+"' class='btn-outline-navy' style='border-radius:50px'>&#x2709; Email Us</a>":"")
+          +"</div>"
+        +"</div>"
+        +adScreenHtml
+        +galleryHtml
+        +couponHtml
+        +"<div style='text-align:center;margin-top:1rem' class='fade-up'>"
+          +"<p style='font-size:.85rem;color:var(--mid);margin-bottom:1.25rem'>Want a profile page like this? Get your business listed today.</p>"
+          +"<a href='/advertise.html' class='btn-green'>Advertise With Us</a>&nbsp;&nbsp;"
+          +"<a href='/directory.html' class='btn-outline-navy' style='border-radius:50px'>Back to Directory</a>"
+        +"</div>"
+      +"</div>";
+
+    var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("visible");});},{threshold:.1});
+    document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
   }catch(e){document.getElementById("profileContent").innerHTML="<div class='not-found'><h2>Error Loading Profile</h2><p>Please try again or <a href='/directory.html'>browse the directory</a>.</p></div>";}
 })();
 </script>

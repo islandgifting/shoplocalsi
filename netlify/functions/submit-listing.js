@@ -24,7 +24,7 @@ exports.handler = async (event) => {
       Category: category,
       Contact: contact || '',
       Description: description || '',
-      Status: 'Pending',
+      Status: 'Active',
       Submitted: new Date().toISOString().split('T')[0],
       DeleteCode: deleteCode,
       HideContact: hideContact ? 'yes' : 'no'
@@ -38,7 +38,7 @@ exports.handler = async (event) => {
     const response = await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblBt9FfVcrMK1aOs', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields })
+      body: JSON.stringify({ fields, typecast: true })
     });
 
     if (!response.ok) {
