@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTW71T3PS0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VTW71T3PS0');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Directory &mdash; Shop Local Staten Island</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ─── EXACT HEADER MOCKUP ─── */
+.emstrip{background:var(--red);padding:.38rem 2rem;display:flex;justify-content:center;align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:.68rem;font-weight:600;letter-spacing:.2px}
+.emstrip a{color:rgba(255,255,255,.92)}.emstrip a:hover{color:#fff}
+.emstrip .sep{color:rgba(255,255,255,.35)}.emstrip .em-label{color:rgba(255,255,255,.6);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+
+.top-bar{background:#0d2137;padding:.42rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem}
+.top-bar-tagline{color:rgba(255,255,255,.9);text-align:center;flex:1;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:.65rem}
+.top-bar-right{display:flex;gap:1rem;align-items:center;flex-shrink:0}
+.top-bar-right a{color:rgba(255,255,255,.7);font-size:.75rem;transition:color .2s;text-decoration:none}.top-bar-right a:hover{color:#fff}
+
+nav{
+  background:#fff;
+  border-bottom:1px solid #dde4ea;
+  padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:88px;
+  position:sticky;top:0;z-index:999;
+  box-shadow:0 2px 16px rgba(11,31,58,.07);
+}
+
+/* LOGO - exactly like mockup: circle left, text right of circle */
+.logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+.logo-img{height:70px;width:70px;object-fit:contain}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-wordmark{display:flex;align-items:baseline;gap:.2rem;line-height:1}
+.logo-shop{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:800;color:#0b1f3a;letter-spacing:1px;text-transform:uppercase}
+.logo-local-word{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:800;color:#3e7c59;letter-spacing:1px;text-transform:uppercase}
+.logo-divider-row{display:flex;align-items:center;gap:.4rem;margin:.1rem 0 .15rem}
+.logo-dash{width:18px;height:2px;background:#0b1f3a;opacity:.4;flex-shrink:0}
+.logo-staten{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;color:#0b1f3a;letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap}
+.logo-url{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:600;color:#2c6e9e;letter-spacing:.5px}
+
+/* NAV LINKS - small, spaced, uppercase, green underline on active */
+.nav-links{display:flex;align-items:center;gap:0;list-style:none;margin:0 .5rem}
+.nav-links a{
+  font-family:'Montserrat',sans-serif;
+  font-size:.72rem;font-weight:600;color:#1a2a3a;
+  letter-spacing:.6px;text-transform:uppercase;
+  padding:.5rem .75rem;position:relative;transition:color .2s;
+  text-decoration:none;white-space:nowrap;
+}
+.nav-links a:hover{color:#3e7c59}
+.nav-links a.active{color:#3e7c59}
+.nav-links a.active::after{
+  content:'';position:absolute;
+  bottom:-2px;left:.75rem;right:.75rem;
+  height:2px;background:#3e7c59;border-radius:1px;
+}
+
+/* GREEN PILL - "LIST YOUR BUSINESS" */
+.nav-cta{
+  background:#3e7c59 !important;color:#fff !important;
+  padding:.48rem 1.1rem !important;border-radius:50px !important;
+  font-weight:700 !important;font-size:.7rem !important;
+  letter-spacing:.3px !important;transition:background .2s !important;
+  white-space:nowrap;text-decoration:none;
+}
+.nav-cta:hover{background:#4a9469 !important}
+.nav-cta::after{display:none !important}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:#0b1f3a;display:block}
+
+/* ─── EXACT BRAND COLORS FROM KIT ─── */
+:root{
+  --navy:#0b1f3a;
+  --blue:#2c6e9e;
+  --green:#3e7c59;
+  --green2:#4a9469;
+  --light:#f4f4f2;
+  --white:#ffffff;
+  --red:#cc2222;
+  --text:#1a2a3a;
+  --mid:#4a6070;
+  --muted:#6b8090;
+  --border:#dde4ea;
+  --border2:#eaeef2;
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Montserrat',sans-serif;background:var(--white);color:var(--text);font-size:15px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy)}
+
+/* ─── EMERGENCY STRIP ─── */
+
+.emstrip a{color:rgba(255,255,255,.9)}.emstrip a:hover{color:#fff}
+.emstrip .sep{color:rgba(255,255,255,.3)}.emstrip .em-label{color:rgba(255,255,255,.88);font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
+
+/* ─── TOP BAR (dark navy, centered tagline) ─── */
+
+.top-bar-tagline{color:rgba(255,255,255,.95);text-align:center;flex:1;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;font-size:.65rem}
+.top-bar-right{display:flex;gap:1.25rem;align-items:center;flex-shrink:0}
+.top-bar-right a{color:rgba(255,255,255,.88);font-size:.68rem;transition:color .2s}.top-bar-right a:hover{color:#fff}
+.top-bar-promo{color:rgba(255,255,255,.8);font-size:.65rem}
+.top-bar-promo strong{color:var(--green2)}
+
+/* ─── NAV (WHITE background, exactly like mockup) ─── */
+
+.logo-wrap{display:flex;align-items:center;gap:.85rem;text-decoration:none}
+.logo-img{height:72px;width:72px;object-fit:contain}
+.logo-text{line-height:1}
+.logo-shop{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:800;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;display:block;line-height:1}
+.logo-local{font-family:'Caveat Brush','Caveat',cursive;font-size:1.5rem;font-weight:700;color:var(--green);display:block;line-height:.9;letter-spacing:.5px}
+.logo-si{font-size:.55rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-top:.2rem}
+.logo-si::before,.logo-si::after{content:'';width:12px;height:1px;background:var(--navy);opacity:.4}
+.logo-url{font-size:.58rem;color:var(--blue);font-weight:600;letter-spacing:.5px;margin-top:.1rem;display:block}
+.nav-links{display:flex;align-items:center;gap:0;list-style:none}
+.nav-links a{font-size:.72rem;font-weight:600;color:var(--text);letter-spacing:.4px;text-transform:uppercase;padding:.5rem .7rem;position:relative;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-links a.active{color:var(--green)}
+.nav-links a.active::after{content:'';position:absolute;bottom:-1px;left:.85rem;right:.85rem;height:3px;background:var(--green);border-radius:2px 2px 0 0}
+.nav-cta{background:var(--green)!important;color:var(--white)!important;padding:.48rem 1.2rem!important;border-radius:50px;font-weight:700!important;font-size:.72rem!important;letter-spacing:.3px!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--green2)!important}
+.nav-cta::after{display:none!important}
+
+
+/* ─── HERO (photo-style with dark overlay + text, exactly like mockup) ─── */
+.hero{
+  background:linear-gradient(rgba(11,31,58,.45),rgba(11,31,58,.55)),url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80') center/cover no-repeat;
+  min-height:520px;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:5rem 2.5rem 4rem;
+  position:relative;
+}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:2px;line-height:1.05;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.hero-script{font-family:'Caveat Brush','Caveat',cursive;font-size:clamp(1.6rem,4vw,2.5rem);color:var(--green2);display:block;margin-top:.5rem;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.btn-green{background:var(--green);color:#fff;padding:.72rem 1.85rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;transition:background .2s;display:inline-flex;align-items:center;gap:.5rem;border-radius:50px}
+.btn-green:hover{background:var(--green2)}
+.btn-white{background:var(--white);color:var(--navy);padding:.72rem 1.85rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;border-radius:50px}
+.btn-white:hover{background:var(--light)}
+.btn-navy{background:var(--navy);color:#fff;padding:.72rem 1.85rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;transition:background .2s;display:inline-flex;align-items:center;gap:.5rem;border-radius:50px}
+.btn-navy:hover{background:#0d2545}
+.btn-outline-navy{border:2px solid var(--navy);color:var(--navy);background:transparent;padding:.7rem 1.85rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;border-radius:50px}
+.btn-outline-navy:hover{background:var(--navy);color:#fff}
+.btn-outline-green{border:2px solid var(--green);color:var(--green);background:transparent;padding:.7rem 1.85rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;border-radius:50px}
+.btn-outline-green:hover{background:var(--green);color:#fff}
+
+/* ─── BANNER SLOT ─── */
+.banner-slot{background:var(--light);border-bottom:1px solid var(--border);padding:.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.bs-label{font-size:.6rem;font-weight:700;color:var(--muted);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.bs-label::before{content:'';width:16px;height:2px;background:var(--green)}
+.bs-text{font-size:.82rem;color:var(--mid);font-style:italic;flex:1;text-align:center}
+.bs-cta{font-size:.72rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;flex-shrink:0;border-bottom:2px solid var(--green);padding-bottom:1px}
+.bs-cta:hover{color:var(--green2)}
+
+/* ─── SECTION STRUCTURE ─── */
+.section{padding:5rem 2.5rem}
+.section.bg-light{background:var(--light)}
+.section.bg-white{background:var(--white)}
+.section.bg-navy{background:var(--navy)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem}
+.section-eyebrow::before,.section-eyebrow::after{content:'';width:24px;height:2px;background:var(--green)}
+.section-eyebrow.light{color:var(--green2)}.section-eyebrow.light::before,.section-eyebrow.light::after{background:var(--green2)}
+.section-title{font-size:clamp(1.5rem,3vw,2.2rem);text-align:center;color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.section-title.light{color:var(--white)}
+.section-sub{font-size:.88rem;color:var(--mid);text-align:center;max-width:520px;margin:.5rem auto 0;line-height:1.75}
+.section-sub.light{color:rgba(255,255,255,.92)}
+.green-divider{width:48px;height:3px;background:var(--green);margin:.75rem auto 0;border-radius:2px}
+
+/* ─── STATS BAR ─── */
+.stats-bar{background:var(--white);border-bottom:1px solid var(--border2)}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:1.5rem;text-align:center;border-right:1px solid var(--border2);border-bottom:3px solid transparent;transition:border-color .3s}
+.stat:last-child{border-right:none}
+.stat:hover{border-bottom-color:var(--green)}
+.stat-n{font-size:2rem;font-weight:800;color:var(--navy);display:block;line-height:1}
+.stat-l{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:.35rem;display:block}
+
+/* ─── QUICK LINKS GRID ─── */
+.ql-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:1100px;margin:2.5rem auto 0;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.ql-card{background:var(--white);padding:1.85rem 1rem;text-align:center;text-decoration:none;transition:all .25s;display:block;border-right:1px solid var(--border);border-bottom:3px solid transparent}
+.ql-card:last-child{border-right:none}
+.ql-card:hover{background:var(--light);border-bottom-color:var(--green)}
+.ql-icon{font-size:1.4rem;display:block;margin-bottom:.65rem}
+.ql-label{font-size:.75rem;font-weight:700;color:var(--navy);letter-spacing:.3px;text-transform:uppercase;display:block}
+.ql-sub{font-size:.68rem;color:var(--muted);margin-top:.2rem;display:block}
+
+/* ─── FEATURED CARDS ─── */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.5rem;max-width:1100px;margin:2.75rem auto 0}
+.feat-card{border:1px solid var(--border2);border-radius:6px;padding:1.75rem;transition:all .3s;cursor:pointer;border-top:3px solid var(--green);background:var(--white)}
+.feat-card:hover{box-shadow:0 8px 28px rgba(62,124,89,.12);transform:translateY(-3px);border-color:var(--green)}
+.feat-badge{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.35rem;margin-bottom:.85rem}
+.feat-badge::before{content:'';width:14px;height:2px;background:var(--green)}
+.feat-name{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.2px}
+.feat-desc{font-size:.8rem;color:var(--mid);line-height:1.6}
+.feat-phone{font-size:.82rem;font-weight:700;color:var(--blue);margin-top:.75rem;letter-spacing:.2px}
+
+/* ─── AD SCREEN ─── */
+.ad-screen-frame{border:2px solid var(--border2);border-radius:6px;background:var(--white);padding:1.25rem;max-width:380px;margin:2.5rem auto 0;position:relative}
+.ad-screen-label{position:absolute;top:-10px;left:1.25rem;background:var(--light);padding:0 .6rem;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border2);font-weight:700}
+.ad-screen-inner{border:1px solid var(--border2);min-height:170px;background:var(--light);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:4px;transition:border-color .25s}
+.ad-screen-inner:hover{border-color:var(--green)}
+.ad-slot-text{text-align:center;padding:1.75rem}
+.ad-slot-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.ad-slot-main{font-size:1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.35rem}
+.ad-slot-sub{font-size:.75rem;color:var(--mid)}
+.ad-slot-link{display:inline-block;margin-top:.85rem;font-size:.7rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px}
+.ad-screen-base{width:100px;height:5px;background:var(--border2);margin:.75rem auto 0;border-radius:3px}
+.ad-screen-legs{display:flex;justify-content:center;gap:55px;margin-top:0}
+.ad-screen-leg{width:8px;height:14px;background:var(--border2)}
+
+/* ─── SHABBOS ─── */
+.city-select-wrap{position:relative;max-width:580px;margin:2.5rem auto 0}
+.city-select{width:100%;padding:.75rem 1rem;background:var(--white);border:2px solid var(--green);border-radius:6px;font-size:.9rem;font-weight:600;color:var(--navy);outline:none;font-family:'Montserrat',sans-serif;cursor:pointer;appearance:none;-webkit-appearance:none;margin-bottom:1rem}
+.city-select option{background:#fff;color:var(--navy)}
+.city-select-arrow{position:absolute;right:1rem;top:1rem;color:var(--green);pointer-events:none;font-weight:700}
+.shab-card{background:var(--white);border:2px solid var(--border2);border-radius:8px;padding:2rem;max-width:580px;margin:0 auto;border-top:4px solid var(--green)}
+.shab-date{text-align:center;font-size:.82rem;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:1.5rem;text-transform:uppercase}
+.shab-times{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border2);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
+.shab-block{background:var(--light);padding:1.35rem .75rem;text-align:center}
+.shab-block.rt{background:#f0faf5;border-top:3px solid var(--green)}
+.shab-lbl{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
+.shab-time{font-size:1.3rem;font-weight:800;color:var(--navy);display:block}
+.shab-block.rt .shab-time{color:var(--green)}
+.shab-note{font-size:.62rem;color:var(--muted);margin-top:.3rem;display:block}
+.shab-disclaimer{font-size:.72rem;color:var(--mid);text-align:center;line-height:1.75}
+.shab-disclaimer a{color:var(--blue);border-bottom:1px solid rgba(44,110,158,.3)}
+
+/* ─── BLOG ─── */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.5rem;max-width:1100px;margin:2.75rem auto 0}
+.blog-card{background:var(--white);border:1px solid var(--border2);border-radius:6px;padding:1.75rem;transition:all .3s;border-top:3px solid transparent;cursor:pointer}
+.blog-card:nth-child(1){border-top-color:var(--green)}
+.blog-card:nth-child(2){border-top-color:var(--navy)}
+.blog-card:nth-child(3){border-top-color:var(--blue)}
+.blog-card:hover{box-shadow:0 6px 22px rgba(11,31,58,.08);transform:translateY(-2px)}
+.blog-cat{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.blog-title{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.35;text-transform:uppercase;letter-spacing:.2px}
+.blog-exc{font-size:.8rem;color:var(--mid);line-height:1.65}
+.blog-meta{font-size:.68rem;color:var(--muted);margin-top:1rem;display:flex;justify-content:space-between;align-items:center}
+.blog-read{color:var(--green);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.3px;border-bottom:2px solid var(--green);padding-bottom:1px}
+
+/* ─── COMMUNITY SECTION ─── */
+.comm-box{max-width:820px;margin:2.75rem auto 0;border:1px solid rgba(255,255,255,.1);border-top:4px solid var(--green);padding:3rem;border-radius:6px;text-align:center;background:rgba(255,255,255,.04)}
+.comm-quote{font-family:'Caveat Brush','Caveat',cursive;font-size:1.3rem;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:1.25rem;font-weight:700}
+.comm-text{font-size:.9rem;color:rgba(255,255,255,.9);line-height:1.85;margin-bottom:.6rem}
+.comm-bold{color:var(--green2);font-weight:700}
+.comm-orgs{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;border-top:1px solid rgba(255,255,255,.08);padding-top:2rem}
+.org-item{text-align:center;padding:.85rem 1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;border-top:2px solid var(--green)}
+.org-name{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.3px}
+.org-detail{font-size:.7rem;color:rgba(255,255,255,.78);margin-top:.2rem}
+
+/* ─── DIRECTORY ─── */
+.search-wrap{background:var(--light);border-bottom:1px solid var(--border);padding:1rem 2.5rem;position:sticky;top:88px;z-index:99}
+.search-inner{max-width:820px;margin:0 auto;display:flex;gap:.75rem;flex-wrap:wrap}
+.search-inner input,.search-inner select{flex:1;min-width:160px;padding:.65rem 1rem;border:2px solid var(--border);border-radius:50px;font-size:.85rem;color:var(--text);font-family:'Montserrat',sans-serif;outline:none;background:var(--white);transition:border .2s}
+.search-inner input:focus,.search-inner select:focus{border-color:var(--green)}
+.search-inner input::placeholder{color:var(--muted)}
+.search-btn{background:var(--navy);color:#fff;border:none;padding:.65rem 1.5rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:50px;transition:background .2s}
+.search-btn:hover{background:#0d2545}
+.cat-strip{background:var(--white);border-bottom:1px solid var(--border2);padding:.6rem 1.5rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.cat-strip::-webkit-scrollbar{display:none}
+.ctab{display:inline-flex;align-items:center;padding:.35rem .85rem;border-radius:50px;background:transparent;color:var(--mid);font-weight:600;font-size:.72rem;cursor:pointer;margin-right:.4rem;font-family:'Montserrat',sans-serif;border:2px solid var(--border2);transition:all .2s}
+.ctab:hover{border-color:var(--green);color:var(--green)}
+.ctab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.ctab.em.active{background:var(--red);border-color:var(--red)}
+.dir-container{max-width:1150px;margin:0 auto;padding:2rem}
+.cat-section{margin-bottom:2.75rem}
+.cat-title{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--green)}
+.cat-title.em{color:var(--red);border-bottom-color:var(--red)}
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.85rem}
+.biz-card{background:var(--white);border:1px solid var(--border2);border-radius:6px;padding:1.1rem 1.25rem;transition:all .25s;position:relative}
+.biz-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(62,124,89,.1)}
+.biz-card.em{background:#fdf8f8;border-color:#f0d4d4}
+.biz-card.hatz{border-left:4px solid var(--red)}
+.biz-name{font-weight:700;font-size:.9rem;color:var(--navy);margin-bottom:.2rem;line-height:1.35}
+.biz-card.em .biz-name{color:var(--red)}
+.biz-desc{font-size:.76rem;color:var(--mid);margin-bottom:.2rem}
+.biz-addr{font-size:.73rem;color:var(--muted)}
+.biz-phone{margin-top:.45rem}
+.biz-phone a{font-size:.85rem;font-weight:700;color:var(--navy);transition:color .2s}
+.biz-phone a:hover{color:var(--blue)}
+.biz-card.hatz .biz-phone a{color:var(--red);font-size:.95rem;font-weight:800}
+.biz-tag{display:inline-block;margin-top:.4rem;font-size:.67rem;color:var(--blue);font-weight:600;padding:.15rem .55rem;background:rgba(44,110,158,.08);border-radius:50px;border:1px solid rgba(44,110,158,.2)}
+.biz-card.featured-card{background:#f5fff9;border:2px solid var(--green);border-left:4px solid var(--green)}
+.biz-card.featured-card .biz-name{color:var(--green)}
+.biz-card.featured-card::after{content:'Featured';position:absolute;top:.6rem;right:.75rem;font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--green);padding:.18rem .55rem;border-radius:50px}
+.biz-card.premium-card{background:var(--navy);border:2px solid var(--blue)}
+.biz-card.premium-card .biz-name{color:#fff}
+.biz-card.premium-card .biz-desc,.biz-card.premium-card .biz-addr{color:rgba(255,255,255,.9)}
+.biz-card.premium-card .biz-phone a{color:var(--green2)}
+.biz-card.premium-card::after{content:'Premium';position:absolute;top:.6rem;right:.75rem;font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--blue);padding:.18rem .55rem;border-radius:50px}
+.biz-more-btn{display:block;margin-top:.6rem;background:transparent;color:var(--green);border:2px solid var(--green);padding:.35rem .85rem;font-size:.7rem;font-weight:700;letter-spacing:.3px;text-transform:uppercase;cursor:pointer;width:100%;text-align:center;font-family:'Montserrat',sans-serif;border-radius:50px;transition:all .2s}
+.biz-more-btn:hover{background:var(--green);color:#fff}
+.biz-card.premium-card .biz-more-btn{border-color:var(--blue2);color:rgba(255,255,255,.8)}.biz-card.premium-card .biz-more-btn:hover{background:var(--blue);border-color:var(--blue)}
+
+/* ─── MODAL ─── */
+.biz-modal-overlay{position:fixed;inset:0;background:rgba(11,31,58,.55);z-index:9999;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.biz-modal-overlay.open{opacity:1;pointer-events:all}
+.biz-modal{background:var(--white);border-radius:12px 12px 0 0;width:100%;max-width:600px;max-height:88vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);border-top:4px solid var(--green)}
+.biz-modal-overlay.open .biz-modal{transform:translateY(0)}
+.biz-modal-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:1rem auto .5rem}
+.biz-modal-body{padding:1.75rem 2rem}
+.biz-modal-badge{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.4rem;margin-bottom:.75rem}
+.biz-modal-badge::before{content:'';width:16px;height:2px;background:var(--green)}
+.biz-modal-name{font-size:1.4rem;font-weight:800;color:var(--navy);margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.3px}
+.biz-modal-cat{font-size:.78rem;color:var(--muted);margin-bottom:.85rem}
+.biz-modal-desc{font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1.25rem}
+.biz-modal-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.biz-modal-btn-call{background:var(--red);color:#fff;padding:.6rem 1.25rem;font-weight:700;font-size:.8rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:50px}
+.biz-modal-btn-web{background:var(--navy);color:#fff;padding:.6rem 1.25rem;font-weight:700;font-size:.8rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;border-radius:50px}
+.biz-modal-btn-email{background:transparent;color:var(--navy);border:2px solid var(--navy);padding:.58rem 1.25rem;font-weight:700;font-size:.8rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;border-radius:50px}
+.biz-modal-coupons{border-top:1px solid var(--border2);padding-top:1rem;margin-top:.5rem}
+.biz-modal-coupons h4{font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.75rem}
+.biz-modal-coupon{background:var(--light);border:1px solid var(--border2);border-radius:6px;padding:.8rem 1rem;margin-bottom:.6rem;display:flex;justify-content:space-between;align-items:center}
+.biz-modal-coupon-discount{font-size:1rem;font-weight:800;color:var(--navy)}
+.biz-modal-coupon-desc{font-size:.74rem;color:var(--muted);margin-top:.12rem}
+.biz-modal-coupon-code{background:var(--green);color:#fff;font-size:.72rem;font-weight:700;padding:.28rem .7rem;border-radius:50px;cursor:pointer;white-space:nowrap}
+.biz-modal-close{width:100%;background:var(--light);color:var(--mid);border:1px solid var(--border2);padding:.85rem;font-weight:700;font-size:.82rem;cursor:pointer;margin-top:.5rem;font-family:'Montserrat',sans-serif;border-radius:6px;transition:all .2s}
+.biz-modal-close:hover{background:var(--navy);color:#fff}
+
+/* ─── FOOTER ─── */
+footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid var(--green)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto 3rem}
+.foot-logo-wrap{display:flex;align-items:center;gap:.85rem;margin-bottom:.85rem}
+.foot-logo-img{height:52px;width:52px;object-fit:contain}
+.foot-brand-text .shop{font-size:.95rem;font-weight:800;color:#fff;text-transform:uppercase;display:block;line-height:1}
+.foot-brand-text .local{font-family:'Caveat Brush','Caveat',cursive;font-size:1.1rem;color:var(--green2);display:block;font-weight:700;line-height:.9}
+.foot-brand-text .si{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.25rem}
+.foot-tagline{font-size:.78rem;color:rgba(255,255,255,.78);line-height:1.75;max-width:220px}
+.foot-heading{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.foot-links a{font-size:.8rem;color:rgba(255,255,255,.85);transition:color .2s}
+.foot-links a:hover{color:var(--green2)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.7rem;color:rgba(255,255,255,.7);max-width:1100px;margin:0 auto;letter-spacing:.3px}
+.foot-bottom a{color:var(--green2);opacity:.7}.foot-bottom a:hover{opacity:1}
+
+/* ─── PAGE HERO (inner pages) ─── */
+.page-hero{background:var(--navy);padding:3.5rem 2.5rem 3rem;text-align:center;position:relative;overflow:hidden;border-bottom:4px solid var(--green)}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,110,158,.12),transparent);pointer-events:none}
+.page-hero-eyebrow{font-size:.62rem;font-weight:700;color:var(--green2);letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+.page-hero-eyebrow::before,.page-hero-eyebrow::after{content:'';width:20px;height:2px;background:var(--green2)}
+.page-hero h1{font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:800;color:var(--white);letter-spacing:.5px;text-transform:uppercase}
+.page-hero h1 span{color:var(--green2)}
+.page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
+
+/* ─── UTILITIES ─── */
+.container{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.hidden{display:none!important}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:2rem}.foot-grid>div:first-child{grid-column:1/-1}}
+@media(max-width:768px){
+  nav{padding:0 1.25rem;height:70px}
+  .logo-img{height:52px;width:52px}
+  .nav-links{display:none;position:fixed;top:70px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem;gap:.25rem;border-bottom:2px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.1)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.7rem 0;border-bottom:1px solid var(--border2);font-size:.82rem}
+  .nav-links a.active::after{display:none}
+  .hamburger{display:flex}
+  .emstrip{gap:.65rem;font-size:.65rem}
+  .top-bar{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .ql-grid{grid-template-columns:repeat(3,1fr)}
+  .shab-times{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-grid>div:first-child{grid-column:auto}
+  .search-wrap{top:70px}
+  .section{padding:3.5rem 1.5rem}
+}
+
+.page-hero{background:var(--navy);padding:3.5rem 2.5rem 3rem;text-align:center;position:relative;overflow:hidden;border-bottom:4px solid var(--green)}
+.page-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,110,158,.12),transparent);pointer-events:none}
+.page-hero-eyebrow{font-size:.62rem;font-weight:700;color:#7ee8a2;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.85rem}
+.page-hero-eyebrow::before,.page-hero-eyebrow::after{content:"";width:20px;height:2px;background:#7ee8a2}
+.page-hero h1{font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:.5px;text-transform:uppercase}
+.page-hero h1 span{color:#7ee8a2}
+.page-hero p{color:rgba(255,255,255,.92);font-size:.9rem;margin:.5rem auto 0;max-width:520px}
+
+.search-wrap{background:var(--light);border-bottom:1px solid var(--border);padding:1rem 2.5rem;position:sticky;top:88px;z-index:99}
+.search-inner{max-width:820px;margin:0 auto;display:flex;gap:.75rem;flex-wrap:wrap}
+.search-inner input,.search-inner select{flex:1;min-width:160px;padding:.65rem 1rem;border:2px solid var(--border);border-radius:50px;font-size:.85rem;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;background:#fff;transition:border .2s}
+.search-inner input:focus,.search-inner select:focus{border-color:var(--green)}
+.search-inner input::placeholder{color:var(--muted)}
+.search-btn{background:var(--navy);color:#fff;border:none;padding:.65rem 1.5rem;font-size:.78rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:"Montserrat",sans-serif;border-radius:50px}
+.cat-strip{background:#fff;border-bottom:1px solid var(--border2);padding:.6rem 1.5rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.cat-strip::-webkit-scrollbar{display:none}
+.ctab{display:inline-flex;align-items:center;padding:.35rem .85rem;border-radius:50px;background:transparent;color:var(--mid);font-weight:600;font-size:.72rem;cursor:pointer;margin-right:.4rem;font-family:"Montserrat",sans-serif;border:2px solid var(--border2);transition:all .2s}
+.ctab:hover{border-color:var(--green);color:var(--green)}
+.ctab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.ctab.em.active{background:var(--red);border-color:var(--red)}
+.dir-container{max-width:1150px;margin:0 auto;padding:2rem}
+.cat-section{margin-bottom:2.75rem}
+.cat-title{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--green)}
+.cat-title.em{color:var(--red);border-bottom-color:var(--red)}
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.85rem}
+.biz-card{background:#fff;border:1px solid var(--border2);border-radius:6px;padding:1.1rem 1.25rem;transition:all .25s;position:relative}
+.biz-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(62,124,89,.1)}
+.biz-card.em{background:#fdf8f8;border-color:#f0d4d4}
+.biz-card.hatz{border-left:4px solid var(--red)}
+.biz-name{font-weight:700;font-size:.9rem;color:var(--navy);margin-bottom:.2rem;line-height:1.35}
+.biz-card.em .biz-name{color:var(--red)}
+.biz-desc{font-size:.76rem;color:var(--mid);margin-bottom:.2rem}
+.biz-addr{font-size:.73rem;color:var(--muted)}
+.biz-phone{margin-top:.45rem}
+.biz-phone a{font-size:.85rem;font-weight:700;color:var(--navy);transition:color .2s}
+.biz-phone a:hover{color:var(--blue)}
+.biz-card.hatz .biz-phone a{color:var(--red);font-size:.95rem;font-weight:800}
+.biz-tag{display:inline-block;margin-top:.4rem;font-size:.67rem;color:var(--blue);font-weight:600;padding:.15rem .55rem;background:rgba(44,110,158,.08);border-radius:50px;border:1px solid rgba(44,110,158,.2)}
+.biz-card.featured-card{background:#f5fff9;border:3px solid var(--green)}
+.biz-card.featured-card .biz-name{color:var(--green);padding-top:.25rem}
+.biz-card.featured-card::before{content:"FEATURED";display:block;background:var(--green);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:.3rem .75rem;margin:-1.1rem -1.25rem .75rem -1.25rem;border-radius:3px 3px 0 0}
+.biz-card.premium-card{background:var(--navy);border:3px solid var(--blue)}
+.biz-card.premium-card .biz-name{color:#fff;padding-top:.25rem}
+.biz-card.premium-card .biz-desc,.biz-card.premium-card .biz-addr{color:rgba(255,255,255,.75)}
+.biz-card.premium-card .biz-phone a{color:#7ee8a2}
+.biz-card.premium-card::before{content:"PREMIUM";display:block;background:var(--blue);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:.3rem .75rem;margin:-1.1rem -1.25rem .75rem -1.25rem;border-radius:3px 3px 0 0}
+.biz-more-btn{display:block;margin-top:.6rem;background:transparent;color:var(--green);border:2px solid var(--green);padding:.35rem .85rem;font-size:.7rem;font-weight:700;letter-spacing:.3px;text-transform:uppercase;cursor:pointer;width:100%;text-align:center;font-family:"Montserrat",sans-serif;border-radius:50px;transition:all .2s}
+.biz-more-btn:hover{background:var(--green);color:#fff}
+.biz-card.premium-card .biz-more-btn{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.9)}
+
+</style>
+</head>
+<body>
+<!-- EMERGENCY STRIP -->
+<div class="emstrip">
+  <span class="em-label">Emergency</span>
+  <a href="tel:7182301000">Hatzolah 718-230-1000</a>
+  <span class="sep">·</span>
+  <a href="tel:7183702121">Shomrim 718-370-2121</a>
+  <span class="sep">·</span>
+  <a href="tel:7187614444">Shmira 718-761-4444</a>
+  <span class="sep">·</span>
+  <a href="tel:7187612428">Chaveirim 718-761-2428</a>
+  <span class="sep">·</span>
+  <a href="tel:7188717299">Chavivim 718-871-7299</a>
+  <span class="sep">·</span>
+  <a href="tel:7188544548">Misaskim 718-854-4548</a>
+</div>
+
+<!-- TOP BAR - dark navy exactly like mockup -->
+<div class="top-bar">
+  <div style="width:100px;font-size:.65rem;color:rgba(255,255,255,.5)"></div>
+  <div class="top-bar-tagline">Support Local · Strengthen Community</div>
+  <div class="top-bar-right">
+    <a href="#" aria-label="Facebook">&#x1F426; Facebook</a>
+    <a href="#" aria-label="Instagram">&#x1F4F7; Instagram</a>
+    <a href="mailto:info@shoplocalsi.com" aria-label="Email">✉ Email</a>
+  </div>
+</div>
+
+<!-- WHITE NAV - exact mockup layout -->
+<nav>
+  <!-- LOGO: circle + SHOP LOCAL / STATEN ISLAND / shoplocalsi.com -->
+  <a href="/" class="logo-wrap">
+    <img src="/logo.png" alt="Shop Local Staten Island" class="logo-img">
+    <div class="logo-text">
+      <div class="logo-wordmark">
+        <span class="logo-shop">SHOP&nbsp;</span>
+        <span class="logo-local-word">LOCAL</span>
+      </div>
+      <div class="logo-divider-row">
+        <span class="logo-dash"></span>
+        <span class="logo-staten">Staten Island</span>
+        <span class="logo-dash"></span>
+      </div>
+      <span class="logo-url">shoplocalsi.com</span>
+    </div>
+  </a>
+
+  <!-- NAV LINKS -->
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" data-page="home">Home</a></li>
+    <li><a href="/directory.html" data-page="directory">Directory</a></li>
+    <li><a href="/marketplace.html" data-page="marketplace">Market</a></li>
+    <li><a href="/simcha.html" data-page="simcha">Simchas</a></li>
+    <li><a href="/coupons.html" data-page="coupons">Coupons</a></li>
+    <li><a href="/advertise.html" data-page="advertise">Ads</a></li>
+    <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
+    <li><a href="/realty.html" data-page="realty">Realty</a></li>
+    <li><a href="/community.html" data-page="community">Community</a></li>
+    <li><a href="/nshei.html" data-page="nshei">Nshei</a></li>
+    <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
+  </ul>
+  </div><!-- end nav-row -->
+  <a href="/advertise.html" class="nav-cta" data-page="advertise" style="margin-left:.75rem;white-space:nowrap">List Your Business</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<script>
+(function(){
+  const path = window.location.pathname;
+  const page = path === '/' ? 'home' : path.replace('/','').replace('.html','');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+    if(a.dataset.page === page) a.classList.add('active');
+  });
+})();
+</script>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Staten Island Community</div>
+  <h1>Business <span>Directory</span></h1>
+  <p>Every dollar spent locally strengthens our community</p>
+</div>
+<div class="banner-slot" id="premiumBannerSlot" style="display:none">
+  <div class="bs-label">Sponsored</div>
+  <div class="bs-text" id="bannerText"></div>
+  <a class="bs-cta" id="bannerCta" href="#" onclick="event.stopPropagation()">View Business →</a>
+</div>
+<div class="search-wrap">
+  <div class="search-inner">
+    <input type="text" id="searchInput" placeholder="Search businesses, services&hellip;" oninput="filterBiz()">
+    <select id="catFilter" onchange="filterBiz()">
+      <option value="">All Categories</option>
+      <option value="food">Restaurants &amp; Food</option>
+      <option value="home">Home Services</option>
+      <option value="photo">Photography</option>
+      <option value="auto">Auto Services</option>
+      <option value="medical">Medical</option>
+      <option value="specialty">Specialty Shops</option>
+      <option value="beauty">Beauty &amp; Self Care</option>
+      <option value="pool">Pool Rental</option>
+      <option value="services">Services</option>
+      <option value="transport">Transportation</option>
+      <option value="realty">Realtors</option>
+      <option value="insurance">Insurance</option>
+      <option value="gemach">Community Gemachs</option>
+      <option value="emergency">Emergency Services</option>
+      <option value="media">Media</option>
+      <option value="playgroups">Playgroups/Daycare</option>
+      <option value="community">Community Organizations</option>
+      <option value="schools">Schools</option>
+      <option value="shuls">Shuls</option>
+      <option value="other">Other</option>
+    </select>
+    <button class="search-btn" onclick="filterBiz()">Search</button>
+  </div>
+</div>
+<div style="background:#fff;border-bottom:1px solid var(--border2);padding:.65rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem">
+  <p id="bizCountText" style="font-size:.78rem;color:var(--mid);font-weight:500">80+ local businesses across 16 categories</p>
+  <a href="/marketplace.html" class="btn-green" style="padding:.42rem 1rem;font-size:.72rem">+ Post a Free Listing</a>
+</div>
+
+<!-- FEATURED SPOTLIGHT -->
+<div id="spotlightWrap" style="display:none;background:#f5fff9;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:1.25rem 2.5rem">
+  <div style="max-width:1150px;margin:0 auto">
+    <div style="font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem">
+      <span style="width:18px;height:2px;background:var(--green);display:inline-block"></span>
+      This Week's Featured Business
+    </div>
+    <div style="border:3px solid var(--green);border-radius:8px;padding:1.5rem 1.75rem;background:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;position:relative;overflow:hidden">
+      <!-- Green featured banner -->
+      <div style="position:absolute;top:0;left:0;right:0;background:var(--green);color:#fff;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:.28rem" id="spotlightBadge">⭐ FEATURED LISTING</div>
+      <!-- Business info -->
+      <div style="margin-top:.75rem">
+        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem" id="spotlightName"></div>
+        <div style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem" id="spotlightDesc"></div>
+        <div style="font-size:.82rem;color:var(--muted)" id="spotlightAddr"></div>
+      </div>
+      <!-- Actions -->
+      <div style="display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;align-items:flex-end">
+        <a href="#" id="spotlightPhone" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap"></a>
+        <a href="#" id="spotlightLink" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">View Profile →</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(async function(){
+  try{
+    var res=await fetch("/.netlify/functions/get-ads");
+    if(!res.ok)return;
+    var data=await res.json();
+    var spot=(data.featured&&data.featured[0])||(data.all&&data.all[0]);
+    if(!spot)return;
+    document.getElementById("spotlightBadge").textContent=spot.planType==="premium"?"💎 PREMIUM LISTING":"⭐ FEATURED LISTING";
+    document.getElementById("spotlightName").textContent=spot.businessName||"";
+    document.getElementById("spotlightDesc").textContent=spot.description||spot.tagline||"";
+    document.getElementById("spotlightAddr").textContent=spot.address?"📍 "+spot.address:"";
+    var phoneEl=document.getElementById("spotlightPhone");
+    if(spot.phone){phoneEl.href="tel:"+spot.phone.replace(/[^0-9]/g,"");phoneEl.textContent="📞 "+spot.phone;}else{phoneEl.style.display="none";}
+    document.getElementById("spotlightLink").href="/business.html?id="+spot.id;
+    document.getElementById("spotlightWrap").style.display="block";
+  }catch(e){}
+})();
+</script>
+<div class="cat-strip">
+  <button class="ctab active" onclick="setTab('all',this)">All</button>
+  <button class="ctab" onclick="setTab('food',this)">Food</button>
+  <button class="ctab" onclick="setTab('home',this)">Home</button>
+  <button class="ctab" onclick="setTab('photo',this)">Photography</button>
+  <button class="ctab" onclick="setTab('auto',this)">Auto</button>
+  <button class="ctab" onclick="setTab('medical',this)">Medical</button>
+  <button class="ctab" onclick="setTab('specialty',this)">Specialty</button>
+  <button class="ctab" onclick="setTab('beauty',this)">Beauty</button>
+  <button class="ctab" onclick="setTab('pool',this)">Pool</button>
+  <button class="ctab" onclick="setTab('services',this)">Services</button>
+  <button class="ctab" onclick="setTab('transport',this)">Transport</button>
+  <button class="ctab" onclick="setTab('realty',this)">Realty</button>
+  <button class="ctab" onclick="setTab('insurance',this)">Insurance</button>
+  <button class="ctab" onclick="setTab('gemach',this)">Gemach</button>
+  <button class="ctab" onclick="setTab('media',this)">Media</button>
+  <button class="ctab" onclick="setTab('playgroups',this)">Playgroups/Daycare</button>
+  <button class="ctab" onclick="setTab('community',this)">Community Organizations</button>
+  <button class="ctab" onclick="setTab('schools',this)">Schools</button>
+  <button class="ctab" onclick="setTab('shuls',this)">Shuls</button>
+  <button class="ctab em" onclick="setTab('emergency',this)">Emergency</button>
+  <button class="ctab" onclick="setTab('other',this)">Other</button>
+</div>
+<div class="dir-container">
+  <div id="bizContainer">
+    <div class="cat-section" data-cat="food"><div class="cat-title">Restaurants &amp; Food</div><div class="biz-grid">
+      <div class="biz-card" data-cat="food" data-search="321 desserts cakes"><div class="biz-name">321 Desserts</div><div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div><div class="biz-tag">Cakes &amp; Desserts</div></div>
+      <div class="biz-card" data-cat="food" data-search="dairy palace pizza caterers victory"><div class="biz-name">Dairy Palace Pizza &amp; Caterers</div><div class="biz-addr">2216 Victory Blvd</div><div class="biz-phone"><a href="tel:7187615200">718-761-5200</a></div><div class="biz-tag">Pizza &amp; Catering</div></div>
+      <div class="biz-card" data-cat="food" data-search="fruitique shelley fruit platters"><div class="biz-name">Fruitique by Shelley</div><div class="biz-phone"><a href="tel:7183741418">718-374-1418</a></div><div class="biz-tag">Fresh Fruit Platters</div></div>
+      <div class="biz-card" data-cat="food" data-search="island catering steven israel"><div class="biz-name">Island Catering NY</div><div class="biz-desc">Steven Israel</div><div class="biz-phone"><a href="tel:6466456609">646-645-6609</a></div><div class="biz-tag">Full-Service Catering</div></div>
+      <div class="biz-card" data-cat="food" data-search="island kosher supermarket grocery victory"><div class="biz-name">Island Kosher Supermarket</div><div class="biz-desc">Your full-service kosher supermarket — fresh produce, deli, bakery &amp; more</div><div class="biz-addr">2200 Victory Blvd</div><div class="biz-phone"><a href="tel:7186502200">718-650-2200</a></div><div class="biz-tag">Full Kosher Grocery</div></div>
+      <div class="biz-card" data-cat="food" data-search="milk honey bradley kosher"><div class="biz-name">Milk &amp; Honey</div><div class="biz-addr">330 Bradley Ave</div><div class="biz-phone"><a href="tel:7188714319">718-871-4319</a></div><div class="biz-tag">Kosher Grocery &amp; Deli</div></div>
+      <div class="biz-card" data-cat="food" data-search="sugar house ice cream victory"><div class="biz-name">Sugar House Ice Cream</div><div class="biz-addr">2003 Victory Blvd</div><div class="biz-phone"><a href="tel:7187016891">718-701-6891</a></div><div class="biz-tag">Ice Cream &amp; Desserts</div></div>
+      <div class="biz-card" data-cat="food" data-search="tasters market bradley prepared foods"><div class="biz-name">Tasters Market</div><div class="biz-addr">330 Bradley Ave</div><div class="biz-phone"><a href="tel:7184772300">718-477-2300</a></div><div class="biz-tag">Prepared Foods</div></div>
+      <div class="biz-card" data-cat="food" data-search="natures island health food store"><div class="biz-name">The Natures Island</div><div class="biz-phone"><a href="tel:8455403233">845-540-3233</a></div><div class="biz-tag">Health Food Store</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="home"><div class="cat-title">Home Services</div><div class="biz-grid">
+      <div class="biz-card" data-cat="home" data-search="appliance repair brian"><div class="biz-name">Appliance Repair</div><div class="biz-desc">Brian</div><div class="biz-phone"><a href="tel:9178860649">917-886-0649</a></div><div class="biz-tag">All Major Appliances</div></div>
+      <div class="biz-card" data-cat="home" data-search="dryer vent cleaning chanoch"><div class="biz-name">Dryer Vent Cleaning</div><div class="biz-desc">Chanoch</div><div class="biz-phone"><a href="tel:3472449382">347-244-9382</a></div><div class="biz-tag">Dryer Vent Services</div></div>
+      <div class="biz-card" data-cat="home" data-search="electrician daniel shaool"><div class="biz-name">Electrician &#8212; Daniel Shaool</div><div class="biz-phone"><a href="tel:3479392767">347-939-2767</a></div><div class="biz-tag">Licensed Electrician</div></div>
+      <div class="biz-card" data-cat="home" data-search="island door repair garage springs motors"><div class="biz-name">Island Door Repair</div><div class="biz-desc">Springs · Motors · Doors</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div><div class="biz-tag">Garage Door Experts</div></div>
+      <div class="biz-card" data-cat="home" data-search="j c power washing houses driveways deck"><div class="biz-name">J &amp; C Power Washing Inc</div><div class="biz-desc">Houses · Driveways · Deck</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div><div class="biz-tag">Power Washing</div></div>
+      <div class="biz-card" data-cat="home" data-search="jaison guterman handyman construction"><div class="biz-name">Jaison Guterman</div><div class="biz-desc">Handyman &amp; Construction</div><div class="biz-phone"><a href="tel:7188648164">718-864-8164</a></div><div class="biz-tag">Handyman &amp; Construction</div></div>
+      <div class="biz-card" data-cat="home" data-search="jake home repairs renovation"><div class="biz-name">Jake &#8212; Home Repairs</div><div class="biz-phone"><a href="tel:7323476458">732-347-6458</a></div><div class="biz-tag">Home Repairs</div></div>
+      <div class="biz-card" data-cat="home" data-search="next level improvements contractor"><div class="biz-name">Next Level Improvements</div><div class="biz-phone"><a href="tel:9176855086">917-685-5086</a></div><div class="biz-tag">General Contractor</div></div>
+      <div class="biz-card" data-cat="home" data-search="roofing home alexsander furman"><div class="biz-name">Roofing &amp; Home</div><div class="biz-desc">Alexsander Furman</div><div class="biz-phone"><a href="tel:9178625223">917-862-5223</a></div><div class="biz-tag">Roofing Specialist</div></div>
+      <div class="biz-card" data-cat="home" data-search="simplify solar electric bills savings"><div class="biz-name">Simplify Solar</div><div class="biz-phone"><a href="tel:9175728547">917-572-8547</a></div><div class="biz-tag">Solar Energy Savings</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="photo"><div class="cat-title">Photography</div><div class="biz-grid">
+      <div class="biz-card" data-cat="photo" data-search="engaging pix photography newborn family events"><div class="biz-name">Engaging Pix Photography</div><div class="biz-desc">Newborn · Family · Events</div><div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div><div class="biz-tag">Events &amp; Portraits</div></div>
+      <div class="biz-card" data-cat="photo" data-search="koby yedgar photography simcha events"><div class="biz-name">Koby Yedgar Photography</div><div class="biz-phone"><a href="tel:9176821351">917-682-1351</a></div><div class="biz-tag">Simcha Photography</div></div>
+      <div class="biz-card" data-cat="photo" data-search="nechami photography family portraits"><div class="biz-name">Nechami Photography</div><div class="biz-phone"><a href="tel:3472486011">347-248-6011</a></div><div class="biz-tag">Family Portraits</div></div>
+      <div class="biz-card" data-cat="photo" data-search="rikkiz photography portraits events"><div class="biz-name">Rikkiz Photography</div><div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div><div class="biz-tag">Portraits &amp; Events</div></div>
+      <div class="biz-card" data-cat="photo" data-search="ulano studios photography portraits events"><div class="biz-name">Ulano Studios</div><div class="biz-phone"><a href="tel:7188120377">718-812-0377</a> / <a href="tel:7188120412">718-812-0412</a></div><div class="biz-tag">Portraits &amp; Events</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="auto"><div class="cat-title">Auto Services</div><div class="biz-grid">
+      <div class="biz-card" data-cat="auto" data-search="buckle up leasing auto car"><div class="biz-name">Buckle Up Leasing</div><div class="biz-phone"><a href="tel:9172259663">917-225-9663</a></div><div class="biz-tag">Auto Leasing</div></div>
+      <div class="biz-card" data-cat="auto" data-search="family auto sales collision mechanical"><div class="biz-name">Family Auto</div><div class="biz-desc">Sales · Collision · Mechanical</div><div class="biz-phone"><a href="tel:7185569274">718-556-9274</a></div><div class="biz-tag">Sales · Collision · Repair</div></div>
+      <div class="biz-card" data-cat="auto" data-search="perfect drive sales leasing financing"><div class="biz-name">Perfect Drive</div><div class="biz-desc">Sales · Leasing · Financing</div><div class="biz-phone"><a href="tel:7186077674">718-607-7674</a></div><div class="biz-tag">Sales · Leasing · Financing</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="medical"><div class="cat-title">Medical</div><div class="biz-grid">
+      <div class="biz-card" data-cat="medical" data-search="dr kenneth horowitz eyes ophthalmology"><div class="biz-name">Dr Kenneth Horowitz MD</div><div class="biz-desc">Care &amp; Treatment of the Eyes</div><div class="biz-phone"><a href="tel:7182701794">718-270-1794</a></div><div class="biz-tag">Eye Care Specialist</div></div>
+      <div class="biz-card" data-cat="medical" data-search="ehysha schwartz stitches aesthetics botox"><div class="biz-name">Ehysha Schwartz</div><div class="biz-desc">Stitches · Aesthetics · Botox</div><div class="biz-phone"><a href="tel:9293224480">929-322-4480</a></div><div class="biz-tag">Aesthetics &amp; Botox</div></div>
+      <div class="biz-card" data-cat="medical" data-search="miriam blau np after hours medical"><div class="biz-name">Miriam Blau NP</div><div class="biz-desc">After Hours Medical · 7 Ismay St</div><div class="biz-phone"><a href="tel:6465807333">646-580-7333</a></div><div class="biz-tag">After-Hours Medical</div></div>
+      <div class="biz-card" data-cat="medical" data-search="sincere medical bradley family practice"><div class="biz-name">Sincere Medical</div><div class="biz-addr">314 Bradley Ave</div><div class="biz-phone"><a href="tel:7184941700">718-494-1700</a></div><div class="biz-tag">Family Medical Practice</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="specialty"><div class="cat-title">Specialty Shops</div><div class="biz-grid">
+      <div class="biz-card" data-cat="specialty" data-search="camp labels name tags"><div class="biz-name">Camp Labels</div><div class="biz-phone"><a href="tel:7188530791">718-853-0791</a></div><div class="biz-tag">Labels &amp; Name Tags</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="hedys gifts occasions ship"><div class="biz-name">Hedy's Gifts</div><div class="biz-desc">We Ship!</div><div class="biz-phone"><a href="tel:3477293538">347-729-3538</a></div><div class="biz-tag">Gifts for All Occasions</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="island gifting engraving photo printing"><div class="biz-name">Island Gifting</div><div class="biz-desc">Gifts · Engraving · Photo Printing</div><div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div><div class="biz-tag">Gifts · Engraving · Printing</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="lab grown jewelry gold diamond"><div class="biz-name">Lab Grown Jewelry</div><div class="biz-desc">14ct &amp; 18ct Gold Diamond Jewelry</div><div class="biz-phone"><a href="tel:9176407675">917-640-7675</a></div><div class="biz-tag">Gold &amp; Diamond Jewelry</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="little lilac baby layette gifting simcha"><div class="biz-name">Little Lilac</div><div class="biz-desc">Baby Layette and Gifting</div><div class="biz-phone"><a href="tel:3476751567">347-675-1567</a></div><div class="biz-tag">Baby &amp; Simcha Gifts</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="make statement wholesale gold jewelry"><div class="biz-name">Make a Statement</div><div class="biz-desc">Wholesale Gold Filled Jewelry</div><div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div><div class="biz-tag">Wholesale Gold Jewelry</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="mr basics mens boys dry goods clothing"><div class="biz-name">Mr Basics</div><div class="biz-desc">Mens &amp; Boys Dry Goods</div><div class="biz-phone"><a href="tel:7188511799">718-851-1799</a></div><div class="biz-tag">Mens &amp; Boys Clothing</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="my sefer judaica books sheraden"><div class="biz-name">My Sefer Judaica</div><div class="biz-addr">159 Sheraden Ave</div><div class="biz-phone"><a href="tel:8887333708">888-733-3708</a></div><div class="biz-tag">Seforim &amp; Judaica</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="present style gift wrap home decor"><div class="biz-name">Present n' Style</div><div class="biz-desc">Gift Wrap &amp; Home Decor</div><div class="biz-phone"><a href="tel:9178098001">917-809-8001</a></div><div class="biz-tag">Gift Wrap &amp; Decor</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="sabine balloon decor events simcha"><div class="biz-name">Sabine ExtraaoridnAir</div><div class="biz-desc">Balloon Decor for Events</div><div class="biz-phone"><a href="tel:9178382707">917-838-2707</a></div><div class="biz-tag">Balloon Decor</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="finishing touch gifts personalized custom"><div class="biz-name">The Finishing Touch Gifts</div><div class="biz-phone"><a href="tel:9178034452">917-803-4452</a></div><div class="biz-tag">Personalized Gifts</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="white petal lingerie fitting bridal"><div class="biz-name">White Petal Lingerie</div><div class="biz-phone"><a href="tel:3477074637">347-707-4637</a></div><div class="biz-tag">Lingerie &amp; Fittings</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="beauty"><div class="cat-title">Beauty &amp; Self Care</div><div class="biz-grid">
+      <div class="biz-card" data-cat="beauty" data-search="atara fendrich massage craniosacral therapy"><div class="biz-name">Atara Fendrich LMT</div><div class="biz-desc">Massage &amp; Craniosacral Therapy</div><div class="biz-phone"><a href="tel:9177108370">917-710-8370</a></div><div class="biz-tag">Massage Therapy</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="danielle besser wig hair makeup bridal"><div class="biz-name">Danielle Besser</div><div class="biz-desc">Wig · Hair · Makeup</div><div class="biz-phone"><a href="tel:7182322789">718-232-2789</a></div><div class="biz-tag">Wigs · Hair · Makeup</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="friedas nails waxing mobile home"><div class="biz-name">Frieda's Nails &amp; Waxing</div><div class="biz-desc">We Come to Your Home!</div><div class="biz-phone"><a href="tel:9543305845">954-330-5845</a></div><div class="biz-tag">Mobile Nail Services</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="glam go makeup chani artist"><div class="biz-name">Glam n Go</div><div class="biz-desc">Makeup by Chani</div><div class="biz-phone"><a href="tel:9178438740">917-843-8740</a></div><div class="biz-tag">Makeup Artist</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="glo laser suri jachimowitz electrolysis"><div class="biz-name">Glo Laser &#8212; Suri Jachimowitz</div><div class="biz-desc">Laser and Electrolysis</div><div class="biz-phone"><a href="tel:3476990822">347-699-0822</a></div><div class="biz-tag">Laser &amp; Electrolysis</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="hair gall wigs haircuts styling"><div class="biz-name">Hair by Gall</div><div class="biz-desc">Wigs · Hair · Haircuts</div><div class="biz-phone"><a href="tel:3474247505">347-424-7505</a></div><div class="biz-tag">Wigs &amp; Hair Styling</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="makeup naomi professional artist"><div class="biz-name">Makeup by Naomi</div><div class="biz-phone"><a href="tel:7185987865">718-598-7865</a></div><div class="biz-tag">Professional Makeup</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="nancys salon mani pedi waxing lice nails"><div class="biz-name">Nancy's Salon</div><div class="biz-desc">Mani · Pedi · Waxing · Lice Check</div><div class="biz-phone"><a href="tel:7189389337">718-938-9337</a></div><div class="biz-tag">Nails · Waxing · Lice</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="pessi wigs sales cut wash set"><div class="biz-name">Pessi Wigs</div><div class="biz-desc">Sales · Cut · Wash &amp; Set</div><div class="biz-phone"><a href="tel:9293098640">929-309-8640</a></div><div class="biz-tag">Wig Sales &amp; Styling</div></div>
+      <div class="biz-card" data-cat="beauty" data-search="wigs laya sales cut wash set"><div class="biz-name">Wigs by Laya</div><div class="biz-desc">Sales · Cut · Wash &amp; Set</div><div class="biz-phone"><a href="tel:7187918865">718-791-8865</a></div><div class="biz-tag">Wig Sales &amp; Styling</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="pool"><div class="cat-title">Pool Rental</div><div class="biz-grid">
+      <div class="biz-card" data-cat="pool" data-search="bryna sklars salt water pool swim lessons"><div class="biz-name">Bryna Sklars</div><div class="biz-desc">Salt Water Pool · Swim Lessons · Aqua Aerobics</div><div class="biz-phone"><a href="tel:3473936094">347-393-6094</a></div><div class="biz-tag">Salt Water Pool Rental</div></div>
+      <div class="biz-card" data-cat="pool" data-search="chumi fried salt water pool winterized year round"><div class="biz-name">Chumi Fried</div><div class="biz-desc">Salt Water Pool · Year-Round</div><div class="biz-phone"><a href="tel:7188121872">718-812-1872</a></div><div class="biz-tag">Year-Round Pool Rental</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="services"><div class="cat-title">Services</div><div class="biz-grid">
+      <div class="biz-card" data-cat="services" data-search="club 21 domestic business employees staffing"><div class="biz-name">Club 21 Services</div><div class="biz-desc">Domestic &amp; Business Employees</div><div class="biz-phone"><a href="tel:3474238886">347-423-8886</a></div><div class="biz-tag">Staffing Agency</div></div>
+      <div class="biz-card" data-cat="services" data-search="lactation consultant raizy rubinson clc breastfeeding"><div class="biz-name">Lactation Consultant</div><div class="biz-desc">Raizy Rubinson CLC</div><div class="biz-phone"><a href="tel:7182907785">718-290-7785</a></div><div class="biz-tag">Breastfeeding Support</div></div>
+      <div class="biz-card" data-cat="services" data-search="mobile phone screen repair moshe kustin"><div class="biz-name">Mobile Phone Screen Repair</div><div class="biz-desc">Moshe Kustin</div><div class="biz-phone"><a href="tel:3472656499">347-265-6499</a></div><div class="biz-tag">Phone Repairs</div></div>
+      <div class="biz-card" data-cat="services" data-search="physical therapist alexander yegorov pt"><div class="biz-name">Physical Therapist</div><div class="biz-desc">Alexander Yegorov</div><div class="biz-phone"><a href="tel:7187014545">718-701-4545</a></div><div class="biz-tag">Physical Therapy</div></div>
+      <div class="biz-card" data-cat="services" data-search="sew chic alterations miri tailoring"><div class="biz-name">Sew Chic Alterations</div><div class="biz-desc">Miri</div><div class="biz-phone"><a href="tel:9295295214">929-529-5214</a></div><div class="biz-tag">Clothing Alterations</div></div>
+      <div class="biz-card" data-cat="services" data-search="sparkle agency home office cleaning service"><div class="biz-name">Sparkle Agency</div><div class="biz-desc">Home &amp; Office Cleaning Service</div><div class="biz-phone"><a href="tel:3474073931">347-407-3931</a></div><div class="biz-tag">Home &amp; Office Cleaning</div></div>
+      <div class="biz-card" data-cat="services" data-search="we buy gold silver wayne greenberg cash"><div class="biz-name">We Buy Gold &amp; Silver</div><div class="biz-desc">Wayne Greenberg</div><div class="biz-phone"><a href="tel:9173641511">917-364-1511</a></div><div class="biz-tag">Gold &amp; Silver Buyers</div></div>
+      <div class="biz-card" data-cat="services" data-search="wealth concierge group businesses consulting"><div class="biz-name">Wealth Concierge Group</div><div class="biz-phone"><a href="tel:6466237253">646-623-7253</a></div><div class="biz-tag">Business Growth</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="transport"><div class="cat-title">Transportation</div><div class="biz-grid">
+      <div class="biz-card" data-cat="transport" data-search="staten island shuttle borough park transportation"><div class="biz-name">Staten Island Shuttle</div><div class="biz-desc">Staten Island to Borough Park</div><div class="biz-phone"><a href="tel:7183423000">718-342-3000</a></div><div class="biz-tag">SI to Borough Park</div></div>
+      <div class="biz-card" data-cat="transport" data-search="yakov schmelczer vip long distance messenger"><div class="biz-name">Yakov Schmelczer</div><div class="biz-desc">VIP Long Distance · Messenger</div><div class="biz-phone"><a href="tel:9172004594">917-200-4594</a></div><div class="biz-tag">VIP Transportation</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="realty"><div class="cat-title">Realtors</div><div class="biz-grid">
+      <div class="biz-card" data-cat="realty" data-search="shaina barber katz realty nyc real estate agent"><div class="biz-name">Shaina Barber</div><div class="biz-desc">Katz Realty NYC</div><div class="biz-phone"><a href="tel:9179729789">917-972-9789</a></div><div class="biz-tag">Real Estate Agent</div></div>
+    </div></div>
+    <div class="cat-section" data-cat="insurance"><div class="cat-title">Insurance Agents</div><div class="biz-grid">
+      <div class="biz-card" data-cat="insurance" data-search="aryeh pearlman life health insurance agent"><div class="biz-name">Aryeh Pearlman</div><div class="biz-desc">Life &amp; Health Insurance Agent</div><div class="biz-phone"><a href="tel:7183741103">718-374-1103</a></div><div class="biz-tag">Life &amp; Health Insurance</div></div>
+      <div class="biz-card" data-cat="insurance" data-search="mr hirshenbaum estate planning life retirement"><div class="biz-name">Mr Hirshenbaum</div><div class="biz-desc">Estate Planning · Life &amp; Retirement</div><div class="biz-phone"><a href="tel:3477250833">347-725-0833</a></div><div class="biz-tag">Estate Planning</div></div>
+    </div></div>
+    
+    <div class="cat-section" data-cat="gemach"><div class="cat-title" style="color:var(--blue);border-bottom-color:var(--blue)">Community Gemachs</div><div class="biz-grid">
+      <div class="biz-card" data-cat="gemach" data-search="mezuzot inspection gemach scott diamond"><div class="biz-name">Mezuzot Inspection Gemach</div><div class="biz-desc">Picked up, inspected, repaired &amp; returned. Free transport.</div><div class="biz-phone"><a href="tel:9176743317">917-674-3317</a></div><div class="biz-tag">Mezuzot</div></div>
+      <div class="biz-card" data-cat="gemach" data-search="simcha gowns gemach sarah chasky"><div class="biz-name">Simcha Gowns Gemach</div><div class="biz-desc">Beautiful simcha gowns to borrow</div><div class="biz-phone"><a href="tel:9175750749">917-575-0749</a></div><div class="biz-tag">Simcha</div></div>
+      <div class="biz-card" data-cat="gemach" data-search="chair gemach chana reichman borrow"><div class="biz-name">Chair Gemach</div><div class="biz-desc">Borrow chairs for company or a simcha</div><div class="biz-phone"><a href="tel:7184046708">718-404-6708</a></div><div class="biz-tag">Simcha</div></div>
+      <div class="biz-card" data-cat="gemach" data-search="baby newborn gemach emunah toback"><div class="biz-name">Baby on the Go Gemach</div><div class="biz-desc">Liluy Nishmat Rafi Toback &mdash; newborn &amp; baby travel items</div><div class="biz-phone"><a href="tel:7188131977">718-813-1977</a></div><div class="biz-tag">Baby</div></div>
+      <div class="biz-card" data-cat="gemach" data-search="mom to mom kosher lunch new mothers"><div class="biz-name">Mom to Mom</div><div class="biz-desc">Free hot kosher lunches delivered to new moms for a week</div><div class="biz-phone"><a href="tel:3472548112">347-254-8112</a></div><div class="biz-tag">New Moms</div></div>
+      <div class="biz-card" data-cat="gemach" data-search="rachelit school uniforms centerpiece ketubot"><div class="biz-name">Rachelit Gemach</div><div class="biz-desc">School uniforms, centerpieces, ketubot, Hebrew writing for matzeva</div><div class="biz-phone"><a href="tel:7189839664">718-983-9664</a></div><div class="biz-tag">Multiple</div></div>
+      <div class="biz-card" data-cat="gemach" data-search="free apartment weekend simcha joseph avenue"><div class="biz-name">Free Weekend Apartment</div><div class="biz-desc">Available for weekends or simchos. Joseph Avenue.</div><div class="biz-phone"><a href="tel:3474881536">347-488-1536</a></div><div class="biz-tag">Housing</div></div>
+    </div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:.65rem;padding:.5rem .75rem;background:rgba(44,110,158,.06);border-radius:4px;border-left:3px solid var(--blue)">ℹ Gemach listings sourced from the Young Israel of Staten Island weekly newsletter. Contact each gemach directly. <a href="/community.html" style="color:var(--blue);font-weight:700">View full community page &#x2192;</a></p>
+    </div>
+
+    <div class="cat-section hidden" data-cat="media"><div class="cat-title">Media &amp; Marketing</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="playgroups"><div class="cat-title">Playgroups/Daycare</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="community"><div class="cat-title">Community Organizations</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="schools"><div class="cat-title">Schools</div><div class="biz-grid"></div></div>
+    <div class="cat-section hidden" data-cat="shuls"><div class="cat-title">Shuls</div><div class="biz-grid"></div></div>
+    <div class="cat-section" data-cat="emergency"><div class="cat-title em">Emergency Services</div><div class="biz-grid">
+      <div class="biz-card em hatz" data-cat="emergency" data-search="hatzolah emergency ambulance medical"><div class="biz-name">Hatzolah</div><div class="biz-desc">Emergency Medical Services</div><div class="biz-phone"><a href="tel:7182301000">718-230-1000</a></div><div class="biz-tag">Emergency Medical</div></div>
+      <div class="biz-card em" data-cat="emergency" data-search="chaveirim community help flat tire lockout"><div class="biz-name">Chaveirim</div><div class="biz-desc">Community Emergency Assistance</div><div class="biz-phone"><a href="tel:7187612428">718-761-2428</a></div><div class="biz-tag">Community Assistance</div></div>
+      <div class="biz-card em" data-cat="emergency" data-search="chavivim community help"><div class="biz-name">Chavivim</div><div class="biz-phone"><a href="tel:7188717299">718-871-7299</a></div><div class="biz-tag">Community Help</div></div>
+      <div class="biz-card em" data-cat="emergency" data-search="misaskim funeral gemach community"><div class="biz-name">Misaskim</div><div class="biz-phone"><a href="tel:7188544548">(718) 854-4548</a></div><div class="biz-tag">Funeral &amp; Gemach</div></div>
+      <div class="biz-card em" data-cat="emergency" data-search="shmira security patrol"><div class="biz-name">Shmira</div><div class="biz-phone"><a href="tel:7187614444">718-761-4444</a></div><div class="biz-tag">Security Patrol</div></div>
+      <div class="biz-card em" data-cat="emergency" data-search="shomrim neighborhood watch security"><div class="biz-name">Shomrim</div><div class="biz-phone"><a href="tel:7183702121">718-370-2121</a></div><div class="biz-tag">Neighborhood Watch</div></div>
+    </div></div>
+    <div class="cat-section hidden" data-cat="other"><div class="cat-title" style="color:var(--muted);border-bottom-color:var(--border2)">Newly Added &mdash; Awaiting Category Review</div><div class="biz-grid"></div></div>
+    <p id="noResults" class="hidden" style="color:var(--muted);padding:3rem;text-align:center;font-size:.9rem">No businesses found. Try a different search.</p>
+  </div>
+  <div style="text-align:center;padding:3rem 0 1rem;border-top:1px solid var(--border2);margin-top:1rem">
+    <p style="font-size:.82rem;color:var(--mid);margin-bottom:1.25rem">Don't see your business? Get listed &mdash; first month free.</p>
+    <a href="/advertise.html" class="btn-green">List Your Business</a>
+  </div>
+</div>
+<div class="biz-modal-overlay" id="bizModalOverlay" onclick="if(event.target===this)closeBizModal()">
+  <div class="biz-modal"><div class="biz-modal-handle"></div><div id="bizModalBanner"></div>
+    <div class="biz-modal-body">
+      <div class="biz-modal-badge" id="bizModalBadge">Featured Partner</div>
+      <div class="biz-modal-name" id="bizModalName"></div>
+      <div class="biz-modal-cat" id="bizModalCat"></div>
+      <div class="biz-modal-desc" id="bizModalDesc"></div>
+      <div class="biz-modal-actions" id="bizModalActions"></div>
+      <div id="bizModalGallery" style="display:none;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.25rem"></div>
+      <div class="biz-modal-coupons" id="bizModalCoupons" style="display:none"><h4>Active Coupons</h4><div id="bizModalCouponsList"></div></div>
+      <button class="biz-modal-close" onclick="closeBizModal()">Close</button>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo-wrap">
+        <img src="/logo.png" alt="Shop Local SI" class="foot-logo-img">
+        <div class="foot-brand-text">
+          <span class="shop">SHOP <span style="color:var(--green2)">LOCAL</span></span>
+          <span class="si">Staten Island</span>
+        </div>
+      </div>
+      <p class="foot-tagline">Supporting the businesses that support our Staten Island community — one purchase at a time.</p>
+    </div>
+    <div>
+      <div class="foot-heading">Pages</div>
+      <ul class="foot-links">
+        <li><a href="/directory.html">Business Directory</a></li>
+        <li><a href="/marketplace.html">Market</a></li>
+        <li><a href="/simcha.html">Simcha Planning</a></li>
+        <li><a href="/coupons.html">Coupons & Deals</a></li>
+        <li><a href="/advertise.html">Advertise With Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Community</div>
+      <ul class="foot-links">
+        <li><a href="/#shabbos">Shabbos Times</a></li>
+        <li><a href="/island-kosher-deals.html">Island Kosher Deals</a></li>
+        <li><a href="/advertise.html">Advertise / List Your Business</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-heading">Emergency</div>
+      <ul class="foot-links">
+        <li><a href="tel:7182301000">Hatzolah: 718-230-1000</a></li>
+        <li><a href="tel:7187612428">Chaveirim: 718-761-2428</a></li>
+        <li><a href="tel:7188717299">Chavivim: 718-871-7299</a></li>
+        <li><a href="tel:7187614444">Shmira: 718-761-4444</a></li>
+        <li><a href="tel:7183702121">Shomrim: 718-370-2121</a></li>
+        <li><a href="tel:7188544548">Misaskim: 718-854-4548</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Shop Local Staten Island · Strengthening our community</span>
+    <span><a href="/advertise.html">Advertise with us</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var path=window.location.pathname;
+  var pg=path==='/'?'home':path.replace('/','').replace('.html','');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){if(a.dataset.page===pg)a.classList.add('active');});
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.1});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+})();
+</script>
+<script>
+function filterBiz(){var q=document.getElementById("searchInput").value.toLowerCase().trim(),cat=document.getElementById("catFilter").value;var found=0;document.querySelectorAll(".biz-card").forEach(function(c){var mC=!cat||c.dataset.cat===cat,mQ=!q||(c.dataset.search||"").includes(q)||c.innerText.toLowerCase().includes(q);c.classList.toggle("hidden",!(mC&&mQ));if(mC&&mQ)found++;});document.querySelectorAll(".cat-section").forEach(function(s){s.classList.toggle("hidden",![...s.querySelectorAll(".biz-card")].some(function(c){return !c.classList.contains("hidden")}));});document.getElementById("noResults").classList.toggle("hidden",found>0);}
+function setTab(cat,btn){document.querySelectorAll(".ctab").forEach(function(t){t.classList.remove("active");});btn.classList.add("active");document.getElementById("catFilter").value=cat==="all"?"":cat;document.getElementById("searchInput").value="";filterBiz();}
+var allCoupons=[];
+var ADS_CAT_MAP={
+  'restaurants & food':'food','food':'food',
+  'home services':'home','home':'home',
+  'photography':'photo','photo':'photo',
+  'auto services':'auto','auto':'auto',
+  'medical':'medical',
+  'specialty shops':'specialty','specialty':'specialty','חנויות מיוחדות':'specialty',
+  'beauty & self care':'beauty','beauty':'beauty',
+  'pool rental':'pool','pool':'pool',
+  'services':'services',
+  'transportation':'transport','transport':'transport',
+  'realtors':'realty','realty':'realty',
+  'insurance agents':'insurance','insurance':'insurance',
+  'community gemachs':'gemach','gemach':'gemach',
+  'emergency services':'emergency','emergency':'emergency',
+  'media':'media','marketing':'media',
+  'daycare':'playgroups','childcare':'playgroups',
+  'playgroup':'playgroups','play group':'playgroups','play groups':'playgroups','playgroups':'playgroups',
+  'playgroups/daycare':'playgroups','daycare/playgroups':'playgroups',
+  'community':'community','community organization':'community','community organizations':'community',
+  'schools':'schools','school':'schools',
+  'shuls':'shuls','shul':'shuls','synagogue':'shuls','synagogues':'shuls'
+};
+function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
+(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){var matched=false;document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){matched=true;if(ad.planType==="premium"||ad.planType==="featured"){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";if(ad.planType==="premium"){btn.onclick=function(e){e.stopPropagation();window.location.href="/business.html?id="+ad.id;};}else{btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};}card.appendChild(btn);}}});
+  // No matching static card found — create one dynamically (covers new Basic/free listings and any paid tier)
+  if(!matched){
+    var cat=ADS_CAT_MAP[(ad.category||"").trim().toLowerCase()]||"other";
+    var section=document.querySelector('.cat-section[data-cat="'+cat+'"]');
+    if(section){
+      var grid=section.querySelector(".biz-grid");
+      var card=document.createElement("div");
+      card.className="biz-card"+(ad.planType==="premium"?" premium-card":ad.planType==="featured"?" featured-card":"");
+      card.dataset.cat=cat;
+      card.dataset.search=(ad.businessName+" "+(ad.description||"")).toLowerCase();
+      var html='<div class="biz-name">'+adsEsc(ad.businessName)+"</div>";
+      if(ad.description)html+='<div class="biz-desc">'+adsEsc(ad.description)+"</div>";
+      if(ad.address)html+='<div class="biz-addr">'+adsEsc(ad.address)+"</div>";
+      if(ad.phone)html+='<div class="biz-phone"><a href="tel:'+adsEsc(ad.phone.replace(/[^0-9]/g,""))+'">'+adsEsc(ad.phone)+"</a></div>";
+      card.innerHTML=html;
+      if(ad.planType==="premium"||ad.planType==="featured"){
+        var btn2=document.createElement("button");
+        btn2.className="biz-more-btn";
+        btn2.textContent=ad.planType==="premium"?"View Profile":"View Details";
+        if(ad.planType==="premium"){
+          (function(adId){btn2.onclick=function(e){e.stopPropagation();window.location.href="/business.html?id="+adId;};})(ad.id);
+        } else {
+          btn2.onclick=function(e){e.stopPropagation();openBizModal(ad);};
+        }
+        card.appendChild(btn2);
+      }
+      grid.appendChild(card);
+      section.classList.remove("hidden");
+    }
+  }
+})
+  // Rotating sponsored banner for Premium listings
+  var bannerAds=data.banners||[];
+  if(bannerAds.length){
+    var slot=document.getElementById("premiumBannerSlot"),txt=document.getElementById("bannerText"),cta=document.getElementById("bannerCta"),bi=0;
+    function showBanner(){
+      var ad=bannerAds[bi%bannerAds.length];
+      if(ad.bannerImage){
+        slot.style.backgroundImage="url('"+ad.bannerImage+"')";
+        slot.style.backgroundSize="cover";
+        slot.style.backgroundPosition="center";
+        txt.style.textShadow="0 1px 3px rgba(0,0,0,.6)";
+        txt.style.color="#fff";
+        txt.style.fontWeight="700";
+      } else {
+        slot.style.backgroundImage="";
+      }
+      txt.textContent=(ad.tagline||ad.description||ad.businessName)+" — "+ad.businessName;
+      cta.onclick=function(e){e.stopPropagation();e.preventDefault();openBizModal(ad);};
+      slot.style.display="flex";
+      bi++;
+    }
+    showBanner();
+    if(bannerAds.length>1) setInterval(showBanner,6000);
+  }
+}if(cr.ok){var cd=await cr.json();allCoupons=(cd.records||[]).filter(function(r){return (r.fields.Status||"").toLowerCase()==="active";}).map(function(r){return {biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""};});}}catch(e){}})();
+function openBizModal(ad){
+  var b=document.getElementById("bizModalBanner");
+  if(ad.bannerHTML){
+    b.innerHTML='<iframe srcdoc="'+ad.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:140px;border:none"></iframe>';
+  } else if(ad.adVideo){
+    b.innerHTML='<video src="'+ad.adVideo+'" style="width:100%;height:160px;object-fit:cover;display:block" controls muted autoplay loop></video>';
+  } else if(ad.image){
+    b.innerHTML='<img src="'+ad.image+'" style="width:100%;height:160px;object-fit:cover;display:block">';
+  } else if(ad.bannerImage){
+    b.innerHTML='<img src="'+ad.bannerImage+'" style="width:100%;height:160px;object-fit:cover;display:block">';
+  } else {
+    b.innerHTML='<div style="height:72px;background:var(--navy);display:flex;align-items:center;justify-content:center"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+ad.businessName+"</div></div>";
+  }
+  document.getElementById("bizModalBadge").textContent=ad.planType==="premium"?"Premium Partner":"Featured Partner";
+  document.getElementById("bizModalName").textContent=ad.businessName||"";
+  document.getElementById("bizModalCat").textContent=(ad.category||"")+(ad.address?" · "+ad.address:"");
+  document.getElementById("bizModalDesc").textContent=ad.description||ad.tagline||"";
+  var a="";if(ad.phone)a+='<a href="tel:'+ad.phone.replace(/[^0-9]/g,"")+'" class="biz-modal-btn-call">Call Now</a>';if(ad.link)a+='<a href="'+ad.link+'" target="_blank" class="biz-modal-btn-web">Visit Website</a>';if(ad.email)a+='<a href="mailto:'+ad.email+'" class="biz-modal-btn-email">Email Us</a>';
+  document.getElementById("bizModalActions").innerHTML=a;
+  // Photo gallery (Premium full-profile perk)
+  var galleryEl=document.getElementById("bizModalGallery");
+  if(galleryEl){
+    if(ad.gallery && ad.gallery.length){
+      galleryEl.style.display="grid";
+      galleryEl.innerHTML=ad.gallery.map(function(url){return '<img src="'+url+'" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px">';}).join("");
+    } else {
+      galleryEl.style.display="none";
+      galleryEl.innerHTML="";
+    }
+  }
+  var bc=allCoupons.filter(function(c){return c.biz.toLowerCase()===(ad.businessName||"").toLowerCase();});var cs=document.getElementById("bizModalCoupons");if(bc.length){cs.style.display="block";document.getElementById("bizModalCouponsList").innerHTML=bc.map(function(c){return '<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">'+c.discount+'</div><div class="biz-modal-coupon-desc">'+c.desc+"</div></div>"+(c.code?'<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText(\''+c.code+'\');this.textContent=\'Copied!\';setTimeout(function(){this.textContent=\''+c.code+"'\"},2000)\">"+c.code+"</div>":"")+"</div>";}).join("");}else cs.style.display="none";
+  document.getElementById("bizModalOverlay").classList.add("open");document.body.style.overflow="hidden";
+}
+function closeBizModal(){document.getElementById("bizModalOverlay").classList.remove("open");document.body.style.overflow="";}
+
+// ── AUTO-SYNC APPROVED LISTINGS FROM AIRTABLE (no manual step needed) ──
+(function(){
+var LISTINGS_BASE='appyNDNuwGFgR44sg', LISTINGS_TABLE='tblBt9FfVcrMK1aOs';
+var LISTINGS_TOKEN='pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
+var CAT_MAP={
+  'restaurants & food':'food','food':'food',
+  'home services':'home','home':'home',
+  'photography':'photo','photo':'photo',
+  'auto services':'auto','auto':'auto',
+  'medical':'medical',
+  'specialty shops':'specialty','specialty':'specialty','חנויות מיוחדות':'specialty',
+  'beauty & self care':'beauty','beauty':'beauty',
+  'pool rental':'pool','pool':'pool',
+  'services':'services',
+  'transportation':'transport','transport':'transport',
+  'realtors':'realty','realty':'realty',
+  'insurance agents':'insurance','insurance':'insurance',
+  'community gemachs':'gemach','gemach':'gemach',
+  'emergency services':'emergency','emergency':'emergency',
+  'media':'media','marketing':'media',
+  'daycare':'playgroups','childcare':'playgroups',
+  'playgroup':'playgroups','play group':'playgroups','play groups':'playgroups','playgroups':'playgroups',
+  'playgroups/daycare':'playgroups','daycare/playgroups':'playgroups',
+  'community':'community','community organization':'community','community organizations':'community',
+  'schools':'schools','school':'schools',
+  'shuls':'shuls','shul':'shuls','synagogue':'shuls','synagogues':'shuls'
+};
+function normName(s){return (s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
+function mapCategory(raw){var k=(raw||'').trim().toLowerCase();return CAT_MAP[k]||'other';}
+function esc(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
+async function syncApprovedListings(){
+  try{
+    var res=await fetch('https://api.airtable.com/v0/'+LISTINGS_BASE+'/'+LISTINGS_TABLE+'?sort[0][field]=Submitted&sort[0][direction]=desc',{headers:{'Authorization':'Bearer '+LISTINGS_TOKEN}});
+    if(!res.ok)return;
+    var data=await res.json();
+    var records=(data.records||[]).filter(function(r){return (r.fields.Status||'')==='Approved';});
+    var seen={};
+    document.querySelectorAll('.biz-card .biz-name').forEach(function(n){seen[normName(n.textContent)]=true;});
+    var added=0;
+    records.forEach(function(r){
+      var f=r.fields;
+      var title=f.Title||'';
+      var key=normName(title);
+      if(!title||seen[key])return;
+      seen[key]=true;
+      var cat=mapCategory(f.Category);
+      var section=document.querySelector('.cat-section[data-cat="'+cat+'"]');
+      if(!section)return;
+      var grid=section.querySelector('.biz-grid');
+      var phone=f.Phone||f['Phone Number']||f.PhoneNumber||f.phone||f['phone number']||'';
+      var addr=f.Address||f['Business Address']||f.address||'';
+      var desc=f.Description||'';
+      if(desc.length>100){desc=desc.substring(0,100).replace(/\s+\S*$/,'').trim()+'…';}
+      var contact=f.Contact||'';
+      var searchTerms=(title+' '+desc+' '+contact).toLowerCase();
+      var card=document.createElement('div');
+      card.className='biz-card';
+      card.dataset.cat=cat;
+      card.dataset.search=searchTerms;
+      var html='<div class="biz-name">'+esc(title)+'</div>';
+      if(desc)html+='<div class="biz-desc">'+esc(desc)+'</div>';
+      if(addr)html+='<div class="biz-addr">'+esc(addr)+'</div>';
+      if(phone)html+='<div class="biz-phone"><a href="tel:'+esc(phone.replace(/[^0-9]/g,''))+'">'+esc(phone)+'</a></div>';
+      else if(contact)html+='<div class="biz-desc">Contact: '+esc(contact)+'</div>';
+      card.innerHTML=html;
+      grid.appendChild(card);
+      section.classList.remove('hidden');
+      added++;
+    });
+    if(added>0){
+      var totalCards=document.querySelectorAll('.biz-card').length;
+      var totalCats=document.querySelectorAll('.cat-section:not(.hidden)').length;
+      var ct=document.getElementById('bizCountText');
+      if(ct)ct.textContent=totalCards+'+ local businesses across '+totalCats+' categories';
+    }
+  }catch(e){}
+}
+syncApprovedListings();
+})();
+
+</script>
+</body>
+</html>
