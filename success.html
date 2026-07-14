@@ -759,15 +759,13 @@ async function submitFeatured(){
   try{
     var fields={
       BusinessName:name,
-      ContactName:document.getElementById('f-contact').value,
-      Phone:phone,Email:email,
+      PhoneNumber:phone,Email:email,
       Website:document.getElementById('f-website').value,
       Address:document.getElementById('f-addr').value,
       Category:document.getElementById('f-cat').value,
       Description:document.getElementById('f-desc').value,
-      Tagline:document.getElementById('f-tagline').value,
+      TagLine:document.getElementById('f-tagline').value,
       Instagram:document.getElementById('f-instagram').value,
-      Facebook:document.getElementById('f-facebook').value,
       Hours:document.getElementById('f-hours').value,
       PlanType:'featured',Status:'Active'
     };
@@ -790,26 +788,25 @@ async function submitPremium(){
   if(!bannerFile){alert('Please upload your homepage banner image.');return;}
   var btn=document.getElementById('p-submit');btn.textContent='Uploading...';btn.disabled=true;
   try{
+    var couponDiscount=document.getElementById('p-coup-discount').value;
+    var couponCode=document.getElementById('p-coup-code').value;
+    var couponDesc=document.getElementById('p-coup-desc').value;
+    var blogTitle=document.getElementById('p-blog-title').value;
+    var blogBody=document.getElementById('p-blog-body').value;
     var fields={
-      BusinessName:name,ContactName:document.getElementById('p-contact').value,
-      Phone:phone,Email:email,
+      BusinessName:name,
+      PhoneNumber:phone,Email:email,
       Website:document.getElementById('p-website').value,
       Address:document.getElementById('p-addr').value,
       Category:document.getElementById('p-cat').value,
       Description:document.getElementById('p-desc').value,
-      Tagline:document.getElementById('p-tagline').value,
+      TagLine:document.getElementById('p-tagline').value,
       Instagram:document.getElementById('p-instagram').value,
-      Facebook:document.getElementById('p-facebook').value,
       Hours:document.getElementById('p-hours').value,
-      AdFileName:adImgFile.name,
-      AdFileType:adImgFile.type,
-      BannerFileName:bannerFile.name,
-      BannerFileType:bannerFile.type,
-      CouponDiscount:document.getElementById('p-coup-discount').value,
-      CouponCode:document.getElementById('p-coup-code').value,
-      CouponDescription:document.getElementById('p-coup-desc').value,
-      BlogTitle:document.getElementById('p-blog-title').value,
-      BlogBody:document.getElementById('p-blog-body').value,
+      CouponOffer:couponDiscount,
+      CouponTerms:(couponCode?('Code: '+couponCode+'. ':'')+couponDesc),
+      BlogRequest:blogTitle?'Yes':'',
+      BlogNotes:blogTitle?('Title: '+blogTitle+'\n\n'+blogBody):'',
       PlanType:'premium',Status:'Active'
     };
     // Step 1: create the record with text fields only (no attachments yet —
@@ -818,7 +815,7 @@ async function submitPremium(){
       method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
       body:JSON.stringify({fields:fields})
     });
-    if(!createRes.ok){throw new Error('Could not save your listing (status '+createRes.status+')');}
+    if(!createRes.ok){var errBody=await createRes.text();console.error('Create record failed:',errBody);throw new Error('Could not save your listing (status '+createRes.status+')');}
     var createData=await createRes.json();
     var recordId=createData.id;
 
@@ -833,10 +830,12 @@ async function submitPremium(){
       });
       if(!res.ok){console.error('Attachment upload failed for '+fieldName, await res.text());}
     }
-    await uploadAttachment('AdFile', adImgFile);
-    await uploadAttachment('BannerFile', bannerFile);
+    // Advertising screen file goes to Image (if a photo) or AdVideo (if a video clip)
+    await uploadAttachment(adImgFile.type.startsWith('video/') ? 'AdVideo' : 'Image', adImgFile);
+    // Homepage banner always goes to the Banner field
+    await uploadAttachment('Banner', bannerFile);
     var logoFile=document.getElementById('p-logo-input').files[0];
-    if(logoFile){await uploadAttachment('Logo', logoFile);}
+    if(logoFile){await uploadAttachment('Gallery', logoFile);}
 
     document.getElementById('p-success').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit My Premium Listing →';btn.disabled=false;alert('Upload error: '+e.message+'. Please call 917-753-4444.');}

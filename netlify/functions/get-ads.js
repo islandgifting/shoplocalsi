@@ -13,7 +13,7 @@ exports.handler = async (event) => {
     (data.records || []).forEach(r => {
       const f = r.fields;
       const status = (f.Status || '').toLowerCase();
-      if (status !== 'active' && status !== 'approved') return;
+      if (status !== 'active') return;
 
       const item = {
         id: r.id,
@@ -21,10 +21,10 @@ exports.handler = async (event) => {
         description: f.Description || '',
         phone: f.PhoneNumber || f.Phone || '',
         email: f.Email || '',
-        link: f.Link || '',
+        link: f.Link || f.Website || '',
         address: f.Address || '',
         image: f.Image ? f.Image[0]?.url : null,
-        tagline: f.Tagline || '',
+        tagline: f.TagLine || f.Tagline || '',
         color: f.Color || '#0a1c4b',
         category: f.Category || 'specialty',
         planType: (f.PlanType || '').toLowerCase(),
