@@ -394,7 +394,7 @@ document.getElementById('planBadge').className = 'plan-badge ' + plan;
 document.getElementById('planBadge').textContent = isPremium ? '⭐ Premium Listing' : '✦ Featured Listing';
 if(isPremium) document.querySelectorAll('.premium-only').forEach(el=>el.classList.add('show'));
 
-const uploads = { logo:'', adImage:'', adVideo:'', bannerImg:'', gallery: [] };
+const uploads = { logo:'', adImage:'', adVideo:'', bannerImg:'', gallery: [], galleryFiles: [] };
 let adType = 'image';
 
 function setAdType(type){
@@ -449,6 +449,7 @@ async function handleGalleryUpload(input){
     try {
       const url = await uploadToCloudinary(files[i], 'image');
       uploads.gallery.push(url);
+      uploads.galleryFiles.push(files[i]);
       renderGallery();
     } catch(e){ alert('One image failed to upload — you can try it again.'); }
   }
@@ -463,7 +464,7 @@ function renderGallery(){
     `<div class="gallery-thumb"><img src="${url}"><button class="rm" onclick="removeGalleryImg(${i})">✕</button></div>`
   ).join('');
 }
-function removeGalleryImg(i){ uploads.gallery.splice(i,1); renderGallery(); }
+function removeGalleryImg(i){ uploads.gallery.splice(i,1); uploads.galleryFiles.splice(i,1); renderGallery(); }
 
 function showErr(msg){
   const el = document.getElementById('errMsg');
@@ -504,23 +505,8 @@ async function submitListing(){
     PlanType: isPremium ? 'premium' : 'featured',
     Status: 'Active'
   };
-  if(uploads.logo) fields['Gallery'] = [{ url: uploads.logo }];
-
   if(isPremium){
     fields['AdType'] = adType;
-    if(adType==='image' && uploads.adImage){
-      fields['Image'] = [{ url: uploads.adImage }];
-    }
-    if(adType==='video' && uploads.adVideo){
-      fields['AdVideo'] = [{ url: uploads.adVideo }];
-    }
-    if(uploads.bannerImg){
-      fields['Banner'] = [{ url: uploads.bannerImg }];
-    }
-    if(uploads.gallery.length){
-      const galleryAtt = uploads.gallery.map(url => ({ url }));
-      fields['Gallery'] = fields['Gallery'] ? fields['Gallery'].concat(galleryAtt) : galleryAtt;
-    }
     fields['Hours'] = document.getElementById('bizHours').value.trim();
     if(document.getElementById('wantCoupon').checked){
       fields['CouponOffer'] = document.getElementById('couponOffer').value.trim();
@@ -540,7 +526,7 @@ async function submitListing(){
       headers:{ 'Authorization':`Bearer ${TOKEN}`, 'Content-Type':'application/json' },
       body: JSON.stringify({ fields: fieldsObj, typecast: true })
     });
-    if(res.ok) return { ok:true };
+    if(res.ok){ const d = await res.json(); return { ok:true, id: d.id }; }
     let errData = {};
     try { errData = await res.json(); } catch(e){}
     const msg = (errData.error && (errData.error.message || errData.error.type)) || ('HTTP '+res.status);
@@ -556,9 +542,51 @@ async function submitListing(){
     return { ok:false, msg };
   }
 
+  function fileToBase64(file){
+    return new Promise((resolve,reject)=>{
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function attachFile(recordId, fieldName, file){
+    if(!file) return;
+    try {
+      const b64 = await fileToBase64(file);
+      const res = await fetch('/.netlify/functions/upload-attachment', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({
+          table: 'Ads', recordId, fieldName,
+          filename: file.name, contentType: file.type || 'application/octet-stream',
+          file: b64
+        })
+      });
+      if(!res.ok){ console.error('Attachment failed for', fieldName, await res.text()); }
+    } catch(e){ console.error('Attachment error for', fieldName, e); }
+  }
+
   try {
     const result = await saveToAirtable(fields, 0);
     if(!result.ok) throw new Error(result.msg);
+
+    const recordId = result.id;
+    const logoFile = document.getElementById('logoFile').files[0];
+    const attachJobs = [];
+    if(logoFile) attachJobs.push(attachFile(recordId, 'Gallery', logoFile));
+    if(isPremium){
+      const adImageFile = document.getElementById('adImageFile').files[0];
+      const adVideoFile  = document.getElementById('adVideoFile').files[0];
+      const bannerFile   = document.getElementById('bannerImgFile').files[0];
+      if(adType==='image' && adImageFile) attachJobs.push(attachFile(recordId, 'Image', adImageFile));
+      if(adType==='video' && adVideoFile) attachJobs.push(attachFile(recordId, 'AdVideo', adVideoFile));
+      if(bannerFile) attachJobs.push(attachFile(recordId, 'Banner', bannerFile));
+      uploads.galleryFiles.forEach(f => attachJobs.push(attachFile(recordId, 'Gallery', f)));
+    }
+    await Promise.all(attachJobs);
+
     document.getElementById('formSection').style.display='none';
     document.querySelector('.hero').style.display='none';
     document.querySelector('.steps').style.display='none';
