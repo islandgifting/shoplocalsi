@@ -812,19 +812,30 @@ async function submitPremium(){
       BlogBody:document.getElementById('p-blog-body').value,
       PlanType:'premium',Status:'Active'
     };
-    // Upload ad image as attachment via Airtable
-    var b64=await fileToBase64(adImgFile);
-    fields.AdFile=[{filename:adImgFile.name,content:b64}];
-    // Upload banner image as attachment via Airtable
-    var bb64=await fileToBase64(bannerFile);
-    fields.BannerFile=[{filename:bannerFile.name,content:bb64}];
-    // Logo if provided
-    var logoFile=document.getElementById('p-logo-input').files[0];
-    if(logoFile){var lb64=await fileToBase64(logoFile);fields.Logo=[{filename:logoFile.name,content:lb64}];}
-    await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
+    // Step 1: create the record with text fields only (no attachments yet —
+    // Airtable's create-record endpoint doesn't reliably accept inline file uploads).
+    var createRes=await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
       method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
       body:JSON.stringify({fields:fields})
     });
+    if(!createRes.ok){throw new Error('Could not save your listing (status '+createRes.status+')');}
+    var createData=await createRes.json();
+    var recordId=createData.id;
+
+    // Step 2: upload each attachment separately via Airtable's attachment-upload endpoint.
+    async function uploadAttachment(fieldName, file){
+      var b64=await fileToBase64(file);
+      var res=await fetch('https://content.airtable.com/v0/'+BASE+'/'+recordId+'/'+fieldName+'/uploadAttachment',{
+        method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
+        body:JSON.stringify({contentType:file.type,file:b64,filename:file.name})
+      });
+      if(!res.ok){console.error('Attachment upload failed for '+fieldName, await res.text());}
+    }
+    await uploadAttachment('AdFile', adImgFile);
+    await uploadAttachment('BannerFile', bannerFile);
+    var logoFile=document.getElementById('p-logo-input').files[0];
+    if(logoFile){await uploadAttachment('Logo', logoFile);}
+
     document.getElementById('p-success').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit My Premium Listing →';btn.disabled=false;alert('Upload error: '+e.message+'. Please call 917-753-4444.');}
 }
