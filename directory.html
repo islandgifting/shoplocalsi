@@ -518,6 +518,11 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <h1>Business <span>Directory</span></h1>
   <p>Every dollar spent locally strengthens our community</p>
 </div>
+<div class="banner-slot" id="premiumBannerSlot" style="display:none">
+  <div class="bs-label">Sponsored</div>
+  <div class="bs-text" id="bannerText"></div>
+  <a class="bs-cta" id="bannerCta" href="#" onclick="event.stopPropagation()">View Business →</a>
+</div>
 <div class="search-wrap">
   <div class="search-inner">
     <input type="text" id="searchInput" placeholder="Search businesses, services&hellip;" oninput="filterBiz()">
@@ -560,52 +565,22 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       This Week's Featured Business
     </div>
     <div style="border:3px solid var(--green);border-radius:8px;padding:1.5rem 1.75rem;background:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;position:relative;overflow:hidden">
+      <!-- Green featured banner -->
       <div style="position:absolute;top:0;left:0;right:0;background:var(--green);color:#fff;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:.28rem">⭐ FEATURED LISTING</div>
+      <!-- Business info -->
       <div style="margin-top:.75rem">
-        <div id="spotlightName" style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem">Island Kosher Supermarket</div>
-        <div id="spotlightDesc" style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
-        <div id="spotlightAddr" style="font-size:.82rem;color:var(--muted)">📍 2200 Victory Blvd, Staten Island</div>
+        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.3px;margin-bottom:.3rem">Island Kosher Supermarket</div>
+        <div style="font-size:.88rem;color:var(--mid);margin-bottom:.5rem">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
+        <div style="font-size:.82rem;color:var(--muted)">📍 2200 Victory Blvd, Staten Island</div>
       </div>
-      <div id="spotlightActions" style="display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;align-items:flex-end">
-        <a href="tel:7186502200" id="spotlightPhone" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">📞 718-650-2200</a>
-        <a href="/island-kosher-deals.html" id="spotlightLink" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">🛒 This Week's Deals →</a>
+      <!-- Actions -->
+      <div style="display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;align-items:flex-end">
+        <a href="tel:7186502200" style="background:var(--green);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">📞 718-650-2200</a>
+        <a href="/island-kosher-deals.html" style="background:var(--navy);color:#fff;padding:.65rem 1.5rem;font-size:.8rem;font-weight:700;border-radius:50px;text-decoration:none;letter-spacing:.3px;white-space:nowrap">🛒 This Week's Deals →</a>
       </div>
     </div>
   </div>
 </div>
-<script>
-// Auto-rotate the Featured Spotlight to whoever most recently paid for Featured/Premium.
-(async function(){
-  try{
-    var res = await fetch('/.netlify/functions/get-ads');
-    if(!res.ok) return;
-    var data = await res.json();
-    var pick = (data.featured && data.featured[0]) || null;
-    if(!pick || !pick.businessName) return; // no paid featured business yet - keep default
-
-    document.getElementById('spotlightName').textContent = pick.businessName;
-    document.getElementById('spotlightDesc').textContent = pick.description || pick.tagline || '';
-    var addrEl = document.getElementById('spotlightAddr');
-    if(pick.address){ addrEl.textContent = '📍 ' + pick.address; addrEl.style.display=''; }
-    else { addrEl.style.display='none'; }
-
-    var phoneEl = document.getElementById('spotlightPhone');
-    if(pick.phone){
-      phoneEl.href = 'tel:' + pick.phone.replace(/[^0-9]/g,'');
-      phoneEl.textContent = '📞 ' + pick.phone;
-      phoneEl.style.display = '';
-    } else { phoneEl.style.display = 'none'; }
-
-    var linkEl = document.getElementById('spotlightLink');
-    if(pick.link){
-      linkEl.href = pick.link;
-      linkEl.target = '_blank';
-      linkEl.textContent = '🔗 Visit Website →';
-      linkEl.style.display = '';
-    } else { linkEl.style.display = 'none'; }
-  }catch(e){ console.error('spotlight auto-rotate failed', e); }
-})();
-</script>
 <div class="cat-strip">
   <button class="ctab active" onclick="setTab('all',this)">All</button>
   <button class="ctab" onclick="setTab('food',this)">Food</button>
@@ -673,7 +648,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="biz-card" data-cat="medical" data-search="sincere medical bradley family practice"><div class="biz-name">Sincere Medical</div><div class="biz-addr">314 Bradley Ave</div><div class="biz-phone"><a href="tel:7184941700">718-494-1700</a></div><div class="biz-tag">Family Medical Practice</div></div>
     </div></div>
     <div class="cat-section" data-cat="specialty"><div class="cat-title">Specialty Shops</div><div class="biz-grid">
-    <div class="biz-card" data-cat="specialty" data-search="camp labels name tags"><div class="biz-name">Camp Labels</div><div class="biz-phone"><a href="tel:7188530791">718-853-0791</a></div><div class="biz-tag">Labels &amp; Name Tags</div></div>
+      <div class="biz-card" data-cat="specialty" data-search="camp labels name tags"><div class="biz-name">Camp Labels</div><div class="biz-phone"><a href="tel:7188530791">718-853-0791</a></div><div class="biz-tag">Labels &amp; Name Tags</div></div>
       <div class="biz-card" data-cat="specialty" data-search="hedys gifts occasions ship"><div class="biz-name">Hedy's Gifts</div><div class="biz-desc">We Ship!</div><div class="biz-phone"><a href="tel:3477293538">347-729-3538</a></div><div class="biz-tag">Gifts for All Occasions</div></div>
       <div class="biz-card" data-cat="specialty" data-search="island gifting engraving photo printing"><div class="biz-name">Island Gifting</div><div class="biz-desc">Gifts · Engraving · Photo Printing</div><div class="biz-phone"><a href="tel:9177534444">917-753-4444</a></div><div class="biz-tag">Gifts · Engraving · Printing</div></div>
       <div class="biz-card" data-cat="specialty" data-search="lab grown jewelry gold diamond"><div class="biz-name">Lab Grown Jewelry</div><div class="biz-desc">14ct &amp; 18ct Gold Diamond Jewelry</div><div class="biz-phone"><a href="tel:9176407675">917-640-7675</a></div><div class="biz-tag">Gold &amp; Diamond Jewelry</div></div>
@@ -831,7 +806,22 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 function filterBiz(){var q=document.getElementById("searchInput").value.toLowerCase().trim(),cat=document.getElementById("catFilter").value;var found=0;document.querySelectorAll(".biz-card").forEach(function(c){var mC=!cat||c.dataset.cat===cat,mQ=!q||(c.dataset.search||"").includes(q)||c.innerText.toLowerCase().includes(q);c.classList.toggle("hidden",!(mC&&mQ));if(mC&&mQ)found++;});document.querySelectorAll(".cat-section").forEach(function(s){s.classList.toggle("hidden",![...s.querySelectorAll(".biz-card")].some(function(c){return !c.classList.contains("hidden")}));});document.getElementById("noResults").classList.toggle("hidden",found>0);}
 function setTab(cat,btn){document.querySelectorAll(".ctab").forEach(function(t){t.classList.remove("active");});btn.classList.add("active");document.getElementById("catFilter").value=cat==="all"?"":cat;document.getElementById("searchInput").value="";filterBiz();}
 var allCoupons=[];
-(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};card.appendChild(btn);}});})}if(cr.ok){var cd=await cr.json();allCoupons=(cd.records||[]).filter(function(r){return (r.fields.Status||"").toLowerCase()==="active";}).map(function(r){return {biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""};});}}catch(e){}})();
+(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};card.appendChild(btn);}});})
+  // Rotating sponsored banner for Premium listings
+  var bannerAds=data.banners||[];
+  if(bannerAds.length){
+    var slot=document.getElementById("premiumBannerSlot"),txt=document.getElementById("bannerText"),cta=document.getElementById("bannerCta"),bi=0;
+    function showBanner(){
+      var ad=bannerAds[bi%bannerAds.length];
+      txt.textContent=(ad.tagline||ad.description||ad.businessName)+" — "+ad.businessName;
+      cta.onclick=function(e){e.stopPropagation();e.preventDefault();openBizModal(ad);};
+      slot.style.display="flex";
+      bi++;
+    }
+    showBanner();
+    if(bannerAds.length>1) setInterval(showBanner,6000);
+  }
+}if(cr.ok){var cd=await cr.json();allCoupons=(cd.records||[]).filter(function(r){return (r.fields.Status||"").toLowerCase()==="active";}).map(function(r){return {biz:r.fields.BusinessName||"",discount:r.fields.Discount||"",desc:r.fields.Description||"",code:r.fields.Code||""};});}}catch(e){}})();
 function openBizModal(ad){var b=document.getElementById("bizModalBanner");b.innerHTML=ad.bannerHTML?'<iframe srcdoc="'+ad.bannerHTML.replace(/"/g,"&quot;")+'" style="width:100%;height:140px;border:none"></iframe>':'<div style="height:72px;background:var(--navy);display:flex;align-items:center;justify-content:center"><div style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase">'+ad.businessName+"</div></div>";document.getElementById("bizModalBadge").textContent=ad.planType==="premium"?"Premium Partner":"Featured Partner";document.getElementById("bizModalName").textContent=ad.businessName||"";document.getElementById("bizModalCat").textContent=(ad.category||"")+(ad.address?" · "+ad.address:"");document.getElementById("bizModalDesc").textContent=ad.description||ad.tagline||"";var a="";if(ad.phone)a+='<a href="tel:'+ad.phone.replace(/[^0-9]/g,"")+'" class="biz-modal-btn-call">Call Now</a>';if(ad.link)a+='<a href="'+ad.link+'" target="_blank" class="biz-modal-btn-web">Visit Website</a>';if(ad.email)a+='<a href="mailto:'+ad.email+'" class="biz-modal-btn-email">Email Us</a>';document.getElementById("bizModalActions").innerHTML=a;var bc=allCoupons.filter(function(c){return c.biz.toLowerCase()===(ad.businessName||"").toLowerCase();});var cs=document.getElementById("bizModalCoupons");if(bc.length){cs.style.display="block";document.getElementById("bizModalCouponsList").innerHTML=bc.map(function(c){return '<div class="biz-modal-coupon"><div><div class="biz-modal-coupon-discount">'+c.discount+'</div><div class="biz-modal-coupon-desc">'+c.desc+"</div></div>"+(c.code?'<div class="biz-modal-coupon-code" onclick="navigator.clipboard.writeText(\''+c.code+'\');this.textContent=\'Copied!\';setTimeout(function(){this.textContent=\''+c.code+"'\"},2000)\">"+c.code+"</div>":"")+"</div>";}).join("");}else cs.style.display="none";document.getElementById("bizModalOverlay").classList.add("open");document.body.style.overflow="hidden";}
 function closeBizModal(){document.getElementById("bizModalOverlay").classList.remove("open");document.body.style.overflow="";}
 
@@ -915,73 +905,6 @@ async function syncApprovedListings(){
 syncApprovedListings();
 })();
 
-</script>
-  <script>
-// Auto-publish: pulls live Featured/Premium Ads (Airtable "Ads" table) and
-// inserts them as real directory cards, so paid listings appear automatically
-// with no manual HTML editing.
-(async function(){
-  try{
-    var res = await fetch('/.netlify/functions/get-ads');
-    if(!res.ok) return;
-    var data = await res.json();
-    var ads = data.all || [];
-
-    var catMap = {
-      'restaurants & food':'food','home services':'home','photography':'photo','auto services':'auto',
-      'medical':'medical','specialty shops':'specialty','beauty & self care':'beauty','pool rental':'pool',
-      'services':'services','transportation':'transport','realtors':'realty','insurance':'insurance',
-      'community gemachs':'gemach','media':'media','playgroups/daycare':'playgroups',
-      'community organizations':'community','schools':'schools','shuls':'shuls','other':'other'
-    };
-
-    var existingNames = {};
-    document.querySelectorAll('.biz-name').forEach(function(el){
-      existingNames[el.textContent.trim().toLowerCase()] = true;
-    });
-
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, function(c){
-        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
-      });
-    }
-
-    ads.forEach(function(ad){
-      if(!ad.businessName) return;
-      // Realty listings have their own page - skip them here.
-      var catRaw = (ad.category || '').toLowerCase();
-      if(catRaw.indexOf('realty') === 0) return;
-      if(existingNames[ad.businessName.trim().toLowerCase()]) return;
-
-      var catKey = catMap[catRaw] || 'other';
-      var section = document.querySelector('.cat-section[data-cat="'+catKey+'"] .biz-grid');
-      if(!section){
-        section = document.querySelector('.cat-section[data-cat="other"] .biz-grid');
-        if(!section) return;
-      }
-
-      var isPremium = ad.planType === 'premium';
-      var cls = 'biz-card' + (isPremium ? ' premium-card' : ' featured-card');
-      var card = document.createElement('div');
-      card.className = cls;
-      card.setAttribute('data-cat', catKey);
-      card.setAttribute('data-search', ad.businessName.toLowerCase());
-
-      var html = '<div class="biz-name">' + escapeHtml(ad.businessName) + '</div>';
-      var descText = ad.description || ad.tagline || '';
-      if(descText) html += '<div class="biz-desc">' + escapeHtml(descText) + '</div>';
-      if(ad.address) html += '<div class="biz-addr">' + escapeHtml(ad.address) + '</div>';
-      if(ad.phone) html += '<div class="biz-phone"><a href="tel:' + ad.phone.replace(/[^0-9]/g,'') + '">' + escapeHtml(ad.phone) + '</a></div>';
-      if(ad.link) html += '<a href="' + ad.link + '" target="_blank" style="display:inline-block;margin-top:.4rem;font-size:.72rem;color:var(--green);font-weight:700;border-bottom:2px solid var(--green);padding-bottom:1px">Visit Website &#8594;</a>';
-      card.innerHTML = html;
-
-      section.appendChild(card);
-      existingNames[ad.businessName.trim().toLowerCase()] = true;
-    });
-  }catch(e){
-    console.error('Auto-publish directory load failed', e);
-  }
-})();
 </script>
 </body>
 </html>
