@@ -364,7 +364,7 @@ const CLOUDINARY_CLOUD = 'jvzi0jct';
 const CLOUDINARY_PRESET = 'shoplocalsi';
 const TOKEN = 'pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
 const BASE  = 'appyNDNuwGFgR44sg';
-const TABLE = 'tblBt9FfVcrMK1aOs';
+const TABLE = 'Ads';
 
 const params = new URLSearchParams(window.location.search);
 const plan = (params.get('plan') || 'featured').toLowerCase();
@@ -469,25 +469,32 @@ async function submitListing(){
   document.getElementById('errMsg').style.display='none';
 
   const fields = {
-    Title: name, Category: cat, Phone: phone, Email: email,
+    BusinessName: name, Category: cat, PhoneNumber: phone, Email: email,
     Description: desc,
     Address: document.getElementById('bizAddr').value.trim(),
     Website: document.getElementById('bizWeb').value.trim(),
     WhatsApp: document.getElementById('bizWA').value.trim(),
     Instagram: document.getElementById('bizIG').value.trim(),
-    Logo: uploads.logo,
-    Notes: document.getElementById('bizNotes').value.trim(),
-    Plan: isPremium ? 'Premium' : 'Featured',
-    Status: 'Pending',
-    Submitted: new Date().toISOString().split('T')[0]
+    Messages: document.getElementById('bizNotes').value.trim(),
+    PlanType: isPremium ? 'premium' : 'featured',
+    Status: 'Active'
   };
+  if(uploads.logo) fields['Gallery'] = [{ url: uploads.logo }];
 
   if(isPremium){
-    fields['Gallery']  = uploads.gallery.join('\n');
-    fields['AdType']   = adType;
-    fields['AdImage']  = uploads.adImage;
-    fields['AdVideo']  = uploads.adVideo;
-    fields['Hours']    = document.getElementById('bizHours').value.trim();
+    fields['AdType'] = adType;
+    if(adType==='image' && uploads.adImage){
+      fields['Image']  = [{ url: uploads.adImage }];
+      fields['Banner'] = [{ url: uploads.adImage }];
+    }
+    if(adType==='video' && uploads.adVideo){
+      fields['AdVideo'] = [{ url: uploads.adVideo }];
+    }
+    if(uploads.gallery.length){
+      const galleryAtt = uploads.gallery.map(url => ({ url }));
+      fields['Gallery'] = fields['Gallery'] ? fields['Gallery'].concat(galleryAtt) : galleryAtt;
+    }
+    fields['Hours'] = document.getElementById('bizHours').value.trim();
     if(document.getElementById('wantCoupon').checked){
       fields['CouponOffer'] = document.getElementById('couponOffer').value.trim();
       fields['CouponExp']   = document.getElementById('couponExp').value;
