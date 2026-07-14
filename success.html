@@ -795,7 +795,7 @@ async function submitPremium(){
       CouponDescription:document.getElementById('p-coup-desc').value,
       BlogTitle:document.getElementById('p-blog-title').value,
       BlogBody:document.getElementById('p-blog-body').value,
-      PlanType:'premium',Status:'Pending'
+      PlanType:'premium',Status:'Active'
     };
     // Upload ad file as attachment via Airtable
     var b64=await fileToBase64(adFile);
@@ -826,7 +826,7 @@ async function submitCoupon(){
         Discount:discount,Code:code,
         Description:document.getElementById('c-desc').value,
         Category:document.getElementById('c-cat').value,
-        Status:'Pending'
+        Status:'Active'
       }})
     });
     document.getElementById('c-success').style.display='block';btn.style.display='none';

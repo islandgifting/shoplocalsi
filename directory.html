@@ -806,7 +806,58 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 function filterBiz(){var q=document.getElementById("searchInput").value.toLowerCase().trim(),cat=document.getElementById("catFilter").value;var found=0;document.querySelectorAll(".biz-card").forEach(function(c){var mC=!cat||c.dataset.cat===cat,mQ=!q||(c.dataset.search||"").includes(q)||c.innerText.toLowerCase().includes(q);c.classList.toggle("hidden",!(mC&&mQ));if(mC&&mQ)found++;});document.querySelectorAll(".cat-section").forEach(function(s){s.classList.toggle("hidden",![...s.querySelectorAll(".biz-card")].some(function(c){return !c.classList.contains("hidden")}));});document.getElementById("noResults").classList.toggle("hidden",found>0);}
 function setTab(cat,btn){document.querySelectorAll(".ctab").forEach(function(t){t.classList.remove("active");});btn.classList.add("active");document.getElementById("catFilter").value=cat==="all"?"":cat;document.getElementById("searchInput").value="";filterBiz();}
 var allCoupons=[];
-(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};card.appendChild(btn);}});})
+var ADS_CAT_MAP={
+  'restaurants & food':'food','food':'food',
+  'home services':'home','home':'home',
+  'photography':'photo','photo':'photo',
+  'auto services':'auto','auto':'auto',
+  'medical':'medical',
+  'specialty shops':'specialty','specialty':'specialty','חנויות מיוחדות':'specialty',
+  'beauty & self care':'beauty','beauty':'beauty',
+  'pool rental':'pool','pool':'pool',
+  'services':'services',
+  'transportation':'transport','transport':'transport',
+  'realtors':'realty','realty':'realty',
+  'insurance agents':'insurance','insurance':'insurance',
+  'community gemachs':'gemach','gemach':'gemach',
+  'emergency services':'emergency','emergency':'emergency',
+  'media':'media','marketing':'media',
+  'daycare':'playgroups','childcare':'playgroups',
+  'playgroup':'playgroups','play group':'playgroups','play groups':'playgroups','playgroups':'playgroups',
+  'playgroups/daycare':'playgroups','daycare/playgroups':'playgroups',
+  'community':'community','community organization':'community','community organizations':'community',
+  'schools':'schools','school':'schools',
+  'shuls':'shuls','shul':'shuls','synagogue':'shuls','synagogues':'shuls'
+};
+function adsEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
+(async function(){try{var ar=await fetch("/.netlify/functions/get-ads");var cr=await fetch("https://api.airtable.com/v0/appyNDNuwGFgR44sg/tblQk5fUA5fvrxupZ",{headers:{"Authorization":"Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87"}});if(ar.ok){var data=await ar.json();var ads=data.all||[...(data.banners||[]),...(data.featured||[]),...(data.sponsored||[])];ads.forEach(function(ad){var matched=false;document.querySelectorAll(".biz-card").forEach(function(card){var n=card.querySelector(".biz-name");if(!n)return;var cn=n.textContent.trim().toLowerCase(),an=ad.businessName.toLowerCase();if(cn===an||cn.includes(an)||an.includes(cn)){matched=true;if(ad.planType==="premium"||ad.planType==="featured"){card.classList.add(ad.planType==="premium"?"premium-card":"featured-card");var btn=document.createElement("button");btn.className="biz-more-btn";btn.textContent=ad.planType==="premium"?"View Profile":"View Details";btn.onclick=function(e){e.stopPropagation();openBizModal(ad);};card.appendChild(btn);}}});
+  // No matching static card found — create one dynamically (covers new Basic/free listings and any paid tier)
+  if(!matched){
+    var cat=ADS_CAT_MAP[(ad.category||"").trim().toLowerCase()]||"other";
+    var section=document.querySelector('.cat-section[data-cat="'+cat+'"]');
+    if(section){
+      var grid=section.querySelector(".biz-grid");
+      var card=document.createElement("div");
+      card.className="biz-card"+(ad.planType==="premium"?" premium-card":ad.planType==="featured"?" featured-card":"");
+      card.dataset.cat=cat;
+      card.dataset.search=(ad.businessName+" "+(ad.description||"")).toLowerCase();
+      var html='<div class="biz-name">'+adsEsc(ad.businessName)+"</div>";
+      if(ad.description)html+='<div class="biz-desc">'+adsEsc(ad.description)+"</div>";
+      if(ad.address)html+='<div class="biz-addr">'+adsEsc(ad.address)+"</div>";
+      if(ad.phone)html+='<div class="biz-phone"><a href="tel:'+adsEsc(ad.phone.replace(/[^0-9]/g,""))+'">'+adsEsc(ad.phone)+"</a></div>";
+      card.innerHTML=html;
+      if(ad.planType==="premium"||ad.planType==="featured"){
+        var btn2=document.createElement("button");
+        btn2.className="biz-more-btn";
+        btn2.textContent=ad.planType==="premium"?"View Profile":"View Details";
+        btn2.onclick=function(e){e.stopPropagation();openBizModal(ad);};
+        card.appendChild(btn2);
+      }
+      grid.appendChild(card);
+      section.classList.remove("hidden");
+    }
+  }
+})
   // Rotating sponsored banner for Premium listings
   var bannerAds=data.banners||[];
   if(bannerAds.length){

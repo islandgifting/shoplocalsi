@@ -503,6 +503,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <li><a href="/jobs.html" data-page="jobs">Jobs</a></li>
     <li><a href="/realty.html" data-page="realty">Realty</a></li>
     <li><a href="/community.html" data-page="community">Community</a></li>
+    <li><a href="/nshei.html" data-page="nshei">Nshei</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
   </ul>
   </div><!-- end nav-row -->
@@ -605,9 +606,9 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Featured spotlight on homepage</li>
         <li>View Details profile button</li>
       </ul>
-      <a href="https://buy.stripe.com/bJe4gAbKR8J57YKcXxfIs01" class="price-btn">Start Free Month &rarr;</a>
+      <a href="https://buy.stripe.com/bJe4gAbKR8J57YKcXxfIs01" class="price-btn">Pay &amp; Start &rarr;</a>
       <div class="cancel-note">✓ Cancel anytime &mdash; no obligation</div>
-      <div class="onboard-note">After checkout you'll set up your listing. <a href="/premium-submit.html?plan=featured" style="color:var(--green);font-weight:600">Already paid? Set up here</a></div>
+      <div class="onboard-note">Upload your info after checkout</div>
     </div>
 
     <!-- PREMIUM -->
@@ -628,9 +629,9 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Optional community blog post</li>
         <li>Maximum community visibility</li>
       </ul>
-      <a href="https://buy.stripe.com/4gM00kaGN4sP4Myf5FfIs04" class="price-btn">Start Free Month &rarr;</a>
+      <a href="https://buy.stripe.com/4gM00kaGN4sP4Myf5FfIs04" class="price-btn">Pay &amp; Start &rarr;</a>
       <div class="cancel-note">✓ Cancel anytime &mdash; no obligation</div>
-      <div class="onboard-note">After checkout you'll upload your banner, video &amp; info. <a href="/premium-submit.html?plan=premium" style="color:var(--green);font-weight:600">Already paid? Set up here</a></div>
+      <div class="onboard-note">Upload banner/video &amp; info after checkout</div>
     </div>
 
     <!-- COUPON -->
@@ -647,9 +648,9 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
         <li>Active for one month</li>
         <li>Renews automatically</li>
       </ul>
-      <a href="https://buy.stripe.com/fZu5kE8yFaRd0wi9LlfIs03" class="price-btn">Start Free Month &rarr;</a>
+      <a href="https://buy.stripe.com/fZu5kE8yFaRd0wi9LlfIs03" class="price-btn">Pay &amp; Start &rarr;</a>
       <div class="cancel-note">✓ Cancel anytime &mdash; no obligation</div>
-      <div class="onboard-note">After checkout you'll add your coupon details. <a href="/premium-submit.html?plan=coupon" style="color:var(--green);font-weight:600">Already paid? Set up here</a></div>
+      <div class="onboard-note">Upload coupon details after checkout</div>
     </div>
   </div>
 
@@ -723,8 +724,7 @@ function startPayment(plan){
   if(url) window.location.href=url;
   else document.getElementById('free-listing').scrollIntoView({behavior:'smooth'});
 }
-async function submitFree(){
- var AT_FREE='Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
+var AT_FREE='Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87';
 var BASE_FREE='appyNDNuwGFgR44sg';
 async function submitFree(){
   var name=document.getElementById('biz-name').value.trim();
@@ -746,7 +746,6 @@ async function submitFree(){
     });
     document.getElementById('submitMsg').style.display='block';btn.style.display='none';
   }catch(e){btn.textContent='Submit Free Listing';btn.disabled=false;alert('Error. Please call 917-753-4444.');}
-}
 }
 </script>
 <footer>
