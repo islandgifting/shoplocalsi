@@ -600,17 +600,28 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       </div>
 
       <hr class="section-divider">
-      <h4 style="font-size:.78rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem">&#x1F4FA; Advertising Screen</h4>
-      <p style="font-size:.8rem;color:var(--mid);margin-bottom:1rem;line-height:1.65">Your ad will rotate on our community advertising screen and homepage banner. Upload a <strong>static image</strong> (banner/poster) or a <strong>short video clip</strong> (max 30 seconds). We recommend landscape format (16:9).</p>
+      <h4 style="font-size:.78rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem">&#x1F4FA; Advertising Materials</h4>
+      <p style="font-size:.8rem;color:var(--mid);margin-bottom:1rem;line-height:1.65">Your Premium package includes advertising screen display (static image or short video) plus a separate homepage banner. Upload each below.</p>
 
       <div class="field">
-        <label>Banner Image OR Short Video Clip *</label>
-        <div class="upload-box" onclick="document.getElementById('p-ad-input').click()">
-          <input type="file" id="p-ad-input" accept="image/*,video/mp4,video/quicktime" onchange="handleAdUpload(this)">
+        <label>Advertising Screen: Static Image OR Short Video Clip *</label>
+        <div class="upload-box" onclick="document.getElementById('p-adimg-input').click()">
+          <input type="file" id="p-adimg-input" accept="image/*,video/mp4,video/quicktime" onchange="handleAdUpload(this,'adimg')">
           <span class="upload-box-label">&#x1F4F8; Click to upload image or video</span>
           <span class="upload-box-note">Image: JPG/PNG (1200x628px recommended) &bull; Video: MP4/MOV max 30 sec, max 50MB</span>
-          <div id="p-ad-preview" style="margin-top:.75rem;display:none"></div>
-          <div id="p-ad-name" style="font-size:.72rem;color:var(--green);margin-top:.35rem;font-weight:700"></div>
+          <div id="p-adimg-preview" style="margin-top:.75rem;display:none"></div>
+          <div id="p-adimg-name" style="font-size:.72rem;color:var(--green);margin-top:.35rem;font-weight:700"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Homepage Banner Rotation *</label>
+        <div class="upload-box" onclick="document.getElementById('p-banner-input').click()">
+          <input type="file" id="p-banner-input" accept="image/*" onchange="handleAdUpload(this,'banner')">
+          <span class="upload-box-label">&#x1F5BC;&#xFE0F; Click to upload your homepage banner image</span>
+          <span class="upload-box-note">JPG/PNG, wide landscape recommended</span>
+          <div id="p-banner-preview" style="margin-top:.75rem;display:none"></div>
+          <div id="p-banner-name" style="font-size:.72rem;color:var(--green);margin-top:.35rem;font-weight:700"></div>
         </div>
       </div>
 
@@ -715,10 +726,10 @@ function handleFileSelect(input, previewDivId, nameId){
   if(img){var reader=new FileReader();reader.onload=function(e){img.src=e.target.result;previewDiv.style.display='block';};reader.readAsDataURL(file);}
 }
 
-function handleAdUpload(input){
+function handleAdUpload(input, slot){
   var file=input.files[0];if(!file)return;
-  document.getElementById('p-ad-name').textContent='✓ '+file.name+' ('+Math.round(file.size/1024)+'KB)';
-  var preview=document.getElementById('p-ad-preview');
+  document.getElementById('p-'+slot+'-name').textContent='✓ '+file.name+' ('+Math.round(file.size/1024)+'KB)';
+  var preview=document.getElementById('p-'+slot+'-preview');
   if(file.type.startsWith('image/')){
     var reader=new FileReader();reader.onload=function(e){preview.innerHTML='<img src="'+e.target.result+'" style="max-width:100%;max-height:120px;border-radius:4px">';preview.style.display='block';};reader.readAsDataURL(file);
   } else if(file.type.startsWith('video/')){
@@ -773,8 +784,10 @@ async function submitPremium(){
   var phone=document.getElementById('p-phone').value.trim();
   var email=document.getElementById('p-email').value.trim();
   if(!name||!phone||!email){alert('Please fill in business name, phone and email.');return;}
-  var adFile=document.getElementById('p-ad-input').files[0];
-  if(!adFile){alert('Please upload your banner image or video clip.');return;}
+  var adImgFile=document.getElementById('p-adimg-input').files[0];
+  var bannerFile=document.getElementById('p-banner-input').files[0];
+  if(!adImgFile){alert('Please upload your advertising screen image or video.');return;}
+  if(!bannerFile){alert('Please upload your homepage banner image.');return;}
   var btn=document.getElementById('p-submit');btn.textContent='Uploading...';btn.disabled=true;
   try{
     var fields={
@@ -788,8 +801,10 @@ async function submitPremium(){
       Instagram:document.getElementById('p-instagram').value,
       Facebook:document.getElementById('p-facebook').value,
       Hours:document.getElementById('p-hours').value,
-      AdFileName:adFile.name,
-      AdFileType:adFile.type,
+      AdFileName:adImgFile.name,
+      AdFileType:adImgFile.type,
+      BannerFileName:bannerFile.name,
+      BannerFileType:bannerFile.type,
       CouponDiscount:document.getElementById('p-coup-discount').value,
       CouponCode:document.getElementById('p-coup-code').value,
       CouponDescription:document.getElementById('p-coup-desc').value,
@@ -797,9 +812,12 @@ async function submitPremium(){
       BlogBody:document.getElementById('p-blog-body').value,
       PlanType:'premium',Status:'Active'
     };
-    // Upload ad file as attachment via Airtable
-    var b64=await fileToBase64(adFile);
-    fields.AdFile=[{filename:adFile.name,content:b64}];
+    // Upload ad image as attachment via Airtable
+    var b64=await fileToBase64(adImgFile);
+    fields.AdFile=[{filename:adImgFile.name,content:b64}];
+    // Upload banner image as attachment via Airtable
+    var bb64=await fileToBase64(bannerFile);
+    fields.BannerFile=[{filename:bannerFile.name,content:bb64}];
     // Logo if provided
     var logoFile=document.getElementById('p-logo-input').files[0];
     if(logoFile){var lb64=await fileToBase64(logoFile);fields.Logo=[{filename:logoFile.name,content:lb64}];}
