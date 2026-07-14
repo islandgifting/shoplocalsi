@@ -613,6 +613,33 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <a href="/advertise.html" style="font-size:.72rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;border-bottom:2px solid var(--green);padding-bottom:1px;flex-shrink:0">Reserve this space →</a>
 </div>
 <div id="bannerWrap" style="display:none;background:var(--light);border-bottom:1px solid var(--border);padding:.85rem 2.5rem"><div id="bannerRotator"></div></div>
+<script>
+(async function(){
+  try{
+    var res=await fetch("/.netlify/functions/get-ads");
+    if(!res.ok)return;
+    var data=await res.json();
+    var bannerAds=(data.banners||[]).filter(function(ad){return ad.bannerImage;});
+    if(!bannerAds.length)return;
+    document.getElementById("bannerSlot").style.display="none";
+    var wrap=document.getElementById("bannerWrap"),rot=document.getElementById("bannerRotator"),bi=0;
+    wrap.style.padding="0";
+    function show(){
+      var ad=bannerAds[bi%bannerAds.length];
+      rot.innerHTML='<a href="/directory.html" style="display:block;position:relative;text-decoration:none">'
+        +'<img src="'+ad.bannerImage+'" style="width:100%;max-height:220px;object-fit:cover;display:block">'
+        +'<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(11,31,58,.85));padding:1.5rem 2rem .85rem;color:#fff">'
+        +'<div style="font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green2);margin-bottom:.25rem">Premium Partner</div>'
+        +'<div style="font-size:1rem;font-weight:800">'+ad.businessName+(ad.tagline?' — '+ad.tagline:'')+'</div>'
+        +'</div></a>';
+      wrap.style.display="block";
+      bi++;
+    }
+    show();
+    if(bannerAds.length>1) setInterval(show,6000);
+  }catch(e){}
+})();
+</script>
 
 <!-- HERO -->
 <div class="hero">
