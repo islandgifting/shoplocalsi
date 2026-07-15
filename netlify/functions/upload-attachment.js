@@ -12,20 +12,37 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { table, recordId, fieldName, filename, contentType, file } = JSON.parse(event.body || '{}');
+    const { table, recordId, fieldName, filename, contentType, file, url } = JSON.parse(event.body || '{}');
 
-    if (!recordId || !fieldName || !filename || !contentType || !file) {
+    if (!recordId || !fieldName || !filename || (!file && !url)) {
       return { statusCode: 400, headers: corsHeaders(), body: JSON.stringify({ error: 'Missing required fields' }) };
     }
 
     const tableId = table || 'Ads';
+    let fileB64 = file;
+    let finalContentType = contentType;
+
+    // If a hosted URL was given instead of raw base64, fetch it server-side.
+    // This avoids the ~6MB request-body limit that raw client-side base64 uploads can hit
+    // (this is what was silently dropping large homepage banner images).
+    if (!fileB64 && url) {
+      const srcRes = await fetch(url);
+      if (!srcRes.ok) {
+        return { statusCode: 502, headers: corsHeaders(), body: JSON.stringify({ error: 'Could not fetch source file from ' + url }) };
+      }
+      finalContentType = finalContentType || srcRes.headers.get('content-type') || 'application/octet-stream';
+      const buf = await srcRes.arrayBuffer();
+      fileB64 = Buffer.from(buf).toString('base64');
+    }
+
+    if (!finalContentType) finalContentType = 'application/octet-stream';
 
     const res = await fetch(
       `https://content.airtable.com/v0/${BASE}/${recordId}/${encodeURIComponent(fieldName)}/uploadAttachment`,
       {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contentType, file, filename })
+        body: JSON.stringify({ contentType: finalContentType, file: fileB64, filename })
       }
     );
 
