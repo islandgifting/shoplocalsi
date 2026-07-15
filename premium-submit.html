@@ -551,17 +551,16 @@ async function submitListing(){
     });
   }
 
-  async function attachFile(recordId, fieldName, file){
-    if(!file) return;
+  async function attachFromUrl(recordId, fieldName, url, filename){
+    if(!url) return;
     try {
-      const b64 = await fileToBase64(file);
       const res = await fetch('/.netlify/functions/upload-attachment', {
         method:'POST',
         headers:{ 'Content-Type':'application/json' },
         body: JSON.stringify({
           table: 'Ads', recordId, fieldName,
-          filename: file.name, contentType: file.type || 'application/octet-stream',
-          file: b64
+          filename: filename || (fieldName + '.jpg'),
+          url: url
         })
       });
       if(!res.ok){ console.error('Attachment failed for', fieldName, await res.text()); }
@@ -573,17 +572,17 @@ async function submitListing(){
     if(!result.ok) throw new Error(result.msg);
 
     const recordId = result.id;
-    const logoFile = document.getElementById('logoFile').files[0];
+    const logoFileEl = document.getElementById('logoFile').files[0];
     const attachJobs = [];
-    if(logoFile) attachJobs.push(attachFile(recordId, 'Gallery', logoFile));
+    if(uploads.logo) attachJobs.push(attachFromUrl(recordId, 'Gallery', uploads.logo, logoFileEl && logoFileEl.name));
     if(isPremium){
-      const adImageFile = document.getElementById('adImageFile').files[0];
-      const adVideoFile  = document.getElementById('adVideoFile').files[0];
-      const bannerFile   = document.getElementById('bannerImgFile').files[0];
-      if(adType==='image' && adImageFile) attachJobs.push(attachFile(recordId, 'Image', adImageFile));
-      if(adType==='video' && adVideoFile) attachJobs.push(attachFile(recordId, 'AdVideo', adVideoFile));
-      if(bannerFile) attachJobs.push(attachFile(recordId, 'Banner', bannerFile));
-      uploads.galleryFiles.forEach(f => attachJobs.push(attachFile(recordId, 'Gallery', f)));
+      const adImageFileEl = document.getElementById('adImageFile').files[0];
+      const adVideoFileEl = document.getElementById('adVideoFile').files[0];
+      const bannerFileEl  = document.getElementById('bannerImgFile').files[0];
+      if(adType==='image' && uploads.adImage) attachJobs.push(attachFromUrl(recordId, 'Image', uploads.adImage, adImageFileEl && adImageFileEl.name));
+      if(adType==='video' && uploads.adVideo) attachJobs.push(attachFromUrl(recordId, 'AdVideo', uploads.adVideo, adVideoFileEl && adVideoFileEl.name));
+      if(uploads.bannerImg) attachJobs.push(attachFromUrl(recordId, 'Banner', uploads.bannerImg, bannerFileEl && bannerFileEl.name));
+      uploads.gallery.forEach(function(url,i){ attachJobs.push(attachFromUrl(recordId, 'Gallery', url, 'gallery-'+i+'.jpg')); });
     }
     await Promise.all(attachJobs);
 
