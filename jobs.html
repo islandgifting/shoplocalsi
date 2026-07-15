@@ -558,23 +558,23 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
 var jobType="available";
 function showTab(tab,btn){document.querySelectorAll(".jobs-tab").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");document.getElementById("availableJobs").style.display=tab==="available"?"grid":"none";document.getElementById("wantedJobs").style.display=tab==="wanted"?"grid":"none";}
 function setJobType(type){jobType=type;document.getElementById("typeAvail").className=type==="available"?"active":"";document.getElementById("typeWant").className=type==="wanted"?"active":"";}
-async function submitJob(){var title=document.getElementById("job-title").value.trim(),desc=document.getElementById("job-desc").value.trim(),phone=document.getElementById("job-phone").value.trim();if(!title||!desc||!phone){alert("Please fill in title, description and phone.");return;}var cat=document.getElementById("job-cat").value;if(cat==="Select…")cat="Other";try{await fetch("/.netlify/functions/submit-listing",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({title:title,description:desc,price:document.getElementById("job-pay").value,category:cat,phone:phone,email:document.getElementById("job-email").value,type:"job-"+jobType})});document.getElementById("jobSuccess").style.display="block";document.getElementById("job-title").value="";document.getElementById("job-desc").value="";document.getElementById("job-phone").value="";loadJobs();}catch(e){alert("Error. Please try again.");}}
+async function submitJob(){var title=document.getElementById("job-title").value.trim(),desc=document.getElementById("job-desc").value.trim(),phone=document.getElementById("job-phone").value.trim();if(!title||!desc||!phone){alert("Please fill in title, description and phone.");return;}var cat=document.getElementById("job-cat").value;if(cat==="Select…")cat="Other";try{var res=await fetch("/.netlify/functions/submit-job",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({title:title,description:desc,pay:document.getElementById("job-pay").value,category:cat,phone:phone,email:document.getElementById("job-email").value,type:jobType})});if(!res.ok)throw new Error("submit failed");document.getElementById("jobSuccess").style.display="block";document.getElementById("job-title").value="";document.getElementById("job-desc").value="";document.getElementById("job-phone").value="";loadJobs();}catch(e){alert("Error. Please try again.");}}
 
 function jobsEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
 async function loadJobs(){
   try{
-    var res=await fetch("/.netlify/functions/get-listings");
+    var res=await fetch("/.netlify/functions/get-jobs");
     if(!res.ok)return;
     var data=await res.json();
     var avail=document.getElementById("availableJobs"),want=document.getElementById("wantedJobs");
+    avail.innerHTML="";want.innerHTML="";
     (data.listings||[]).forEach(function(item){
-      if(!item.type||item.type.indexOf("job-")!==0)return;
-      var isWanted=item.type==="job-wanted";
+      var isWanted=item.type==="wanted";
       var contact=item.contactHidden?"Contact via site":((item.phone?"&#x1F4DE; "+jobsEsc(item.phone):"")+(item.phone&&item.email?" &middot; ":"")+(item.email?"&#x2709; "+jobsEsc(item.email):""));
       var card=document.createElement("div");
       card.className="job-card"+(isWanted?" wanted":"");
-      card.innerHTML='<div class="job-badge">'+(isWanted?"Job Wanted":"Jobs Available")+'</div><div class="job-title">'+jobsEsc(item.title)+'</div><div class="job-desc">'+jobsEsc(item.description)+'</div><div class="job-footer"><span class="job-contact">'+contact+'</span><span class="job-pay">'+jobsEsc(item.pay||item.price||"")+'</span></div>';
-      (isWanted?want:avail).insertBefore(card,(isWanted?want:avail).firstChild);
+      card.innerHTML='<div class="job-badge">'+(isWanted?"Job Wanted":"Jobs Available")+'</div><div class="job-title">'+jobsEsc(item.title)+'</div><div class="job-desc">'+jobsEsc(item.description)+'</div><div class="job-footer"><span class="job-contact">'+contact+'</span><span class="job-pay">'+jobsEsc(item.pay||"")+'</span></div>';
+      (isWanted?want:avail).appendChild(card);
     });
   }catch(e){}
 }

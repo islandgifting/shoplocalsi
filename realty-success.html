@@ -357,42 +357,86 @@ async function submitListing(){
   if(document.getElementById('f-req')&&document.getElementById('f-req').value) desc+=' Requirements: '+document.getElementById('f-req').value;
 
   try{
-    var fields={
-      BusinessName:name,
-      ContactName:name,
-      Phone:phone,
-      Email:document.getElementById('f-email').value||'',
-      Address:document.getElementById('f-addr')?document.getElementById('f-addr').value:'',
-      Description:desc,
-      Tagline:tagline,
-      Category:'Realty-'+currentType,
-      Hours:document.getElementById('f-openhouse')?document.getElementById('f-openhouse').value:'',
-      PlanType:currentPlan,
-      Status:'Active',
-      CouponCode:code
-    };
+    var beds=document.getElementById('f-beds')?document.getElementById('f-beds').value:'';
+    var baths=document.getElementById('f-baths')?document.getElementById('f-baths').value:'';
+    var sqft=document.getElementById('f-sqft')?document.getElementById('f-sqft').value:'';
+
+    async function saveListing(){
+      var res=await fetch('/.netlify/functions/submit-realty',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          address:document.getElementById('f-addr')?document.getElementById('f-addr').value:'',
+          listingType:currentType,
+          planType:currentPlan,
+          price:price,
+          beds:beds,
+          baths:baths,
+          sqft:sqft,
+          description:desc,
+          openHouse:document.getElementById('f-openhouse')?document.getElementById('f-openhouse').value:'',
+          phone:phone,
+          email:document.getElementById('f-email').value||'',
+          contactName:name
+        })
+      });
+      if(res.ok){ var d=await res.json(); return {ok:true, id:d.id, removalCode:d.removalCode}; }
+      var errData={};
+      try{ errData=await res.json(); }catch(e){}
+      return {ok:false, msg:errData.error||('HTTP '+res.status)};
+    }
+
+    function wait(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
+
+    // Upload photos/video via the site's reliable attach-by-URL path: we first push the
+    // file to Cloudinary (public host), then hand that URL to our Netlify function, which
+    // fetches it server-side and pushes it into Airtable directly. This avoids the invalid
+    // {filename, content} shape Airtable's create endpoint doesn't actually support, and
+    // avoids the payload-size limits that broke direct base64 uploads elsewhere on the site.
+    var CLOUDINARY_CLOUD='jvzi0jct', CLOUDINARY_PRESET='shoplocalsi';
+    async function uploadToCloudinary(file, resourceType){
+      var fd=new FormData();
+      fd.append('file', file);
+      fd.append('upload_preset', CLOUDINARY_PRESET);
+      var res=await fetch('https://api.cloudinary.com/v1_1/'+CLOUDINARY_CLOUD+'/'+resourceType+'/upload',{method:'POST',body:fd});
+      var data=await res.json();
+      if(!data.secure_url) throw new Error((data.error&&data.error.message)||'Upload failed');
+      return data.secure_url;
+    }
+    async function attachFromUrl(recordId, fieldName, url, filename){
+      if(!url) return;
+      try{
+        var res=await fetch('/.netlify/functions/upload-attachment',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({table:'Realty', recordId:recordId, fieldName:fieldName, filename:filename||(fieldName+'.jpg'), url:url})
+        });
+        if(!res.ok){ console.error('Attachment failed for', fieldName, await res.text()); }
+        await wait(400);
+      }catch(e){ console.error('Attachment error for', fieldName, e); }
+    }
+
+    var result=await saveListing();
+    if(!result.ok) throw new Error(result.msg);
+    var recordId=result.id;
+    code=result.removalCode||code;
 
     var photoInput=document.getElementById('f-photos');
     if(photoInput&&photoInput.files.length>0){
-      var pf=photoInput.files[0];
-      fields.Logo=[{filename:pf.name,content:await fileToBase64(pf)}];
+      var photoFiles=Array.from(photoInput.files).slice(0, (PLANS[currentPlan]?PLANS[currentPlan].photos:5)||5);
+      for(var i=0;i<photoFiles.length;i++){
+        var pUrl=await uploadToCloudinary(photoFiles[i], 'image');
+        await attachFromUrl(recordId, i===0?'MainPhoto':'Gallery', pUrl, photoFiles[i].name);
+      }
     }
 
     var videoInput=document.getElementById('f-video');
     if(videoInput&&videoInput.files.length>0){
       var vf=videoInput.files[0];
-      fields.AdFile=[{filename:vf.name,content:await fileToBase64(vf)}];
-      fields.AdFileName=vf.name;
-      fields.AdFileType=vf.type;
+      var isVideo=(vf.type||'').indexOf('video')===0;
+      var vUrl=await uploadToCloudinary(vf, isVideo?'video':'image');
+      await attachFromUrl(recordId, isVideo?'AdVideo':'Banner', vUrl, vf.name);
     }
-
-    var res=await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
-      method:'POST',
-      headers:{'Authorization':AT,'Content-Type':'application/json'},
-      body:JSON.stringify({fields:fields})
-    });
-
-    if(!res.ok){var err=await res.json();throw new Error(JSON.stringify(err));}
 
     document.getElementById('privateCode').textContent=code;
     document.getElementById('successCard').style.display='block';

@@ -557,6 +557,25 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   <p>Buy, sell &amp; rent &mdash; hyper-targeted to the Staten Island Jewish community</p>
 </div>
 
+<!-- JUST LISTED SPOTLIGHT -->
+<div id="justListedWrap" style="display:none;background:#f5fff9;border-bottom:1px solid var(--border2);padding:1.25rem 2.5rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem">
+      <span style="width:18px;height:2px;background:var(--green);display:inline-block"></span>
+      Just Listed
+    </div>
+    <a id="justListedCard" href="#" style="text-decoration:none;color:inherit;border:2px solid var(--green);border-radius:8px;padding:1.25rem 1.5rem;background:#fff;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap">
+      <img id="justListedImg" style="width:110px;height:80px;object-fit:cover;border-radius:6px;flex-shrink:0;display:none">
+      <div style="flex:1;min-width:200px">
+        <div id="justListedBadge" style="font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--green);display:inline-block;padding:.18rem .6rem;border-radius:50px;margin-bottom:.4rem"></div>
+        <div id="justListedPrice" style="font-size:1.1rem;font-weight:800;color:var(--navy)"></div>
+        <div id="justListedAddr" style="font-size:.82rem;color:var(--mid)"></div>
+      </div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.3px;border-bottom:2px solid var(--green);padding-bottom:1px;flex-shrink:0">View Listing →</div>
+    </a>
+  </div>
+</div>
+
 <!-- TABS + LISTINGS -->
 <div style="max-width:1100px;margin:2.5rem auto 0;padding:0 1.5rem">
   <div class="realty-tabs">
@@ -894,11 +913,12 @@ async function confirmRented(){
   if(!/^SI-[A-Z0-9]{5}$/.test(code)){document.getElementById('codeError').style.display='block';return;}
   if(soldCardId&&soldCardId!=='sample'){
     try{
-      var res=await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads/'+soldCardId,{headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}});
-      var data=await res.json();
-      if((data.fields.CouponCode||'').toUpperCase()!==code){document.getElementById('codeError').style.display='block';document.getElementById('codeError').textContent='Incorrect code. Please try again.';return;}
-      await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads/'+soldCardId,{method:'PATCH',headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87','Content-Type':'application/json'},body:JSON.stringify({fields:{Status:'Rented'}})});
-    }catch(e){}
+      var res=await fetch('/.netlify/functions/mark-realty-status',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({recordId:soldCardId,code:code,newStatus:'Rented'})
+      });
+      if(!res.ok){document.getElementById('codeError').style.display='block';document.getElementById('codeError').textContent='Incorrect code. Please try again.';return;}
+    }catch(e){document.getElementById('codeError').style.display='block';document.getElementById('codeError').textContent='Something went wrong. Please try again.';return;}
   }
   if(soldCardEl){
     soldCardEl.classList.add('rented-card');
@@ -918,59 +938,69 @@ async function submitWanted(){
   try{
     var budget=document.getElementById('w-budget').value;
     var req=document.getElementById('w-req').value;
-    var tagline='Rental Wanted \u00b7 '+title+(budget?' \u00b7 Budget: '+budget:'');
-    await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads',{
-      method:'POST',
-      headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87','Content-Type':'application/json'},
-      body:JSON.stringify({fields:{
-        BusinessName:document.getElementById('w-name').value||phone,
-        ContactName:document.getElementById('w-name').value||'',
-        Phone:phone,Email:document.getElementById('w-email').value||'',
-        Tagline:tagline,
-        Description:title+(req?'\n\nRequirements: '+req:''),
-        Category:'Realty-wanted',PlanType:'wanted',Status:'Active',
-        Hours:document.getElementById('w-movein').value||''
-      }})
+    var res=await fetch('/.netlify/functions/submit-realty',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        address:title,
+        listingType:'wanted',
+        planType:'wanted',
+        price:budget||'Flexible',
+        description:title+(req?'\n\nRequirements: '+req:''),
+        openHouse:document.getElementById('w-movein').value||'',
+        phone:phone,
+        email:document.getElementById('w-email').value||'',
+        contactName:document.getElementById('w-name').value||''
+      })
     });
+    if(!res.ok)throw new Error('submit failed');
     document.getElementById('wSuccess').style.display='block';
     btn.style.display='none';
-    // Add to wanted grid
     var card=document.createElement('div');
     card.className='wanted-card';
-    card.innerHTML='<div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+tagline+'</div><div class="wanted-desc">'+(req||'')+'</div><div class="wanted-meta"><span>&#x1F4DE; '+phone+'</span><span>Just posted</span></div>';
-    document.getElementById('wantedGrid').appendChild(card);
+    card.innerHTML='<div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+title+(budget?' \u00b7 Budget: '+budget:'')+'</div><div class="wanted-desc">'+(req||'')+'</div><div class="wanted-meta"><span>&#x1F4DE; '+phone+'</span><span>Just posted</span></div>';
+    document.getElementById('wantedGrid').insertBefore(card,document.getElementById('wantedGrid').firstChild);
   }catch(e){btn.textContent='Post Rental Wanted \u2014 Free & Instant';btn.disabled=false;alert('Error. Please call 917-753-4444.');}
 }
 
-// Load real listings from Airtable (if any exist)
+// Load real listings from the dedicated Realty table
 document.addEventListener('DOMContentLoaded',function(){
-  fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Ads',{
-    headers:{'Authorization':'Bearer pattpepVsrciRn5To.2f3666388d8f882b39c8a734ed05add6f746f3fa0cd9c20ca38155f00eaf9d87'}
-  }).then(function(r){return r.json();}).then(function(data){
-    var records=(data.records||[]).filter(function(r){
-      return r.fields&&r.fields.Category&&r.fields.Category.toString().includes('Realty')&&r.fields.Status==='Active';
-    });
+  fetch('/.netlify/functions/get-realty').then(function(r){return r.json();}).then(function(data){
+    var records=data.listings||[];
     if(!records.length){document.getElementById('listingCount').textContent='Sample listings shown \u2014 be the first to post!';return;}
-    // If real records exist, replace sample cards
-    var sales=[],rents=[],wanted=[];
-    records.forEach(function(r){
-      var cat=(r.fields.Category||'').toLowerCase();
-      if(cat.includes('wanted'))wanted.push(r);
-      else if(cat.includes('rent'))rents.push(r);
-      else sales.push(r);
-    });
-    function makeCard(r){
-      var f=r.fields;
-      var plan=(f.PlanType||'').toLowerCase();
+
+    var sales=records.filter(function(l){return l.listingType==='sale';});
+    var rents=records.filter(function(l){return l.listingType==='rent';});
+    var wanted=records.filter(function(l){return l.listingType==='wanted';});
+
+    // "Just Listed" spotlight \u2014 most recent sale or rental (records already sorted newest-first)
+    var newest=sales.concat(rents)[0];
+    if(newest){
+      var plan=newest.planType;
+      var isRent=newest.listingType==='rent';
+      document.getElementById('justListedBadge').textContent=(plan==='premium'?'\ud83d\udc8e Premium':plan==='featured'?'\u2b50 Featured':plan==='agency'?'\ud83c\udfe2 Agency':'\ud83c\udfe0 New')+' \u00b7 '+(isRent?'For Rent':'For Sale');
+      document.getElementById('justListedPrice').textContent=newest.price||'';
+      document.getElementById('justListedAddr').textContent=newest.address?('\ud83d\udccd '+newest.address):'';
+      var jlImg=document.getElementById('justListedImg');
+      if(newest.mainPhoto){ jlImg.src=newest.mainPhoto; jlImg.style.display='block'; }
+      document.getElementById('justListedCard').onclick=function(e){
+        e.preventDefault();
+        document.querySelector('.realty-tab'+(isRent?':nth-child(2)':'')).click();
+        document.getElementById(isRent?'rentTab':'saleTab').scrollIntoView({behavior:'smooth',block:'start'});
+      };
+      document.getElementById('justListedWrap').style.display='block';
+    }
+    function rlEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
+    function makeCard(l){
+      var plan=l.planType;
       var bc=plan==='premium'?'premium':plan==='featured'?'featured':plan==='agency'?'agency':'rentals';
       var bl=plan==='premium'?'Premium':plan==='featured'?'Featured':plan==='agency'?'Agency':'Rental';
-      var img=f.Logo&&f.Logo[0]?'<img src="'+f.Logo[0].url+'" class="listing-img">':'<div class="listing-img-placeholder">&#x1F3E0;</div>';
-      var tag=(f.Tagline||'').split('\u00b7');
-      return '<div class="listing-card'+(plan==='premium'?' premium-card':plan==='featured'?' featured-card':'')+'"><div style="position:relative">'+img+'<div class="listing-badge '+bc+'">'+bl+'</div></div><div class="listing-body"><div class="listing-price">'+(tag[0]||'')+'</div>'+(f.Address?'<div class="listing-address">&#x1F4CD; '+f.Address+'</div>':'')+(tag[1]?'<div class="listing-specs"><span>'+tag.slice(1).join(' ')+'</span></div>':'')+(f.Description?'<div class="listing-desc">'+f.Description.substring(0,140)+'</div>':'')+'</div><div class="listing-footer"><span class="listing-contact"><a href="tel:'+(f.Phone||'').replace(/[^0-9]/g,'')+'">&#x1F4DE; '+(f.Phone||'')+'</a></span><button class="mark-btn" onclick="openSoldModal(this,\'rented\',\''+r.id+'\')">Mark Rented</button></div></div>';
+      var img=l.mainPhoto?'<img src="'+l.mainPhoto+'" class="listing-img">':'<div class="listing-img-placeholder">&#x1F3E0;</div>';
+      var specs=[l.beds?l.beds+' bed':'',l.baths?l.baths+' bath':'',l.sqft].filter(Boolean);
+      return '<div class="listing-card'+(plan==='premium'?' premium-card':plan==='featured'?' featured-card':'')+'"><div style="position:relative">'+img+'<div class="listing-badge '+bc+'">'+bl+'</div></div><div class="listing-body"><div class="listing-price">'+rlEsc(l.price)+'</div>'+(l.address?'<div class="listing-address">&#x1F4CD; '+rlEsc(l.address)+'</div>':'')+(specs.length?'<div class="listing-specs"><span>'+specs.map(rlEsc).join('</span><span>')+'</span></div>':'')+(l.description?'<div class="listing-desc">'+rlEsc(l.description.substring(0,140))+'</div>':'')+'</div><div class="listing-footer"><span class="listing-contact"><a href="tel:'+(l.phone||'').replace(/[^0-9]/g,'')+'">&#x1F4DE; '+rlEsc(l.phone)+'</a></span><button class="mark-btn" onclick="openSoldModal(this,\'rented\',\''+l.id+'\')">Mark Rented</button></div></div>';
     }
     if(sales.length)document.getElementById('saleGrid').innerHTML=sales.map(makeCard).join('');
     if(rents.length)document.getElementById('rentGrid').innerHTML=rents.map(makeCard).join('');
-    if(wanted.length)document.getElementById('wantedGrid').innerHTML=wanted.map(function(r){var f=r.fields;return '<div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+(f.Tagline||'')+'</div><div class="wanted-desc">'+(f.Description||'').substring(0,150)+'</div><div class="wanted-meta"><span>&#x1F4DE; '+(f.Phone||'')+'</span><span>Active</span></div></div>';}).join('');
+    if(wanted.length)document.getElementById('wantedGrid').innerHTML=wanted.map(function(l){return '<div class="wanted-card"><div class="wanted-badge">&#x1F50D; Rental Wanted</div><div class="wanted-title">'+rlEsc(l.address)+(l.price?' \u00b7 Budget: '+rlEsc(l.price):'')+'</div><div class="wanted-desc">'+rlEsc((l.description||'').substring(0,150))+'</div><div class="wanted-meta"><span>&#x1F4DE; '+rlEsc(l.phone)+'</span><span>Active</span></div></div>';}).join('');
     var total=sales.length+rents.length+wanted.length;
     document.getElementById('listingCount').textContent=total+' active listing'+(total!==1?'s':'');
   }).catch(function(){document.getElementById('listingCount').textContent='Sample listings shown \u2014 be the first to post!';});
