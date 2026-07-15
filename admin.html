@@ -113,6 +113,7 @@ header span{font-size:.82rem;color:rgba(255,255,255,.9)}
 .listing-card.pending{border-left:4px solid #d4a843}
 .listing-card.approved{border-left:4px solid #2a9d5c}
 .listing-card.rejected{border-left:4px solid #cc2222;opacity:.6}
+.listing-card.active{border-left:4px solid #2a9d5c}
 .listing-info{flex:1}
 .listing-title{font-weight:700;font-size:1rem;color:#0a1c4b;margin-bottom:.25rem}
 .listing-meta{font-size:.8rem;color:#64748b;margin-bottom:.5rem}
@@ -181,6 +182,8 @@ header span{font-size:.82rem;color:rgba(255,255,255,.9)}
     <div class="tabs">
       <div class="tab active" onclick="switchTab('listings',this)">🛍 Marketplace <span class="tab-badge" id="listingsBadge">0</span></div>
       <div class="tab" onclick="switchTab('ads',this)">📢 Ad Submissions <span class="tab-badge" id="adsBadge">0</span></div>
+      <div class="tab" onclick="switchTab('jobs',this)">💼 Jobs <span class="tab-badge" id="jobsBadge">0</span></div>
+      <div class="tab" onclick="switchTab('realty',this)">🏠 Realty <span class="tab-badge" id="realtyBadge">0</span></div>
       <div class="tab" onclick="switchTab('simcha',this)">🎉 Simchos <span class="tab-badge" id="simchaBadge">0</span></div>
     </div>
 
@@ -216,6 +219,38 @@ header span{font-size:.82rem;color:rgba(255,255,255,.9)}
       <div id="adsContainer"><div class="loading">Loading…</div></div>
     </div>
 
+    <!-- JOBS TAB -->
+    <div id="tabJobs" style="display:none">
+      <div class="stats-bar">
+        <div class="stat-pill"><span id="countJobsPending">—</span>Pending</div>
+        <div class="stat-pill"><span id="countJobsActive">—</span>Active</div>
+        <div class="stat-pill"><span id="countJobsRejected">—</span>Rejected</div>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" onclick="setFilter('all',this,'jobs')">All</button>
+        <button class="filter-btn" onclick="setFilter('Pending',this,'jobs')">⏳ Pending</button>
+        <button class="filter-btn" onclick="setFilter('Active',this,'jobs')">✅ Active</button>
+        <button class="filter-btn" onclick="setFilter('Rejected',this,'jobs')">❌ Rejected</button>
+      </div>
+      <div id="jobsContainer"><div class="loading">Loading…</div></div>
+    </div>
+
+    <!-- REALTY TAB -->
+    <div id="tabRealty" style="display:none">
+      <div class="stats-bar">
+        <div class="stat-pill"><span id="countRealtyPending">—</span>Pending</div>
+        <div class="stat-pill"><span id="countRealtyActive">—</span>Active</div>
+        <div class="stat-pill"><span id="countRealtyRejected">—</span>Rejected</div>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" onclick="setFilter('all',this,'realty')">All</button>
+        <button class="filter-btn" onclick="setFilter('Pending',this,'realty')">⏳ Pending</button>
+        <button class="filter-btn" onclick="setFilter('Active',this,'realty')">✅ Active</button>
+        <button class="filter-btn" onclick="setFilter('Rejected',this,'realty')">❌ Rejected</button>
+      </div>
+      <div id="realtyContainer"><div class="loading">Loading…</div></div>
+    </div>
+
     <!-- SIMCHA TAB -->
     <div id="tabSimcha" style="display:none">
       <div class="stats-bar">
@@ -239,8 +274,8 @@ const BASE = 'appyNDNuwGFgR44sg';
 const LISTINGS_TABLE = 'tblBt9FfVcrMK1aOs';
 
 let adminPassword = '';
-let allListings = [], allAds = [], allSimchos = [];
-let listingsFilter = 'all', adsFilter = 'all', simchaFilter = 'all';
+let allListings = [], allAds = [], allSimchos = [], allJobs = [], allRealty = [];
+let listingsFilter = 'all', adsFilter = 'all', simchaFilter = 'all', jobsFilter = 'all', realtyFilter = 'all';
 let currentTab = 'listings';
 
 // ── LOGIN ──
@@ -263,7 +298,7 @@ async function login() {
 }
 
 async function loadAll() {
-  await Promise.all([loadListings(), loadAds()]);
+  await Promise.all([loadListings(), loadAds(), loadJobs(), loadRealty()]);
 }
 
 // ── TABS ──
@@ -273,6 +308,8 @@ function switchTab(tab, btn) {
   btn.classList.add('active');
   document.getElementById('tabListings').style.display = tab === 'listings' ? 'block' : 'none';
   document.getElementById('tabAds').style.display = tab === 'ads' ? 'block' : 'none';
+  document.getElementById('tabJobs').style.display = tab === 'jobs' ? 'block' : 'none';
+  document.getElementById('tabRealty').style.display = tab === 'realty' ? 'block' : 'none';
   document.getElementById('tabSimcha').style.display = tab === 'simcha' ? 'block' : 'none';
   if (tab === 'simcha' && allSimchos.length === 0) loadSimchos();
 }
@@ -442,6 +479,151 @@ async function updateAd(id, status) {
   }
 }
 
+// ── JOBS ──
+async function loadJobs() {
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${BASE}/Jobs?sort[0][field]=Submitted&sort[0][direction]=desc`, {
+      headers: { 'Authorization': `Bearer ${TOKEN}` }
+    });
+    const data = await res.json();
+    allJobs = (data.records || []).map(r => ({
+      id: r.id,
+      title: r.fields.Title || '(no title)',
+      type: r.fields.Type || '',
+      category: r.fields.Category || '',
+      description: r.fields.Description || '',
+      pay: r.fields.Pay || '',
+      phone: r.fields.Phone || '',
+      email: r.fields.Email || '',
+      status: r.fields.Status || 'Pending',
+      submitted: r.fields.Submitted || ''
+    }));
+    const pending = allJobs.filter(j => j.status === 'Pending').length;
+    document.getElementById('jobsBadge').textContent = pending;
+    document.getElementById('countJobsPending').textContent = pending;
+    document.getElementById('countJobsActive').textContent = allJobs.filter(j => j.status === 'Active').length;
+    document.getElementById('countJobsRejected').textContent = allJobs.filter(j => j.status === 'Rejected').length;
+    renderJobs();
+  } catch(e) {
+    document.getElementById('jobsContainer').innerHTML = '<div class="empty">Failed to load jobs.</div>';
+  }
+}
+
+function renderJobs() {
+  const filtered = jobsFilter === 'all' ? allJobs : allJobs.filter(j => j.status === jobsFilter);
+  const container = document.getElementById('jobsContainer');
+  if (!filtered.length) { container.innerHTML = '<div class="empty">No job postings found.</div>'; return; }
+  container.innerHTML = filtered.map(j => `
+    <div class="listing-card ${j.status.toLowerCase()}" id="jobcard-${j.id}">
+      <div class="listing-info">
+        <div class="listing-title">${j.title} <span class="status-badge badge-${j.status.toLowerCase()}">${j.status}</span></div>
+        <div class="listing-meta">${j.type === 'Wanted' ? '🙋 Job Wanted' : '💼 Job Available'} · 📦 ${j.category} · 💰 ${j.pay || 'n/a'} · 📅 ${j.submitted}</div>
+        <div class="listing-desc">${j.description}</div>
+        <div class="listing-contact">📞 ${j.phone}${j.email ? ' · ✉️ ' + j.email : ''}</div>
+      </div>
+      <div class="listing-actions">
+        ${j.status !== 'Active' ? `<button class="btn-approve" onclick="updateJob('${j.id}','Active')">✅ Approve & Go Live</button>` : ''}
+        ${j.status !== 'Rejected' ? `<button class="btn-reject" onclick="updateJob('${j.id}','Rejected')">❌ Reject</button>` : ''}
+      </div>
+    </div>`).join('');
+}
+
+async function updateJob(id, status) {
+  document.getElementById('jobcard-' + id).style.opacity = '.4';
+  try {
+    await fetch(`https://api.airtable.com/v0/${BASE}/Jobs/${id}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: { Status: status } })
+    });
+    const j = allJobs.find(x => x.id === id);
+    if (j) j.status = status;
+    document.getElementById('countJobsPending').textContent = allJobs.filter(j => j.status === 'Pending').length;
+    document.getElementById('countJobsActive').textContent = allJobs.filter(j => j.status === 'Active').length;
+    document.getElementById('countJobsRejected').textContent = allJobs.filter(j => j.status === 'Rejected').length;
+    document.getElementById('jobsBadge').textContent = allJobs.filter(j => j.status === 'Pending').length;
+    renderJobs();
+  } catch(e) {
+    document.getElementById('jobcard-' + id).style.opacity = '1';
+    alert('Failed. Try again.');
+  }
+}
+
+// ── REALTY ──
+async function loadRealty() {
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${BASE}/Realty?sort[0][field]=Submitted&sort[0][direction]=desc`, {
+      headers: { 'Authorization': `Bearer ${TOKEN}` }
+    });
+    const data = await res.json();
+    allRealty = (data.records || []).map(r => ({
+      id: r.id,
+      address: r.fields.Address || '(no address)',
+      listingType: r.fields.ListingType || '',
+      planType: r.fields.PlanType || '',
+      price: r.fields.Price || '',
+      beds: r.fields.Beds || '',
+      baths: r.fields.Baths || '',
+      description: r.fields.Description || '',
+      phone: r.fields.Phone || '',
+      email: r.fields.Email || '',
+      contactName: r.fields.ContactName || '',
+      mainPhoto: r.fields.MainPhoto ? r.fields.MainPhoto[0]?.url : null,
+      status: r.fields.Status || 'Pending',
+      submitted: r.fields.Submitted || ''
+    }));
+    const pending = allRealty.filter(r => r.status === 'Pending').length;
+    document.getElementById('realtyBadge').textContent = pending;
+    document.getElementById('countRealtyPending').textContent = pending;
+    document.getElementById('countRealtyActive').textContent = allRealty.filter(r => r.status === 'Active').length;
+    document.getElementById('countRealtyRejected').textContent = allRealty.filter(r => r.status === 'Rejected').length;
+    renderRealty();
+  } catch(e) {
+    document.getElementById('realtyContainer').innerHTML = '<div class="empty">Failed to load realty listings.</div>';
+  }
+}
+
+function renderRealty() {
+  const filtered = realtyFilter === 'all' ? allRealty : allRealty.filter(r => r.status === realtyFilter);
+  const container = document.getElementById('realtyContainer');
+  if (!filtered.length) { container.innerHTML = '<div class="empty">No realty listings found.</div>'; return; }
+  container.innerHTML = filtered.map(r => `
+    <div class="listing-card ${r.status.toLowerCase()}" id="realtycard-${r.id}">
+      ${r.mainPhoto ? `<img src="${r.mainPhoto}" style="width:120px;height:90px;object-fit:cover;border-radius:8px;flex-shrink:0">` : ''}
+      <div class="listing-info">
+        <div class="listing-title">${r.address} <span class="status-badge badge-${r.status.toLowerCase()}">${r.status}</span></div>
+        <div class="listing-meta">🏷 ${r.planType} · ${r.listingType === 'Wanted' ? '🔍 Rental Wanted' : r.listingType === 'Rent' ? '🔑 For Rent' : '🏠 For Sale'} · 💰 ${r.price || 'n/a'}${r.beds ? ' · ' + r.beds + 'bd' : ''}${r.baths ? '/' + r.baths + 'ba' : ''} · 📅 ${r.submitted}</div>
+        <div class="listing-desc">${r.description}</div>
+        <div class="listing-contact">${r.contactName ? r.contactName + ' · ' : ''}📞 ${r.phone}${r.email ? ' · ✉️ ' + r.email : ''}</div>
+      </div>
+      <div class="listing-actions">
+        ${r.status !== 'Active' ? `<button class="btn-approve" onclick="updateRealty('${r.id}','Active')">✅ Approve & Go Live</button>` : ''}
+        ${r.status !== 'Rejected' ? `<button class="btn-reject" onclick="updateRealty('${r.id}','Rejected')">❌ Reject</button>` : ''}
+      </div>
+    </div>`).join('');
+}
+
+async function updateRealty(id, status) {
+  document.getElementById('realtycard-' + id).style.opacity = '.4';
+  try {
+    await fetch(`https://api.airtable.com/v0/${BASE}/Realty/${id}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: { Status: status } })
+    });
+    const r = allRealty.find(x => x.id === id);
+    if (r) r.status = status;
+    document.getElementById('countRealtyPending').textContent = allRealty.filter(r => r.status === 'Pending').length;
+    document.getElementById('countRealtyActive').textContent = allRealty.filter(r => r.status === 'Active').length;
+    document.getElementById('countRealtyRejected').textContent = allRealty.filter(r => r.status === 'Rejected').length;
+    document.getElementById('realtyBadge').textContent = allRealty.filter(r => r.status === 'Pending').length;
+    renderRealty();
+  } catch(e) {
+    document.getElementById('realtycard-' + id).style.opacity = '1';
+    alert('Failed. Try again.');
+  }
+}
+
 // ── SIMCHOS ──
 async function loadSimchos() {
   try {
@@ -471,6 +653,8 @@ async function loadSimchos() {
 function setFilter(val, btn, tab) {
   if (tab === 'listings') { listingsFilter = val; renderListings(); }
   else if (tab === 'ads') { adsFilter = val; renderAds(); }
+  else if (tab === 'jobs') { jobsFilter = val; renderJobs(); }
+  else if (tab === 'realty') { realtyFilter = val; renderRealty(); }
   else if (tab === 'simcha') { simchaFilter = val; renderSimchos(); }
   btn.closest('.filters').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');

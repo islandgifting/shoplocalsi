@@ -62,7 +62,7 @@ body{font-family:"Montserrat",sans-serif;background:#f4f4f2;color:#0b1f3a}
 
 <div class="top-section">
   <h1>Post Your <span>Listing</span></h1>
-  <p>Payment confirmed &mdash; complete the form below. Your listing goes live immediately.</p>
+  <p>Payment confirmed &mdash; complete the form below. Your listing will be reviewed and go live shortly.</p>
 </div>
 
 <div class="wrap">
@@ -74,7 +74,7 @@ body{font-family:"Montserrat",sans-serif;background:#f4f4f2;color:#0b1f3a}
       <button onclick="init('rentals')" style="padding:.55rem 1.1rem;border:2px solid #0b1f3a;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;text-transform:uppercase;background:#fff">Rentals — $49/mo</button>
       <button onclick="init('featured')" style="padding:.55rem 1.1rem;border:2px solid #3e7c59;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;text-transform:uppercase;background:#3e7c59;color:#fff">Featured — $149/mo</button>
       <button onclick="init('premium')" style="padding:.55rem 1.1rem;border:2px solid #2c6e9e;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;text-transform:uppercase;background:#2c6e9e;color:#fff">Premium — $299/mo</button>
-      <button onclick="init('agency')" style="padding:.55rem 1.1rem;border:2px solid #0b1f3a;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;text-transform:uppercase;background:#0b1f3a;color:#fff">Agency — $249/mo</button>
+      <button onclick="init('agency')" style="padding:.55rem 1.1rem;border:2px solid #0b1f3a;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;text-transform:uppercase;background:#0b1f3a;color:#fff">Agency — $349/mo</button>
       <button onclick="init('wanted')" style="padding:.55rem 1.1rem;border:2px solid #d0dce8;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;cursor:pointer;text-transform:uppercase;background:#fff">Rental Wanted — Free</button>
     </div>
   </div>
@@ -220,7 +220,7 @@ var PLANS={
   rentals:{icon:'🔑',name:'Rentals Plan — $49/mo',desc:'One rental listing. Photos, price, specs & contact. Final once submitted.',photos:1,featured:false,premium:false,wanted:false,rentOnly:true},
   featured:{icon:'⭐',name:'Featured Listing — $149/mo',desc:'One property listing — For Sale or For Rent. Up to 5 photos, full description, open house dates. Green featured card. Final once submitted.',photos:5,featured:true,premium:false,wanted:false,rentOnly:false},
   premium:{icon:'💎',name:'Premium Listing — $299/mo',desc:'One property listing — For Sale or For Rent. Everything in Featured plus video tour on the advertising screen and homepage banner. Final once submitted.',photos:5,featured:true,premium:true,wanted:false,rentOnly:false},
-  agency:{icon:'🏢',name:'Agency Listing — $249/mo',desc:'Up to 10 listings — any mix of For Sale, For Rent, or Rental Wanted. Everything in Featured & Premium for all listings. You may add, update or remove listings throughout the month.',photos:5,featured:true,premium:true,wanted:true,rentOnly:false,multiListing:true},
+  agency:{icon:'🏢',name:'Agency Listing — $349/mo',desc:'Up to 10 listings per month (strict cap) — any mix of For Sale, For Rent, or Rental Wanted. Everything in Featured & Premium for all listings, including video ad upload and agency banner. You may add, update or remove listings throughout the month.',photos:5,featured:true,premium:true,wanted:true,rentOnly:false,multiListing:true},
   wanted:{icon:'🔍',name:'Rental Wanted — Free',desc:'Tell the community what you are looking for. Auto-expires after 30 days.',photos:0,featured:false,premium:false,wanted:true,rentOnly:false}
 };
 
@@ -377,7 +377,9 @@ async function submitListing(){
           openHouse:document.getElementById('f-openhouse')?document.getElementById('f-openhouse').value:'',
           phone:phone,
           email:document.getElementById('f-email').value||'',
-          contactName:name
+          contactName:name,
+          budget:document.getElementById('f-budget')?document.getElementById('f-budget').value:'',
+          moveIn:document.getElementById('f-movein')?document.getElementById('f-movein').value:''
         })
       });
       if(res.ok){ var d=await res.json(); return {ok:true, id:d.id, removalCode:d.removalCode}; }

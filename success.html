@@ -767,7 +767,7 @@ async function submitFeatured(){
       TagLine:document.getElementById('f-tagline').value,
       Instagram:document.getElementById('f-instagram').value,
       Hours:document.getElementById('f-hours').value,
-      PlanType:'featured',Status:'Active'
+      PlanType:'featured',Status:'Pending'
     };
     await fetch('https://api.airtable.com/v0/'+BASE+'/Ads',{
       method:'POST',headers:{'Authorization':AT,'Content-Type':'application/json'},
@@ -807,7 +807,7 @@ async function submitPremium(){
       CouponTerms:(couponCode?('Code: '+couponCode+'. '+couponDesc):couponDesc),
       BlogRequest:blogTitle?'Yes':'',
       BlogNotes:blogTitle?('Title: '+blogTitle+'\n\n'+blogBody):'',
-      PlanType:'premium',Status:'Active'
+      PlanType:'premium',Status:'Pending'
     };
     // Step 1: create the record with text fields only (no attachments yet —
     // Airtable's create-record endpoint doesn't reliably accept inline file uploads).
@@ -856,7 +856,7 @@ async function submitCoupon(){
         Discount:discount,Code:code,
         Description:document.getElementById('c-desc').value,
         Category:document.getElementById('c-cat').value,
-        Status:'Active'
+        Status:'Pending'
       },typecast:true})
     });
     document.getElementById('c-success').style.display='block';btn.style.display='none';
