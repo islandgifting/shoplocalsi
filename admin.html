@@ -482,10 +482,11 @@ async function updateAd(id, status) {
 // ── JOBS ──
 async function loadJobs() {
   try {
-    const res = await fetch(`https://api.airtable.com/v0/${BASE}/Jobs?sort[0][field]=Submitted&sort[0][direction]=desc`, {
+    const res = await fetch(`https://api.airtable.com/v0/${BASE}/Jobs`, {
       headers: { 'Authorization': `Bearer ${TOKEN}` }
     });
     const data = await res.json();
+    if (!res.ok) { document.getElementById('jobsContainer').innerHTML = '<div class="empty">Failed to load jobs: ' + ((data.error && data.error.message) || 'unknown error') + '</div>'; return; }
     allJobs = (data.records || []).map(r => ({
       id: r.id,
       title: r.fields.Title || '(no title)',
@@ -497,7 +498,7 @@ async function loadJobs() {
       email: r.fields.Email || '',
       status: r.fields.Status || 'Pending',
       submitted: r.fields.Submitted || ''
-    }));
+    })).sort((a, b) => (b.submitted || '').localeCompare(a.submitted || ''));
     const pending = allJobs.filter(j => j.status === 'Pending').length;
     document.getElementById('jobsBadge').textContent = pending;
     document.getElementById('countJobsPending').textContent = pending;
@@ -552,10 +553,11 @@ async function updateJob(id, status) {
 // ── REALTY ──
 async function loadRealty() {
   try {
-    const res = await fetch(`https://api.airtable.com/v0/${BASE}/Realty?sort[0][field]=Submitted&sort[0][direction]=desc`, {
+    const res = await fetch(`https://api.airtable.com/v0/${BASE}/Realty`, {
       headers: { 'Authorization': `Bearer ${TOKEN}` }
     });
     const data = await res.json();
+    if (!res.ok) { document.getElementById('realtyContainer').innerHTML = '<div class="empty">Failed to load realty listings: ' + ((data.error && data.error.message) || 'unknown error') + '</div>'; return; }
     allRealty = (data.records || []).map(r => ({
       id: r.id,
       address: r.fields.Address || '(no address)',
@@ -571,7 +573,7 @@ async function loadRealty() {
       mainPhoto: r.fields.MainPhoto ? r.fields.MainPhoto[0]?.url : null,
       status: r.fields.Status || 'Pending',
       submitted: r.fields.Submitted || ''
-    }));
+    })).sort((a, b) => (b.submitted || '').localeCompare(a.submitted || ''));
     const pending = allRealty.filter(r => r.status === 'Pending').length;
     document.getElementById('realtyBadge').textContent = pending;
     document.getElementById('countRealtyPending').textContent = pending;

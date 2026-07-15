@@ -522,15 +522,10 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <button class="jobs-tab wanted" onclick="showTab('wanted',this)">&#x1F64B; Jobs Wanted</button>
   </div>
   <div class="jobs-grid" id="availableJobs">
-    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Bookkeeper / Accountant</div><div class="job-desc">Local business seeks experienced bookkeeper. QuickBooks knowledge required. Part-time, flexible hours.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 000-000-0000</span><span class="job-pay">$25&ndash;$35/hr</span></div></div>
-    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Babysitter / Nanny</div><div class="job-desc">Frum family in Westerleigh seeks reliable babysitter. 3 children ages 2&ndash;8. References required.</div><div class="job-footer"><span class="job-contact">&#x2709; nanny@email.com</span><span class="job-pay">$18&ndash;$22/hr</span></div></div>
-    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Office Assistant</div><div class="job-desc">Medical office seeks part-time office assistant. Experience with scheduling software a plus.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 000-000-0000</span><span class="job-pay">Part-time</span></div></div>
-    <div class="job-card"><div class="job-badge">Jobs Available</div><div class="job-title">Delivery Driver</div><div class="job-desc">Local kosher catering company needs reliable delivery driver. Must have clean license.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 000-000-0000</span><span class="job-pay">$18/hr + tips</span></div></div>
+    <div class="empty-jobs-msg" style="grid-column:1/-1;text-align:center;color:#888;padding:2rem">No job postings yet — check back soon, or post one below!</div>
   </div>
   <div class="jobs-grid" id="wantedJobs" style="display:none">
-    <div class="job-card wanted"><div class="job-badge">Job Wanted</div><div class="job-title">Experienced Secretary / Admin</div><div class="job-desc">Organized and detail-oriented. 10+ years experience. Seeking part-time or full-time office position in SI.</div><div class="job-footer"><span class="job-contact">&#x2709; secretary@email.com</span><span class="job-pay">Flexible</span></div></div>
-    <div class="job-card wanted"><div class="job-badge">Job Wanted</div><div class="job-title">Graphic Designer</div><div class="job-desc">Creative professional seeking freelance or part-time graphic design work. Portfolio available.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 000-000-0000</span><span class="job-pay">Freelance</span></div></div>
-    <div class="job-card wanted"><div class="job-badge">Job Wanted</div><div class="job-title">Home Health Aide</div><div class="job-desc">Certified HHA with 5 years experience. Available days and evenings, Staten Island area.</div><div class="job-footer"><span class="job-contact">&#x1F4DE; 000-000-0000</span><span class="job-pay">Negotiable</span></div></div>
+    <div class="empty-jobs-msg" style="grid-column:1/-1;text-align:center;color:#888;padding:2rem">No job-wanted posts yet — check back soon, or post one below!</div>
   </div>
 
   <div class="post-job-form fade-up">
@@ -551,7 +546,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
       <div class="field"><label>Email</label><input type="email" id="job-email" placeholder="optional"></div>
     </div>
     <button class="btn-green" style="width:100%;justify-content:center" onclick="submitJob()">Post for Free</button>
-    <div class="success-msg" id="jobSuccess">&#x2705; Your job listing is now live on the board above. Thank you!</div>
+    <div class="success-msg" id="jobSuccess">&#x2705; Your job listing has been submitted and is pending review. It will appear on the board above once approved. Thank you!</div>
   </div>
 </div>
 <script>
@@ -562,21 +557,35 @@ async function submitJob(){var title=document.getElementById("job-title").value.
 
 function jobsEsc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
 async function loadJobs(){
+  var avail=document.getElementById("availableJobs"),want=document.getElementById("wantedJobs");
   try{
     var res=await fetch("/.netlify/functions/get-jobs");
-    if(!res.ok)return;
+    if(!res.ok){
+      var errData={};try{errData=await res.json();}catch(e2){}
+      avail.innerHTML='<div style="grid-column:1/-1;text-align:center;color:#c00;padding:2rem">Could not load jobs: '+jobsEsc(errData.error||("HTTP "+res.status))+'</div>';
+      want.innerHTML=avail.innerHTML;
+      return;
+    }
     var data=await res.json();
-    var avail=document.getElementById("availableJobs"),want=document.getElementById("wantedJobs");
     avail.innerHTML="";want.innerHTML="";
-    (data.listings||[]).forEach(function(item){
+    var list=data.listings||[];
+    if(!list.length){
+      avail.innerHTML='<div style="grid-column:1/-1;text-align:center;color:#888;padding:2rem">No job postings yet — check back soon, or post one below!</div>';
+      want.innerHTML='<div style="grid-column:1/-1;text-align:center;color:#888;padding:2rem">No job-wanted posts yet — check back soon, or post one below!</div>';
+    }
+    list.forEach(function(item){
       var isWanted=item.type==="wanted";
       var contact=item.contactHidden?"Contact via site":((item.phone?"&#x1F4DE; "+jobsEsc(item.phone):"")+(item.phone&&item.email?" &middot; ":"")+(item.email?"&#x2709; "+jobsEsc(item.email):""));
       var card=document.createElement("div");
       card.className="job-card"+(isWanted?" wanted":"");
       card.innerHTML='<div class="job-badge">'+(isWanted?"Job Wanted":"Jobs Available")+'</div><div class="job-title">'+jobsEsc(item.title)+'</div><div class="job-desc">'+jobsEsc(item.description)+'</div><div class="job-footer"><span class="job-contact">'+contact+'</span><span class="job-pay">'+jobsEsc(item.pay||"")+'</span></div>';
-      (isWanted?want:avail).appendChild(card);
+      if(isWanted){ if(want.querySelector('.empty-jobs-msg')||!want.children.length) want.innerHTML=""; want.appendChild(card); }
+      else { if(avail.querySelector('.empty-jobs-msg')||!avail.children.length) avail.innerHTML=""; avail.appendChild(card); }
     });
-  }catch(e){}
+  }catch(e){
+    avail.innerHTML='<div style="grid-column:1/-1;text-align:center;color:#c00;padding:2rem">Could not load jobs: '+jobsEsc(e.message)+'</div>';
+    want.innerHTML=avail.innerHTML;
+  }
 }
 loadJobs();
 </script>
