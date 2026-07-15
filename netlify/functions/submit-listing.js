@@ -24,7 +24,7 @@ exports.handler = async (event) => {
       Category: category,
       Contact: contact || '',
       Description: description || '',
-      Status: 'Active',
+      Status: 'Pending',
       Submitted: new Date().toISOString().split('T')[0],
       DeleteCode: deleteCode,
       HideContact: hideContact ? 'yes' : 'no'

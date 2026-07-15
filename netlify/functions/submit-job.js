@@ -20,30 +20,43 @@ exports.handler = async (event) => {
       Pay: pay || '',
       Phone: phone,
       Email: email || '',
-      Status: 'Active',
+      Status: 'Pending',
       Submitted: new Date().toISOString().split('T')[0],
       DeleteCode: deleteCode,
       HideContact: hideContact ? 'yes' : 'no'
     };
 
-    const response = await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Jobs', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields, typecast: true })
-    });
-
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error?.message || 'Airtable error');
+    // Auto-retry with unknown fields stripped, in case the live Jobs table's
+    // exact column names drift from what this function sends.
+    async function saveToAirtable(fieldsObj, attempt) {
+      attempt = attempt || 0;
+      const res = await fetch('https://api.airtable.com/v0/appyNDNuwGFgR44sg/Jobs', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: fieldsObj, typecast: true })
+      });
+      if (res.ok) return res.json();
+      const err = await res.json();
+      const msg = (err.error && err.error.message) || '';
+      const badFieldMatch = msg.match(/Unknown field name: "([^"]+)"/);
+      if (badFieldMatch && attempt < 25) {
+        const badField = badFieldMatch[1];
+        const trimmed = Object.assign({}, fieldsObj);
+        delete trimmed[badField];
+        return saveToAirtable(trimmed, attempt + 1);
+      }
+      const e = new Error(msg || 'Airtable error');
+      e.details = err;
+      throw e;
     }
 
-    const data = await response.json();
+    const data = await saveToAirtable(fields);
     return {
       statusCode: 200,
       headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ success: true, deleteCode, id: data.id })
     };
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    return { statusCode: 500, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: error.message }) };
   }
 };
