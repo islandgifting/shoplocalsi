@@ -703,6 +703,7 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <a href="/simcha.html" class="ql-card"><span class="ql-icon">💒</span><span class="ql-label">Simcha</span><span class="ql-sub">Event planning</span></a>
     <a href="/coupons.html" class="ql-card"><span class="ql-icon">🎟</span><span class="ql-label">Coupons</span><span class="ql-sub">Exclusive deals</span></a>
     <a href="/jobs.html" class="ql-card"><span class="ql-icon">💼</span><span class="ql-label">Jobs</span><span class="ql-sub">Hire &amp; find work</span></a>
+    <a href="/ads.html" class="ql-card"><span class="ql-icon">📢</span><span class="ql-label">View Ads</span><span class="ql-sub">Premium &amp; realty ads</span></a>
   </div>
 </div>
 
@@ -713,14 +714,35 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
     <h2 class="section-title fade-up">Featured &amp; Premium Businesses</h2>
     <div class="green-divider fade-up"></div>
   </div>
-  <div class="feat-grid" id="featGrid"><div class="feat-card" style="border-left:4px solid var(--green);cursor:default">
-      <div class="feat-badge">Featured Partner</div>
-      <div class="feat-name">Island Kosher Supermarket</div>
-      <div class="feat-desc">Your full-service kosher supermarket — fresh produce, deli, bakery, meat &amp; more. Staten Island's #1 kosher grocery.</div>
-      <div class="feat-phone">📞 718-650-2200 &nbsp;·&nbsp; <a href="/island-kosher-deals.html" style="color:var(--green);font-weight:700;border-bottom:1px solid var(--green)">🛒 This week's deals →</a></div>
-    </div></div>
+  <div class="feat-grid" id="featGrid"></div>
   <div style="text-align:center;margin-top:2.5rem" class="fade-up"><a href="/advertise.html" class="btn-green">Get Featured — First Month Free</a></div>
 </div>
+<script>
+(async function(){
+  try{
+    var res=await fetch("/.netlify/functions/get-ads");
+    if(!res.ok)return;
+    var data=await res.json();
+    var list=data.all||[];
+    var seen={},uniq=[];
+    list.forEach(function(ad){var k=(ad.businessName||"").trim().toLowerCase();if(seen[k]!==undefined){uniq[seen[k]]=ad;}else{seen[k]=uniq.length;uniq.push(ad);}});
+    var grid=document.getElementById("featGrid");
+    if(!uniq.length){grid.parentElement.style.display="none";return;}
+    function esc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
+    grid.innerHTML=uniq.map(function(ad){
+      var isPrem=ad.planType==="premium";
+      var link=isPrem?("/business.html?id="+ad.id):"/directory.html";
+      var phoneHtml=ad.phone?("📞 "+esc(ad.phone)):"";
+      return "<a href='"+link+"' class='feat-card' style='border-left:4px solid var(--green);text-decoration:none;color:inherit;display:block'>"
+        +"<div class='feat-badge'>"+(isPrem?"⭐ Premium Partner":"Featured Partner")+"</div>"
+        +"<div class='feat-name'>"+esc(ad.businessName)+"</div>"
+        +"<div class='feat-desc'>"+esc(ad.description||ad.tagline||"")+"</div>"
+        +"<div class='feat-phone'>"+phoneHtml+"</div>"
+        +"</a>";
+    }).join("");
+  }catch(e){}
+})();
+</script>
 
 <!-- AD SCREEN -->
 <div class="section bg-navy">
@@ -742,8 +764,32 @@ footer{background:var(--navy);padding:4.5rem 2.5rem 2rem;border-top:4px solid va
   </div>
   <div class="ad-screen-legs"><div class="ad-screen-leg"></div><div class="ad-screen-leg"></div></div>
   <div class="ad-screen-base"></div>
-  <div style="text-align:center;margin-top:1.25rem"><a href="/advertise.html" style="font-size:.7rem;color:rgba(255,255,255,.75);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px">View all ads &amp; promotions</a></div>
+  <div style="text-align:center;margin-top:1.25rem"><a href="/ads.html" style="font-size:.7rem;color:rgba(255,255,255,.75);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px">View all ads &amp; promotions →</a></div>
 </div>
+<script>
+(async function(){
+  try{
+    var res=await fetch("/.netlify/functions/get-ads");
+    if(!res.ok)return;
+    var data=await res.json();
+    var ads=(data.all||[]).filter(function(ad){return ad.planType==="premium"&&(ad.image||ad.adVideo);});
+    if(!ads.length)return;
+    var inner=document.getElementById("adScreenInner"),ai=0;
+    function showAd(){
+      var ad=ads[ai%ads.length];
+      inner.onclick=function(){window.location.href="/business.html?id="+ad.id;};
+      if(ad.adVideo){
+        inner.innerHTML="<video src='"+ad.adVideo+"' autoplay muted loop playsinline style='width:100%;height:100%;object-fit:cover;display:block'></video>";
+      } else {
+        inner.innerHTML="<img src='"+ad.image+"' style='width:100%;height:100%;object-fit:cover;display:block'>";
+      }
+      ai++;
+    }
+    showAd();
+    if(ads.length>1) setInterval(showAd,7000);
+  }catch(e){}
+})();
+</script>
 
 <!-- SHABBOS -->
 <section id="shabbos" class="shabbos-section" style="padding:5rem 2rem;background:linear-gradient(135deg,#f8f9fa 0%,#e8f0ec 100%)">
