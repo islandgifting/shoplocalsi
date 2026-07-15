@@ -551,6 +551,8 @@ async function submitListing(){
     });
   }
 
+  function wait(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
   async function attachFromUrl(recordId, fieldName, url, filename){
     if(!url) return;
     try {
@@ -564,6 +566,7 @@ async function submitListing(){
         })
       });
       if(!res.ok){ console.error('Attachment failed for', fieldName, await res.text()); }
+      await wait(400); // small gap so Airtable fully commits this write before the next one starts
     } catch(e){ console.error('Attachment error for', fieldName, e); }
   }
 
@@ -573,18 +576,19 @@ async function submitListing(){
 
     const recordId = result.id;
     const logoFileEl = document.getElementById('logoFile').files[0];
-    const attachJobs = [];
-    if(uploads.logo) attachJobs.push(attachFromUrl(recordId, 'Gallery', uploads.logo, logoFileEl && logoFileEl.name));
+    // Attach sequentially (not in parallel) — Airtable's attachment API can silently
+    // drop one of several simultaneous writes to the same record. This is what was
+    // causing the banner to disappear even though the ad image (uploaded alongside it) worked.
+    if(uploads.logo) await attachFromUrl(recordId, 'Gallery', uploads.logo, logoFileEl && logoFileEl.name);
     if(isPremium){
       const adImageFileEl = document.getElementById('adImageFile').files[0];
       const adVideoFileEl = document.getElementById('adVideoFile').files[0];
       const bannerFileEl  = document.getElementById('bannerImgFile').files[0];
-      if(adType==='image' && uploads.adImage) attachJobs.push(attachFromUrl(recordId, 'Image', uploads.adImage, adImageFileEl && adImageFileEl.name));
-      if(adType==='video' && uploads.adVideo) attachJobs.push(attachFromUrl(recordId, 'AdVideo', uploads.adVideo, adVideoFileEl && adVideoFileEl.name));
-      if(uploads.bannerImg) attachJobs.push(attachFromUrl(recordId, 'Banner', uploads.bannerImg, bannerFileEl && bannerFileEl.name));
-      uploads.gallery.forEach(function(url,i){ attachJobs.push(attachFromUrl(recordId, 'Gallery', url, 'gallery-'+i+'.jpg')); });
+      if(adType==='image' && uploads.adImage) await attachFromUrl(recordId, 'Image', uploads.adImage, adImageFileEl && adImageFileEl.name);
+      if(adType==='video' && uploads.adVideo) await attachFromUrl(recordId, 'AdVideo', uploads.adVideo, adVideoFileEl && adVideoFileEl.name);
+      if(uploads.bannerImg) await attachFromUrl(recordId, 'Banner', uploads.bannerImg, bannerFileEl && bannerFileEl.name);
+      for(let i=0;i<uploads.gallery.length;i++){ await attachFromUrl(recordId, 'Gallery', uploads.gallery[i], 'gallery-'+i+'.jpg'); }
     }
-    await Promise.all(attachJobs);
 
     document.getElementById('formSection').style.display='none';
     document.querySelector('.hero').style.display='none';
