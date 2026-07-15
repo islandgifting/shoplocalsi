@@ -1,0 +1,45 @@
+exports.handler = async (event) => {
+  try {
+    const token = process.env.AIRTABLE_TOKEN;
+    if (!token) return { statusCode: 500, body: JSON.stringify({ error: 'AIRTABLE_TOKEN not set' }) };
+
+    // No server-side sort param on purpose — see get-jobs.js for why.
+    const url = `https://api.airtable.com/v0/appyNDNuwGFgR44sg/Realty?filterByFormula=${encodeURIComponent("{Status}='Active'")}`;
+    const response = await fetch(url, { headers: { 'Authorization': `Bearer ${token}` } });
+    const data = await response.json();
+    if (!response.ok) return { statusCode: 500, body: JSON.stringify({ error: (data.error && data.error.message) || 'Airtable error', details: data }) };
+
+    const listings = (data.records || []).map(r => {
+      const f = r.fields;
+      return {
+        id: r.id,
+        address: f.Address || '',
+        listingType: (f.ListingType || '').toLowerCase(),
+        planType: (f.PlanType || '').toLowerCase(),
+        price: f.Price || '',
+        beds: f.Beds || '',
+        baths: f.Baths || '',
+        sqft: f.Sqft || '',
+        description: f.Description || '',
+        openHouse: f.OpenHouse || '',
+        phone: f.Phone || '',
+        email: f.Email || '',
+        contactName: f.ContactName || '',
+        mainPhoto: f.MainPhoto ? f.MainPhoto[0]?.url : null,
+        gallery: f.Gallery ? f.Gallery.map(g => g.url) : [],
+        adVideo: f.AdVideo ? f.AdVideo[0]?.url : null,
+        bannerImage: f.Banner ? f.Banner[0]?.url : null,
+        removalCode: f.RemovalCode || '',
+        submitted: f.Submitted || ''
+      };
+    }).sort((a, b) => (b.submitted || '').localeCompare(a.submitted || ''));
+
+    return {
+      statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ listings })
+    };
+  } catch (error) {
+    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+  }
+};
