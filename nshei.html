@@ -395,7 +395,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
     </div>
     <div class="menu-row">
       <div class="menu-day">Night 4<span class="vibe">Sweet Heritage</span></div>
-      <div class="menu-dish"><a onclick="openRecipe('derelye')">Grandma's Plum Jam Pockets - Lekvar Papucs</a> <br><em style="font-size:.8rem;color:var(--muted)">Lekváros Derelye</em></div>
+      <div class="menu-dish"><a onclick="openRecipe('derelye')">Grandma's Plum Jam Pockets</a> <br><em style="font-size:.8rem;color:var(--muted)">Lekváros Derelye</em></div>
       <div class="menu-strategy">Pillowy potato-dough pockets coated in sweet, buttery breadcrumbs. Surprisingly filling!</div>
     </div>
     <div class="menu-row">
@@ -565,6 +565,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
       </div>
       <button class="close-recipe" onclick="closeRecipe('rokud')">×</button>
     </div>
+    <img src="/rokud-krumpli.jpg" alt="Rokud Krumpli — layered potato and egg casserole" style="width:100%;max-height:340px;object-fit:cover;border-radius:10px;margin-bottom:1.25rem">
     <p style="color:var(--mid);line-height:1.7;margin-bottom:1.25rem">Think of this as the ultimate rustic potato lasagna. We layer tender, thinly sliced boiled potatoes with sliced hard-boiled eggs, coating each layer in melted butter and generous dollops of well-salted sour cream (<i>tejföl</i>). Baked until the edges get completely golden and crispy, it is an incredible crowd-pleaser.</p>
     <div class="recipe-info-row"><div class="item"><b>Prep</b> 30 mins</div><div class="item"><b>Cook</b> 40 mins</div><div class="item"><b>Yields</b> 6 Servings</div></div>
     <h5>Ingredients</h5>
@@ -580,7 +581,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
     <h5>Instructions</h5>
     <ol class="instructions">
       <li><b>Prep the Foundations.</b> Place potatoes (skins on) in a large pot of salted water. In a separate pot, place the eggs. Bring both to a boil. Cook the eggs for 11 minutes, then plunge into ice water. Cook the potatoes until fork-tender (about 20-25 minutes). Let both cool completely. Once cool, peel the potatoes and eggs, then slice them both into uniform ¼-inch rounds.</li>
-      <li><b>Season the Sour Cream.</b> In a medium bowl, mix the sour cream with 1/2 teaspoon of salt, black pepper, and a splash of milk if it's too thick to spread easily.</li>
+      <li><b>Season the Sour Cream.</b> In a medium bowl, mix the sour cream with 1 teaspoon of salt, black pepper, and a splash of milk if it's too thick to spread easily.</li>
       <li><b>Layer the Casserole.</b> Preheat your oven to 375°F (190°C). Grease a 9x13 glass baking dish with a tablespoon of the melted butter. Shingle half of the potato slices along the bottom. Season lightly with salt. Layer all of the sliced hard-boiled eggs directly over the potatoes. Drizzle with half of the remaining melted butter and dot with half of the sour cream mixture.</li>
       <li><b>Finish and Bake.</b> Add the remaining potato slices on top. Spread the rest of the sour cream evenly across the top layer. Drizzle the last of the melted butter and dust the top with sweet Hungarian paprika for color. Bake uncovered for 35 to 40 minutes until bubbling and the edges turn a deep golden brown. <i>Serve hot with a side of cold vinegar cucumber salad!</i></li>
     </ol>
@@ -895,9 +896,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
 
   <div class="chinuch-card">
     <div class="caveat">This week</div>
-    <h3>The Power of "I Noticed"</h3>
-    <div class="quote">Instead of praising with "Good job!" try starting with "I noticed…" &mdash; "I noticed how patiently you waited," "I noticed you helped your sister without being asked." Specific praise builds specific character. Kids remember what you saw, not just that you approved.</div>
-    <div class="attribution">Parenting Wisdom · Week of Parshas ______</div>
+    <h3>One Question at the Table</h3>
+    <div class="quote">This Shabbos, try asking each child just one real question &mdash; not "How was your week?" but something specific: "What made you laugh this week?" or "What's something you're proud of?" A pointed question gets a real answer, and a real answer is what turns the Shabbos table from a meal into a connection.</div>
+    <div class="attribution">Parenting Wisdom · Week of July 16, 2026</div>
   </div>
 </section>
 
@@ -993,9 +994,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
 </footer>
 
 <script>
-function toggleBlog(){
-  var el = document.getElementById('blogFull');
-  var arrow = document.getElementById('rmArrow');
+function toggleBlog(suffix){
+  suffix = suffix || '';
+  var el = document.getElementById('blogFull'+suffix);
+  var arrow = document.getElementById('rmArrow'+suffix);
   el.classList.toggle('open');
   arrow.textContent = el.classList.contains('open') ? '↑' : '↓';
   if(el.classList.contains('open')){
