@@ -1,0 +1,1926 @@
+{
+  "updated": "2026-07-18T10:25:25.086Z",
+  "source": "godaven.com",
+  "version": 2,
+  "shuls": [
+    {
+      "id": 292,
+      "url": "https://www.godaven.com/shul-details/292",
+      "name": "Congregation Beth Yehuda",
+      "address": "240 Woodward Ave, Staten Island, NY 10314, USA",
+      "phone": "(718) 983-6035",
+      "website": null,
+      "rabbi": "Lawrence",
+      "nusach": "Sefard",
+      "notes": "Mincha notes: Bizman Pesach until Sukkos Maariv notes: 35 minutes after Mincha",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "6:55"
+          ],
+          "maariv": [
+            "9:04"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:10"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:04"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:10"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:04"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:10"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:04"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:10"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:04"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:10"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:21:54.737Z"
+    },
+    {
+      "id": 293,
+      "url": "https://www.godaven.com/shul-details/293",
+      "name": "Beth Shloime",
+      "address": "84 Oakville St, Staten Island, NY 10314, USA",
+      "phone": "(718) 501-4816",
+      "website": "http://www.mikesturm.com/bethshloime/",
+      "rabbi": "Beryl Isaacson",
+      "nusach": "Sefard",
+      "notes": "Mincha notes: Sunday-Thursday Maariv notes: Sunday-Thursday",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:05"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:05"
+          ],
+          "maariv": [
+            "9:00",
+            "9:35"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:05"
+          ],
+          "maariv": [
+            "9:00",
+            "9:35"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:05"
+          ],
+          "maariv": [
+            "9:00",
+            "9:35"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:05"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:00"
+          ],
+          "mincha": [
+            "2:00"
+          ],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:03.415Z"
+    },
+    {
+      "id": 295,
+      "url": "https://www.godaven.com/shul-details/295",
+      "name": "Agudas Shomrei Hadas Grossvardein",
+      "address": "98 Rupert Ave, Staten Island, NY 10314, USA",
+      "phone": "(718) 494-3359",
+      "website": null,
+      "rabbi": "Pollack",
+      "nusach": "Sefard",
+      "notes": "Yeshiva Minyanim are only reliable during the zman - call first; Shabbos Shacharis notes: 8:30 Ashkenaz; 9:00 Sfard; 9:15 (winter)Sfard; 9:30 (summer) Sfard",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "8:00",
+            "8:30",
+            "9:00",
+            "9:30",
+            "5:12",
+            "6:55",
+            "7:00"
+          ],
+          "mincha": [
+            "1:40",
+            "7:15",
+            "9:07",
+            "6:15"
+          ],
+          "maariv": [
+            "9:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30",
+            "6:15",
+            "8:15",
+            "8:24"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:30",
+            "8:00",
+            "8:30",
+            "9:00",
+            "9:30",
+            "5:12",
+            "6:24",
+            "6:25",
+            "7:00"
+          ],
+          "mincha": [
+            "8:14",
+            "9:07",
+            "1:40",
+            "6:15",
+            "7:15"
+          ],
+          "maariv": [
+            "9:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30",
+            "6:15",
+            "8:15",
+            "8:24"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "8:30",
+            "9:00",
+            "9:30",
+            "5:13",
+            "6:24",
+            "6:25",
+            "7:00",
+            "7:30",
+            "8:00"
+          ],
+          "mincha": [
+            "8:14",
+            "9:06",
+            "1:40",
+            "6:15",
+            "7:15"
+          ],
+          "maariv": [
+            "9:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30",
+            "6:15",
+            "8:15",
+            "8:24"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "8:30",
+            "9:00",
+            "9:30",
+            "5:14",
+            "6:55",
+            "7:00"
+          ],
+          "mincha": [
+            "8:14",
+            "9:06",
+            "1:40",
+            "6:15",
+            "7:15"
+          ],
+          "maariv": [
+            "9:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30",
+            "6:15",
+            "8:15",
+            "8:24"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:30",
+            "8:00",
+            "8:30",
+            "9:00",
+            "9:30",
+            "5:15",
+            "6:24",
+            "6:25",
+            "7:00"
+          ],
+          "mincha": [
+            "8:14",
+            "9:05"
+          ],
+          "maariv": [
+            "9:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "8:30",
+            "9:00",
+            "9:30"
+          ],
+          "mincha": [],
+          "maariv": [
+            "11:30"
+          ]
+        },
+        "Shabbos": {
+          "shacharis": [
+            "8:30",
+            "9:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:13.365Z"
+    },
+    {
+      "id": 296,
+      "url": "https://www.godaven.com/shul-details/296",
+      "name": "New Springville Jewish Center",
+      "address": "120 Saxon Ave, Staten Island, NY 10314, USA",
+      "phone": "(718) 983-8063",
+      "website": "http://newspringvillejc.org/",
+      "rabbi": "Segal",
+      "nusach": "Ashkenaz",
+      "notes": "Mincha notes: Bizman Maariv notes: Bizman Friday Mincha notes: Bizman Shabbos Mincha notes: Bizman",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "8:20"
+          ],
+          "mincha": [
+            "8:10"
+          ],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [
+            "6:29"
+          ],
+          "mincha": [
+            "8:10",
+            "8:24"
+          ],
+          "maariv": [
+            "8:24"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "6:29"
+          ],
+          "mincha": [
+            "8:10",
+            "8:24"
+          ],
+          "maariv": [
+            "8:24"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "6:29"
+          ],
+          "mincha": [
+            "8:10",
+            "8:24"
+          ],
+          "maariv": [
+            "8:24"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "6:29"
+          ],
+          "mincha": [
+            "8:10",
+            "8:24"
+          ],
+          "maariv": [
+            "8:24"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "6:29"
+          ],
+          "mincha": [
+            "8:10",
+            "8:24"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:15"
+          ],
+          "mincha": [
+            "8:10",
+            "8:24"
+          ],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:22.765Z"
+    },
+    {
+      "id": 299,
+      "url": "https://www.godaven.com/shul-details/299",
+      "name": "Jewish Foundation School",
+      "address": "400 Caswell Ave, Staten Island, NY 10314, USA",
+      "phone": "(718) 983-6042",
+      "website": "http://www.jewishfoundationschool.org/",
+      "rabbi": "Ehrlich",
+      "nusach": null,
+      "notes": "Mincha notes: Monday-Thursday",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [
+            "2:15"
+          ],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:15"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:15"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:15"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:15"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:31.347Z"
+    },
+    {
+      "id": 431,
+      "url": "https://www.godaven.com/shul-details/431",
+      "name": "Rjj Boys School (Yeshiva Merkaz Hatorah)",
+      "address": "4240 Amboy Rd, Staten Island, NY 10308, USA",
+      "phone": "(718) 979-6333",
+      "website": "http://www.ymht.org/",
+      "rabbi": "Friedman",
+      "nusach": null,
+      "notes": "School Days Only",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "2:30"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "2:30"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "2:30"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "2:30"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "2:30"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:39.948Z"
+    },
+    {
+      "id": 930,
+      "url": "https://www.godaven.com/shul-details/930",
+      "name": "Aur Torah Sephardic Minyan",
+      "address": "1180 Rockland Ave, Staten Island, NY 10314, USA",
+      "phone": "(917) 560-7010",
+      "website": "http://aurtorah.org/",
+      "rabbi": "Aharon Zeev",
+      "nusach": "Edut Mizrach",
+      "notes": "Friday Mincha notes: 45 minutes before sunset Shabbos Mincha notes: 45 minutes before sunset Motzai Shabbos Maariv notes: 40 minutes after sunset",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "7:30"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [
+            "6:15"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [
+            "6:30"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [
+            "6:30"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [
+            "6:15"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [
+            "6:30"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "8:30"
+          ],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:48.529Z"
+    },
+    {
+      "id": 1653,
+      "url": "https://www.godaven.com/shul-details/1653",
+      "name": "Jp Capital",
+      "address": "1 North St, Staten Island, NY 10302, USA",
+      "phone": null,
+      "website": null,
+      "rabbi": null,
+      "nusach": null,
+      "notes": "World Financial center Merc building 13th Fl ; GoDaven is trying to find a form of contact for this minyan. If you have any contact information for this minyan, please let us know using the Submit Feedback button on the website. Thank you.",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:22:57.097Z"
+    },
+    {
+      "id": 1985,
+      "url": "https://www.godaven.com/shul-details/1985",
+      "name": "Young Israel Of Eltingville",
+      "address": "374 Ridgewood Ave, Staten Island, NY 10312, USA",
+      "phone": "(718) 948-1993",
+      "website": "http://www.yieltingville.org",
+      "rabbi": "Reuven Garfinkel",
+      "nusach": "Ashkenaz",
+      "notes": "Mikvah on Premises 8:00 AM minyan on legal holidays Friday Mincha notes: 10 minutes after candlelighting Shabbos Mincha notes: Zman Motzai Shabbos Maariv notes: 72 MIN",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [
+            "8:16"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:00"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:36"
+          ]
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:05.745Z"
+    },
+    {
+      "id": 2553,
+      "url": "https://www.godaven.com/shul-details/2553",
+      "name": "Hatzolah Minyan",
+      "address": "402 Brielle Ave, Staten Island, NY 10314, USA",
+      "phone": null,
+      "website": null,
+      "rabbi": null,
+      "nusach": "Ashkenaz",
+      "notes": "No weekday Minyan Friday Mincha notes: During DST; otherwise10 minutes after candlelighting Shabbos Shacharis notes: No Minyan Shabbos Mincha notes: 5 minutes before candlelighting Motzai Shabbos Maariv notes: 65 minutes after candlelighting **GoDaven is trying to find a form of contact for this shul. If you have any contact information for this shul, please let us know using the Submit Feedback button on the website. Thank you.",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [
+            "7:00"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [
+            "8:01"
+          ],
+          "maariv": [
+            "9:11"
+          ]
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:14.363Z"
+    },
+    {
+      "id": 4104,
+      "url": "https://www.godaven.com/shul-details/4104",
+      "name": "Yeshiva Tiferes Elimelech",
+      "address": "84 Oakville St, Staten Island, NY 10314, USA",
+      "phone": "(718) 370-9381",
+      "website": null,
+      "rabbi": null,
+      "nusach": "Ashkenaz",
+      "notes": null,
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:07"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:07"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:07"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:07"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "3:07"
+          ],
+          "maariv": [
+            "9:35"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:45"
+          ],
+          "mincha": [
+            "1:45"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "8:15"
+          ],
+          "mincha": [
+            "7:44"
+          ],
+          "maariv": [
+            "9:36"
+          ]
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:22.962Z"
+    },
+    {
+      "id": 6106,
+      "url": "https://www.godaven.com/shul-details/6106",
+      "name": "Kollel Of Eltigville",
+      "address": "3323 Richmond Ave, Staten Island, NY 10312, USA",
+      "phone": "(718) 967-5812",
+      "website": null,
+      "rabbi": "Yisroel Salamon",
+      "nusach": "Ashkenaz",
+      "notes": "months of nissan av & tishrei call first Friday Mincha notes: During the ``zman``: 2 min. before the 2nd mincha gedola time",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "7:00",
+            "7:35"
+          ],
+          "mincha": [
+            "1:35",
+            "3:15"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "6:50",
+            "7:35"
+          ],
+          "mincha": [
+            "1:35",
+            "3:15"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:00",
+            "7:35"
+          ],
+          "mincha": [
+            "1:35",
+            "3:15"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:00",
+            "7:35"
+          ],
+          "mincha": [
+            "1:35",
+            "3:15"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "6:50",
+            "7:35"
+          ],
+          "mincha": [
+            "1:35",
+            "3:15"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:00",
+            "7:35"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:31.543Z"
+    },
+    {
+      "id": 7837,
+      "url": "https://www.godaven.com/shul-details/7837",
+      "name": "Staten Island University Hospital",
+      "address": "475 Seaview Ave, Staten Island, NY 10305, USA",
+      "phone": "(917) 734-1832",
+      "website": null,
+      "rabbi": "Avi Feinstein",
+      "nusach": "Ashkenaz",
+      "notes": "2nd floor Meets in Bikur Cholim room on 2nd floor -- door code is in Hebrew on plaque outside door. **GoDaven is trying to find a form of contact for this shul. If you have any contact information for this shul, please let us know using the Submit Feedback button on the website. Thank you.",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [
+            "1:35"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [
+            "1:35"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [
+            "1:35"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [
+            "1:35"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:40.144Z"
+    },
+    {
+      "id": 11577,
+      "url": "https://www.godaven.com/shul-details/11577",
+      "name": "Jewish Russian Learning Center Of South Beach",
+      "address": "62 Sand Ln, Staten Island, NY 10305, USA",
+      "phone": "(267) 357-5078",
+      "website": "http://www.jrlc-si.com/",
+      "rabbi": "Zeev Kushnirsky",
+      "nusach": "Ari",
+      "notes": "Friday Mincha notes: Kabbalat Shabbat - 7:30 pm at 15 Waterview Ct.",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "10:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:48.726Z"
+    },
+    {
+      "id": 16585,
+      "url": "https://www.godaven.com/shul-details/16585",
+      "name": "Chabad Israel Center",
+      "address": "44 Brunswick St, Staten Island, NY 10314, USA",
+      "phone": "(718) 761-4483",
+      "website": "http://www.chabadisraelsi.com/",
+      "rabbi": "Nachman Segal",
+      "nusach": "Ari",
+      "notes": "Corner of Richmond hill road",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:00"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:00"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:00"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:00"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:00"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:15"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:30"
+          ],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:23:57.326Z"
+    },
+    {
+      "id": 19774,
+      "url": "https://www.godaven.com/shul-details/19774",
+      "name": "New Vanderbilt Rehab Center",
+      "address": "135 Vanderbilt Ave, Staten Island, NY 10304, USA",
+      "phone": "(718) 447-0701",
+      "website": null,
+      "rabbi": null,
+      "nusach": "Sefard",
+      "notes": "please call by by 1 PM to confirmMinyan is located in Administrators office",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:24:05.926Z"
+    },
+    {
+      "id": 21585,
+      "url": "https://www.godaven.com/shul-details/21585",
+      "name": "Beis Medrish Arvei Nachal",
+      "address": "723 Willowbrook Rd, Staten Island, NY 10314, USA",
+      "phone": null,
+      "website": "https://nuchisushi15.wixsite.com/mysite-13",
+      "rabbi": "Miller",
+      "nusach": "Sefard",
+      "notes": "GoDaven is trying to find a form of contact for this shul. If you have any contact information for this shul, please let us know using the Submit Feedback button on the website. Thank you.",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "9:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:00",
+            "9:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:00",
+            "9:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:00",
+            "9:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:00",
+            "9:15"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:00",
+            "9:15"
+          ],
+          "mincha": [
+            "8:26"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:15"
+          ],
+          "mincha": [
+            "8:25",
+            "8:26",
+            "8:40"
+          ],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:24:14.660Z"
+    },
+    {
+      "id": 23798,
+      "url": "https://www.godaven.com/shul-details/23798",
+      "name": "Staten Island Hebrew Academy",
+      "address": "3495 Richmond Rd, Staten Island, NY 10306, USA",
+      "phone": "(718) 987-9700",
+      "website": null,
+      "rabbi": "Dr. Ehrlich",
+      "nusach": "Ashkenaz",
+      "notes": "Kiruv school looking to ensure a daily minyan for non-frum boys.",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:20"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:20"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:20"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [
+            "2:20"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:24:23.343Z"
+    },
+    {
+      "id": 23815,
+      "url": "https://www.godaven.com/shul-details/23815",
+      "name": "Zion Minyan",
+      "address": "568 Richmond Terrace, Staten Island, NY 10301, USA",
+      "phone": "(347) 320-6856",
+      "website": null,
+      "rabbi": null,
+      "nusach": "Sefard",
+      "notes": null,
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [
+            "2:00"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [
+            "2:00"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [
+            "2:00"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [
+            "2:00"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:24:31.925Z"
+    },
+    {
+      "id": 24689,
+      "url": "https://www.godaven.com/shul-details/24689",
+      "name": "Ger Shtibel - Bradley",
+      "address": "280 Bradley Ave, Staten Island, NY 10314, USA",
+      "phone": null,
+      "website": "https://shulspace.org/cong-dchasidei-gur",
+      "rabbi": null,
+      "nusach": "Sefard",
+      "notes": null,
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "8:00"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:30"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:20"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:30"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:20"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:30"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:20"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:30"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:20"
+          ],
+          "mincha": [],
+          "maariv": [
+            "9:30"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "7:20"
+          ],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "English"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Sun, Mon, Tues, Wed, Thurs"
+        },
+        {
+          "text": "8:30 PM"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Yiddish"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Sun, Mon, Tues, Wed, Thurs"
+        },
+        {
+          "text": "8:30 PM"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Hebrew"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Sun, Mon, Tues, Wed, Thurs"
+        },
+        {
+          "text": "8:30 PM"
+        }
+      ],
+      "scrapedAt": "2026-07-18T10:24:40.509Z"
+    },
+    {
+      "id": 24846,
+      "url": "https://www.godaven.com/shul-details/24846",
+      "name": "Strettin Si",
+      "address": "11 Boone St, Staten Island, NY 10314, USA",
+      "phone": "(929) 561-9522",
+      "website": "https://shulspace.org/strettin-staten-islan",
+      "rabbi": null,
+      "nusach": "Sefard",
+      "notes": null,
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "9:30"
+          ],
+          "mincha": [
+            "8:10"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [
+            "8:10"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [
+            "8:10"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [
+            "8:10"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [
+            "8:10"
+          ],
+          "maariv": [
+            "9:45"
+          ]
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [
+            "8:20"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "4:55",
+            "10:00"
+          ],
+          "mincha": [
+            "2:30",
+            "8:20"
+          ],
+          "maariv": [
+            "9:06",
+            "9:24"
+          ]
+        }
+      },
+      "shiurim": [
+        {
+          "text": "Gemara"
+        },
+        {
+          "text": "Yiddish"
+        },
+        {
+          "text": "Gemara"
+        },
+        {
+          "text": "R' Yitzchok Flaum"
+        },
+        {
+          "text": "Sun, Mon, Tues, Wed, Thurs"
+        },
+        {
+          "text": "9:00 PM"
+        }
+      ],
+      "scrapedAt": "2026-07-18T10:24:49.660Z"
+    },
+    {
+      "id": 25405,
+      "url": "https://www.godaven.com/shul-details/25405",
+      "name": "Kahal Mkilnitz",
+      "address": "276 Gower St, Staten Island, NY 10314, USA",
+      "phone": "(347) 539-2627",
+      "website": null,
+      "rabbi": null,
+      "nusach": "Sefard",
+      "notes": null,
+      "schedule": {
+        "Sunday": {
+          "shacharis": [
+            "9:00",
+            "10:00",
+            "11:00"
+          ],
+          "mincha": [
+            "8:27"
+          ],
+          "maariv": [
+            "9:00",
+            "9:24"
+          ]
+        },
+        "Monday": {
+          "shacharis": [
+            "7:00",
+            "8:15",
+            "9:15"
+          ],
+          "mincha": [
+            "8:27"
+          ],
+          "maariv": [
+            "9:00",
+            "9:24"
+          ]
+        },
+        "Tuesday": {
+          "shacharis": [
+            "7:00",
+            "8:15",
+            "9:15"
+          ],
+          "mincha": [
+            "8:26"
+          ],
+          "maariv": [
+            "9:00",
+            "9:24"
+          ]
+        },
+        "Wednesday": {
+          "shacharis": [
+            "7:00",
+            "8:15",
+            "9:15"
+          ],
+          "mincha": [
+            "8:26"
+          ],
+          "maariv": [
+            "9:00",
+            "9:24"
+          ]
+        },
+        "Thursday": {
+          "shacharis": [
+            "7:00",
+            "8:15",
+            "9:15"
+          ],
+          "mincha": [
+            "8:25"
+          ],
+          "maariv": [
+            "9:00",
+            "9:24"
+          ]
+        },
+        "Friday": {
+          "shacharis": [
+            "8:54"
+          ],
+          "mincha": [
+            "8:54"
+          ],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [
+            "9:30",
+            "8:36",
+            "9:36"
+          ],
+          "mincha": [
+            "8:36"
+          ],
+          "maariv": [
+            "9:36"
+          ]
+        }
+      },
+      "shiurim": [
+        {
+          "text": "דף היומי שבת"
+        },
+        {
+          "text": "Yiddish"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Sat"
+        },
+        {
+          "text": "8:07 PM - 8:04 PM"
+        },
+        {
+          "text": "הדלקת הנרות"
+        },
+        {
+          "text": "English"
+        },
+        {
+          "text": "Daf Yomi"
+        },
+        {
+          "text": "Fri"
+        },
+        {
+          "text": "8:12 PM - 8:09 PM"
+        }
+      ],
+      "scrapedAt": "2026-07-18T10:25:00.043Z"
+    },
+    {
+      "id": 25516,
+      "url": "https://www.godaven.com/shul-details/25516",
+      "name": "Centers Health Care Si Offices",
+      "address": "75 Vanderbilt Ave, Staten Island, NY 10304, USA",
+      "phone": "(716) 462-5105",
+      "website": null,
+      "rabbi": null,
+      "nusach": "Ashkenaz",
+      "notes": "3rd Floor - Check minyan Images above for QR Code Whatsapp group to confirm https://chat.whatsapp.com/Fet2d4yIGIiHEpWmYHKkWu?mode=gi_t",
+      "schedule": {
+        "Sunday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Monday": {
+          "shacharis": [],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Tuesday": {
+          "shacharis": [],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Wednesday": {
+          "shacharis": [],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Thursday": {
+          "shacharis": [],
+          "mincha": [
+            "1:30"
+          ],
+          "maariv": []
+        },
+        "Friday": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        },
+        "Shabbos": {
+          "shacharis": [],
+          "mincha": [],
+          "maariv": []
+        }
+      },
+      "shiurim": [],
+      "scrapedAt": "2026-07-18T10:25:08.673Z"
+    },
+    {
+      "id": "https://tovofsi.weebly.com/",
+      "url": "https://tovofsi.weebly.com/",
+      "name": "TOV of Staten Island",
+      "website": "https://tovofsi.weebly.com/",
+      "external": true,
+      "info": [
+        {
+          "text": "Mincha 6pm * Fast starts 8:21 pm * Arvit 8:55 pm * Shachrit 8am * Chazot 1:03pm"
+        },
+        {
+          "text": "* Shiur 7:15pm * Mincha 745pm Shkiah 8:20pm * Arvit 8:35 pm * Fast ends 8:58 pm"
+        },
+        {
+          "text": "Shachrit Sunday 7:15 am"
+        },
+        {
+          "text": "Shachrit Mon-Friday 6:45 am"
+        },
+        {
+          "text": "​MINCHA-ARVIT 7:05 pm"
+        },
+        {
+          "text": "​Shiur Schedule:"
+        },
+        {
+          "text": "Rabbi Shmuel Admoni Shiur Sunday, Monday & Wednesday 6:15 pm-7:00pm (Hebrew)"
+        },
+        {
+          "text": "Rabbi Rabin Shiur Tuesdays 7:45 PM"
+        },
+        {
+          "text": "Rabbi Shlomi Eliyahu : Thursday 1 hour before Mincha (Hebrew)"
+        },
+        {
+          "text": "Rabbi Rabin Shabbat morning 8:10-8:30am (English)"
+        },
+        {
+          "text": "​Rabbi Rabin Motsei Shabbat (after Arvit) 10 minute Shiur to start the week! (english-hebrew)"
+        },
+        {
+          "text": "Shachrit 7:15 am ; Hodu 7:30 am"
+        }
+      ],
+      "scrapedAt": "2026-07-18T10:25:14.856Z"
+    },
+    {
+      "id": "https://www.yisi.org",
+      "url": "https://www.yisi.org",
+      "name": "Young Israel of Staten Island (YISI)",
+      "website": "https://www.yisi.org",
+      "external": true,
+      "info": []
+    }
+  ]
+}

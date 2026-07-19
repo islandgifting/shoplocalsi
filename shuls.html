@@ -204,6 +204,7 @@
     <li><a href="/community.html" data-page="community">Community</a></li>
     <li><a href="/#shabbos" data-page="shabbos">Shabbos</a></li>
     <li><a href="/shuls.html" data-page="shuls" class="active">Shuls</a></li>
+    <li><a href="https://www.yisi.org" target="_blank" rel="noopener">YISI</a></li>
   </ul>
   <a href="/advertise.html" class="nav-cta">List Your Business</a>
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
@@ -578,7 +579,6 @@
     if(s.notes) html += '<div class="sec"><h3>Notes</h3><div class="notes">'+esc(s.notes)+'</div></div>';
 
     var links=[];
-    if(/YISI|Young Israel of Staten Island/i.test(s.name||'')) links.push('<a href="/yisi.html">YISI page \u2192</a>');
     if(s.website) links.push('<a href="'+esc(s.website)+'" target="_blank" rel="noopener">Visit website \u2192</a>');
     if(!s.external) links.push('<a href="'+esc(s.url)+'" target="_blank" rel="noopener">GoDaven \u2192</a>');
     if(links.length) html += '<div class="links">'+links.join('')+'</div>';
