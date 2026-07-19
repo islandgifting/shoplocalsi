@@ -57,7 +57,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2.5rem;displ
 .section-nav a.on{color:#fff;background:var(--green)}
 
 /* GENERAL SECTIONS */
-.wrap{max-width:1100px;margin:0 auto;padding:3.5rem 2rem}
+.wrap{max-width:1100px;margin:0 auto;padding:3.5rem 2rem;scroll-margin-top:160px}
 .eyebrow{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--green);text-align:center;margin-bottom:.35rem}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--navy);text-align:center;font-weight:700;line-height:1.2}
 .section-title .accent{font-style:italic;color:var(--green);font-weight:400}
@@ -299,6 +299,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
   <div class="section-nav-inner">
     <a href="#blog" class="on">📰 This Week</a>
     <a href="#menu">🍽️ 9 Days Menu</a>
+    <a href="#fastprep">🕯️ Prepare for the Fast</a>
     <a href="#recipes">📖 Recipes</a>
     <a href="#tips">💡 Kitchen &amp; Home</a>
     <a href="#kids">🎈 Kids' Corner</a>
@@ -422,6 +423,65 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
       <div class="menu-day">Pre-Fast Meal<span class="vibe">Seudah Mafseket</span></div>
       <div class="menu-dish"><a onclick="openRecipe('kaposztas')">Caramelized Cabbage Noodles</a> <br><em style="font-size:.8rem;color:var(--muted)">Kaposztás Tészta</em></div>
       <div class="menu-strategy">The ultimate low-sodium, carb-heavy Hungarian pasta to fuel a 25-hour fast without thirst.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PREPARE FOR THE FAST -->
+<section class="wrap" id="fastprep">
+  <div class="eyebrow">Erev Tishah B'Av &middot; Wednesday, July 22</div>
+  <h2 class="section-title">Preparing for the <span class="accent">Fast</span></h2>
+  <div class="section-divider"></div>
+  <p class="section-lead">Tishah B'Av begins at sundown on Wednesday, July 22 and ends Thursday night, July 23 &mdash; a full 25-hour fast. A little preparation goes a long way toward making the day meaningful instead of just difficult.</p>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <span class="emoji">⏰</span>
+      <div class="tip-cat">Staten Island zmanim</div>
+      <h4>Fast begins 8:21 PM &middot; ends 8:58 PM</h4>
+      <p>The fast starts Wednesday, July 22 at 8:21 PM and ends Thursday, July 23 at 8:58 PM. As always, confirm exact times with your shul or rav.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🍽️</span>
+      <div class="tip-cat">Seudah hamafseket</div>
+      <h4>Keep the pre-fast meal simple</h4>
+      <p>Eat a regular, balanced meal before Mincha &mdash; not a feast. Go light on salty, spicy, and heavily processed foods, which all increase thirst during the fast. Our Kaposztás Tészta in the Nine Days menu above was made for exactly this.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">💧</span>
+      <div class="tip-cat">Beat the headache</div>
+      <h4>Start hydrating a day or two early</h4>
+      <p>Don't wait until the seudah to load up on water &mdash; begin drinking extra fluids the day or two before. If you're a coffee drinker, taper your caffeine down starting Monday so Wednesday's fast doesn't come with a withdrawal headache on top of everything else.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🤰</span>
+      <div class="tip-cat">Pregnant &amp; nursing mothers</div>
+      <h4>Speak to your rav ahead of time</h4>
+      <p>There can be halachic leniencies for pregnant and nursing women, and every situation is different. Don't wait until you're not feeling well &mdash; reach out to your rav before Tishah B'Av so you have clarity going in.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🧒</span>
+      <div class="tip-cat">Kids &amp; the fast</div>
+      <h4>Children under bar/bat mitzvah don't fast</h4>
+      <p>Some families have children closer to bar/bat mitzvah age try a partial fast as chinuch. Customs vary widely &mdash; ask your rav what's right for your child.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">📖</span>
+      <div class="tip-cat">What the day looks like</div>
+      <h4>Eichah, Kinnos, and sitting low</h4>
+      <p>Along with the fast, Tishah B'Av includes not wearing leather shoes, not bathing or applying lotions, and refraining from greetings. Many shuls read Eichah and Kinnos while sitting on the floor or low chairs, especially the night of and morning of the fast.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🌙</span>
+      <div class="tip-cat">Breaking the fast</div>
+      <h4>Go gently at 8:58 PM</h4>
+      <p>Havdalah is said after the fast (without besamim, but with a candle). Break the fast with something light and easy on the stomach &mdash; water, fruit, or a light snack &mdash; before jumping into a full meal.</p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🕊️</span>
+      <div class="tip-cat">A word of chizuk</div>
+      <h4>It's more than just not eating</h4>
+      <p>Tishah B'Av is a day to sit with what we're still missing as a people &mdash; and to daven for the day the mourning turns to joy. May we see that day soon.</p>
     </div>
   </div>
 </section>
@@ -1027,7 +1087,7 @@ function switchKids(which){
 // Section-nav active-link highlighting on scroll
 (function(){
   var links = document.querySelectorAll('.section-nav a');
-  var sections = ['blog','menu','recipes','tips','kids','chinuch','tehillim'].map(function(id){return document.getElementById(id);});
+  var sections = ['blog','menu','fastprep','recipes','tips','kids','chinuch','tehillim'].map(function(id){return document.getElementById(id);});
   window.addEventListener('scroll', function(){
     var y = window.scrollY + 200;
     var activeIdx = 0;
