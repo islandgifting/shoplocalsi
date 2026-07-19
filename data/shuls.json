@@ -1919,13 +1919,19 @@
       "website": "https://www.yisi.org",
       "external": true,
       "info": [
-        {
-          "text": "Candle Lighting"
-        },
-        {
-          "text": "Parashat Vaetchanan - 8:01PM"
-        }
-      ],
+                { "text": "Candle Lighting" },
+                { "text": "Parashat Vaetchanan - 8:01PM" },
+                { "text": "Shacharis" },
+                { "text": "Sundays & Holidays: 7:00, 8:00 & 9:00 AM" },
+                { "text": "Monday & Thursday: 5:50, 6:25, 6:55, 7:30 & 8:00 AM" },
+                { "text": "Tuesday, Wednesday & Friday: 5:50, 6:30, 7:00, 7:30 & 8:00 AM" },
+                { "text": "Mincha / Maariv" },
+                { "text": "Early Mincha Sunday 1:45 PM, Monday-Thursday 12:40 PM" },
+                { "text": "Late Maariv 9:00 PM" },
+                { "text": "Shabbos Schedule" },
+                { "text": "7:00 AM - Main Minyan" },
+                { "text": "8:00 AM - First Shul" }
+      ]
       "scrapedAt": "2026-07-19T10:41:25.080Z"
     }
   ]
