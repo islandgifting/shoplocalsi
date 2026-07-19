@@ -17,7 +17,7 @@ const SHUL_IDS = [
 // Shuls not on GoDaven — we visit their own websites and grab what we can.
 const EXTRA_SITES = [
   { name: "TOV of Staten Island", url: "https://tovofsi.weebly.com/" },
-  { name: "Young Israel of Staten Island (YISI)", url: "https://www.yisi.org" },
+  { name: "Young Israel of Staten Island (YISI)", url: "https://www.yisi.org", infoUrl: "https://www.yisi.org/our-shul/davening-times/" },
 ];
 
 // Paste YISI's Tehillim-list page URL between the quotes to enable the tehillim feed.
@@ -177,7 +177,7 @@ async function scrapeShul(page, id) {
 
 async function scrapeExtraSite(page, site) {
   try {
-    await page.goto(site.url, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await page.goto(site.infoUrl || site.url, { waitUntil: "domcontentloaded", timeout: 45000 });
     await page.waitForTimeout(3000);
     const text = await page.evaluate(() => document.body.innerText || "");
     const lines = text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean);
