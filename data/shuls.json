@@ -1915,13 +1915,12 @@
       "scrapedAt": "2026-07-18T10:25:14.856Z"
     },
     {
-      "id": "https://www.yisi.com",
-      "url": "https://www.yisi.com",
+      "id": "https://www.yisi.org",
+      "url": "https://www.yisi.org",
       "name": "Young Israel of Staten Island (YISI)",
-      "website": "https://www.yisi.com",
+      "website": "https://www.yisi.org",
       "external": true,
-      "info": [],
-      "error": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.yisi.com/\nCall log:\n  - navigating to \"https://www.yisi.com/\", waiting until \"domcontentloaded\"\n"
+      "info": []
     }
   ]
 }
