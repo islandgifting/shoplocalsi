@@ -17,7 +17,7 @@ const SHUL_IDS = [
 // Shuls not on GoDaven — we visit their own websites and grab what we can.
 const EXTRA_SITES = [
   { name: "TOV of Staten Island", url: "https://tovofsi.weebly.com/" },
-  { name: "Young Israel of Staten Island (YISI)", url: "https://www.yisi.com" },
+  { name: "Young Israel of Staten Island (YISI)", url: "https://www.yisi.org" },
 ];
 
 // Paste YISI's Tehillim-list page URL between the quotes to enable the tehillim feed.
