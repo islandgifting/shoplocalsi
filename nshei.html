@@ -300,6 +300,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
     <a href="#blog" class="on">📰 This Week</a>
     <a href="#menu">🍽️ 9 Days Menu</a>
     <a href="#fastprep">🕯️ Prepare for the Fast</a>
+    <a href="#kinos">📜 Kinos</a>
     <a href="#recipes">📖 Recipes</a>
     <a href="#tips">💡 Kitchen &amp; Home</a>
     <a href="#kids">🎈 Kids' Corner</a>
@@ -482,6 +483,63 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
       <div class="tip-cat">A word of chizuk</div>
       <h4>It's more than just not eating</h4>
       <p>Tishah B'Av is a day to sit with what we're still missing as a people &mdash; and to daven for the day the mourning turns to joy. May we see that day soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KINOS SECTION -->
+<section class="wrap" id="kinos">
+  <div class="eyebrow">Hebrew &middot; Yiddish &middot; English</div>
+  <h2 class="section-title">Kinos for <span class="accent">Tishah B'Av</span></h2>
+  <div class="section-divider"></div>
+  <p class="section-lead">The Kinos are the elegies recited on Tishah B'Av morning, mourning the Churban and the many tragedies that followed it. Full Kinos texts are long and mostly copyrighted in their printed translations, so rather than reproduce them here, we've gathered trusted free sources in each language below.</p>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <span class="emoji">🇮🇱</span>
+      <div class="tip-cat">Hebrew (original text)</div>
+      <h4>Full Kinot on Sefaria</h4>
+      <p>The complete Ashkenaz Kinot in the original Hebrew, free to read online.<br><a href="https://www.sefaria.org/Kinnot_for_Tisha_B'Av_(Ashkenaz)" target="_blank" rel="noopener">sefaria.org &rarr;</a></p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🇬🇧</span>
+      <div class="tip-cat">English translation</div>
+      <h4>Hebrew &amp; English side by side, free</h4>
+      <p>Sefaria's Kinot pages let you toggle a facing English translation alongside the Hebrew for every Kinah.<br><a href="https://www.sefaria.org/Kinnot_for_Tisha_B'Av_(Ashkenaz)" target="_blank" rel="noopener">sefaria.org &rarr;</a></p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">📖</span>
+      <div class="tip-cat">English, with commentary</div>
+      <h4>Select Kinot &amp; companion guides</h4>
+      <p>Chabad.org and Koren Publishers offer free downloadable highlights and explanations of key Kinot in English.<br><a href="https://www.chabad.org/library/article_cdo/aid/4822249/jewish/Highlights-From-the-Tisha-BAv-Service-PDF.htm" target="_blank" rel="noopener">chabad.org PDF &rarr;</a></p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🗣️</span>
+      <div class="tip-cat">Yiddish</div>
+      <h4>Best found in a printed Kinos machzor</h4>
+      <p>Free Yiddish translations of the Kinos are hard to find online &mdash; the classic Yiddish-English Kinos machzorim (available at most Judaica shops) remain the most reliable source. Ask your local shul if they have extras on hand.</p>
+    </div>
+  </div>
+
+  <p class="section-lead" style="margin-top:2rem">Listening in from home?</p>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <span class="emoji">☎️</span>
+      <div class="tip-cat">Kol Halashon</div>
+      <h4>Live Torah audio hotline</h4>
+      <p>Kol Halashon broadcasts live shiurim and Tishah B'Av programming by phone, with local dial-in numbers for the US, Canada, Israel, and UK listed on their site. Check their phone guide for the number closest to you.<br><a href="https://www.kolhalashon.com/en/regularSite/phoneInfo" target="_blank" rel="noopener">kolhalashon.com phone guide &rarr;</a></p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">💻</span>
+      <div class="tip-cat">TorahAnytime</div>
+      <h4>Streamed Kinos &amp; Tishah B'Av programming</h4>
+      <p>TorahAnytime posts a full Tishah B'Av schedule with live-streamed shiurim and Kinos programs you can follow along with online.<br><a href="https://www.torahanytime.com/tisha-bav" target="_blank" rel="noopener">torahanytime.com &rarr;</a></p>
+    </div>
+    <div class="tip-card">
+      <span class="emoji">🏠</span>
+      <div class="tip-cat">Local Staten Island shuls</div>
+      <h4>Check with your shul directly</h4>
+      <p>We couldn't confirm a Staten Island&ndash;specific dial-in line for this year's Kinos &mdash; several local shuls (Agudath Israel, YISI, and others) hold in-person Kinos readings. Call your shul office to ask if they're offering a conference line this year.</p>
     </div>
   </div>
 </section>
@@ -1087,7 +1145,7 @@ function switchKids(which){
 // Section-nav active-link highlighting on scroll
 (function(){
   var links = document.querySelectorAll('.section-nav a');
-  var sections = ['blog','menu','fastprep','recipes','tips','kids','chinuch','tehillim'].map(function(id){return document.getElementById(id);});
+  var sections = ['blog','menu','fastprep','kinos','recipes','tips','kids','chinuch','tehillim'].map(function(id){return document.getElementById(id);});
   window.addEventListener('scroll', function(){
     var y = window.scrollY + 200;
     var activeIdx = 0;
