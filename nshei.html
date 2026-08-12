@@ -325,6 +325,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
     <a href="#menu">🍽️ Summer Menu</a>
     <a href="#recipes">📖 Recipes</a>
     <a href="#tehillim">📿 Tehillim &amp; Refuah</a>
+    <a href="#learning">📚 Learning Circle</a>
   </div>
 </div>
 
@@ -1012,6 +1013,22 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:3.5rem 2.5rem 
   </div>
 </section>
 
+<!-- WOMEN'S LEARNING CIRCLE -->
+<section class="wrap" id="learning">
+  <div class="eyebrow">Learn together</div>
+  <h2 class="section-title">Women's Learning <span class="accent">Circle</span></h2>
+  <div class="section-divider"></div>
+  <p class="section-lead">A wonderful local resource: the Women's Learning Circle brings Staten Island women together through weekly classes and wellness gatherings led by local speakers &mdash; Megillas Rus, Navi, Tehillim &amp; emunah, Chumash, hashkafa, shmiras haloshon, and more, plus a Friday night Kabbolas Shabbos gathering. Most classes meet in homes and shuls around the neighborhood.</p>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <span class="emoji">📚</span>
+      <div class="tip-cat">See the full schedule</div>
+      <h4>Classes, times &amp; locations</h4>
+      <p>Browse the weekly class schedule, meet the speakers, and sign up for updates on the Women's Learning Circle site.<br><a href="https://www.siwomenslearningcircle.com/" target="_blank" rel="noopener">siwomenslearningcircle.com &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
 <!-- FORM -->
 <section class="wrap" style="padding-top:1rem">
   <div class="submit-form">
@@ -1110,7 +1127,7 @@ function switchKids(which){
 // Section-nav active-link highlighting on scroll
 (function(){
   var links = document.querySelectorAll('.section-nav a');
-  var sections = ['blog','tips','kids','parsha','halacha','melacha','valor','chinuch','menu','recipes','tehillim'].map(function(id){return document.getElementById(id);});
+  var sections = ['blog','tips','kids','parsha','halacha','melacha','valor','chinuch','menu','recipes','tehillim','learning'].map(function(id){return document.getElementById(id);});
   window.addEventListener('scroll', function(){
     var y = window.scrollY + 200;
     var activeIdx = 0;
